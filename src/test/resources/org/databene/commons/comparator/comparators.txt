@@ -1,0 +1,2 @@
+org.databene.commons.comparator.ComparatorFactoryTest$MyComparator 
+
