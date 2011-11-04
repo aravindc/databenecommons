@@ -44,7 +44,7 @@ import org.slf4j.LoggerFactory;
 
 public class DatabeneTestUtil {
 	
-    private static final String DATABENE_TEST_PROPERTIES = "databene.test.properties";
+    private static final String DATABENE_TEST_PROPERTIES = "test.properties";
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DatabeneTestUtil.class);
 	
@@ -55,7 +55,7 @@ public class DatabeneTestUtil {
 	}
 
     private static void init() {
-	    File file = new File(SystemInfo.getUserHome(), DATABENE_TEST_PROPERTIES);
+	    File file = new File(SystemInfo.getUserHome() + File.separator + "databene", DATABENE_TEST_PROPERTIES);
 	    if (file.exists()) {
 	    	try {
 	            properties = IOUtil.readProperties(file.getAbsolutePath());
