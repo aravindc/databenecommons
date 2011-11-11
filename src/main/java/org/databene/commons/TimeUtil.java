@@ -341,5 +341,81 @@ public final class TimeUtil {
     public static long millisSinceOwnEpoch(long millis) {
     	return millis + TimeZone.getDefault().getOffset(0);
     }
+    
+    public static String formatDuration(long duration, boolean simplify, boolean includeMillies) {
+    	// calculate parts
+    	int hours = (int) (duration / 3600000);
+    	duration -= hours * 3600000;
+    	int minutes = (int) (duration / 60000);
+    	duration -= 60000 * minutes;
+    	int seconds = (int) (duration / 1000);
+    	int millis = (int) (duration - seconds * 1000);
+    	// format string
+    	if (simplify)
+    		return formatSimplified(hours, minutes, seconds, millis, includeMillies);
+    	else
+    		return formatFixed(hours, minutes, seconds, millis, includeMillies);
+    }
 
+	private static String formatSimplified(int hours, int minutes, int seconds, int millis, boolean includeMillies) {
+    	StringBuilder builder = new StringBuilder();
+    	String unit = null;
+    	if (hours > 0) {
+    		builder.append(hours);
+    		unit = " h";
+    	}
+    	if (minutes > 0 || seconds > 0 || (includeMillies && millis > 0)) {
+        	if (unit != null && minutes < 10)
+        		builder.append(':').append('0');
+        	if (unit != null || minutes > 0) {
+           		builder.append(minutes);
+           		if (minutes > 0 && unit == null)
+           			unit = " min";
+        	}
+        	if (seconds > 0 || (includeMillies && millis > 0)) {
+	        	if (unit != null) {
+	        		builder.append(':');
+	    	    	if (seconds < 10)
+	    	    		builder.append('0');
+	        	}
+        		builder.append(seconds);
+	        	if (unit == null)
+	        		unit = " s";
+	        	if (includeMillies)
+	        		appendMillis(millis, builder);
+        	}
+    	} else if (builder.length() == 0) {
+    		builder.append("0");
+    		unit = " s";
+    	}
+    		
+    	builder.append(unit);
+    	return builder.toString();
+	}
+
+	private static String formatFixed(int hours, int minutes, int seconds, int millis, boolean includeMillies) {
+    	StringBuilder builder = new StringBuilder();
+		builder.append(hours).append(':');
+    	if (minutes < 10)
+	    	builder.append('0');
+   		builder.append(minutes);
+		builder.append(':');
+		if (seconds < 10)
+			builder.append('0');
+		builder.append(seconds);
+    	if (includeMillies)
+    		appendMillis(millis, builder);
+    	builder.append(" h");
+    	return builder.toString();
+	}
+
+	private static void appendMillis(int millis, StringBuilder builder) {
+		builder.append(".");
+		if (millis < 100)
+			builder.append('0');
+		if (millis < 10)
+			builder.append('0');
+		builder.append(millis);
+	}
+    
 }

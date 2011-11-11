@@ -162,4 +162,57 @@ public class TimeUtilTest {
 		assertEquals(TimeUtil.date(2010, 7, 31), TimeUtil.add(TimeUtil.date(2010, 7, 30), TimeUtil.date(0, 0, 1)));
 	}
 
+	@Test
+	public void testFormatDurationFixed() {
+		// 1 ms
+		assertEquals("0:00:00 h", TimeUtil.formatDuration(1, false, false));
+		assertEquals("0:00:00.001 h", TimeUtil.formatDuration(1, false, true));
+		// 1 s
+		assertEquals("0:00:01 h", TimeUtil.formatDuration(1000, false, false));
+		assertEquals("0:00:01.000 h", TimeUtil.formatDuration(1000, false, true));
+		// 1 min
+		assertEquals("0:01:00 h", TimeUtil.formatDuration(60000, false, false));
+		assertEquals("0:01:00.000 h", TimeUtil.formatDuration(60000, false, true));
+		// 1 h
+		assertEquals("1:00:00 h", TimeUtil.formatDuration(3600000, false, false));
+		assertEquals("1:00:00.000 h", TimeUtil.formatDuration(3600000, false, true));
+		// 25 h
+		assertEquals("25:00:00 h", TimeUtil.formatDuration(25*3600000, false, false));
+		assertEquals("25:00:00.000 h", TimeUtil.formatDuration(25*3600000, false, true));
+		
+		assertEquals("0:00:00.009 h", TimeUtil.formatDuration(9, false, true));
+		assertEquals("0:00:00.012 h", TimeUtil.formatDuration(12, false, true));
+		assertEquals("0:00:00.123 h", TimeUtil.formatDuration(123, false, true));
+		assertEquals("0:00:02.345 h", TimeUtil.formatDuration(2345, false, true));
+		assertEquals("0:01:12.345 h", TimeUtil.formatDuration(72345, false, true));
+		assertEquals("0:11:01.000 h", TimeUtil.formatDuration(661000, false, true));
+		assertEquals("2:59:00.001 h", TimeUtil.formatDuration(10740001, false, true));
+		assertEquals("27:59:59.999 h", TimeUtil.formatDuration(100799999, false, true));
+	}
+	
+	@Test
+	public void testFormatDurationSimplified() {
+		// 1 ms
+		assertEquals("0 s", TimeUtil.formatDuration(1, true, false));
+		assertEquals("0.001 s", TimeUtil.formatDuration(1, true, true));
+		// 1 s
+		assertEquals("1 s", TimeUtil.formatDuration(1000, true, false));
+		assertEquals("1.000 s", TimeUtil.formatDuration(1000, true, true));
+		// 1 min
+		assertEquals("1 min", TimeUtil.formatDuration(60999, true, false));
+		assertEquals("1:01 min", TimeUtil.formatDuration(61000, true, false));
+		assertEquals("1:59 min", TimeUtil.formatDuration(119000, true, false));
+		assertEquals("1 min", TimeUtil.formatDuration(60000, true, true));
+		// 1 h
+		assertEquals("1 h", TimeUtil.formatDuration(3600000, true, false));
+		assertEquals("1 h", TimeUtil.formatDuration(3600000, true, true));
+		// 25 h
+		assertEquals("25 h", TimeUtil.formatDuration(90000000, true, false));
+		assertEquals("25 h", TimeUtil.formatDuration(90000000, true, true));
+		
+		assertEquals("1:00.001 min", TimeUtil.formatDuration(60001, true, true));
+		assertEquals("1:02:03 h", TimeUtil.formatDuration(3723000, true, false));
+		assertEquals("1:02:03.009 h", TimeUtil.formatDuration(3723009, true, true));
+	}
+	
 }
