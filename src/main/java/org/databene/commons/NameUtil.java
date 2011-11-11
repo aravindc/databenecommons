@@ -73,4 +73,8 @@ public class NameUtil {
 		return -1;
 	}
 
+	public static void sort(List<? extends Named> namedObjects) {
+		Collections.sort(namedObjects, new NameComparator());
+	}
+
 }
