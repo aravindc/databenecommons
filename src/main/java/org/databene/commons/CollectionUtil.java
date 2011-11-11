@@ -252,4 +252,18 @@ public final class CollectionUtil {
 		return result;
 	}
 
+	public static String formatCommaSeparatedList(List<String> list, Character quoteCharacter) {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < list.size(); i++) {
+			if (i > 0)
+				builder.append(", ");
+			if (quoteCharacter != null)
+				builder.append(quoteCharacter);
+			builder.append(list.get(i));
+			if (quoteCharacter != null)
+				builder.append(quoteCharacter);
+		}
+		return builder.toString();
+	}
+
 }
