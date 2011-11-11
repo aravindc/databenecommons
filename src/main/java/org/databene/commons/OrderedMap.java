@@ -144,7 +144,7 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
     }
 
     public List<V> values() {
-        return values;
+        return new ArrayList<V>(values);
     }
 
     @SuppressWarnings("unchecked")
