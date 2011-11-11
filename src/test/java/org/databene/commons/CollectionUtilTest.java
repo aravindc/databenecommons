@@ -102,4 +102,13 @@ public class CollectionUtilTest {
         assertTrue(Arrays.equals(new Integer[] { 1, 2, 3 }, CollectionUtil.toArray(Arrays.asList(1, 2, 3), Integer.class)));
     }
 	
+	@Test
+	public void testFormatCommaSeparatedList() {
+		List<String> list = new ArrayList<String>();
+		list.add("A");
+		list.add("B");
+		assertEquals("A, B", CollectionUtil.formatCommaSeparatedList(list, null));
+		assertEquals("'A', 'B'", CollectionUtil.formatCommaSeparatedList(list, '\''));
+	}
+	
 }
