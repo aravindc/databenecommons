@@ -28,6 +28,8 @@ package org.databene.commons.collection;
 
 import java.util.Map;
 
+import org.databene.commons.NullSafeComparator;
+
 /**
  * Simple implementation of the Map.Entry interface.<br/>
  * <br/>
@@ -65,4 +67,21 @@ public class MapEntry<K, V> implements Map.Entry<K, V> {
     public String toString() {
         return String.valueOf(key) + '=' + value;
     }
+
+	@Override
+	public int hashCode() {
+		return ((key == null) ? 0 : key.hashCode()) * 31 + ((value == null) ? 0 : value.hashCode());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		@SuppressWarnings("rawtypes")
+		MapEntry that = (MapEntry) obj;
+		return NullSafeComparator.equals(this.key, that.key) && NullSafeComparator.equals(this.value, that.value);
+	}
+    
 }
