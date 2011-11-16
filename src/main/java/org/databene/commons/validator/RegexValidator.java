@@ -64,6 +64,7 @@ public class RegexValidator extends AbstractConstraintValidator<Pattern, String>
 	private String regexp;
 	private Flag[] flags = new Flag[0];
 	private java.util.regex.Pattern pattern;
+	private boolean nullValid;
 
     public RegexValidator() {
 	    this(null);
@@ -78,6 +79,20 @@ public class RegexValidator extends AbstractConstraintValidator<Pattern, String>
 	    setFlags(flags);
     }
 
+    public RegexValidator(String regexp, boolean nullValid, Flag... flags) {
+    	this.nullValid = nullValid;
+	    setRegexp(regexp);
+	    setFlags(flags);
+    }
+
+	public boolean isNullValid() {
+		return nullValid;
+	}
+	
+	public void setNullValid(boolean nullValid) {
+		this.nullValid = nullValid;
+	}
+
 	@Override
     public void initialize(Pattern params) {
 	    setRegexp(params.regexp());
@@ -85,6 +100,8 @@ public class RegexValidator extends AbstractConstraintValidator<Pattern, String>
     }
 
 	public boolean isValid(String string, ConstraintValidatorContext context) {
+		if (string == null)
+			return nullValid;
     	return pattern.matcher(string).matches();
     }
 
