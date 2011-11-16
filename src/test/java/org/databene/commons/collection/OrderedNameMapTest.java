@@ -45,6 +45,8 @@ public class OrderedNameMapTest {
 		assertEquals(1, (int) map.get("a"));
 		assertFalse(map.containsKey("A"));
 		assertNull(map.get("A"));
+		assertEquals(new MapEntry<String, Integer>("a", 1), map.getEntry("a"));
+		assertEquals(null, map.get("A"));
 		assertEquals(1, (int) map.remove("a"));
 	}
 	
@@ -56,6 +58,8 @@ public class OrderedNameMapTest {
 		assertEquals(1, (int) map.get("a"));
 		assertTrue(map.containsKey("A"));
 		assertEquals(1, (int) map.get("A"));
+		assertEquals(new MapEntry<String, Integer>("a", 1), map.getEntry("a"));
+		assertEquals(new MapEntry<String, Integer>("a", 1), map.getEntry("A"));
 		assertEquals(1, (int) map.remove("a"));
 	}
 	
@@ -67,6 +71,8 @@ public class OrderedNameMapTest {
 		assertEquals(1, (int) map.get("a"));
 		assertTrue(map.containsKey("A"));
 		assertEquals(1, (int) map.get("A"));
+		assertEquals(new MapEntry<String, Integer>("a", 1), map.getEntry("a"));
+		assertEquals(new MapEntry<String, Integer>("a", 1), map.getEntry("a"));
 		assertEquals(1, (int) map.remove("a"));
 	}
 
