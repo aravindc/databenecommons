@@ -42,9 +42,9 @@ public class OrderedNameMap<E> extends OrderedMap<String, E> {
 	
 	private static final long serialVersionUID = 3325805664883631735L;
 	
-	private static final int CASE_SENSITIVE = 0;
+	private static final int CASE_SENSITIVE   = 0;
 	private static final int CASE_INSENSITIVE = 1;
-	private static final int CASE_IGNORANT = 2;
+	private static final int CASE_IGNORANT    = 2;
 	
 	private int caseSupport;
 	
@@ -106,7 +106,22 @@ public class OrderedNameMap<E> extends OrderedMap<String, E> {
 	        if ((tmp == null && key == null) || (tmp != null && tmp.equalsIgnoreCase(key)))
         		return entry.getValue();
         }
-		return result;
+		return null;
+    }
+
+	public Map.Entry<String, E> getEntry(String key) {
+        String normalizedKey = normalizeKey(key);
+		E value = super.get(normalizedKey);
+        if (value != null || caseSupport == CASE_SENSITIVE)
+        	return new MapEntry<String, E>((caseSupport == CASE_IGNORANT ? normalizedKey : key), value);
+        for (Map.Entry<String, E> entry : super.entrySet()) {
+	        String tmp = entry.getKey();
+	        if ((tmp == null && key == null) || (tmp != null && tmp.equalsIgnoreCase(key))) {
+				String resultKey = caseSupport == CASE_IGNORANT ? normalizedKey : entry.getKey();
+				return new MapEntry<String, E>(resultKey, entry.getValue());
+			}
+        }
+		return null;
     }
 
     @Override
@@ -129,4 +144,5 @@ public class OrderedNameMap<E> extends OrderedMap<String, E> {
     private String normalizeKey(String key) {
 		return (caseSupport == CASE_IGNORANT && key != null ? key.toLowerCase() : key);
 	}
+    
 }
