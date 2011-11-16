@@ -22,8 +22,10 @@
 package org.databene.commons.filter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import org.databene.commons.ConfigurationError;
 import org.databene.commons.Filter;
 
 /**
@@ -42,6 +44,18 @@ public class FilterUtil {
 		for (T candidate : candidates)
 			if (filter.accept(candidate))
 				result.add(candidate);
+		return result;
+	}
+
+	public static <T> T findSingleMatch(Collection<T> candidates, Filter<T> filter) {
+		T result = null;
+		for (T candidate : candidates)
+			if (filter.accept(candidate)) {
+				if (result == null)
+					result = candidate;
+				else
+					throw new ConfigurationError("Found multiple matches: " + candidates);
+			}
 		return result;
 	}
 
