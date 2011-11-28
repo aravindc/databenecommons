@@ -206,6 +206,7 @@ public class TimeUtilTest {
 		// 1 h
 		assertEquals("1 h", TimeUtil.formatDuration(3600000, true, false));
 		assertEquals("1 h", TimeUtil.formatDuration(3600000, true, true));
+		assertEquals("1:59 h", TimeUtil.formatDuration(7140000, true, true));
 		// 25 h
 		assertEquals("25 h", TimeUtil.formatDuration(90000000, true, false));
 		assertEquals("25 h", TimeUtil.formatDuration(90000000, true, true));

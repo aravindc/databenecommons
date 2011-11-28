@@ -365,8 +365,11 @@ public final class TimeUtil {
     		unit = " h";
     	}
     	if (minutes > 0 || seconds > 0 || (includeMillies && millis > 0)) {
-        	if (unit != null && minutes < 10)
-        		builder.append(':').append('0');
+        	if (unit != null) {
+        		builder.append(':');
+	        	if (minutes < 10)
+	        		builder.append('0');
+        	}
         	if (unit != null || minutes > 0) {
            		builder.append(minutes);
            		if (minutes > 0 && unit == null)
