@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -27,6 +27,9 @@
 package org.databene.commons;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static junit.framework.Assert.*;
 
 import java.util.*;
@@ -152,6 +155,19 @@ public class BeanUtilTest {
 
     // instantiation tests ---------------------------------------------------------------------------------------------
 
+	@Test
+	public void testFindClasses() throws Exception {
+		List<Class<?>> classes;
+		// test directory in class path
+		classes = BeanUtil.getClasses(BeanUtil.class.getPackage().getName());
+		assertTrue(classes.contains(BeanUtil.class));
+		assertTrue(classes.contains(TimeUtil.class));
+		// test jar in class path
+		classes = BeanUtil.getClasses(Logger.class.getPackage().getName());
+		assertTrue(classes.contains(Logger.class));
+		assertTrue(classes.contains(LoggerFactory.class));
+	}
+	
 	@Test
     public void testForName() {
         Class<P> type = BeanUtil.forName("org.databene.commons.BeanUtilTest$P");

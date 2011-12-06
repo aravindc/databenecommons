@@ -37,15 +37,19 @@ import java.lang.reflect.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.*;
 import java.util.concurrent.Callable;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.beans.Introspector;
 import java.beans.BeanInfo;
 import java.beans.PropertyDescriptor;
 import java.beans.IntrospectionException;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
@@ -1021,6 +1025,69 @@ public final class BeanUtil {
         return false;
     }
     
+    public static List<Class<?>> getClasses(String packageName) {
+		try {
+			ClassLoader classLoader = getContextClassLoader();
+			String packagePath = packageName.replace('.', '/');
+			Enumeration<URL> resourceUris = classLoader.getResources(packagePath);
+			List<Class<?>> classes = new ArrayList<Class<?>>();
+			while (resourceUris.hasMoreElements()) {
+				URL resource = resourceUris.nextElement();
+				String protocol = resource.getProtocol();
+				if ("jar".equals(protocol))
+					findClassesInJar(resource.getFile(), packagePath, classes);
+				else if ("file".equals(protocol))
+					findClassesInDirectory(new File(resource.toURI()), packageName, classes);
+				else
+					throw new UnsupportedOperationException("Not a supported protocol: " + protocol);
+			}
+			return classes;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (ClassNotFoundException e) {
+			throw new ObjectNotFoundException(e);
+		} catch (URISyntaxException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	private static List<Class<?>> findClassesInDirectory(File directory, String packageName, List<Class<?>> classes) 
+			throws ClassNotFoundException {
+		File[] files = directory.listFiles();
+		for (File file : files) {
+			String fileName = file.getName();
+			if (file.isDirectory())
+				findClassesInDirectory(file, packageName + "." + fileName, classes);
+			else if (fileName.endsWith(".class")) {
+				String className = packageName + '.' + fileName.substring(0, fileName.length() - 6);
+				classes.add(BeanUtil.<Object>forName(className));
+			}
+		}
+		return classes;
+	}
+    
+	private static List<Class<?>> findClassesInJar(String path, String packagePath, List<Class<?>> classes) 
+			throws IOException, URISyntaxException {
+		// extract jar file name
+		String fileName = path;
+//		if (fileName.startsWith("file:"))
+//			fileName = fileName.substring(5);
+		if (fileName.contains("!"))
+			fileName = fileName.substring(0, fileName.indexOf('!'));
+		// extract classes
+		JarFile jarFile = new JarFile(new File(new URL(fileName).toURI()));
+		 Enumeration<JarEntry> entries = jarFile.entries();
+		 while (entries.hasMoreElements()) {
+			 JarEntry entry = entries.nextElement();
+			 String entryName = entry.getName();
+			if (entryName.startsWith(packagePath) && entryName.endsWith(".class") && !entry.isDirectory()) {
+				 String className = entryName.replace('/', '.').substring(0, entryName.length() - 6);
+				 classes.add(BeanUtil.forName(className));
+			 }
+		 }
+		 return classes;
+	}
+
     // invisible helpers -----------------------------------------------------------------------------------------------
 
     /**
