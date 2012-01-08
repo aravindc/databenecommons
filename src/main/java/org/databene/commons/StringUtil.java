@@ -417,7 +417,7 @@ public final class StringUtil {
         return source.substring(i, source.length());
     }
 
-    public static Object trim(String source, char padChar) {
+    public static String trim(String source, char padChar) {
         if (source == null)
             return null;
         int i0 = 0;
