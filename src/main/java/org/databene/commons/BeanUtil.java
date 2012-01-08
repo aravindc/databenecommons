@@ -965,6 +965,16 @@ public final class BeanUtil {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
+    public static <BEAN, PROP_TYPE> PROP_TYPE[] extractProperties(BEAN[] beans, String propertyName, Class<PROP_TYPE> propertyType) {
+        PROP_TYPE[] result = ArrayUtil.newInstance(propertyType, beans.length);
+        for (int i = 0; i < beans.length; i++) {
+        	BEAN bean = beans[i];
+            result[i] = (PROP_TYPE) getPropertyValue(bean, propertyName);
+        }
+        return result;
+    }
+
     // class operations ------------------------------------------------------------------------------------------------
 
     /**
@@ -1179,10 +1189,8 @@ public final class BeanUtil {
     public static <C, I> Type[] getGenericInterfaceParams(Class<C> checkedClass, Class<I> searchedInterface) {
         for (Type type : checkedClass.getGenericInterfaces()) {
             ParameterizedType pt = (ParameterizedType) type;
-            if (searchedInterface.equals(pt.getRawType())) {
-                ParameterizedType pType = ((ParameterizedType) type);
-                return pType.getActualTypeArguments();
-            }
+            if (searchedInterface.equals(pt.getRawType()))
+                return pt.getActualTypeArguments();
         }
         if (!Object.class.equals(checkedClass.getSuperclass()))
             return getGenericInterfaceParams(checkedClass.getSuperclass(), searchedInterface);
