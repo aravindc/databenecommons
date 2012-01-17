@@ -55,7 +55,7 @@ import java.util.jar.JarFile;
 public final class IOUtil {
 
     /** The logger. */
-    private static final Logger logger = LoggerFactory.getLogger(IOUtil.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(IOUtil.class);
 
     private static final String USER_AGENT = "Mozilla/5.0 (Windows; U; Windows NT 5.1; de-DE; rv:1.7.5) Gecko/20041122 Firefox/1.0";
 
@@ -71,7 +71,7 @@ public final class IOUtil {
             try {
                 closeable.close();
             } catch (IOException e) {
-                logger.error("Error closing " + closeable, e);
+                LOGGER.error("Error closing " + closeable, e);
             }
         }
     }
@@ -83,7 +83,7 @@ public final class IOUtil {
 	            try {
 	                closeable.close();
 	            } catch (IOException e) {
-	                logger.error("Error closing " + closeable, e);
+	                LOGGER.error("Error closing " + closeable, e);
 	            } catch (Throwable e) {
 	                t = e;
 	            }
@@ -100,7 +100,7 @@ public final class IOUtil {
 	            try {
 	                closeable.close();
 	            } catch (IOException e) {
-	                logger.error("Error closing " + closeable, e);
+	                LOGGER.error("Error closing " + closeable, e);
 	            } catch (Throwable e) {
 	                t = e;
 	            }
@@ -115,7 +115,7 @@ public final class IOUtil {
             try {
                 flushable.flush();
             } catch (IOException e) {
-                logger.error("Error flushing " + flushable, e);
+                LOGGER.error("Error flushing " + flushable, e);
             }
         }
     }
@@ -128,7 +128,7 @@ public final class IOUtil {
     }
 
     public static boolean isURIAvailable(String uri) {
-    	logger.debug("isURIAvailable({})", uri);
+    	LOGGER.debug("isURIAvailable({})", uri);
         InputStream stream = null;
         try {
             if (uri.startsWith("string://"))
@@ -193,7 +193,7 @@ public final class IOUtil {
      * @throws IOException if the url cannot be read.
      */
     public static InputStream getInputStreamForURI(String uri, boolean required) throws IOException {
-		logger.debug("getInputStreamForURI({}, {})", uri, required);
+		LOGGER.debug("getInputStreamForURI({}, {})", uri, required);
         if (uri.startsWith("string://")) {
 			String content = uri.substring("string://".length());
 			return new ByteArrayInputStream(content.getBytes(SystemInfo.getCharset()));
@@ -218,7 +218,7 @@ public final class IOUtil {
 	}
 
     public static InputStream getInputStreamForUriReference(String localUri, String contextUri, boolean required) throws IOException {
-		logger.debug("getInputStreamForUriReference({}, {})", localUri, contextUri);
+		LOGGER.debug("getInputStreamForUriReference({}, {})", localUri, contextUri);
     	// do not resolve context for absolute URLs or missing contexts
     	if (StringUtil.isEmpty(contextUri) || getProtocol(localUri) != null)
     		return getInputStreamForURI(localUri, required);
@@ -241,7 +241,7 @@ public final class IOUtil {
     }
 
     public static String resolveRelativeUri(String relativeUri, String contextUri) {
-		logger.debug("resolveRelativeUri({}, {})", relativeUri, contextUri);
+		LOGGER.debug("resolveRelativeUri({}, {})", relativeUri, contextUri);
     	if (isAbsoluteRef(relativeUri, contextUri))
     		return relativeUri;
     	String contextProtocol = getProtocol(contextUri);
@@ -367,7 +367,7 @@ public final class IOUtil {
     }
 
     public static void copyFile(String srcUri, String targetUri) throws IOException {
-        logger.debug("copying " + srcUri + " --> " + targetUri);
+        LOGGER.debug("copying " + srcUri + " --> " + targetUri);
         InputStream in = null;
         OutputStream out = null;
         try {
@@ -526,7 +526,7 @@ public final class IOUtil {
      * @throws FileNotFoundException if the file cannot be found.
      */
     private static InputStream getFileOrResourceAsStream(String filename, boolean required) throws FileNotFoundException {
-		logger.debug("getFileOrResourceAsStream({}, {})", filename, required);
+		LOGGER.debug("getFileOrResourceAsStream({}, {})", filename, required);
         File file = new File(filename);
         if (file.exists()) {
             return new FileInputStream(filename);
@@ -540,7 +540,7 @@ public final class IOUtil {
      * @return an InputStream to the resource
      */
     private static InputStream getResourceAsStream(String name, boolean required) {
-    	logger.debug("getResourceAsStream({}, {})", name, required);
+    	LOGGER.debug("getResourceAsStream({}, {})", name, required);
     	String searchedName = (name.startsWith("/") ? name : "/" + name);
         InputStream stream = IOUtil.class.getResourceAsStream(searchedName);
         if (required && stream == null)
@@ -575,8 +575,7 @@ public final class IOUtil {
     
     public static void copyDirectory(URL srcUrl, File targetDirectory, Filter<String> filenameFilter) 
     		throws IOException {
-    	if (logger.isDebugEnabled())
-    		logger.debug("copyDirectory(" + srcUrl + ", " + targetDirectory + ", " + filenameFilter + ")");
+   		LOGGER.debug("copyDirectory({}, {}, {})", new Object[] { srcUrl, targetDirectory, filenameFilter });
         String protocol = srcUrl.getProtocol();
 		if (protocol.equals("file")) {
 			try {
@@ -599,9 +598,7 @@ public final class IOUtil {
     
     public static void extractFolderFromJar(String jarPath, String directory, File targetDirectory, 
     		Filter<String> filenameFilter) throws IOException {
-    	if (logger.isDebugEnabled())
-    		logger.debug("extractFolderFromJar(" + jarPath + ", " + directory + ", " + 
-    				targetDirectory + ", " + filenameFilter + ")");
+   		LOGGER.debug("extractFolderFromJar({}, {}, {}, {})", new Object[] { jarPath, directory, targetDirectory, filenameFilter});
 		JarFile jar = new JarFile(URLDecoder.decode(jarPath, "UTF-8"));
 		Enumeration<JarEntry> entries = jar.entries();
 		while (entries.hasMoreElements()) {
@@ -611,11 +608,11 @@ public final class IOUtil {
 				String relativeName = name.substring(directory.length());
 				if (entry.isDirectory()) {
 					File subDir = new File(targetDirectory, relativeName);
-					logger.debug("creating sub directory {}", subDir);
+					LOGGER.debug("creating sub directory {}", subDir);
 					subDir.mkdir();
 				} else {
 					File targetFile = new File(targetDirectory, relativeName);
-					logger.debug("copying file {} to {}", name, targetFile);
+					LOGGER.debug("copying file {} to {}", name, targetFile);
 					InputStream in = jar.getInputStream(entry);
 					OutputStream out = new FileOutputStream(targetFile);
 					transfer(in, out);
@@ -627,14 +624,14 @@ public final class IOUtil {
     }
 
 	public static String[] listResources(URL url) throws IOException {
-		logger.debug("listResources({})", url);
+		LOGGER.debug("listResources({})", url);
         String protocol = url.getProtocol();
 		if (protocol.equals("file")) {
 			try {
 				String[] result = new File(url.toURI()).list();
 				if (result == null)
 					result = new String[0];
-				logger.debug("found file resources: {}", result);
+				LOGGER.debug("found file resources: {}", result);
 				return result;
 			} catch (URISyntaxException e) {
 				throw new RuntimeException("Unexpected exception", e);
@@ -657,7 +654,7 @@ public final class IOUtil {
 					result.add(entry);
 				}
 			}
-			logger.debug("found jar resources: {}", result);
+			LOGGER.debug("found jar resources: {}", result);
 			return result.toArray(new String[result.size()]);
         } else          
         	throw new UnsupportedOperationException("Protocol not supported: "+ protocol + 
@@ -665,7 +662,7 @@ public final class IOUtil {
     }
     
 	public static void download(URL url, File targetFile) throws IOException {
-		logger.info("downloading {}", url);
+		LOGGER.info("downloading {}", url);
 		FileUtil.ensureDirectoryExists(targetFile.getParentFile());
 	    InputStream in = getInputStreamForURL(url);
 	    try {
