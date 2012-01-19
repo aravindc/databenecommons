@@ -573,6 +573,17 @@ public final class IOUtil {
         return out.toByteArray();
     }
     
+    public static void writeBytes(byte[] bytes, File file) throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+        OutputStream out = new FileOutputStream(file);
+        try {
+			transfer(in, out);
+		} finally {
+			IOUtil.close(out);
+			IOUtil.close(in);
+		}
+    }
+    
     public static void copyDirectory(URL srcUrl, File targetDirectory, Filter<String> filenameFilter) 
     		throws IOException {
    		LOGGER.debug("copyDirectory({}, {}, {})", new Object[] { srcUrl, targetDirectory, filenameFilter });
