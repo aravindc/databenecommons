@@ -42,8 +42,10 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 	private static final long HOUR_MILLIS   = 60 * MINUTE_MILLIS;
 	private static final long DAY_MILLIS    = 24 * HOUR_MILLIS;
 	
-	char decimalSeparator;
-	String space;
+	private char decimalSeparator;
+	private String space;
+	
+	private static final ElapsedTimeFormatter DEFAULT_INSTANCE = new ElapsedTimeFormatter();
 
 	public ElapsedTimeFormatter() {
 		this(Locale.getDefault(), " ");
@@ -68,6 +70,12 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 		else
 			return render(millis, DAY_MILLIS, "d"); // TODO v0.5.x I18N OF UOM
 	}
+	
+	public static String format(long millis) {
+		return DEFAULT_INSTANCE.convert(millis);
+	}
+	
+	// private helper --------------------------------------------------------------------------------------------------
 
 	private String render(long millis, long base, String unit) {
 		long prefix = millis / base;
