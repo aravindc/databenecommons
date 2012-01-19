@@ -56,6 +56,14 @@ public class CompositeFormatter extends FormatHolder {
     	this.renderNames = renderNames;
     }
     
+	public boolean isFlat() {
+		return flat;
+	}
+	
+	public void setFlat(boolean flat) {
+		this.flat = flat;
+	}
+	
     // interface -------------------------------------------------------------------------------------------------------
 
    	public String render(String head, Composite composite, String tail) {
