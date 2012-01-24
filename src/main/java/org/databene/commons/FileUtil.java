@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -270,6 +270,21 @@ public final class FileUtil {
 		} catch (IOException e) {
 			throw new IllegalArgumentException("Error composing file path", e);
 		}
+	}
+
+	public static File getFileIgnoreCase(File file, boolean required) {
+		// if the file exists with the given capitalization use it as it is
+		if (file.exists())
+			return file;
+		// otherwise scan the folder for a file with the same name but different capitalization
+		for (File sibling : file.getParentFile().listFiles())
+			if (sibling.getName().equalsIgnoreCase(file.getName()))
+				return sibling;
+		// if no file of equal name has been found...
+		if (required)
+			throw new ObjectNotFoundException("File not found: " + file); // ... then complain if one is required
+		else
+			return file; // otherwise use the predefined name
 	}
 	
 }
