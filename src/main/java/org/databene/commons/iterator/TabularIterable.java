@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -21,25 +21,14 @@
 
 package org.databene.commons.iterator;
 
+import org.databene.commons.HeavyweightIterable;
+
 /**
- * Proxy implementation for the {@link TableRowIterator} interface.<br/><br/>
- * Created: 26.10.2011 21:58:20
- * @since 0.5.11
+ * Special sub type of {@link Iterable} which creates {@link TabularIterator}s.<br/><br/>
+ * Created: 26.01.2012 17:59:58
+ * @since 0.5.14
  * @author Volker Bergmann
  */
-public class TableRowIteratorProxy extends HeavyweightIteratorProxy<Object[]> implements TableRowIterator {
-
-	public TableRowIteratorProxy(TableRowIterator source) {
-        super(source);
-    }
-	
-	@Override
-	public Object[] next() {
-		return super.next();
-	}
-
-	public String[] getColumnLabels() {
-        return ((TableRowIterator) source).getColumnLabels();
-    }
-	
+public interface TabularIterable extends HeavyweightIterable<Object[]> {
+	TabularIterator iterator();
 }

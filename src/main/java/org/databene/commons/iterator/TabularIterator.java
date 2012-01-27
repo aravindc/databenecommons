@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -22,6 +22,7 @@
 package org.databene.commons.iterator;
 
 import org.databene.commons.HeavyweightIterator;
+import org.databene.commons.Tabular;
 
 /**
  * Iterator for table-like structures, providing column labels in the getColumnLables() 
@@ -30,6 +31,5 @@ import org.databene.commons.HeavyweightIterator;
  * @since 0.5.4
  * @author Volker Bergmann
  */
-public interface TableRowIterator extends Cloneable, HeavyweightIterator<Object[]> {
-	String[] getColumnLabels();
+public interface TabularIterator extends Cloneable, Tabular, HeavyweightIterator<Object[]> {
 }
