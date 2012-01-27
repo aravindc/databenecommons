@@ -52,4 +52,13 @@ public class ArrayTypeConverter<T> extends ArrayConverter<Object, T> {
         return new ArrayTypeConverter<Object>(Object.class, elementTypes).convert(args);
     }
 
+    public static <T> T[] convert(Object[] args, Class<T> componentType) {
+        return new ArrayTypeConverter<T>(componentType).convert(args);
+    }
+    
+    @Override
+    public String toString() {
+    	return getClass().getSimpleName() + "[" + getTargetType() + "]";
+    }
+    
 }
