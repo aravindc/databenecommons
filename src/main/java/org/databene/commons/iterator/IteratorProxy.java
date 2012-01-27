@@ -58,5 +58,10 @@ public class IteratorProxy<E> implements HeavyweightIterator<E> {
 		if (source instanceof Closeable)
 			((Closeable) source).close();
     }
-
+	
+	@Override
+	public String toString() {
+		return source.toString();
+	}
+	
 }

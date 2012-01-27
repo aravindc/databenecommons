@@ -31,7 +31,7 @@ import java.util.Iterator;
  */
 public abstract class IterableProxy<E> implements Iterable<E> {
 
-	Iterable<E> source;
+	protected Iterable<E> source;
 	
 	public IterableProxy(Iterable<E> source) {
 		this.source = source;
@@ -41,4 +41,9 @@ public abstract class IterableProxy<E> implements Iterable<E> {
 		return source.iterator();
 	}
 
+	@Override
+	public String toString() {
+		return source.toString();
+	}
+	
 }
