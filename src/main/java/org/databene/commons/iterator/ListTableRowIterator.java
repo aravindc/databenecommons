@@ -25,12 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@link TableRowIterator} implementation that iterated through a list of object arrays.<br/><br/>
+ * {@link TabularIterator} implementation that iterated through a list of object arrays.<br/><br/>
  * Created: 27.10.2011 08:43:17
  * @since 0.5.11
  * @author Volker Bergmann
  */
-public class ListTableRowIterator extends AbstractTableRowIterator {
+public class ListTableRowIterator extends AbstractTabularIterator {
 
 	private List<Object[]> rows;
 	private int cursor;
