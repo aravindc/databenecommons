@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -76,5 +76,13 @@ public class NameUtil {
 	public static void sort(List<? extends Named> namedObjects) {
 		Collections.sort(namedObjects, new NameComparator());
 	}
-
+	
+	public static <T extends Named> List<T> find(List<T> list, Filter<String> filter) {
+		List<T> result = new ArrayList<T>();
+		for (T object : list)
+			if (filter.accept(object.getName()))
+				result.add(object);
+		return result;
+	}
+	
 }
