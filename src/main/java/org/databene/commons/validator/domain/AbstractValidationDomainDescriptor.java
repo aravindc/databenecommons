@@ -24,9 +24,11 @@ package org.databene.commons.validator.domain;
 import org.databene.commons.ValidationDomainDescriptor;
 
 /**
- * TODO Document class.<br/><br/>
+ * Abstract implementation of the {@link ValidationDomainDescriptor}. 
+ * Whenever possible inherit from this class for implementing future-safe 
+ * {@link ValidationDomainDescriptor}s<br/><br/>
  * Created: 20.12.2011 17:25:47
- * @since TODO version
+ * @since 0.5.14
  * @author Volker Bergmann
  */
 public abstract class AbstractValidationDomainDescriptor implements ValidationDomainDescriptor {

@@ -24,9 +24,9 @@ package org.databene.commons.math;
 import org.databene.commons.comparator.LongComparator;
 
 /**
- * TODO Document class.<br/><br/>
+ * {@link Interval} implementation using {@link Long} as generic type.<br/><br/>
  * Created: 30.12.2011 22:08:21
- * @since TODO version
+ * @since 0.5.14
  * @author Volker Bergmann
  */
 public class LongInterval extends Interval<Long> {

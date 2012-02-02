@@ -24,9 +24,9 @@ package org.databene.commons.validator.domain;
 import org.databene.commons.validator.AbstractValidator;
 
 /**
- * TODO Document class.<br/><br/>
+ * Simple validator class for testing.<br/><br/>
  * Created: 20.12.2011 17:07:47
- * @since TODO version
+ * @since 0.5.14
  * @author Volker Bergmann
  */
 public class OneValidator extends AbstractValidator<Integer> {

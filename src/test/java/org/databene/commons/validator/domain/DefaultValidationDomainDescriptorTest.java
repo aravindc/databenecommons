@@ -30,9 +30,9 @@ import org.databene.commons.Validator;
 import org.junit.Test;
 
 /**
- * TODO Document class.<br/><br/>
+ * Tests the {@link DefaultValidationDomainDescriptor}.<br/><br/>
  * Created: 20.12.2011 17:07:08
- * @since TODO version
+ * @since 0.5.14
  * @author Volker Bergmann
  */
 public class DefaultValidationDomainDescriptorTest {

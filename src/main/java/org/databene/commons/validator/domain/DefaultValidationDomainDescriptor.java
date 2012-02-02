@@ -26,13 +26,14 @@ import java.util.List;
 
 import org.databene.commons.BeanUtil;
 import org.databene.commons.Filter;
+import org.databene.commons.ValidationDomainDescriptor;
 import org.databene.commons.Validator;
 import org.databene.commons.filter.FilterUtil;
 
 /**
- * TODO Document class.<br/><br/>
+ * Default implementation of the {@link ValidationDomainDescriptor} interface.<br/><br/>
  * Created: 20.12.2011 16:53:55
- * @since TODO version
+ * @since 0.5.14
  * @author Volker Bergmann
  */
 public class DefaultValidationDomainDescriptor extends AbstractValidationDomainDescriptor {

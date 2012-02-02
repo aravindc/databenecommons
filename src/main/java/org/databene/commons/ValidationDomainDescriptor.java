@@ -24,9 +24,9 @@ package org.databene.commons;
 import java.util.List;
 
 /**
- * TODO Document class.<br/><br/>
+ * Interface for validation domain descriptors.<br/><br/>
  * Created: 20.12.2011 16:50:08
- * @since TODO version
+ * @since 0.5.14
  * @author Volker Bergmann
  */
 public interface ValidationDomainDescriptor {

@@ -25,9 +25,9 @@ import org.databene.commons.Named;
 import org.databene.commons.Validator;
 
 /**
- * TODO Document class.<br/><br/>
+ * Combination of {@link Named} and {@link Validator} interfaces.<br/><br/>
  * Created: 21.12.2011 07:32:40
- * @since TODO version
+ * @since 0.5.14
  * @author Volker Bergmann
  */
 public interface NamedValidator<E> extends Validator<E>, Named {
