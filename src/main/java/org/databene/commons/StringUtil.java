@@ -108,7 +108,7 @@ public final class StringUtil {
     }
 
     /**
-     * Splits a list's String representaion into tokens.
+     * Splits a list's String representation into tokens.
      * @param text the String representation of a list.
      * @param separator the character used to separate tokens
      * @return an array of tokens.
@@ -140,6 +140,10 @@ public final class StringUtil {
         return tokens;
     }
 
+	public static String[] splitAndTrim(String list, char separator) {
+		return StringUtil.trimAll(list.toUpperCase().split(String.valueOf(separator)));
+	}
+	
     public static String normalize(String s) {
         char[] srcBuffer = new char[s.length()];
         s.getChars(0, s.length(), srcBuffer, 0);
