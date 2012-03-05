@@ -1,0 +1,6 @@
+release notes databene commons 0.5.15
+-------------------------------------
+
+Enhancements
+------------
+- IOUtil: New methods isFileUri(String uri) and stripOffProtocolFromUri(String uri)
