@@ -372,14 +372,29 @@ public final class BeanUtil {
 		return result;
 	}
 
-	public static ClassLoader createJarClassLoader(File jarFile) throws MalformedURLException {
+	public static ClassLoader createJarClassLoader(File jarFile) {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		if (jarFile != null)
-			classLoader = new URLClassLoader(new URL[] { jarFile.toURI().toURL() }, classLoader);
+		if (jarFile != null) {
+			try {
+				classLoader = new URLClassLoader(new URL[] { jarFile.toURI().toURL() }, classLoader);
+			} catch (MalformedURLException e) {
+				throw new RuntimeException("Unexpected error", e);
+			}
+		}
 		return classLoader;
 	}
 	
-	public static void runWithJarClassLoader(File jarFile, Runnable action) throws MalformedURLException {
+	public static ClassLoader createDirectoryClassLoader(File directory) {
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			classLoader = new URLClassLoader(new URL[] { directory.toURI().toURL() }, classLoader);
+		} catch (MalformedURLException e) {
+			throw new RuntimeException("Unexpected error", e);
+		}
+		return classLoader;
+	}
+	
+	public static void runWithJarClassLoader(File jarFile, Runnable action) {
 		Thread currentThread = Thread.currentThread();
 		ClassLoader contextClassLoader = currentThread.getContextClassLoader();
 		try {
