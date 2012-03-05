@@ -198,8 +198,8 @@ public final class IOUtil {
 			String content = uri.substring("string://".length());
 			return new ByteArrayInputStream(content.getBytes(SystemInfo.getCharset()));
 		}
-        if (uri.startsWith("file://"))
-            return getFileOrResourceAsStream(uri.substring("file://".length()), true);
+        if (isFileUri(uri))
+            return getFileOrResourceAsStream(stripOffProtocolFromUri(uri), true);
         else if (uri.startsWith("file:"))
             return getFileOrResourceAsStream(uri.substring("file:".length()), true);
         else if (uri.contains("://")) {
@@ -208,6 +208,20 @@ public final class IOUtil {
         	return getFileOrResourceAsStream(uri, required);
     }
 
+    public static String stripOffProtocolFromUri(String uri) {
+		int index = uri.indexOf("://");
+		if (index >= 0)
+			return uri.substring(index + 3);
+		index = uri.indexOf(":");
+		if (index >= 0)
+			return uri.substring(index + 1);
+		return uri;
+	}
+
+	public static boolean isFileUri(String uri) {
+        return (uri.startsWith("file:") || !uri.contains("://"));
+    }
+    
 	public static InputStream getInputStreamForURL(URL url) throws IOException {
 		try {
 		    URLConnection connection = getConnection(url);
