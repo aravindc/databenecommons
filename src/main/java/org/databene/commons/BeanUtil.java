@@ -1076,15 +1076,15 @@ public final class BeanUtil {
 		}
 	}
 
-	private static List<Class<?>> findClassesInDirectory(File directory, String packageName, List<Class<?>> classes) 
+	private static List<Class<?>> findClassesInDirectory(File directory, String packagePath, List<Class<?>> classes) 
 			throws ClassNotFoundException {
 		File[] files = directory.listFiles();
 		for (File file : files) {
 			String fileName = file.getName();
 			if (file.isDirectory())
-				findClassesInDirectory(file, packageName + "." + fileName, classes);
-			else if (fileName.endsWith(".class")) {
-				String className = packageName + '.' + fileName.substring(0, fileName.length() - 6);
+				findClassesInDirectory(file, packagePath + "." + fileName, classes);
+			else if (fileName.endsWith(".class") && !fileName.contains("$")) {
+				String className = packagePath + '.' + fileName.substring(0, fileName.length() - 6);
 				classes.add(BeanUtil.<Object>forName(className));
 			}
 		}
@@ -1095,8 +1095,6 @@ public final class BeanUtil {
 			throws IOException, URISyntaxException {
 		// extract jar file name
 		String fileName = path;
-//		if (fileName.startsWith("file:"))
-//			fileName = fileName.substring(5);
 		if (fileName.contains("!"))
 			fileName = fileName.substring(0, fileName.indexOf('!'));
 		// extract classes
@@ -1105,7 +1103,8 @@ public final class BeanUtil {
 		 while (entries.hasMoreElements()) {
 			 JarEntry entry = entries.nextElement();
 			 String entryName = entry.getName();
-			if (entryName.startsWith(packagePath) && entryName.endsWith(".class") && !entry.isDirectory()) {
+			if (entryName.startsWith(packagePath) && entryName.endsWith(".class") && !entry.isDirectory() 
+					&& !entry.getName().contains("$")) {
 				 String className = entryName.replace('/', '.').substring(0, entryName.length() - 6);
 				 classes.add(BeanUtil.forName(className));
 			 }
