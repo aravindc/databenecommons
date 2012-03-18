@@ -57,6 +57,7 @@ import org.databene.commons.Filter;
 import org.databene.commons.IOUtil;
 import org.databene.commons.Level;
 import org.databene.commons.StringUtil;
+import org.databene.commons.SyntaxError;
 import org.databene.commons.SystemInfo;
 import org.databene.commons.Visitor;
 import org.databene.commons.converter.NoOpConverter;
@@ -323,8 +324,16 @@ public class XMLUtil {
     	return xsdDocument.getDocumentElement().getAttribute("targetNamespace");
     }
 
-	public static boolean getBooleanAttribute(Element element, String name) {
-		return Boolean.parseBoolean(element.getAttribute(name));
+	public static Boolean getBooleanAttribute(Element element, String attributeName, boolean required) {
+		String stringValue = element.getAttribute(attributeName);
+		if (StringUtil.isEmpty(stringValue) && required)
+			throw new SyntaxError("Missing attribute '" + attributeName + "'", XMLUtil.format(element));
+		return Boolean.parseBoolean(stringValue);
+	}
+
+	public static boolean getBooleanAttributeWithDefault(Element element, String attributeName, boolean defaultValue) {
+		String stringValue = element.getAttribute(attributeName);
+		return (StringUtil.isEmpty(stringValue) ? defaultValue : Boolean.parseBoolean(stringValue));
 	}
 
 	public static double getDoubleAttribute(Element element, String name) {
