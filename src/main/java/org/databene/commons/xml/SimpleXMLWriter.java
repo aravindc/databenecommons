@@ -78,8 +78,11 @@ public class SimpleXMLWriter implements Closeable {
 		characters(text.toCharArray(), 0, text.length());
 	}
 
-	public void characters(char[] ch, int start, int length)
-			throws SAXException {
+	public void text(String text) throws SAXException {
+		handler.characters(text.toCharArray(), 0, text.length());
+	}
+
+	public void characters(char[] ch, int start, int length) throws SAXException {
 		handler.characters(ch, start, length);
 	}
 
