@@ -71,6 +71,18 @@ public class FilterUtil {
         return new SplitResult<T>(matches, mismatches);
     }
 
+    public static <T> SplitResult<T> split(List<T> list, Filter<T> filter) {
+        List<T> matches = new ArrayList<T>();
+        List<T> mismatches = new ArrayList<T>();
+        for (T item : list) {
+            if (filter.accept(item))
+                matches.add(item);
+            else
+                mismatches.add(item);
+        }
+        return new SplitResult<T>(matches, mismatches);
+    }
+
     public static <T> List<List<T>> filter(T[] items, Filter<T> ... filters) {
         List<List<T>> results = new ArrayList<List<T>>(filters.length);
         for (int i = 0; i < filters.length; i++)
