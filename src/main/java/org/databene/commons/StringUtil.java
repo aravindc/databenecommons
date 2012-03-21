@@ -250,6 +250,10 @@ public final class StringUtil {
     	return (text != null ? text : "");
     }
 
+    public static String substituteNull(String value, String substitution) {
+    	return (value != null ? value : substitution);
+    }
+
     public static String normalizeSpace(String s) {
         if (s == null || s.length() == 0)
             return s;
