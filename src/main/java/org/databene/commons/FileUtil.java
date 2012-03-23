@@ -277,6 +277,7 @@ public final class FileUtil {
 		if (file.exists())
 			return file;
 		// otherwise scan the folder for a file with the same name but different capitalization
+		file = file.getAbsoluteFile();
 		for (File sibling : file.getParentFile().listFiles())
 			if (sibling.getName().equalsIgnoreCase(file.getName()))
 				return sibling;
