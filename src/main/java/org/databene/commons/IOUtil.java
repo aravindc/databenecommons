@@ -213,7 +213,7 @@ public final class IOUtil {
 		if (index >= 0)
 			return uri.substring(index + 3);
 		index = uri.indexOf(":");
-		if (index >= 0)
+		if (index > 1 || (!SystemInfo.isWindows() && index > 0))
 			return uri.substring(index + 1);
 		return uri;
 	}
