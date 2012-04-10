@@ -37,6 +37,7 @@ import java.io.UnsupportedEncodingException;
 public class FilePrintWriter extends PrintWriter {
 
 	protected File file;
+	protected String encoding;
 	
 	public FilePrintWriter(File file) throws FileNotFoundException {
 		super(file);
@@ -46,10 +47,15 @@ public class FilePrintWriter extends PrintWriter {
 	public FilePrintWriter(File file, String encoding) throws FileNotFoundException, UnsupportedEncodingException {
 		super(file, encoding);
 		this.file = file;
+		this.encoding = encoding;
 	}
 
 	public File getFile() {
 		return file;
+	}
+	
+	public String getEncoding() {
+		return encoding;
 	}
 	
 }
