@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -525,6 +525,20 @@ public final class StringUtil {
 		for (int i = 0; i < a1.length; i++)
 			if (!equalsIgnoreCase(a1[i], a2[i]))
 				return false;
+		return true;
+	}
+
+	public static boolean equalsIgnoreCase(Set<String> set1, Set<String> set2) {
+		if (set1.size() != set2.size())
+			return false;
+		for (String s1 : set1) {
+			boolean found = false;
+			for (String s2 : set2)
+				if (equalsIgnoreCase(s1, s2))
+					found = true;
+			if (!found)
+				return false;
+		}
 		return true;
 	}
 
