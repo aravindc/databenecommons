@@ -216,4 +216,11 @@ public class TimeUtilTest {
 		assertEquals("1:02:03.009 h", TimeUtil.formatDuration(3723009, true, true));
 	}
 	
+	@Test
+	public void testParse() {
+		assertEquals(TimeUtil.date(2012, 3, 26), TimeUtil.parse("2012-04-26"));
+		assertEquals(TimeUtil.date(2012, 3, 26, 8, 30, 23, 0), TimeUtil.parse("2012-04-26 08:30:23"));
+		assertEquals(TimeUtil.time(8, 30, 23, 0), TimeUtil.parse("08:30:23"));
+		assertEquals(TimeUtil.timestamp(2012, 3, 26, 8, 30, 23, 123000000), TimeUtil.parse("2012-04-26 08:30:23.123"));
+	}
 }
