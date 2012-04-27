@@ -273,19 +273,29 @@ public final class FileUtil {
 	}
 
 	public static File getFileIgnoreCase(File file, boolean required) {
-		// if the file exists with the given capitalization use it as it is
-		if (file.exists())
-			return file;
-		// otherwise scan the folder for a file with the same name but different capitalization
-		file = file.getAbsoluteFile();
-		for (File sibling : file.getParentFile().listFiles())
-			if (sibling.getName().equalsIgnoreCase(file.getName()))
-				return sibling;
-		// if no file of equal name has been found...
-		if (required)
-			throw new ObjectNotFoundException("File not found: " + file); // ... then complain if one is required
-		else
-			return file; // otherwise use the predefined name
+		try {
+			// if the file exists with the given capitalization use it as it is
+			if (file.exists())
+				return file;
+			// otherwise scan the folder for a file with the same name but different capitalization
+			file = file.getCanonicalFile();
+			File parentFile = file.getParentFile();
+			if (parentFile == null)
+				return file;
+			File[] files = parentFile.listFiles();
+			if (files == null)
+				return file; // parent directory is empty
+			for (File sibling : files)
+				if (sibling.getName().equalsIgnoreCase(file.getName()))
+					return sibling;
+			// if no file of equal name has been found...
+			if (required)
+				throw new ObjectNotFoundException("File not found: " + file); // ... then complain if one is required
+			else
+				return file; // otherwise use the predefined name
+		} catch (IOException e) {
+			throw new RuntimeException("Error checking file " + file, e);
+		}
 	}
 	
 }
