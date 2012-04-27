@@ -1,0 +1,13 @@
+release notes databene commons 0.5.16
+-------------------------------------
+
+Enhancements
+------------
+- String2DateConverter supports datetime formats without 'T'
+- new method Date TimeUtil.parse(String dateOrTimeSpec)
+- new method StrimgUtil.equalsIgnoreCase(Set<String>, Set<String>)
+
+
+Bug Fixes
+---------
+- NullPointerException on empty directory in FileUtil.getFileIgnoreCase()
