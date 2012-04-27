@@ -46,11 +46,6 @@ public class String2DateConverter<E extends Date> extends ThreadSafeConverter<St
 	
     // TODO v0.6.0 support time zones (like 'Z', '+01:00' or '-01:30')
 
-    private static final String MILLI   = DEFAULT_DATETIME_MILLIS_PATTERN;
-    private static final String SECONDS = DEFAULT_DATETIME_SECONDS_PATTERN;
-    private static final String MINUTES = DEFAULT_DATETIME_MINUTES_PATTERN;
-    private static final String DATE    = DEFAULT_DATE_PATTERN;
-    
 	private String pattern;
 	private Locale locale;
 
@@ -83,18 +78,18 @@ public class String2DateConverter<E extends Date> extends ThreadSafeConverter<St
             return null;
         try {
             DateFormat format;
+            sourceValue = sourceValue.replace(' ', 'T');
             if (pattern != null) {
             	format = new SimpleDateFormat(pattern, locale);
-            } else if (sourceValue.indexOf('T') < 0) {
-                format = new SimpleDateFormat(DATE);
-            } else {
+            } else if (sourceValue.indexOf('T') > 0) {
                 switch (sourceValue.length()) {
-                    case 10 : format = new SimpleDateFormat(DATE); break;
-                    case 16 : format = new SimpleDateFormat(MINUTES); break;
-                    case 19 : format = new SimpleDateFormat(SECONDS); break;
-                    case 23 : format = new SimpleDateFormat(MILLI); break;
+                    case 16 : format = new SimpleDateFormat(DEFAULT_DATETIME_MINUTES_PATTERN); break;
+                    case 19 : format = new SimpleDateFormat(DEFAULT_DATETIME_SECONDS_PATTERN); break;
+                    case 23 : format = new SimpleDateFormat(DEFAULT_DATETIME_MILLIS_PATTERN); break;
                     default : throw new IllegalArgumentException("Not a supported date format: " + sourceValue);
                 }
+            } else {
+                format = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
             }
             java.util.Date simpleDate = format.parse(sourceValue);
             if (targetType == java.util.Date.class)
