@@ -34,7 +34,10 @@ import java.util.concurrent.Callable;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+import static org.databene.commons.Patterns.*;
 
 /**
  * Provides utility methods for creating and manipulating Dates and Calendars.<br/>
@@ -356,6 +359,47 @@ public final class TimeUtil {
     	else
     		return formatFixed(hours, minutes, seconds, millis, includeMillies);
     }
+    
+    public static Date parse(String dateOrTimeSpec) {
+        if (StringUtil.isEmpty(dateOrTimeSpec))
+            return null;
+        try {
+        	dateOrTimeSpec = dateOrTimeSpec.replace(' ', 'T');
+        	int sepIndex = dateOrTimeSpec.indexOf('.');
+        	Integer nanos = null;
+        	if (sepIndex >= 0) {
+        		String nanoSpec = StringUtil.padRight(dateOrTimeSpec.substring(sepIndex + 1), 9, '0');
+        		nanos = Integer.parseInt(nanoSpec);
+        		dateOrTimeSpec = dateOrTimeSpec.substring(0, sepIndex);
+        	}
+            DateFormat format;
+            if (dateOrTimeSpec.indexOf('T') > 0) {
+                switch (dateOrTimeSpec.length()) {
+                    case 16 : format = new SimpleDateFormat(DEFAULT_DATETIME_MINUTES_PATTERN); break;
+                    case 19 : format = new SimpleDateFormat(DEFAULT_DATETIME_SECONDS_PATTERN); break;
+                    case 23 : format = new SimpleDateFormat(DEFAULT_DATETIME_MILLIS_PATTERN); break;
+                    default : throw new IllegalArgumentException("Not a supported date format: " + dateOrTimeSpec);
+                }
+                Date date = format.parse(dateOrTimeSpec);
+                if (nanos == null)
+                	return date;
+                Timestamp result = new Timestamp(date.getTime());
+                result.setNanos(nanos);
+                return result;
+            } else if (dateOrTimeSpec.contains("-")) {
+                format = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
+                return format.parse(dateOrTimeSpec);
+            } else if (dateOrTimeSpec.contains(":")) {
+                format = new SimpleDateFormat(DEFAULT_TIME_PATTERN);
+                return new Time(format.parse(dateOrTimeSpec).getTime());
+            } else
+            	throw new SyntaxError("Not a supported date/time format:", dateOrTimeSpec);
+        } catch (ParseException e) {
+            throw new ConversionException(e);
+        }
+    }
+    
+    // private helpers -------------------------------------------------------------------------------------------------
 
 	private static String formatSimplified(int hours, int minutes, int seconds, int millis, boolean includeMillies) {
     	StringBuilder builder = new StringBuilder();
