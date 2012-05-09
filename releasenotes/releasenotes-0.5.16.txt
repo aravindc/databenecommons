@@ -8,6 +8,14 @@ Enhancements
 - new method StrimgUtil.equalsIgnoreCase(Set<String>, Set<String>)
 
 
+Changes
+-------
+- Using newer libraries
+  - slf4j 1.6.4
+  - log4j 1.2.16
+  - junit 4.10
+
+  
 Bug Fixes
 ---------
 - NullPointerException on empty directory in FileUtil.getFileIgnoreCase()
