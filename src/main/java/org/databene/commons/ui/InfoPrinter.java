@@ -36,9 +36,9 @@ package org.databene.commons.ui;
 
 public abstract class InfoPrinter {
 	
-	public void printLines(String... helpLines) {
-		printLines(null, helpLines);
+	public void printLines(String... lines) {
+		printLines(null, lines);
 	}
 	
-	public abstract void printLines(Object owner, String... helpLines);
+	public abstract void printLines(Object owner, String... lines);
 }
