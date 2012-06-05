@@ -39,7 +39,9 @@ public interface ProgressMonitor {
 	int getMaximum();
 	void setMaximum(int i);
 
+	int getProgress();
 	void setProgress(int i);
+
 	void setNote(String note);
 
 	void advance();
