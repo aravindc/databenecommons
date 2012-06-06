@@ -27,7 +27,7 @@ import java.io.IOException;
 import org.w3c.dom.Document;
 
 /**
- * TODO Document class.<br/><br/>
+ * XML Parser which is able to parse strings, files and content provides from URIs.<br/><br/>
  * Created: 04.06.2012 13:17:53
  * @since 0.5.16
  * @author Volker Bergmann

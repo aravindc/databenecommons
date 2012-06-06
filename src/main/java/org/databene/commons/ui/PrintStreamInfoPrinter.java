@@ -24,7 +24,7 @@ package org.databene.commons.ui;
 import java.io.PrintStream;
 
 /**
- * TODO Document class.<br/><br/>
+ * {@link InfoPrinter} implementation which writes output to a {@link PrintStream}.<br/><br/>
  * Created: 05.06.2012 10:06:42
  * @since 0.5.16
  * @author Volker Bergmann
