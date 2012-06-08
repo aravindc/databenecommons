@@ -6,6 +6,7 @@ Enhancements
 - String2DateConverter supports datetime formats without 'T'
 - new method Date TimeUtil.parse(String dateOrTimeSpec)
 - new method StrimgUtil.equalsIgnoreCase(Set<String>, Set<String>)
+- new class NameMap
 
 
 Changes
