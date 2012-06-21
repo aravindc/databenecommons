@@ -81,7 +81,7 @@ public class ObjectCounter<E> {
     }
 
     public double totalCount() {
-	    return totalCount();
+	    return totalCount;
     }
     
     public Map<E, AtomicInteger> getCounts() {
