@@ -45,6 +45,9 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 /**
  * Provides stream operations.<br/>
  * <br/>
@@ -701,6 +704,15 @@ public final class IOUtil {
 	    	IOUtil.close(in);
 	    }
     }
+	
+	public static ImageIcon readImageIcon(String resourceName) throws IOException {
+		InputStream in = getInputStreamForURI(resourceName);
+		if (in == null)
+			throw new FileNotFoundException("Resource not found: " + resourceName);
+		return new ImageIcon(ImageIO.read(in));
+	}
+
+
 
 	// helpers ---------------------------------------------------------------------------------------------------------
 
