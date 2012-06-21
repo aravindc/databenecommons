@@ -28,6 +28,7 @@ package org.databene.commons.ui;
  * @author Volker Bergmann
  */
 public interface JavaApplication {
+	String iconPath();
 	void about();
 	void exit();
 }
