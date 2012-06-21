@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -21,7 +21,11 @@
 
 package org.databene.commons.ui.osx;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Proxy;
+
+import javax.imageio.ImageIO;
 
 import org.databene.commons.BeanUtil;
 import org.databene.commons.ui.JavaApplication;
@@ -34,9 +38,11 @@ import org.databene.commons.ui.JavaApplication;
  */
 public class OSXUtil {
 
-	public static void cofigureApplication(JavaApplication application) {
+	public static void configureApplication(JavaApplication application) {
+		// Get OSX Application
     	Class<?> applicationClass = BeanUtil.forName("com.apple.eawt.Application");
     	Object osxApplication = BeanUtil.invokeStatic(applicationClass, "getApplication");
+    	// add ApplicationListener
         Class<?> applicationListenerClass = BeanUtil.forName("com.apple.eawt.ApplicationListener");
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		Object osxAdapterProxy = Proxy.newProxyInstance(
@@ -44,6 +50,16 @@ public class OSXUtil {
 				new Class[] { applicationListenerClass }, 
 				new OSXInvocationHandler(application));
 		BeanUtil.invoke(osxApplication, "addApplicationListener", new Object[] { osxAdapterProxy });
+		// 
+			String iconPath = application.iconPath();
+			if (iconPath != null) {
+				try {
+					InputStream icon = ClassLoader.getSystemResourceAsStream(iconPath);
+					BeanUtil.invoke(osxApplication, "setDockIconImage", ImageIO.read(icon));
+				} catch (IOException e) {
+					// ignore errors 
+				}
+			}
     }
 
 }
