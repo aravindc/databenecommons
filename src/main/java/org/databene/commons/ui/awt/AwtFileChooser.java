@@ -51,7 +51,7 @@ public class AwtFileChooser extends FileDialog implements FileChooser {
 	FileTypeSupport supportedTypes;
 	
 	public AwtFileChooser(String prompt, FileOperation operation, FileTypeSupport supportedTypes) {
-		super((Frame) null, prompt, (operation == FileOperation.open ? FileDialog.LOAD : FileDialog.SAVE));
+		super((Frame) null, prompt, (operation == FileOperation.OPEN ? FileDialog.LOAD : FileDialog.SAVE));
 		this.supportedTypes = supportedTypes;
 	}
 

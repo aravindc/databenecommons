@@ -72,7 +72,7 @@ public class FileField extends Box {
     }
 
     public FileField(int columns) {
-        this(columns, null, FileTypeSupport.filesOnly, FileOperation.open);
+        this(columns, null, FileTypeSupport.filesOnly, FileOperation.OPEN);
     }
 
     public FileField(int columns, File file, FileTypeSupport fileTypeSupport) {

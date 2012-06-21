@@ -58,8 +58,8 @@ public class SwingFileChooser extends JFileChooser implements FileChooser {
 	public File chooseFile(Component component) {
 		int approval;
 		switch (operation) {
-			case open: approval = showOpenDialog(component); break;
-			case save: approval = showSaveDialog(component); break;
+			case OPEN: approval = showOpenDialog(component); break;
+			case SAVE: approval = showSaveDialog(component); break;
 			default:   approval = showDialog(component, "Choose"); break;
 		}
 		return (approval == APPROVE_OPTION ? super.getSelectedFile() : null);
@@ -69,8 +69,8 @@ public class SwingFileChooser extends JFileChooser implements FileChooser {
 
 	private int dialogType(FileOperation operation) {
 		switch (operation) {
-			case open: return JFileChooser.OPEN_DIALOG;
-			case save: return JFileChooser.SAVE_DIALOG;
+			case OPEN: return JFileChooser.OPEN_DIALOG;
+			case SAVE: return JFileChooser.SAVE_DIALOG;
 			default: return JFileChooser.CUSTOM_DIALOG;
 		}
 	}
