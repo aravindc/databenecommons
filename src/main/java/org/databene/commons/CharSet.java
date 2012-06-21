@@ -38,7 +38,7 @@ import java.util.Locale;
  * Created: 18.08.2006 19:49:17
  * @author Volker Bergmann
  */
-public class CharSet {
+public class CharSet implements Named {
 	
 	private String name;
 	
@@ -96,7 +96,17 @@ public class CharSet {
         this.set = new HashSet<Character>(set);
         this.locale = LocaleUtil.getFallbackLocale();
     }
-
+    
+    
+    
+    // properties ------------------------------------------------------------------------------------------------------
+    
+	public String getName() {
+		return name;
+	}
+	
+	
+	
     // digit related interface -----------------------------------------------------------------------------------------
 
     public CharSet addDigits() {
@@ -379,6 +389,15 @@ public class CharSet {
     @Override
     public int hashCode() {
         return set.hashCode();
+    }
+    
+    @Override
+    public CharSet clone() {
+    	try {
+			return (CharSet) super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new RuntimeException("Unexpected exception", e);
+		}
     }
 
 }
