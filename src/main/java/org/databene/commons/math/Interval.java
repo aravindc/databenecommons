@@ -23,6 +23,7 @@ package org.databene.commons.math;
 
 import java.util.Comparator;
 
+import org.databene.commons.ComparableComparator;
 import org.databene.commons.NullSafeComparator;
 
 /**
@@ -52,6 +53,10 @@ public class Interval<E> {
 		this.max = max;
 		this.maxInclusive = maxInclusive;
 		this.comparator = comparator;
+	}
+	
+	public static <T extends Comparable<T>> Interval<T> createClosedInterval(T min, T max) {
+		return new Interval<T>(min, true, max, true, new ComparableComparator<T>());
 	}
 	
 	public E getMin() {
@@ -119,5 +124,5 @@ public class Interval<E> {
 		else
 			return (minInclusive ? '[' : ']') + String.valueOf(min) + ',' + String.valueOf(max) + (maxInclusive ? ']' : '[');
 	}
-	
+
 }
