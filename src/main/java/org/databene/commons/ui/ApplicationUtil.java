@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -51,7 +51,7 @@ public class ApplicationUtil {
 
 	public static void configureApplication(JavaApplication application) {
 	    if (SystemInfo.isMacOsx())
-	    	OSXUtil.cofigureApplication(application);
+	    	OSXUtil.configureApplication(application);
     }
 	
 }
