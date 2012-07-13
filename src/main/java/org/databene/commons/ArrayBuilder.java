@@ -75,7 +75,24 @@ public class ArrayBuilder<E> {
         return this;
     }
     
-    public void addAll(E[] elements) {
+	public void addAllIfNotContained(E... elements) {
+		for (E element : elements)
+			addIfNotContained(element);
+	}
+
+	public void addIfNotContained(E element) {
+		if (!contains(element))
+			add(element);
+	}
+
+    public boolean contains(E element) {
+		for (int i = 0; i < elementCount; i++)
+			if (NullSafeComparator.equals(buffer[i], element))
+				return true;
+		return false;
+	}
+
+	public void addAll(E[] elements) {
 	    for (E element : elements)
 	    	add(element);
     }
