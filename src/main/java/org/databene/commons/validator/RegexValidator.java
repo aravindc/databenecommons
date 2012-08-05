@@ -131,5 +131,10 @@ public class RegexValidator extends AbstractConstraintValidator<Pattern, String>
 	    	bits |= flagConstants.get(flag).intValue();
 	    return bits;
     }
-
+    
+    @Override
+    public String toString() {
+    	return super.toString();
+    }
+    
 }
