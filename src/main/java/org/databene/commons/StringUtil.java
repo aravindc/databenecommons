@@ -573,6 +573,7 @@ public final class StringUtil {
     }
 
 	public static String normalizeName(final String name) {
+		// TODO support names like "Karl Hein", "Hans-Georg", "O'Hara"
 		final int NONE = -1;
 		final int WS = 0;
 		final int INITIAL = 1;
