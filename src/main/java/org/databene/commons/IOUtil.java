@@ -155,7 +155,11 @@ public final class IOUtil {
     }
 
     public static String getContentOfURI(String uri) throws IOException {
-        Reader reader = getReaderForURI(uri);
+        return getContentOfURI(uri, SystemInfo.getFileEncoding());
+    }
+
+    public static String getContentOfURI(String uri, String encoding) throws IOException {
+        Reader reader = getReaderForURI(uri, encoding);
         StringWriter writer = new StringWriter();
         transfer(reader, writer);
         return writer.toString();
