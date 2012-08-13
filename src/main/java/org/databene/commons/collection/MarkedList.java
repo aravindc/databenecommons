@@ -23,6 +23,7 @@ package org.databene.commons.collection;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.databene.commons.NullSafeComparator;
@@ -54,12 +55,25 @@ public class MarkedList<E> extends ListProxy<E> {
 		return marks.set(index, true);
 	}
 
+	public boolean isMarked(int index) {
+		return marks.get(index);
+	}
+	
+	public void markAll() {
+		Collections.fill(marks, true);
+	}
+
 	public boolean unmark(int index) {
 		return marks.set(index, false);
 	}
 	
-	public boolean isMarked(int index) {
-		return marks.get(index);
+	public void unmarkAll() {
+		Collections.fill(marks, false);
+	}
+	
+	public void invertMarks() {
+		for (int i = 0; i < marks.size(); i++)
+			marks.set(i, !marks.get(i));
 	}
 	
 	public List<E> getMarkedElements() {
@@ -165,7 +179,7 @@ public class MarkedList<E> extends ListProxy<E> {
 	private static ArrayList<Boolean> createMarks(int size) {
 		ArrayList<Boolean> result = new ArrayList<Boolean>(size);
 		for (int i = 0; i < size; i++)
-			result.set(i, false);
+			result.add(false);
 		return result;
 	}
 
