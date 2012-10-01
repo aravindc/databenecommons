@@ -155,8 +155,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -249,8 +249,8 @@
 	<distributionManagement>
 		<repository>
 			<id>databene.repo</id>
-			<name>databene Internal Repository</name>
-			<url>ftp://databene.org/databene/m2</url>
+			<name>Databene Internal Repository</name>
+			<url>ftp://databene.org</url>
 		</repository>
 	</distributionManagement>
 	
@@ -259,11 +259,6 @@
 			<id>maven</id>
 			<name>Public Maven Repository</name>
 			<url>http://repo1.maven.org/maven2</url>
-		</repository>
-		<repository>
-			<id>jboss</id>
-			<name>JBoss Maven Repository</name>
-			<url>http://repository.jboss.org/maven2</url>
 		</repository>
 	</repositories>
   
