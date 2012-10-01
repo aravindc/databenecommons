@@ -27,7 +27,11 @@
 package org.databene.commons.ui.swing;
 
 import javax.swing.*;
+
+import org.databene.commons.BeanUtil;
+
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 /**
  * Provides Swing utilities.<br/>
@@ -40,7 +44,8 @@ public class SwingUtil {
 
     public static void repaintLater(final Component component) {
         SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 component.repaint();
             }
         });
@@ -52,6 +57,10 @@ public class SwingUtil {
         int y = (screenSize.height - component.getHeight()) / 2;
         component.setLocation(x, y);
     }
+    
+    public static <T extends Component> T showInModalDialog(T mainComponent, String title, Component parentComponent) {
+    	return SimpleDialog.showModalDialog(mainComponent, title, parentComponent);
+    }
 
     public static void showInFrame(Component component, String title) {
         JFrame frame = new JFrame(title);
@@ -61,7 +70,7 @@ public class SwingUtil {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
-
+    
     public static Rectangle fitRectangles(Dimension imageSize, Dimension size) {
         double aspectX = (double) size.width / imageSize.width;
         double aspectY = (double) size.height / imageSize.height;
@@ -76,4 +85,66 @@ public class SwingUtil {
     public static boolean isLookAndFeelNative() {
     	return UIManager.getSystemLookAndFeelClassName().equals(UIManager.getLookAndFeel().getClass().getName());
     }
+    
+	public static Window getWindowForComponent(Component parentComponent) {
+		if (parentComponent == null)
+			return null;
+		if (parentComponent instanceof Frame || parentComponent instanceof Dialog)
+			return (Window) parentComponent;
+		return getWindowForComponent(parentComponent.getParent());
+	}
+	
+	public static void equalizeButtonSizes(Graphics g, JButton... buttons) {
+
+		String[] labels = BeanUtil.extractProperties(buttons, "text", String.class);
+
+		// Get the largest width and height
+		Dimension maxSize = new Dimension(0, 0);
+		Rectangle2D textBounds = null;
+		JButton button0 = buttons[0];
+		FontMetrics metrics = button0.getFontMetrics(button0.getFont());
+		for (int i = 0; i < labels.length; ++i) {
+			textBounds = metrics.getStringBounds(labels[i], g);
+			maxSize.width = Math
+					.max(maxSize.width, (int) textBounds.getWidth());
+			maxSize.height = Math.max(maxSize.height,
+					(int) textBounds.getHeight());
+		}
+
+		Insets insets = button0.getBorder().getBorderInsets(button0);
+		maxSize.width += insets.left + insets.right;
+		maxSize.height += insets.top + insets.bottom;
+
+		// reset preferred and maximum size since BoxLayout takes both into account
+		for (JButton button : buttons) {
+			button.setPreferredSize((Dimension) maxSize.clone());
+			button.setMaximumSize((Dimension) maxSize.clone());
+		}
+	}
+	
+	public static JButton createTransparentButton(Action action, boolean withText) {
+		JButton button = new JButton(action);
+		if (withText) {
+			button.setVerticalTextPosition(SwingConstants.BOTTOM);
+			button.setHorizontalTextPosition(SwingConstants.CENTER);
+		} else {
+			button.setText("");
+			button.setMargin(new Insets(0, 0, 0, 0));
+		}
+		button.setOpaque(false);
+		button.setContentAreaFilled(false);
+		button.setBorderPainted(false);
+		return button;
+	}
+	
+	public static Color getUIPanelBackground() {
+		return getUIColor("Panel.background");
+	}
+
+	public static Color getUIColor(String code) {
+		Color color = UIManager.getColor(code);
+		// workaround for issue with com.apple.laf.AquaNativeResources$CColorPaintUIResource which seems to be rendered with alpha=0
+		return new Color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+	}
+
 }
