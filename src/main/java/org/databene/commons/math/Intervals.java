@@ -21,6 +21,7 @@
 
 package org.databene.commons.math;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +32,10 @@ import java.util.List;
  * @since 0.5.8
  * @author Volker Bergmann
  */
-public class Intervals<E> {
+public class Intervals<E> implements Serializable {
 
+	private static final long serialVersionUID = 8528001196553630862L;
+	
 	private List<Interval<E>> intervals;
 	
 	public Intervals() {

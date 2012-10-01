@@ -21,6 +21,7 @@
 
 package org.databene.commons.math;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import org.databene.commons.ComparableComparator;
@@ -36,8 +37,10 @@ import org.databene.commons.NullSafeComparator;
  * @since 0.5.8
  * @author Volker Bergmann
  */
-public class Interval<E> {
+public class Interval<E> implements Serializable {
 
+	private static final long serialVersionUID = -5866553873478128132L;
+	
 	public final E min;
 	public final boolean minInclusive;
 	
