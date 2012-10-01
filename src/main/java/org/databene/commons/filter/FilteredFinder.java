@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Iterates through a tree for searching items that maz´tch a filter.<br/>
+ * Iterates through a tree for searching items that mazï¿½tch a filter.<br/>
  * <br/>
  * Created: 04.02.2007 11:59:03
  * @author Volker Bergmann
@@ -58,7 +58,8 @@ public class FilteredFinder {
             this.matches = new ArrayList<E>();
         }
 
-        public void visit(E element) {
+        @Override
+		public <C extends E >void visit(C element) {
             if (filter.accept(element))
                 matches.add(element);
         }
