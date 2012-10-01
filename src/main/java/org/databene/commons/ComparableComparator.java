@@ -26,6 +26,7 @@
 
 package org.databene.commons;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
@@ -34,9 +35,13 @@ import java.util.Comparator;
  * @author Volker Bergmann
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class ComparableComparator<E extends Comparable> implements Comparator<E>{
+public class ComparableComparator<E extends Comparable> implements Comparator<E>, Serializable {
 
-    public int compare(E o1, E o2) {
+    private static final long serialVersionUID = 8000187188587657603L;
+
+	@Override
+	public int compare(E o1, E o2) {
         return o1.compareTo(o2);
     }
+	
 }
