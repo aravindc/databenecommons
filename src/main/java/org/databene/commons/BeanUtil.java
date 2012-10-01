@@ -426,19 +426,23 @@ public final class BeanUtil {
         return newInstanceFromDefaultConstructor(type);
     }
 
+    public static <T> T newInstance(Class<T> type) {
+    	return newInstance(type, true, null);
+    }
+
     /**
      * Creates an object of the specified type.
      * @param type the class to instantiate
      * @param parameters the constructor parameters
      * @return an object of the specified class
      */
-    public static <T> T newInstance(Class<T> type, Object ... parameters) {
+    public static <T> T newInstance(Class<T> type, Object[] parameters) {
     	return newInstance(type, true, parameters);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public static <T> T newInstance(Class<T> type, boolean strict, Object ... parameters) {
-        if (parameters.length == 0)
+    public static <T> T newInstance(Class<T> type, boolean strict, Object[] parameters) {
+        if (parameters == null || parameters.length == 0)
             return newInstanceFromDefaultConstructor(type);
         Constructor<T> constructorToUse = null;
         try {
@@ -657,12 +661,12 @@ public final class BeanUtil {
      * @param args
      * @return the invoked method's return value.
      */
-    public static Object invoke(Object target, Method method, Object ... args) {
+    public static Object invoke(Object target, Method method, Object[] args) {
         return invoke(target, method, true, args);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-	public static Object invoke(Object target, Method method, boolean strict, Object ... args) {
+	public static Object invoke(Object target, Method method, boolean strict, Object[] args) {
         try {
             Object[] params;
     		Class<?>[] paramTypes = method.getParameterTypes();
@@ -902,12 +906,12 @@ public final class BeanUtil {
         return getPropertyValue(bean, propertyName, true);
     }
 
-    public static Object getPropertyValue(Object bean, String propertyName, boolean strict) {
+    public static Object getPropertyValue(Object bean, String propertyName, boolean propertyRequired) {
         Method readMethod = null;
         try {
             PropertyDescriptor descriptor = getPropertyDescriptor(bean.getClass(), propertyName);
             if (descriptor == null) {
-            	if (strict)
+            	if (propertyRequired)
             		throw new ConfigurationError("Property '" + propertyName + "' not found in class " + bean.getClass());
             	else 
             		return null;

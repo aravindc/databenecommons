@@ -176,17 +176,17 @@ public class BeanUtilTest {
 
 	@Test
     public void testNewInstanceWithConstructorParams() {
-        P p = BeanUtil.newInstance(P.class);
+        P p = BeanUtil.newInstance(P.class, null);
         assertEquals(1, p.val);
-        p = BeanUtil.newInstance(P.class, 2);
+        p = BeanUtil.newInstance(P.class, new Object[] { 2 });
         assertEquals(2, p.val);
     }
 
 	@Test
     public void testNewInstanceWithParamConversion() {
-        P p = BeanUtil.newInstance(P.class, false, 2);
+        P p = BeanUtil.newInstance(P.class, false, new Object[] { 2 });
         assertEquals(2, p.val);
-        p = BeanUtil.newInstance(P.class, false, "2");
+        p = BeanUtil.newInstance(P.class, false, new Object[] { "2" });
         assertEquals(2, p.val);
     }
 
