@@ -230,6 +230,9 @@ public class StringUtilTest {
     
 	@Test
     public void testNormalizeName() {
+    	assertEquals(null, StringUtil.normalizeName(null));
+    	assertEquals("", StringUtil.normalizeName(""));
+    	assertEquals("", StringUtil.normalizeName("   \t \r \n   "));
     	assertEquals("Alice", StringUtil.normalizeName("Alice"));
     	assertEquals("Alice", StringUtil.normalizeName("ALICE"));
     	assertEquals("Alice", StringUtil.normalizeName("alice"));
@@ -239,6 +242,10 @@ public class StringUtilTest {
     	assertEquals("Alice", StringUtil.normalizeName(" \r\n\talice"));
     	assertEquals("Alice", StringUtil.normalizeName(" \r\n\taLICE"));
     	assertEquals("Alice Smith", StringUtil.normalizeName(" \r\n\taLICE \r sMITH \n\t "));
+    	assertEquals("Karl Heinz", StringUtil.normalizeName("karl    heinz"));
+    	assertEquals("Hans-Georg", StringUtil.normalizeName("hans-georg"));
+    	assertEquals("Hans - Georg", StringUtil.normalizeName("hans     -    georg"));
+    	assertEquals("O'Hara", StringUtil.normalizeName("o'hara"));
     }
     
 	@Test

@@ -573,11 +573,13 @@ public final class StringUtil {
     }
 
 	public static String normalizeName(final String name) {
-		// TODO support names like "Karl Hein", "Hans-Georg", "O'Hara"
+		if (StringUtil.isEmpty(name))
+			return name;
 		final int NONE = -1;
 		final int WS = 0;
-		final int INITIAL = 1;
-		final int SUBSEQUENT = 2;
+		final int SPECIAL = 1;
+		final int INITIAL = 2;
+		final int SUBSEQUENT = 3;
 		StringBuilder builder = new StringBuilder(name.length());
 		StringCharacterIterator iterator = new StringCharacterIterator(name);
 		iterator.skipWhitespace();
@@ -587,24 +589,22 @@ public final class StringUtil {
 			int type;
 			if (Character.isWhitespace(c))
 				type = WS;
+			else if (!Character.isLetter(c))
+				type = SPECIAL;
 			else if (prevType == INITIAL)
 				type = SUBSEQUENT;
-			else if (prevType == NONE || prevType == WS)
+			else if (prevType == NONE || prevType == WS || prevType == SPECIAL)
 				type = INITIAL;
 			else
 				type = prevType;
-			if (prevType == WS && type == INITIAL)
+			if (prevType == WS && (type == INITIAL || type == SPECIAL))
 				builder.append(' ');
 			switch (type) {
-				case INITIAL:
-					builder.append(Character.toUpperCase(c));
-					break;
-				case SUBSEQUENT: 
-					builder.append(Character.toLowerCase(c));
-					break;
-				case WS:
-					break;
-				default: throw new RuntimeException("Internal error");
+				case INITIAL:	builder.append(Character.toUpperCase(c)); break;
+				case SUBSEQUENT:builder.append(Character.toLowerCase(c)); break;
+				case SPECIAL:	builder.append(c); break;
+				case WS:		break;
+				default:		throw new RuntimeException("Internal error");
 			}
 			prevType = type;
 		}
