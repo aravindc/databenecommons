@@ -63,10 +63,10 @@ public class TreeLogger {
 	    }
     }
 
-	private void increaseIndent(boolean hasSiblings) {
+	private void increaseIndent(boolean hasSuccessors) {
 	    if (indent.length() == 0)
 	    	indent = "+-";
-	    else if (hasSiblings)
+	    else if (hasSuccessors)
 	    	indent = indent.substring(0, indent.length() - 2) + "| " + indent.substring(indent.length() - 2);
 	    else
 	    	indent = indent.substring(0, indent.length() - 2) + "  " + indent.substring(indent.length() - 2);
