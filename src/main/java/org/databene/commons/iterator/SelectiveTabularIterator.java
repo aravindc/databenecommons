@@ -55,6 +55,7 @@ public class SelectiveTabularIterator extends IteratorProxy<Object[]> implements
 		}
 	}
 
+	@Override
 	public String[] getColumnNames() {
 		return columnNames;
 	}
@@ -66,7 +67,7 @@ public class SelectiveTabularIterator extends IteratorProxy<Object[]> implements
 			return sourceArray;
 		Object[] result = new Object[sourceIndexes.length];
 		for (int i = 0; i < sourceIndexes.length; i++)
-			result[i] = sourceArray[sourceIndexes[i]];
+			result[i] = (i < sourceArray.length ? sourceArray[sourceIndexes[i]] : null);
 		return result;
 	}
 
