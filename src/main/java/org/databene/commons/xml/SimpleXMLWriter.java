@@ -167,6 +167,11 @@ public class SimpleXMLWriter implements Closeable {
 		handler.startDocument();
 	}
 
+	public void writeElement(String name, Map<String, String> attributes) throws SAXException {
+		startElement(name, attributes);
+		endElement(name);
+	}
+
 	public void startElement(String name, Map<String, String> attributes) throws SAXException {
 		AttributesImpl atts = null;
 		if (attributes != null) {
@@ -207,6 +212,7 @@ public class SimpleXMLWriter implements Closeable {
 		handler.unparsedEntityDecl(name, publicId, systemId, notationName);
 	}
 
+	@Override
 	public void close() {
 		try {
 			if (handler != null) {
