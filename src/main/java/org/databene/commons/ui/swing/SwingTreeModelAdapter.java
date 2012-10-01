@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -21,9 +21,6 @@
 
 package org.databene.commons.ui.swing;
 
-import java.util.ArrayList;
-
-import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreePath;
 
 import org.databene.commons.TreeModel;
@@ -34,23 +31,15 @@ import org.databene.commons.TreeModel;
  * @since 0.5.13
  * @author Volker Bergmann
  */
-public class SwingTreeModelAdapter<E> implements javax.swing.tree.TreeModel {
+public class SwingTreeModelAdapter<E> extends AbstractTreeModel {
 
 	org.databene.commons.TreeModel<E> delegate;
-	ArrayList<TreeModelListener> listeners = new ArrayList<TreeModelListener>();
 
 	public SwingTreeModelAdapter(org.databene.commons.TreeModel<E> delegate) {
 		this.delegate = delegate;
 	}
 
-	public void addTreeModelListener(TreeModelListener listener) {
-		listeners.add(listener);
-	}
-
-	public void removeTreeModelListener(TreeModelListener listener) {
-		listeners.remove(listener);
-	}
-
+	@Override
 	public Object getRoot() {
 		return delegate.getRoot();
 	}
@@ -59,26 +48,31 @@ public class SwingTreeModelAdapter<E> implements javax.swing.tree.TreeModel {
 		return delegate.getParent(child);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public Object getChild(Object parent, int index) {
 		return delegate.getChild((E) parent, index);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public int getChildCount(Object parent) {
 		return delegate.getChildCount((E) parent);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean isLeaf(Object node) {
 		return delegate.isLeaf((E) node);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public int getIndexOfChild(Object parent, Object child) {
 		return delegate.getIndexOfChild((E) parent, (E) child);
 	}
 
+	@Override
 	public void valueForPathChanged(TreePath path, Object newValue) {
 		// TODO implement TreeModel.valueForPathChanged
 		throw new UnsupportedOperationException("TreeModel.valueForPathChanged() is not implemented");
