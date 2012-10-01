@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,7 +50,8 @@ public class UntypedPropertyMutator extends AbstractNamedMutator {
         this.strict = strict;
     }
 
-    public void setValue(Object target, Object value) throws UpdateFailedException {
+    @Override
+	public void setValue(Object target, Object value) throws UpdateFailedException {
         setValue(target, value, this.strict);
     }
 
@@ -83,6 +84,6 @@ public class UntypedPropertyMutator extends AbstractNamedMutator {
                 throw new ConfigurationError(e);
             }
         }
-        BeanUtil.invoke(bean, writeMethod, propertyValue);
+        BeanUtil.invoke(bean, writeMethod, new Object[] { propertyValue });
     }
 }

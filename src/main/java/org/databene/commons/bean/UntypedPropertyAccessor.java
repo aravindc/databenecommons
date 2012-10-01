@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,7 +50,8 @@ class UntypedPropertyAccessor implements PropertyAccessor {
         this.strict = strict;
     }
 
-    public Object getValue(Object bean) {
+    @Override
+	public Object getValue(Object bean) {
         if (bean == null)
             if (strict)
                 throw new IllegalArgumentException("Trying to get property value '" + propertyName + "' from null");
@@ -63,14 +64,16 @@ class UntypedPropertyAccessor implements PropertyAccessor {
             else
                 return null;
         this.propertyType = descriptor.getPropertyType();
-        return BeanUtil.invoke(bean, descriptor.getReadMethod());
+        return BeanUtil.invoke(bean, descriptor.getReadMethod(), null);
     }
 
-    public Class<?> getValueType() {
+    @Override
+	public Class<?> getValueType() {
         return propertyType;
     }
 
-    public String getPropertyName() {
+    @Override
+	public String getPropertyName() {
         return propertyName;
     }
     

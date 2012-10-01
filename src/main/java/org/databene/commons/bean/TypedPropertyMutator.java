@@ -62,7 +62,8 @@ public class TypedPropertyMutator extends AbstractNamedMutator {
         }
     }
 
-    public void setValue(Object bean, Object value) throws UpdateFailedException {
+    @Override
+	public void setValue(Object bean, Object value) throws UpdateFailedException {
         if (bean == null)
             if (strict)
                 throw new IllegalArgumentException("Cannot set a property on null");
@@ -84,6 +85,6 @@ public class TypedPropertyMutator extends AbstractNamedMutator {
                 throw new ConfigurationError(e);
             }
         }
-        BeanUtil.invoke(target, writeMethod, propertyValue);
+        BeanUtil.invoke(target, writeMethod, new Object[] { propertyValue });
     }
 }
