@@ -37,7 +37,8 @@ public class SqlDate2UtilDateConverter extends ThreadSafeConverter<java.sql.Date
 		super(java.sql.Date.class, Date.class);
 	}
 
-    public Date convert(java.sql.Date target) throws ConversionException {
+    @Override
+	public Date convert(java.sql.Date target) throws ConversionException {
         return new java.util.Date(target.getTime());
     }
 
