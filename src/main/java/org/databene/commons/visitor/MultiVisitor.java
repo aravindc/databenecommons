@@ -40,7 +40,8 @@ public class MultiVisitor<E> implements Visitor<E> {
 		this.realVisitors = CollectionUtil.toList(realVisitors);
 	}
 	
-	public void visit(E element) {
+	@Override
+	public <C extends E> void visit(C element) {
 		for (Visitor<E> realVisitor : realVisitors)
 			realVisitor.visit(element);
 	}

@@ -32,5 +32,5 @@ package org.databene.commons;
  * Created: 04.02.2007 07:52:37
  */
 public interface Visitor<E> {
-    public void visit(E element);
+    public <C extends E> void visit(C element);
 }
