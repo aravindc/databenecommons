@@ -70,33 +70,41 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
         for (Entry<K, V> entry : source.entrySet())
             put(entry.getKey(), entry.getValue());
     }
+    
+    
+    
+    // Map interface implementation ------------------------------------------------------------------------------------
 
-    // Map interface ---------------------------------------------------------------------------------------------------
-
-    public int size() {
+    @Override
+	public int size() {
         return values.size();
     }
 
-    public boolean isEmpty() {
+    @Override
+	public boolean isEmpty() {
         return values.isEmpty();
     }
 
-    public boolean containsKey(Object key) {
+    @Override
+	public boolean containsKey(Object key) {
         return keyIndices.containsKey(key);
     }
 
-    public boolean containsValue(Object value) {
+    @Override
+	public boolean containsValue(Object value) {
         return values.contains(value);
     }
 
-    public V get(Object key) {
+    @Override
+	public V get(Object key) {
         Integer index = keyIndices.get(key);
         if (index == null)
             return null;
         return values.get(index);
     }
 
-    public V put(K key, V value) {
+    @Override
+	public V put(K key, V value) {
         Integer index = keyIndices.get(key);
         if (index != null)
             return values.set(index, value);
@@ -107,7 +115,8 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
         }
     }
 
-    public V remove(Object key) {
+    @Override
+	public V remove(Object key) {
         Integer index = keyIndices.remove(key);
         if (index != null) {
             V oldValue = values.get(index);
@@ -122,17 +131,20 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
             return null;
     }
 
-    public void putAll(Map<? extends K, ? extends V> t) {
+    @Override
+	public void putAll(Map<? extends K, ? extends V> t) {
         for (Map.Entry<? extends K, ? extends V> entry : t.entrySet())
             put(entry.getKey(), entry.getValue());
     }
 
-    public void clear() {
+    @Override
+	public void clear() {
         keyIndices.clear();
         values.clear();
     }
 
-    public Set<K> keySet() {
+    @Override
+	public Set<K> keySet() {
         List<K> tmp = new ArrayList<K>(values.size());
         // set the used array size by adding nulls
         for (int i = 0; i < values.size(); i++)
@@ -143,11 +155,13 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
         return new ListBasedSet<K>(tmp);
     }
 
-    public List<V> values() {
+    @Override
+	public List<V> values() {
         return new ArrayList<V>(values);
     }
 
-    @SuppressWarnings("unchecked")
+    @Override
+	@SuppressWarnings("unchecked")
     public Set<Map.Entry<K, V>> entrySet() {
     	Map.Entry<K, V>[] tmp = new Map.Entry[values.size()];
         for (Map.Entry<K, Integer> entry : keyIndices.entrySet()) {
@@ -187,6 +201,10 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
     
     // specific interface ----------------------------------------------------------------------------------------------
     
+    public List<V> internalValues() {
+        return values;
+    }
+
     public boolean equalsIgnoreOrder(Map<K, V> that) {
         if (this == that)
             return true;
@@ -214,14 +232,17 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
 			this.index = index;
 		}
 
+		@Override
 		public K getKey() {
 			return key;
 		}
 
+		@Override
 		public V getValue() {
 			return OrderedMap.this.values.get(index);
 		}
 
+		@Override
 		public V setValue(V value) {
 			return OrderedMap.this.values.set(index, value);
 		}
