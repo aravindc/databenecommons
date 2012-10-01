@@ -41,6 +41,8 @@ import org.databene.commons.comparator.IntComparator;
 
 public class StringVersionNumberComponent extends VersionNumberComponent {
 	
+	private static final long serialVersionUID = -3865105131640319765L;
+
 	static final String[] KEY_ORDER = {
 		"snapshot", 
 		"alpha",
@@ -70,6 +72,7 @@ public class StringVersionNumberComponent extends VersionNumberComponent {
 		this.key = key;
 	}
 
+	@Override
 	public int compareTo(VersionNumberComponent that) {
 		if (that == null)
 			return -1;

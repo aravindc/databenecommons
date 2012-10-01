@@ -34,6 +34,8 @@ import java.util.Date;
  */
 public class DateVersionNumberComponent extends VersionNumberComponent {
 
+	private static final long serialVersionUID = 6057638663166486859L;
+	
 	private final String dateString;
 	private final Date date;
 
@@ -42,6 +44,7 @@ public class DateVersionNumberComponent extends VersionNumberComponent {
 		this.date = new SimpleDateFormat("yyyyMMdd").parse(dateString);
 	}
 
+	@Override
 	public int compareTo(VersionNumberComponent that) {
 		if (that instanceof DateVersionNumberComponent)
 			return this.date.compareTo(((DateVersionNumberComponent) that).date);

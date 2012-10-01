@@ -26,6 +26,8 @@
 
 package org.databene.commons.version;
 
+import java.io.Serializable;
+
 /**
  * Abstract super type for all version number components, e.g. 0-9 or alpha/beta/RC.<br/>
  * <br/>
@@ -34,6 +36,8 @@ package org.databene.commons.version;
  * @author Volker Bergmann
  */
 
-public abstract class VersionNumberComponent implements Comparable<VersionNumberComponent> {
+public abstract class VersionNumberComponent implements Comparable<VersionNumberComponent>, Serializable {
+
+	private static final long serialVersionUID = -916818799515194470L;
 	
 }

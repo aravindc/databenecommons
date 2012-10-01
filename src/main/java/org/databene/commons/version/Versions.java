@@ -37,17 +37,27 @@ import org.databene.commons.math.IntervalsParser;
  */
 public class Versions extends Intervals<VersionNumber> {
 
+	private static final long serialVersionUID = 6258577730893701943L;
+	
+	private static final ComparableComparator<VersionNumber> VERSION_COMPARATOR = new ComparableComparator<VersionNumber>();
+
 	public static Versions valueOf(String spec) {
 		if (StringUtil.isEmpty(spec) || "*".equals(spec.trim()))
 			return createUnlimited();
 		IntervalsParser<VersionNumber> parser = new IntervalsParser<VersionNumber>(
-				new VersionNumberParser(), new ComparableComparator<VersionNumber>());
+				new VersionNumberParser(), VERSION_COMPARATOR);
 		return (Versions) parser.parseObject(spec, new ParsePosition(0), new Versions());
 	}
 
 	public static Versions createUnlimited() {
 		Versions result = new Versions();
 		result.add(Interval.<VersionNumber>createInfiniteInterval());
+		return result;
+	}
+
+	public static Versions createSingleVersion(VersionNumber version) {
+		Versions result = new Versions();
+		result.add(new Interval<VersionNumber>(version, true, version, true, VERSION_COMPARATOR));
 		return result;
 	}
 

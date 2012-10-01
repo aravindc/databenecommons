@@ -38,6 +38,8 @@ import org.databene.commons.comparator.IntComparator;
 
 public class NumberVersionNumberComponent extends VersionNumberComponent {
 	
+	private static final long serialVersionUID = -4669653693506092150L;
+	
 	private final String numberString;
 	private final int number;
 
@@ -51,6 +53,7 @@ public class NumberVersionNumberComponent extends VersionNumberComponent {
 		this.number = number;
 	}
 
+	@Override
 	public int compareTo(VersionNumberComponent that) {
 		if (that == null)
 			return IntComparator.compare(number, 0);

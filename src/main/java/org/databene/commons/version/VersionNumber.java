@@ -26,6 +26,7 @@
 
 package org.databene.commons.version;
 
+import java.io.Serializable;
 import java.text.ParsePosition;
 import java.util.Arrays;
 import java.util.List;
@@ -41,8 +42,10 @@ import org.databene.commons.CollectionUtil;
  * @author Volker Bergmann
  */
 
-public class VersionNumber implements Comparable<VersionNumber> {
+public class VersionNumber implements Comparable<VersionNumber>, Serializable {
 
+	private static final long serialVersionUID = 8411677292851262669L;
+	
 	private static final NumberVersionNumberComponent ZERO_COMPONENT = new NumberVersionNumberComponent("0");
 	private static final VersionNumberParser PARSER = new VersionNumberParser();
 	
@@ -95,6 +98,7 @@ public class VersionNumber implements Comparable<VersionNumber> {
 		this.delimiters = CollectionUtil.toArray(delimiters, String.class);
 	}
 
+	@Override
 	public int compareTo(VersionNumber that) {
 		int n = Math.min(this.components.length, that.components.length);
 		for (int i = 0; i < n; i++) {
