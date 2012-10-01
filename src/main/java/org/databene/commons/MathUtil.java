@@ -47,6 +47,10 @@ public class MathUtil {
         }
         return n;
     }
+    
+    public static boolean isIntegralValue(double number) {
+    	return (Math.IEEEremainder(Math.abs(number), 1) == 0);
+    }
 
     private static double fraction(double number) {
         double value = Math.IEEEremainder(Math.abs(number), 1);
