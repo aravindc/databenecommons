@@ -347,7 +347,8 @@ public final class IOUtil {
     	return getPrinterForURI(uri, encoding, false, SystemInfo.getLineSeparator(), false);
     }
 
-    public static PrintWriter getPrinterForURI(String uri, String encoding, boolean append, 
+    @SuppressWarnings("resource")
+	public static PrintWriter getPrinterForURI(String uri, String encoding, boolean append, 
     			final String lineSeparator, boolean autoCreateFolder)
 	    	throws FileNotFoundException, UnsupportedEncodingException {
     	File file = new File(uri);
@@ -709,11 +710,15 @@ public final class IOUtil {
 	    }
     }
 	
-	public static ImageIcon readImageIcon(String resourceName) throws IOException {
-		InputStream in = getInputStreamForURI(resourceName);
-		if (in == null)
-			throw new FileNotFoundException("Resource not found: " + resourceName);
-		return new ImageIcon(ImageIO.read(in));
+	public static ImageIcon readImageIcon(String resourceName) {
+		try {
+			InputStream in = getInputStreamForURI(resourceName);
+			if (in == null)
+				throw new FileNotFoundException("Resource not found: " + resourceName);
+			return new ImageIcon(ImageIO.read(in));
+		} catch (Exception e) {
+			throw new ConfigurationError(e);
+		}
 	}
 
 
