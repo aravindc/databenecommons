@@ -42,9 +42,10 @@ public class SourceClassMethodInvoker<S, T> extends ThreadSafeConverter<S, T> {
 	    this.method = method;
     }
 
+	@Override
 	@SuppressWarnings("unchecked")
     public T convert(S sourceValue) throws ConversionException {
-		return (T) BeanUtil.invoke(sourceValue, method);
+		return (T) BeanUtil.invoke(sourceValue, method, null);
 	}
 
 }
