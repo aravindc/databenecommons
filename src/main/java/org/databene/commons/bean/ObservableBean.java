@@ -27,6 +27,7 @@
 package org.databene.commons.bean;
 
 import java.beans.PropertyChangeListener;
+import java.io.Serializable;
 
 /**
  * Interface for all JavaBeans that serve as observable.<br/>
@@ -35,7 +36,7 @@ import java.beans.PropertyChangeListener;
  * @since 0.4.5
  * @author Volker Bergmann
  */
-public interface ObservableBean {
+public interface ObservableBean extends Serializable {
 	void addPropertyChangeListener(PropertyChangeListener listener);
 	void addPropertyChangeListener(String propertyName, PropertyChangeListener listener); 
 	void removePropertyChangeListener(PropertyChangeListener listener);

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -26,8 +26,13 @@
 
 package org.databene.commons.bean;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import org.databene.commons.NullSafeComparator;
 
 /**
  * Default implementation for {@link ObservableBean}.<br/>
@@ -36,24 +41,42 @@ import java.beans.PropertyChangeSupport;
  * @since 0.4.5
  * @author Volker Bergmann
  */
-public class AbstractObservableBean implements ObservableBean{
+public class AbstractObservableBean implements ObservableBean {
 
-	protected PropertyChangeSupport support = new PropertyChangeSupport(this);
+	private static final long serialVersionUID = 8228948623675990966L;
+	
+	protected transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
+	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		support.addPropertyChangeListener(listener);
+		propertyChangeSupport.addPropertyChangeListener(listener);
 	}
 
+	@Override
 	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
-		support.addPropertyChangeListener(propertyName, listener);
+		propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
 	}
 
+	@Override
 	public void removePropertyChangeListener(PropertyChangeListener listener) {
-		support.removePropertyChangeListener(listener);
+		propertyChangeSupport.removePropertyChangeListener(listener);
 	}
 
+	@Override
 	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
-		support.removePropertyChangeListener(propertyName, listener);
+		propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+	}
+	
+	protected void firePropertyChange(Object source, String propertyName, Object oldValue, Object newValue) {
+		if (!NullSafeComparator.equals(oldValue, newValue)) {
+			PropertyChangeEvent event = new PropertyChangeEvent(source, propertyName, oldValue, newValue);
+			propertyChangeSupport.firePropertyChange(event);
+		}
+	}
+
+	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+		in.defaultReadObject();
+		this.propertyChangeSupport = new PropertyChangeSupport(this);
 	}
 	
 }
