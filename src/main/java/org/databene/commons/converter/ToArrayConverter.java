@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -70,7 +70,8 @@ public class ToArrayConverter extends ThreadSafeConverter {
 
     // Converter interface implementation ------------------------------------------------------------------------------
 
-    public Object convert(Object sourceValue) {
+    @Override
+	public Object convert(Object sourceValue) {
         return convert(sourceValue, componentType, nullToEmpty);
     }
     
@@ -94,7 +95,7 @@ public class ToArrayConverter extends ThreadSafeConverter {
         } else if (componentType == byte.class) {
             Method method = BeanUtil.getMethod(sourceValue.getClass(), "getBytes");
             if (method != null)
-                return (byte[]) BeanUtil.invoke(sourceValue, method);
+                return (byte[]) BeanUtil.invoke(sourceValue, method, null);
             else
                 throw new UnsupportedOperationException("Conversion not supported: " + sourceValue.getClass() + " -> " + componentType + "[]");
         } else if (sourceValue.getClass().isArray()) {

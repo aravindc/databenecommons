@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -43,9 +43,10 @@ public class StaticTargetClassMethodInvoker<S, T> extends ThreadSafeConverter<S,
 	    this.method = method;
     }
 
+	@Override
 	@SuppressWarnings("unchecked")
     public T convert(S sourceValue) throws ConversionException {
-		return (T) BeanUtil.invoke(null, method, false, sourceValue);
+		return (T) BeanUtil.invoke(null, method, false, new Object[] { sourceValue });
 	}
 
 }
