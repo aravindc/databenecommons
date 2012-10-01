@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -31,6 +31,7 @@ import java.util.Comparator;
  */
 public class NameComparator implements Comparator<Named> {
 
+	@Override
 	public int compare(Named named1, Named named2) {
 	    return named1.getName().compareTo(named2.getName());
     }

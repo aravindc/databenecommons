@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2006-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2006-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -73,7 +73,8 @@ public class StringCharacterIterator implements CharacterIterator {
      * java.util.Iterator#hasNext()
      * @return true if there are more characters available, false, if the end was reached.
      */
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
         return index < source.length();
     }
 
@@ -81,7 +82,8 @@ public class StringCharacterIterator implements CharacterIterator {
      * @see java.util.Iterator#next()
      * @return the next character.
      */
-    public char next() {
+    @Override
+	public char next() {
         if (index >= source.length())
             throw new IllegalStateException("Reached the end of the string");
         if (source.charAt(index) == '\n') {

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -108,18 +108,22 @@ public class PropertyFileList extends FileList {
 	
 	class Listener implements PropertyChangeListener, ListDataListener {
 
+		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			refresh();
 		}
 
+		@Override
 		public void contentsChanged(ListDataEvent evt) {
 			update();
 		}
 
+		@Override
 		public void intervalAdded(ListDataEvent evt) {
 			update();
 		}
 
+		@Override
 		public void intervalRemoved(ListDataEvent evt) {
 			update();
 		}

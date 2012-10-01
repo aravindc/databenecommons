@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -39,7 +39,8 @@ import java.util.Collection;
  */
 public abstract class AbstractElement<E> implements Element<E> {
 
-    public final void accept(Visitor<E> visitor) {
+    @Override
+	public final void accept(Visitor<E> visitor) {
         acceptImpl(visitor);
         Collection<Element<E>> children = getChildren(visitor);
         if (children.size() > 0)

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -67,7 +67,8 @@ public class NullSafeComparator<E> implements Comparator<E> {
 
     // interface -------------------------------------------------------------------------------------------------------
 
-    public int compare(E o1, E o2) {
+    @Override
+	public int compare(E o1, E o2) {
         if (o1 == o2)
             return 0;
         if (o1 == null)

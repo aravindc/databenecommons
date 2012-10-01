@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -488,14 +488,17 @@ public class XMLUtil {
 			final ErrorHandler errorHandler) {
 		return new org.xml.sax.ErrorHandler() {
 
+			@Override
 			public void error(SAXParseException e) {
 				errorHandler.handleError(e.getMessage(), e);
 			}
 
+			@Override
 			public void fatalError(SAXParseException e) {
 				errorHandler.handleError(e.getMessage(), e);
 			}
 
+			@Override
 			public void warning(SAXParseException e) {
 				errorHandler.handleError(e.getMessage(), e);
 			}

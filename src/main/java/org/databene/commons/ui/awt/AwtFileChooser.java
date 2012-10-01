@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -55,6 +55,7 @@ public class AwtFileChooser extends FileDialog implements FileChooser {
 		this.supportedTypes = supportedTypes;
 	}
 
+	@Override
 	public File chooseFile(Component owner) {
 		if (supportedTypes == FileTypeSupport.directoriesOnly)
 				System.setProperty("apple.awt.fileDialogForDirectories", "true");
@@ -63,17 +64,20 @@ public class AwtFileChooser extends FileDialog implements FileChooser {
 		return getSelectedFile();
 	}
 
+	@Override
 	public void setCurrentDirectory(File currentDirectory) {
 		if (currentDirectory == null)
 			currentDirectory = new File(SystemInfo.getCurrentDir());
 		setDirectory(currentDirectory.getAbsolutePath());
 	}
 	
+	@Override
 	public void setSelectedFile(File file) {
 		setDirectory(file.getParent());
 		setFile(file.getName());
 	}
 
+	@Override
 	public File getSelectedFile() {
 		if (getFile() == null)
 			return null;

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -58,7 +58,8 @@ public class ReaderLineIterator implements HeavyweightIterator<String> {
         fetchNext();
     }
 
-    public void close() {
+    @Override
+	public void close() {
         if (reader != null) {
             IOUtil.close(reader);
             reader = null;
@@ -71,17 +72,20 @@ public class ReaderLineIterator implements HeavyweightIterator<String> {
 
     // Iterator interface ----------------------------------------------------------------------------------------------
 
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
         return reader != null && next != null;
     }
 
-    public String next() {
+    @Override
+	public String next() {
         String result = next;
         fetchNext();
         return result;
     }
 
-    public void remove() {
+    @Override
+	public void remove() {
         throw new UnsupportedOperationException("Not supported");
     }
 

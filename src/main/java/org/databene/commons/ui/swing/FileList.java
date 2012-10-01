@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -170,6 +170,7 @@ public class FileList extends JPanel {
 			this(name, null);
 		}
 		
+		@Override
 		public void valueChanged(ListSelectionEvent evt) {
 			setEnabled(list.getSelectedValues().length > 0);
 		}
@@ -183,6 +184,7 @@ public class FileList extends JPanel {
 			super("add");
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent evt) {
 			add();
 		}
@@ -196,6 +198,7 @@ public class FileList extends JPanel {
 			super("remove");
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent evt) {
 			remove();
 		}
@@ -209,6 +212,7 @@ public class FileList extends JPanel {
 			super("up");
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent evt) {
 			up();
 		}
@@ -222,6 +226,7 @@ public class FileList extends JPanel {
 			super("down");
 		}
 
+		@Override
 		public void actionPerformed(ActionEvent evt) {
 			down();
 		}

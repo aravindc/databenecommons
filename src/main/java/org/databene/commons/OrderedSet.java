@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -64,52 +64,62 @@ public class OrderedSet<E> implements Set<E> {
     
     // Set interface implementation ------------------------------------------------------------------------------------
 
-    public boolean add(E item) {
+    @Override
+	public boolean add(E item) {
 	    return (map.put(item, item) == null);
     }
 
-    public boolean addAll(Collection<? extends E> source) {
+    @Override
+	public boolean addAll(Collection<? extends E> source) {
     	boolean changed = false;
     	for (E item : source)
         	changed |= add(item);
     	return changed; 
     }
 
-    public void clear() {
+    @Override
+	public void clear() {
 	    map.clear();
     }
 
-    public boolean contains(Object item) {
+    @Override
+	public boolean contains(Object item) {
 	    return map.containsKey(item);
     }
 
-    public boolean containsAll(Collection<?> items) {
+    @Override
+	public boolean containsAll(Collection<?> items) {
 	    for (Object o : items)
 	    	if (!map.containsKey(o))
 	    		return false;
 	    return true;
     }
 
-    public boolean isEmpty() {
+    @Override
+	public boolean isEmpty() {
 	    return map.isEmpty();
     }
 
-    public Iterator<E> iterator() {
+    @Override
+	public Iterator<E> iterator() {
 	    return map.keySet().iterator();
     }
 
-    public boolean remove(Object item) {
+    @Override
+	public boolean remove(Object item) {
 	    return (map.remove(item) != null);
     }
 
-    public boolean removeAll(Collection<?> items) {
+    @Override
+	public boolean removeAll(Collection<?> items) {
     	boolean changed = false;
 	    for (Object item : items)
 	    	changed |= remove(item);
 	    return changed;
     }
 
-    public boolean retainAll(Collection<?> items) {
+    @Override
+	public boolean retainAll(Collection<?> items) {
     	boolean changed = false;
 	    for (E item : map.keySet())
 	    	if (!items.contains(item)) {
@@ -119,15 +129,18 @@ public class OrderedSet<E> implements Set<E> {
 	    return changed;
     }
 
-    public int size() {
+    @Override
+	public int size() {
 	    return map.size();
     }
 
-    public Object[] toArray() {
+    @Override
+	public Object[] toArray() {
 	    return map.keySet().toArray();
     }
 
-    public <T> T[] toArray(T[] array) {
+    @Override
+	public <T> T[] toArray(T[] array) {
 	    return map.keySet().toArray(array);
     }
     

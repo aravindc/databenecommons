@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -53,6 +53,7 @@ public class CharacterRangeValidator implements Validator<Character> {
 
 	// Validator interface ---------------------------------------------------------------------------------------------
 
+	@Override
 	public boolean valid(Character c) {
 		return (min <= c && c <= max);
 	}

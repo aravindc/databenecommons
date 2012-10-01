@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -41,7 +41,8 @@ public class AndValidator<E> extends CompositeValidator<E> {
         super(subValidators);
     }
 
-    public boolean valid(E object) {
+    @Override
+	public boolean valid(E object) {
         for (Validator<E> validator : subValidators)
             if (!validator.valid(object))
                 return false;

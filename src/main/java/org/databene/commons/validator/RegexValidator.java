@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -99,6 +99,7 @@ public class RegexValidator extends AbstractConstraintValidator<Pattern, String>
 	    setFlags(params.flags());
     }
 
+	@Override
 	public boolean isValid(String string, ConstraintValidatorContext context) {
 		if (string == null)
 			return nullValid;

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,7 +42,8 @@ import org.databene.commons.Validator;
  */
 public abstract class AbstractConstraintValidator<A extends Annotation, T> implements Validator<T>, ConstraintValidator<A, T> {
 
-    public void initialize(A params) {
+    @Override
+	public void initialize(A params) {
     }
 
     @Override
@@ -50,7 +51,8 @@ public abstract class AbstractConstraintValidator<A extends Annotation, T> imple
         return BeanUtil.toString(this);
     }
     
-    public boolean valid(T candidate) {
+    @Override
+	public boolean valid(T candidate) {
     	return isValid(candidate, null);
     }
     

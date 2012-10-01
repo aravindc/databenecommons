@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -45,10 +45,12 @@ public class ArrayListModel extends AbstractListModel {
 	private static final long serialVersionUID = 3499248476952363886L;
 	private ArrayList<File> elements = new ArrayList<File>();
 
+	@Override
 	public Object getElementAt(int index) {
 		return elements.get(index);
 	}
 
+	@Override
 	public int getSize() {
 		return elements.size();
 	}

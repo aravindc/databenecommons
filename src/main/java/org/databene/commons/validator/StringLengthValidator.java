@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -122,7 +122,8 @@ public class StringLengthValidator implements Validator<String> {
      * @param text the string to validate
      * @return true if the length restrictions match, otherwise false.
      */
-    public boolean valid(String text) {
+    @Override
+	public boolean valid(String text) {
         if (text == null)
             return nullAllowed;
         return (text.length() >= minLength && (maxLength == null || text.length() <= maxLength));

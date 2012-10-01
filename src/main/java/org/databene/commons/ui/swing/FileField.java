@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -145,7 +145,8 @@ public class FileField extends Box {
     }
 
     class ButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
+        @Override
+		public void actionPerformed(ActionEvent e) {
             File file = null;
             String path = filenameField.getText();
             if (path.length() > 0) {
@@ -167,14 +168,17 @@ public class FileField extends Box {
 
 	public class TextFieldListener implements DocumentListener {
 
+		@Override
 		public void changedUpdate(DocumentEvent e) {
 			update(e);
 		}
 
+		@Override
 		public void insertUpdate(DocumentEvent e) {
 			update(e);
 		}
 
+		@Override
 		public void removeUpdate(DocumentEvent e) {
 			update(e);
 		}

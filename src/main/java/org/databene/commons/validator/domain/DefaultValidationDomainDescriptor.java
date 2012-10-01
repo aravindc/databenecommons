@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -57,12 +57,14 @@ public class DefaultValidationDomainDescriptor extends AbstractValidationDomainD
 	}
 
 	public class ValidatorClassFilter implements Filter<Class<?>> {
+		@Override
 		public boolean accept(Class<?> candidate) {
 			return Validator.class.isAssignableFrom(candidate) 
 				&& !Modifier.isAbstract(candidate.getModifiers());
 		}
 	}
 
+	@Override
 	public List<Class<? extends Validator<?>>> getValidatorClasses() {
 		return validatorClasses;
 	}

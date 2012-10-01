@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -43,13 +43,15 @@ public class UniqueValidator<E> implements Validator<E>, Resettable {
 
     private Set<E> instances = new HashSet<E>();
 
-    public boolean valid(E object) {
+    @Override
+	public boolean valid(E object) {
         if (instances.contains(object))
             return false;
         instances.add(object);
         return true;
     }
     
+	@Override
 	public void reset() {
 	    instances.clear();
     }

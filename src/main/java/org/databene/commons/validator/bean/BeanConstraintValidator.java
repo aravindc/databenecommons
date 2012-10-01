@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -52,7 +52,8 @@ public class BeanConstraintValidator<E> implements Validator<E> {
     	constraintValidator.initialize(annotation);
     }
 
-    public boolean valid(E object) {
+    @Override
+	public boolean valid(E object) {
 	    return constraintValidator.isValid(object, null);
     }
 	

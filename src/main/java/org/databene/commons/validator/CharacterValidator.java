@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,6 +42,7 @@ public class CharacterValidator implements Validator<Character> {
     	return charSet;
     }
 
+	@Override
 	public boolean valid(Character c) {
 	    return charSet.contains(c);
     }
