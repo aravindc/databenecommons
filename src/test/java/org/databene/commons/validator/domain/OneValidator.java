@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -31,6 +31,7 @@ import org.databene.commons.validator.AbstractValidator;
  */
 public class OneValidator extends AbstractValidator<Integer> {
 
+	@Override
 	public boolean valid(Integer candidate) {
 		return (1 == candidate);
 	}

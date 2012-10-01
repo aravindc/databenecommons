@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -58,7 +58,8 @@ public class ComparatorFactoryTest {
     
     public static final class MyComparator implements Comparator<Person> {
 
-        public int compare(Person p1, Person p2) {
+        @Override
+		public int compare(Person p1, Person p2) {
             return IntComparator.compare(p1.getAge(), p2.getAge());
         }
     }

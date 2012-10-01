@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -64,7 +64,8 @@ public class FileElementTest {
             this.filesFound = new boolean[expectedFiles.length];
         }
 
-        public void visit(File file) {
+        @Override
+		public void visit(File file) {
             int index = Arrays.binarySearch(expectedFiles, file);
             if (index >= 0)
                 filesFound[index] = true;

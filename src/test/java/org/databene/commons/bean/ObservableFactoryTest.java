@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -82,6 +82,7 @@ public class ObservableFactoryTest {
 			return name;
 		}
 
+		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			 name = (String) evt.getNewValue();
 		}

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -33,7 +33,9 @@ package org.databene.commons.bean;
  */
 public class CBean extends AbstractObservableBean {
 	
-    public String name;
+    private static final long serialVersionUID = 4800190274353650504L;
+    
+	public String name;
     public int n;
 
     public String getName() {

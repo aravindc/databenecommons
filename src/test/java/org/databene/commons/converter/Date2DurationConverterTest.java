@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -74,6 +74,7 @@ public class Date2DurationConverterTest extends AbstractConverterTest {
 	
 	private void check(TimeZone timeZone) throws Exception {
 		TimeUtil.callInTimeZone(timeZone, new Callable<Object>() {
+			@Override
 			public Object call() throws Exception {
 				assertEquals(1L, convert("1970-01-01T00:00:00.001").longValue());
 				assertEquals(0L, convert("0000-00-00T00:00:00.000").longValue());

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -47,7 +47,8 @@ public class String2TimeConverterTest extends AbstractConverterTest {
 	@Test
     public void testMillis() {
     	checkTimeZones(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 check("00:00:00.000", 0);
                 check("00:00:00.001", 1);
                 check("00:00:00.123", 123);
@@ -61,7 +62,8 @@ public class String2TimeConverterTest extends AbstractConverterTest {
 	@Test
     public void testSeconds() {
     	checkTimeZones(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
 		        check("00:00:00", 0);
 		        check("00:00:01", 1000);
 		        check("00:01:00", 60000);
@@ -73,7 +75,8 @@ public class String2TimeConverterTest extends AbstractConverterTest {
 	@Test
     public void testMinutes() {
     	checkTimeZones(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
 		        check("00:00", 0);
 		        check("00:01", 60000);
 		        check("01:00", 3600000);

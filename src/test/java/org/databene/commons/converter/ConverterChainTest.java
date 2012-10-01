@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -47,6 +47,7 @@ public class ConverterChainTest {
 			super(Object.class, Object.class);
 		}
 
+		@Override
 		public Object convert(Object sourceValue) throws ConversionException {
 			return sourceValue;
 		}

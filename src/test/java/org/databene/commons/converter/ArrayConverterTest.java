@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -71,6 +71,7 @@ public class ArrayConverterTest {
 			super(String.class, Integer.class);
 		}
 
+		@Override
 		public Integer convert(String sourceValue) throws ConversionException {
 			return Integer.parseInt(sourceValue) + 1;
 		}

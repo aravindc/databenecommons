@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -57,6 +57,7 @@ public class NumberParserTest extends AbstractConverterTest {
 	@Test
 	public void testConvert_US() {
 		LocaleUtil.runInLocale(Locale.US, new Runnable() {
+			@Override
 			public void run() {
 				checkConversion();
 			}
@@ -66,6 +67,7 @@ public class NumberParserTest extends AbstractConverterTest {
 	@Test
 	public void testConvert_DE() {
 		LocaleUtil.runInLocale(Locale.GERMANY, new Runnable() {
+			@Override
 			public void run() {
 				checkConversion();
 			}
