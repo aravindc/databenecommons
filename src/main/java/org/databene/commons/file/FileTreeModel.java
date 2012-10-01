@@ -57,30 +57,36 @@ public class FileTreeModel implements TreeModel<File>, Element<File> {
         this.fileComparator = fileComparator;
     }
 
-    public File getRoot() {
+    @Override
+	public File getRoot() {
         return root;
     }
 
-    public File getParent(File child) {
+    @Override
+	public File getParent(File child) {
         return child.getParentFile();
     }
 
-    public File getChild(File parent, int index) {
+    @Override
+	public File getChild(File parent, int index) {
         return listFiles(parent)[index];
     }
 
-    public int getChildCount(File parent) {
+    @Override
+	public int getChildCount(File parent) {
         if (parent.isFile())
             return 0;
         else
             return listFiles(parent).length;
     }
 
-    public boolean isLeaf(File node) {
+    @Override
+	public boolean isLeaf(File node) {
         return (node).isFile();
     }
 
-    public int getIndexOfChild(File parent, File child) {
+    @Override
+	public int getIndexOfChild(File parent, File child) {
         File[] files = listFiles(parent);
         return ArrayUtil.indexOf(child, files);
     }
@@ -94,6 +100,7 @@ public class FileTreeModel implements TreeModel<File>, Element<File> {
         return files;
     }
 
+	@Override
 	public void accept(Visitor<File> visitor) {
 		accept(visitor, root);
 	}

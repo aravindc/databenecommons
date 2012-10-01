@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -46,7 +46,8 @@ public class SubArrayExtractor extends ThreadSafeConverter<Object[], Object[]> {
         this.indexes = indexes;
     }
 
-    public Object[] convert(Object[] sourceValue) throws ConversionException {
+    @Override
+	public Object[] convert(Object[] sourceValue) throws ConversionException {
         Class<Object> componentType = ArrayUtil.componentType(sourceValue);
         Object[] array = (Object[]) Array.newInstance(componentType, indexes.length);
         for (int i = 0; i < indexes.length; i++)

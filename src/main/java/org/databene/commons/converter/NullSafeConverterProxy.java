@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,6 +50,7 @@ public class NullSafeConverterProxy<S, T> extends ConverterProxy<S, T> {
         return realConverter.getTargetType();
     }
 
+	@Override
 	public T convert(S sourceValue) throws ConversionException {
         return (sourceValue != null ? realConverter.convert(sourceValue) : nullResult);
     }

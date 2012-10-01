@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -43,14 +43,17 @@ public class ConditionalConverter extends ConverterWrapper implements Converter 
 		this.condition = condition;
 	}
 
+	@Override
 	public Class<?> getSourceType() {
 		return Object.class;
 	}
 
+	@Override
 	public Class<?> getTargetType() {
 		return Object.class;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public Object convert(Object sourceValue) throws ConversionException {
 		return (condition.evaluate(sourceValue) ? realConverter.convert(sourceValue) : sourceValue);

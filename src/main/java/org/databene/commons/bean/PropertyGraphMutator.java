@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -87,11 +87,13 @@ class PropertyGraphMutator implements NamedMutator {
 
     // PropertyMutator interface ---------------------------------------------------------------------------------------
 
-    public String getName() {
+    @Override
+	public String getName() {
         return propertyName;
     }
 
-    public void setValue(Object bean, Object propertyValue) throws UpdateFailedException {
+    @Override
+	public void setValue(Object bean, Object propertyValue) throws UpdateFailedException {
         if (bean == null)
             if (strict)
                 throw new IllegalArgumentException("Cannot set a property on null");

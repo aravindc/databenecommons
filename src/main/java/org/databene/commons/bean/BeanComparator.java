@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -73,7 +73,8 @@ public class BeanComparator implements Comparator<Object> {
 
     // interface -------------------------------------------------------------------------------------------------------
 
-    public int compare(Object o1, Object o2) {
+    @Override
+	public int compare(Object o1, Object o2) {
         try {
         	Object v1 = propertyAccessor.getValue(o1);
         	Object v2 = propertyAccessor.getValue(o2);

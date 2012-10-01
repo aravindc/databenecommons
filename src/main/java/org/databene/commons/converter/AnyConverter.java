@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -53,22 +53,27 @@ public class AnyConverter<E> extends FormatHolder implements Converter<Object, E
         this.datePattern = datePattern;
     }
 
-    public Class<Object> getSourceType() {
+    @Override
+	public Class<Object> getSourceType() {
         return Object.class;
     }
     
-    public Class<E> getTargetType() {
+    @Override
+	public Class<E> getTargetType() {
 	    return targetType;
     }
 
+	@Override
 	public E convert(Object sourceValue) throws ConversionException {
         return convert(sourceValue, targetType, datePattern, timePattern, timestampPattern);
     }
 
+	@Override
 	public boolean isParallelizable() {
 	    return true;
     }
 
+	@Override
 	public boolean isThreadSafe() {
 	    return true;
     }

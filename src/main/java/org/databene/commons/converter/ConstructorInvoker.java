@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -43,6 +43,7 @@ public class ConstructorInvoker<S, T> extends ThreadSafeConverter<S, T> {
 	    this.constructor = constructor;
     }
 
+	@Override
 	public T convert(S sourceValue) throws ConversionException {
 		return BeanUtil.newInstance(constructor, sourceValue);
 	}

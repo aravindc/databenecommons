@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -49,15 +49,18 @@ public class MapEntry<K, V> implements Map.Entry<K, V> {
     
     // interface -------------------------------------------------------------------------------------------------------
 
-    public K getKey() {
+    @Override
+	public K getKey() {
         return key;
     }
 
-    public V getValue() {
+    @Override
+	public V getValue() {
         return value;
     }
 
-    public V setValue(V value) {
+    @Override
+	public V setValue(V value) {
         V old = this.value;
         this.value = value;
         return old;

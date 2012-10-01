@@ -84,41 +84,50 @@ public class MarkedMap<K, V> implements Map<K, V> {
 	
 	// Map interface implementation ------------------------------------------------------------------------------------
 	
+	@Override
 	public void clear() {
 		realMap.clear();
 		marks.clear();
 	}
 
+	@Override
 	public boolean containsKey(Object key) {
 		return realMap.containsKey(key);
 	}
 
+	@Override
 	public boolean containsValue(Object value) {
 		return realMap.containsValue(value);
 	}
 
+	@Override
 	public Set<Entry<K, V>> entrySet() {
 		return realMap.entrySet();
 	}
 
+	@Override
 	public V get(Object value) {
 		return realMap.get(value);
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return realMap.isEmpty();
 	}
 
+	@Override
 	public Set<K> keySet() {
 		return realMap.keySet();
 	}
 
+	@Override
 	public V put(K key, V value) {
 		V result = realMap.put(key, value);
 		marks.put(key, false);
 		return result;
 	}
 
+	@Override
 	public void putAll(Map<? extends K, ? extends V> otherMap) {
 		realMap.putAll(otherMap);
 		this.marks = new HashMap<K, Boolean>(realMap.size());
@@ -126,16 +135,19 @@ public class MarkedMap<K, V> implements Map<K, V> {
 			marks.put(key, false);
 	}
 
+	@Override
 	public V remove(Object value) {
 		V result = realMap.remove(value);
 		marks.remove(value);
 		return result;
 	}
 
+	@Override
 	public int size() {
 		return realMap.size();
 	}
 
+	@Override
 	public Collection<V> values() {
 		return realMap.values();
 	}

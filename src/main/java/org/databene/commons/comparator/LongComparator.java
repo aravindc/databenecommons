@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -36,7 +36,8 @@ import java.util.Comparator;
  */
 public class LongComparator implements Comparator<Long> {
 
-    public int compare(Long l1, Long l2) {
+    @Override
+	public int compare(Long l1, Long l2) {
         return l1.compareTo(l2);
     }
 

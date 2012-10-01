@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -51,6 +51,7 @@ public class FormatFormatConverter<S> extends FormatBasedConverter<S, String> {
      * Converts an object to a String by using the format's format() method.
      * @see org.databene.commons.Converter
      */
+	@Override
 	public synchronized String convert(S source) {
         if (source == null)
             return null;

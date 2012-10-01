@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -65,7 +65,8 @@ public class MessageConverter extends ThreadSafeConverter<Object, String> {
         this.locale = locale;
     }
 
-    public String convert(Object sourceValue) throws ConversionException {
+    @Override
+	public String convert(Object sourceValue) throws ConversionException {
         Object tmp = sourceValue;
         if (tmp != null && !tmp.getClass().isArray())
             tmp = new Object[] { tmp };

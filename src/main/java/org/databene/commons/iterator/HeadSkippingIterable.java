@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -38,10 +38,12 @@ public class HeadSkippingIterable<T> implements HeavyweightTypedIterable<T> {
 		this.source = source;
 	}
 
+	@Override
 	public Class<T> getType() {
 		return source.getType();
 	}
 
+	@Override
 	public HeavyweightIterator<T> iterator() {
 		HeavyweightIterator<T> result = source.iterator();
 		if (result.hasNext())

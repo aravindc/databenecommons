@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,18 +42,22 @@ public class IteratorProxy<E> implements HeavyweightIterator<E> {
 	    this.source = source;
     }
 
+	@Override
 	public boolean hasNext() {
 	    return source.hasNext();
     }
 
+	@Override
 	public E next() {
 	    return source.next();
     }
 
+	@Override
 	public void remove() {
 	    source.remove();
     }
 
+	@Override
 	public void close() throws IOException {
 		if (source instanceof Closeable)
 			((Closeable) source).close();

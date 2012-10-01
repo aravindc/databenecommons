@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -56,7 +56,8 @@ public class ContextStack implements Context {
             this.contexts.push(c);
     }
 
-    public synchronized Object get(String key) {
+    @Override
+	public synchronized Object get(String key) {
     	try {
     		lock.readLock().lock();
 	        for (int i = contexts.size() - 1; i >= 0; i--) {
@@ -70,6 +71,7 @@ public class ContextStack implements Context {
     	}
     }
 
+	@Override
 	public boolean contains(String key) {
     	try {
     		lock.readLock().lock();
@@ -84,7 +86,8 @@ public class ContextStack implements Context {
     	}
     }
 
-    public synchronized Set<String> keySet() {
+    @Override
+	public synchronized Set<String> keySet() {
     	try {
     		lock.readLock().lock();
 	        Set<String> keySet = new HashSet<String>();
@@ -98,6 +101,7 @@ public class ContextStack implements Context {
     	}
     }
 
+	@Override
 	public Set<Entry<String, Object>> entrySet() {
     	try {
     		lock.readLock().lock();
@@ -112,6 +116,7 @@ public class ContextStack implements Context {
     	}
     }
 
+	@Override
 	public synchronized void remove(String key) {
     	try {
     		lock.writeLock().lock();
@@ -122,7 +127,8 @@ public class ContextStack implements Context {
     	}
     }
 
-    public synchronized void set(String key, Object value) {
+    @Override
+	public synchronized void set(String key, Object value) {
     	try {
     		lock.writeLock().lock();
 	    	Assert.notNull(key, "key");

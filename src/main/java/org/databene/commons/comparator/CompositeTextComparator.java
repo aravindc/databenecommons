@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -51,7 +51,8 @@ public class CompositeTextComparator implements Comparator<String> {
         ));
     }
 
-    public int compare(String s1, String s2) {
+    @Override
+	public int compare(String s1, String s2) {
         Object[] s1Parts = ParseUtil.splitNumbers(s1);
         Object[] s2Parts = ParseUtil.splitNumbers(s2);
         return arrayComparator.compare(s1Parts, s2Parts);

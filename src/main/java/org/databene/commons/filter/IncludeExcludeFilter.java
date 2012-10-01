@@ -51,6 +51,7 @@ public class IncludeExcludeFilter<E> implements Filter<E> {
 		return this;
 	}
 	
+	@Override
 	public boolean accept(E candidate) {
 		for (int i = 0; i < steps.size(); i++) {
 			FilterStep<E> step = steps.get(i);

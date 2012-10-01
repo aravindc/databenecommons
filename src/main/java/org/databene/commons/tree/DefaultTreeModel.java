@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,27 +42,34 @@ public class DefaultTreeModel<E> implements TreeModel<DefaultTreeNode<E>> {
         this.root = root;
     }
 
-    public DefaultTreeNode<E> getRoot() {
+    @Override
+	public DefaultTreeNode<E> getRoot() {
         return root;
     }
 
-    public DefaultTreeNode<E> getParent(DefaultTreeNode<E> child) {
+    @Override
+	public DefaultTreeNode<E> getParent(DefaultTreeNode<E> child) {
         return child.getParent();
     }
 
-    public DefaultTreeNode<E> getChild(DefaultTreeNode<E> parent, int index) {
+    @Override
+	public DefaultTreeNode<E> getChild(DefaultTreeNode<E> parent, int index) {
         return parent.getChild(index);
     }
 
-    public int getChildCount(DefaultTreeNode<E> parent) {
+    @Override
+	public int getChildCount(DefaultTreeNode<E> parent) {
         return parent.getChildCount();
     }
 
-    public boolean isLeaf(DefaultTreeNode<E> node) {
+    @Override
+	public boolean isLeaf(DefaultTreeNode<E> node) {
         return node.isLeaf();
     }
 
-    public int getIndexOfChild(DefaultTreeNode<E> parent, DefaultTreeNode<E> child) {
+    @Override
+	public int getIndexOfChild(DefaultTreeNode<E> parent, DefaultTreeNode<E> child) {
         return parent.getIndexOfChild(child);
     }
+    
 }

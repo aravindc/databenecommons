@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -52,7 +52,8 @@ public class ArrayTypeConverter<T> extends ArrayConverter<Object, T> {
         return new ArrayTypeConverter<Object>(Object.class, elementTypes).convert(args);
     }
 
-    public static <T> T[] convert(Object[] args, Class<T> componentType) {
+    @SuppressWarnings("unchecked")
+	public static <T> T[] convert(Object[] args, Class<T> componentType) {
         return new ArrayTypeConverter<T>(componentType).convert(args);
     }
     

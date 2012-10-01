@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -49,15 +49,18 @@ public class ArrayIterator<E> implements Iterator<E> {
 	    this.cursor = 0;
     }
 
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
 	    return (cursor < array.length);
     }
 
-    public E next() {
+    @Override
+	public E next() {
 	    return array[cursor++];
     }
 
-    public void remove() {
+    @Override
+	public void remove() {
 	    throw new UnsupportedOperationException("remove() is not supported by " + getClass());
     }
 

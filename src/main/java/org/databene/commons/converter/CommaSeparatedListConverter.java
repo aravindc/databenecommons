@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -44,14 +44,17 @@ public class CommaSeparatedListConverter<T> extends ConverterWrapper<String, T> 
 	    this.targetType = ArrayUtil.arrayType(targetComponentType);
     }
 
+	@Override
 	public Object convert(String sourceValue) throws ConversionException {
 		return ConverterManager.convertAll(ArrayFormat.parse(sourceValue, ",", String.class), realConverter, targetComponentType);
     }
 
+	@Override
 	public Class<String> getSourceType() {
 	    return String.class;
     }
 
+	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
     public Class<Object> getTargetType() {
 	    return (Class) targetType;

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -67,7 +67,8 @@ public class AccessorCache<C, V> implements DependentAccessor<C, V> {
 
     // DependentAccessor interface -------------------------------------------------------------------------------------
 
-    public V getValue(C item) {
+    @Override
+	public V getValue(C item) {
         if (!valid) {
             cachedValue = realAccessor.getValue(item);
             valid = true;
@@ -75,7 +76,8 @@ public class AccessorCache<C, V> implements DependentAccessor<C, V> {
         return cachedValue;
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
     public List<? extends Accessor<?,?>> getDependencies() {
         if (realAccessor instanceof DependentAccessor)
             return ((DependentAccessor) realAccessor).getDependencies();

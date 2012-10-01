@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -43,7 +43,8 @@ public class NumberToNumberConverter<S extends Number, T extends Number> extends
         super(sourceType, targetType);
     }
 
-    public T convert(S sourceValue) throws ConversionException {
+    @Override
+	public T convert(S sourceValue) throws ConversionException {
         return convert(sourceValue, targetType); // TODO v0.5.x improve performance
     }
 

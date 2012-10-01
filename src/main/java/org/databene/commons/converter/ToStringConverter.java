@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -72,14 +72,17 @@ public class ToStringConverter extends FormatHolder implements Converter<Object,
 	    return true;
     }
 
-    public Class<Object> getSourceType() {
+    @Override
+	public Class<Object> getSourceType() {
         return Object.class;
     }
     
-    public Class<String> getTargetType() {
+    @Override
+	public Class<String> getTargetType() {
 	    return String.class;
     }
 
+	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
     public String convert(Object source) throws ConversionException {
         if (source == null)
@@ -148,10 +151,12 @@ public class ToStringConverter extends FormatHolder implements Converter<Object,
 		}
 	}
 
+	@Override
 	public boolean isThreadSafe() {
 	    return true;
     }
 	
+	@Override
 	public boolean isParallelizable() {
 	    return true;
     }

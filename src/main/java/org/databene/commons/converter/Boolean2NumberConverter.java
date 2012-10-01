@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -38,14 +38,17 @@ public class Boolean2NumberConverter<T extends Number> extends ConverterWrapper<
 	    super(new NumberToNumberConverter<Integer, T>(Integer.class, targetType));
     }
 
+	@Override
 	public T convert(Boolean sourceValue) throws ConversionException {
 	    return realConverter.convert(sourceValue ? 1 : 0);
     }
 
+	@Override
 	public Class<Boolean> getSourceType() {
 	    return Boolean.class;
     }
 
+	@Override
 	public Class<T> getTargetType() {
 	    return realConverter.getTargetType();
     }

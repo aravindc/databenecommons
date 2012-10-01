@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -38,7 +38,8 @@ public class Calendar2DateConverter extends ThreadSafeConverter<Calendar, Date> 
         super(Calendar.class, Date.class);
     }
 
-    public Date convert(Calendar target) throws ConversionException {
+    @Override
+	public Date convert(Calendar target) throws ConversionException {
         return target.getTime();
     }
 

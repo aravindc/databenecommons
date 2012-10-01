@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -46,7 +46,8 @@ public class ComparatorChain<E> implements Comparator<E> {
         this.comparators = comparators;
     }
 
-    public int compare(E e1, E e2) {
+    @Override
+	public int compare(E e1, E e2) {
         for (Comparator<E> comparator : comparators) {
             int diff = comparator.compare(e1, e2);
             if (diff != 0)

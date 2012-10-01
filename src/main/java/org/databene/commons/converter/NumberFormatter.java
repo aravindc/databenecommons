@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -45,6 +45,7 @@ public class NumberFormatter extends NumberFormatBasedConverter<Number, String> 
 	
 	// Converter interface implementation ------------------------------------------------------------------------------
 
+	@Override
 	public String convert(Number value) throws ConversionException {
 		return format(value);
 	}

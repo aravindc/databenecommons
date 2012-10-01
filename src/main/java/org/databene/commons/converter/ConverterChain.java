@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -46,14 +46,17 @@ public class ConverterChain<S, T> extends MultiConverterWrapper implements Conve
 	
 	// Converter interface implementation ------------------------------------------------------------------------------
 
+	@Override
 	public Class<S> getSourceType() {
 		return (components.length > 0 ? components[0].getSourceType() : Object.class);
 	}
 
+	@Override
 	public Class<T> getTargetType() {
         return (components.length > 0 ? components[components.length - 1].getTargetType() : Object.class);
     }
 
+	@Override
 	public T convert(Object source) throws ConversionException {
         Object tmp = source;
         for (Converter converter : components) {

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -43,7 +43,8 @@ public class ArrayIntersectionOperation<E> implements Operation<E[], E[]>{
         this.componentType = componentType;
     }
 
-    public E[] perform(E[]... sources) {
+    @Override
+	public E[] perform(E[]... sources) {
         return ArrayUtil.commonElements(componentType, sources);
     }
     

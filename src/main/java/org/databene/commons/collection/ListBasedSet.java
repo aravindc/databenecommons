@@ -56,58 +56,71 @@ public class ListBasedSet<E> implements Set<E> {
         	this.list.add(element);
     }
 
-    public int size() {
+    @Override
+	public int size() {
         return list.size();
     }
 
-    public boolean isEmpty() {
+    @Override
+	public boolean isEmpty() {
         return (size() == 0);
     }
 
-    public boolean contains(Object o) {
+    @Override
+	public boolean contains(Object o) {
         return list.contains(o);
     }
 
-    public Iterator<E> iterator() {
+    @Override
+	public Iterator<E> iterator() {
         return list.iterator();
     }
 
-    public Object[] toArray() {
+    @Override
+	public Object[] toArray() {
         return list.toArray();
     }
 
-    public <T>T[] toArray(T[] a) {
+    @Override
+	public <T>T[] toArray(T[] a) {
         return list.toArray(a);
     }
 
-    public boolean add(E o) {
+    @Override
+	public boolean add(E o) {
         if (list.contains(o))
             return true;
         else
             return list.add(o);
     }
 
-    public boolean remove(Object o) {
+    @Override
+	public boolean remove(Object o) {
         return list.remove(o);
     }
 
-    public boolean containsAll(Collection<?> c) {
+    @Override
+	public boolean containsAll(Collection<?> c) {
         return list.containsAll(c);
     }
 
-    public boolean addAll(Collection<? extends E> c) {
+    @Override
+	public boolean addAll(Collection<? extends E> c) {
         return list.addAll(c);
     }
 
-    public boolean retainAll(Collection<?> c) {
+    @Override
+	public boolean retainAll(Collection<?> c) {
         return list.retainAll(c);
     }
 
-    public boolean removeAll(Collection<?> c) {
+    @Override
+	public boolean removeAll(Collection<?> c) {
         return list.removeAll(c);
     }
 
-    public void clear() {
+    @Override
+	public void clear() {
         list.clear();
     }
 

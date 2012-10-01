@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -36,7 +36,8 @@ import org.databene.commons.Operation;
  */
 public class FirstNonNullSelector<E> implements Operation<E, E> {
 
-    public E perform(E ... args) {
+    @Override
+	public E perform(E ... args) {
         if (args.length == 0)
             return null;
         for (E arg : args)

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,7 +50,8 @@ public class Number2StringConverter extends ThreadSafeConverter<Number, String> 
         this.groupingUsed = groupingUsed;
     }
 
-    public String convert(Number sourceValue) throws ConversionException {
+    @Override
+	public String convert(Number sourceValue) throws ConversionException {
         return convert(sourceValue, minimumFractionDigits, maximumFractionDigits, groupingUsed);
     }
 

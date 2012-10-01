@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -57,14 +57,16 @@ public class AccessorMapAccessor implements DependentAccessor {
         return key;
     }
 
-    public Object getValue(Object target) {
+    @Override
+	public Object getValue(Object target) {
         Accessor accessor = getAccessor();
         if (accessor == null)
             throw new IllegalStateException("Key not found: " + key);
         return accessor.getValue(target);
     }
 
-    public List<Accessor<?, ?>> getDependencies() {
+    @Override
+	public List<Accessor<?, ?>> getDependencies() {
         Accessor<?, ?> accessor = getAccessor();
         if (accessor instanceof DependentAccessor)
             return ((DependentAccessor) accessor).getDependencies();

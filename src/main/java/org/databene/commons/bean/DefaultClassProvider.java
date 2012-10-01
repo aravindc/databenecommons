@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -44,6 +44,7 @@ public class DefaultClassProvider implements ClassProvider {
 	    return instance;
     }
 
+	@Override
 	public Class<?> forName(String className) {
 		return BeanUtil.forName(className);
 	}

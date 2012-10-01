@@ -47,109 +47,132 @@ public class SortedList<E> implements List<E> {
 		sorted = false;
 	}
 
+	@Override
 	public boolean add(E e) {
 		sorted = false;
 		return baseList.add(e);
 	}
 
+	@Override
 	public void add(int index, E element) {
 		sorted = false;
 		baseList.add(index, element);
 	}
 
+	@Override
 	public boolean addAll(Collection<? extends E> c) {
 		sorted = false;
 		return baseList.addAll(c);
 	}
 
+	@Override
 	public boolean addAll(int index, Collection<? extends E> c) {
 		sorted = false;
 		return baseList.addAll(index, c);
 	}
 
+	@Override
 	public void clear() {
 		sorted = true;
 		baseList.clear();
 	}
 
+	@Override
 	public boolean contains(Object o) {
 		return baseList.contains(o);
 	}
 
+	@Override
 	public boolean containsAll(Collection<?> c) {
 		return baseList.containsAll(c);
 	}
 	
+	@Override
 	public E get(int index) {
 		validate();
 		return baseList.get(index);
 	}
 
+	@Override
 	public int indexOf(Object o) {
 		validate();
 		return baseList.indexOf(o);
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return baseList.isEmpty();
 	}
 
+	@Override
 	public Iterator<E> iterator() {
 		validate();
 		return baseList.iterator();
 	}
 
+	@Override
 	public int lastIndexOf(Object o) {
 		validate();
 		return baseList.lastIndexOf(o);
 	}
 
+	@Override
 	public ListIterator<E> listIterator() {
 		validate();
 		return baseList.listIterator();
 	}
 
+	@Override
 	public ListIterator<E> listIterator(int index) {
 		validate();
 		return baseList.listIterator(index);
 	}
 
+	@Override
 	public E remove(int index) {
 		validate();
 		return baseList.remove(index);
 	}
 
+	@Override
 	public boolean remove(Object o) {
 		return baseList.remove(o);
 	}
 
+	@Override
 	public boolean removeAll(Collection<?> c) {
 		return baseList.removeAll(c);
 	}
 
+	@Override
 	public boolean retainAll(Collection<?> c) {
 		return baseList.retainAll(c);
 	}
 
+	@Override
 	public E set(int index, E element) {
 		validate();
 		return baseList.set(index, element);
 	}
 
+	@Override
 	public int size() {
 		return baseList.size();
 	}
 
+	@Override
 	public List<E> subList(int fromIndex, int toIndex) {
 		validate();
 		return baseList.subList(fromIndex, toIndex);
 	}
 
+	@Override
 	public Object[] toArray() {
 		validate();
 		return baseList.toArray();
 	}
 
+	@Override
 	public <T> T[] toArray(T[] a) {
 		validate();
 		return baseList.toArray(a);

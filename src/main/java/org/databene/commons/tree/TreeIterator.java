@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -59,7 +59,8 @@ public class TreeIterator<E> implements BidirectionalIterator<E> {
     
     // BidirectionalIterator interface implementation ------------------------------------------------------------------
 
-    public E first() {
+    @Override
+	public E first() {
         this.cursor = treeModel.getRoot();
         this.hasNext = null;
         this.next = null;
@@ -68,7 +69,8 @@ public class TreeIterator<E> implements BidirectionalIterator<E> {
         return this.cursor;
     }
 
-    public boolean hasPrevious() {
+    @Override
+	public boolean hasPrevious() {
         if (hasPrevious == null) {
             previous = nodeBefore(cursor, treeModel);
             hasPrevious = (previous != null);
@@ -76,7 +78,8 @@ public class TreeIterator<E> implements BidirectionalIterator<E> {
         return hasPrevious;
     }
 
-    public E previous() {
+    @Override
+	public E previous() {
         if (!hasPrevious())
             throw new IllegalStateException("No object available for previous()");
         hasNext = true;
@@ -87,7 +90,8 @@ public class TreeIterator<E> implements BidirectionalIterator<E> {
         return cursor;
     }
 
-    public E last() {
+    @Override
+	public E last() {
         hasNext = false;
         next = null;
         hasPrevious = null;
@@ -105,7 +109,8 @@ public class TreeIterator<E> implements BidirectionalIterator<E> {
         return cursor;
     }
 
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
         if (hasNext == null) {
             next = nodeAfter(cursor, treeModel);
             hasNext = (next != null);
@@ -113,7 +118,8 @@ public class TreeIterator<E> implements BidirectionalIterator<E> {
         return hasNext;
     }
 
-    public E next() {
+    @Override
+	public E next() {
         if (!hasNext())
             throw new IllegalStateException("No object available for next()");
         hasPrevious = true;
@@ -124,7 +130,8 @@ public class TreeIterator<E> implements BidirectionalIterator<E> {
         return cursor;
     }
 
-    public void remove() {
+    @Override
+	public void remove() {
         throw new UnsupportedOperationException("remove() is not supported on " + getClass());
     }
     

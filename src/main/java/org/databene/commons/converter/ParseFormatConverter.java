@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -45,7 +45,8 @@ public class ParseFormatConverter<T> extends FormatBasedConverter<String, T> {
     }
 
     /** Converts an object to a String by using the format's format() method. */
-    @SuppressWarnings("unchecked")
+    @Override
+	@SuppressWarnings("unchecked")
 	public T convert(String source) throws ConversionException {
         if (source == null)
             return null;

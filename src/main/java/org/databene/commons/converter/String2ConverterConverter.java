@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -49,6 +49,7 @@ public class String2ConverterConverter extends ThreadSafeConverter<String, Conve
         super(String.class, Converter.class);
     }
 
+	@Override
 	public Converter convert(String sourceValue) throws ConversionException {
         if (StringUtil.isEmpty(sourceValue))
             return null;

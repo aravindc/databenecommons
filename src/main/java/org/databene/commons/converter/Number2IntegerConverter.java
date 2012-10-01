@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -41,6 +41,7 @@ public class Number2IntegerConverter extends ThreadSafeConverter<Number, Integer
 		super(Number.class, Integer.class);
 	}
 
+	@Override
 	public Integer convert(Number sourceValue) throws ConversionException {
 		return (sourceValue != null ? sourceValue.intValue() : null); 
 	}

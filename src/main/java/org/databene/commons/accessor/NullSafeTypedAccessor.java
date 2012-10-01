@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -38,7 +38,8 @@ public class NullSafeTypedAccessor<C, V> extends NullSafeAccessor<C, V> implemen
         super(realAccessor, nullValue);
     }
 
-    public Class<? extends V> getValueType() {
+    @Override
+	public Class<? extends V> getValueType() {
         return ((TypedAccessor<C, V>) realAccessor).getValueType();
     }
 

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -41,7 +41,8 @@ public class AndCondition<E> extends CompositeCondition<E> {
         super(components);
     }
 
-    public boolean evaluate(E argument) {
+    @Override
+	public boolean evaluate(E argument) {
         for (Condition<E> condition : components)
             if (!condition.evaluate(argument))
                 return false;

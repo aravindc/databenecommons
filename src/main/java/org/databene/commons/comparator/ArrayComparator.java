@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,7 +50,8 @@ public class ArrayComparator<E> implements Comparator<E[]> {
         this.elementComparator = elementComparator;
     }
 
-    public int compare(E[] array1, E[] array2) {
+    @Override
+	public int compare(E[] array1, E[] array2) {
     	if (array1 == null)
     		return (array2 == null ? 0 : -1);
     	if (array2 == null)

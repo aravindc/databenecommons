@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -171,7 +171,8 @@ public class CompressedLongSet {
     		lastLong = null;
     	}
 
-	    public boolean hasNext() {
+	    @Override
+		public boolean hasNext() {
 	    	if (currentLongRange == null) {
 	    		if (longRangeIterator != null && longRangeIterator.hasNext()) {
 	    			currentLongRange = longRangeIterator.next();
@@ -185,7 +186,8 @@ public class CompressedLongSet {
 	    	return (lastLong == null || lastLong < currentLongRange.max);
 	    }
 
-	    public Long next() {
+	    @Override
+		public Long next() {
 	    	if (longRangeIterator != null && currentLongRange == null) {
 	    		if (longRangeIterator.hasNext()) {
 	    			currentLongRange = longRangeIterator.next();
@@ -202,7 +204,8 @@ public class CompressedLongSet {
 	    	return lastLong;
 	    }
 
-	    public void remove() {
+	    @Override
+		public void remove() {
 	    	CompressedLongSet.this.remove(lastLong);
 	    }
 

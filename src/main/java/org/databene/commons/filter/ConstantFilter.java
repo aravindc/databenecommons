@@ -37,6 +37,7 @@ public class ConstantFilter<E> implements Filter<E> {
 		this.accept = accept;
 	}
 
+	@Override
 	public boolean accept(E candidate) {
 		return accept;
 	}

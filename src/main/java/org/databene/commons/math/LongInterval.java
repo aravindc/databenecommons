@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -30,6 +30,8 @@ import org.databene.commons.comparator.LongComparator;
  * @author Volker Bergmann
  */
 public class LongInterval extends Interval<Long> {
+
+	private static final long serialVersionUID = -7172324515734804326L;
 
 	public LongInterval(long min, long max) {
 		this(min, true, max, true);

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -49,7 +49,8 @@ public class ConstantAccessor<V> implements Accessor<Object, V> {
         this.value = value;
     }
 
-    public V getValue(Object item) {
+    @Override
+	public V getValue(Object item) {
         return this.value;
     }
 

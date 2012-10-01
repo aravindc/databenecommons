@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -46,14 +46,17 @@ public class TypedAccessorChain implements TypedAccessor {
         return subAccessors;
     }
 
-    public Class<?> getValueType() {
+    @Override
+	public Class<?> getValueType() {
         return subAccessors[subAccessors.length - 1].getValueType();
     }
 
-    public Object getValue(Object target) {
+    @Override
+	public Object getValue(Object target) {
         Object result = target;
         for (TypedAccessor accessor : subAccessors)
             result = accessor.getValue(result);
         return result;
     }
+    
 }

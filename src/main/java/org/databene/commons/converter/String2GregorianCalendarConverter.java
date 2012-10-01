@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -48,15 +48,18 @@ public class String2GregorianCalendarConverter extends ConverterWrapper<String, 
 	    super(new String2DateConverter<Date>());
     }
 
-    public GregorianCalendar convert(String sourceValue) throws ConversionException {
+    @Override
+	public GregorianCalendar convert(String sourceValue) throws ConversionException {
 	    Date date = realConverter.convert(sourceValue);
 		return TimeUtil.gregorianCalendar(date);
     }
 
+	@Override
 	public Class<String> getSourceType() {
 	    return String.class;
     }
 
+	@Override
 	public Class<GregorianCalendar> getTargetType() {
 	    return GregorianCalendar.class;
     }

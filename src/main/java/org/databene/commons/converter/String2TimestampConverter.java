@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -48,15 +48,18 @@ public class String2TimestampConverter extends ConverterWrapper<String, Date>
         super(new String2DateConverter<Date>());
     }
 
+	@Override
 	public Class<String> getSourceType() {
 	    return String.class;
     }
 
+	@Override
 	public Class<Timestamp> getTargetType() {
 	    return Timestamp.class;
     }
 
-    public Timestamp convert(String sourceValue) throws ConversionException {
+    @Override
+	public Timestamp convert(String sourceValue) throws ConversionException {
         if (StringUtil.isEmpty(sourceValue))
             return null;
         

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,7 +42,8 @@ public class FallbackAccessor<C, V> implements Accessor<C, V> {
         this.realAccessors = realAccessors;
     }
 
-    public V getValue(C target) {
+    @Override
+	public V getValue(C target) {
         for (Accessor<C, V> realAccessor : realAccessors) {
             V value = realAccessor.getValue(target);
             if (value != null)

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -46,7 +46,8 @@ public class AccessingComparator<C, V> implements Comparator<C> {
         this.comparator = comparator;
     }
 
-    public int compare(C o1, C o2) {
+    @Override
+	public int compare(C o1, C o2) {
         return comparator.compare(accessor.getValue(o1), accessor.getValue(o2));
     }
 }

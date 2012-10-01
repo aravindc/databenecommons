@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,7 +42,8 @@ public class UtilDate2SqlDateConverter extends ThreadSafeConverter<Date, java.sq
 		super(Date.class, java.sql.Date.class);
 	}
 
-    public java.sql.Date convert(Date sourceValue) throws ConversionException {
+    @Override
+	public java.sql.Date convert(Date sourceValue) throws ConversionException {
         return new java.sql.Date(sourceValue.getTime());
     }
 

@@ -30,5 +30,6 @@ import org.databene.commons.HeavyweightIterable;
  * @author Volker Bergmann
  */
 public interface TabularIterable extends HeavyweightIterable<Object[]> {
+	@Override
 	TabularIterator iterator();
 }

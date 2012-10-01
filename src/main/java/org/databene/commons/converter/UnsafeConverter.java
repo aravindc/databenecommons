@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -35,10 +35,12 @@ public abstract class UnsafeConverter<S, T> extends AbstractConverter<S, T> {
 	    super(sourceType, targetType);
     }
 
+	@Override
 	public boolean isParallelizable() {
 	    return false;
     }
 
+	@Override
 	public boolean isThreadSafe() {
 	    return false;
     }

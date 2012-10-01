@@ -54,26 +54,32 @@ public class CaseInsensitiveContext implements Context {
 	
 	// Context interface implementation --------------------------------------------------------------------------------
 
+	@Override
 	public synchronized void set(String key, Object value) {
 		map.put(transformKey(key), value);
 	}
 	
-    public synchronized Object get(String key) {
+    @Override
+	public synchronized Object get(String key) {
         return CollectionUtil.getCaseInsensitive(transformKey(key), map);
     }
 
-    public boolean contains(String key) {
+    @Override
+	public boolean contains(String key) {
         return CollectionUtil.containsCaseInsensitive(transformKey(key), map);
     }
 
+	@Override
 	public Set<String> keySet() {
 		return map.keySet();
 	}
 
+	@Override
 	public Set<Entry<String, Object>> entrySet() {
 		return map.entrySet();
 	}
 
+	@Override
 	public void remove(String key) {
 		map.remove(transformKey(key));
 	}

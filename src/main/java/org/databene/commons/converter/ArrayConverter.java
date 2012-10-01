@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -55,10 +55,12 @@ public class ArrayConverter<S, T> extends MultiConverterWrapper<S, T> implements
         this.targetType = ArrayUtil.arrayType(targetComponentType);
     }
 
+	@Override
 	public Class<S[]> getSourceType() {
 	    return sourceType;
     }
 
+	@Override
 	public Class<T[]> getTargetType() {
 	    return targetType;
     }
@@ -69,7 +71,8 @@ public class ArrayConverter<S, T> extends MultiConverterWrapper<S, T> implements
 	 * if there are several converters, the number of converters and array elements are 
 	 * assumed to be equal and each element is converted with the converter of the same index.
 	 */
-    public T[] convert(S[] sourceValues) throws ConversionException {
+    @Override
+	public T[] convert(S[] sourceValues) throws ConversionException {
         if (sourceValues == null)
             return null;
         if (components.length == 0)

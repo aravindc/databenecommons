@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -35,7 +35,8 @@ public class Enum2StringConverter<E extends Enum<E>> extends ThreadSafeConverter
         super(enumClass, String.class);
     }
 
-    public String convert(E target) throws ConversionException {
+    @Override
+	public String convert(E target) throws ConversionException {
         return convertToString(target);
     }
 

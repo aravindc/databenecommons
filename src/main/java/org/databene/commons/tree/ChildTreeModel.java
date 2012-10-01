@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -75,27 +75,34 @@ public class ChildTreeModel<I, V> implements TreeModel<V> {
         elements.put(id, elementNode);
     }
 
-    public V getRoot() {
+    @Override
+	public V getRoot() {
         return root.getObject();
     }
 
-    public V getParent(V child) {
+    @Override
+	public V getParent(V child) {
         return elements.get(childModel.getParentId(child)).getObject();
     }
 
-    public V getChild(V parent, int index) {
+    @Override
+	public V getChild(V parent, int index) {
         return elements.get(childModel.getId(parent)).getChild(index).getObject();
     }
 
-    public int getChildCount(V parent) {
+    @Override
+	public int getChildCount(V parent) {
         return elements.get(childModel.getId(parent)).getChildCount();
     }
 
-    public boolean isLeaf(V node) {
+    @Override
+	public boolean isLeaf(V node) {
         return elements.get(childModel.getId(node)).isLeaf();
     }
 
-    public int getIndexOfChild(V parent, V child) {
+    @Override
+	public int getIndexOfChild(V parent, V child) {
         return elements.get(childModel.getId(parent)).getIndexOfChild(new DefaultTreeNode<V>(child));
     }
+    
 }

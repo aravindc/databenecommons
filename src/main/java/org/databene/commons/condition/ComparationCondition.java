@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -81,7 +81,8 @@ public class ComparationCondition<E> implements Condition<E[]> {
         this.comparator = comparator;
     }
 
-    public boolean evaluate(E[] arguments) {
+    @Override
+	public boolean evaluate(E[] arguments) {
         if (arguments.length != 2)
             throw new IllegalArgumentException("Comparation only supported for two arguments, found: "
                     + arguments.length);

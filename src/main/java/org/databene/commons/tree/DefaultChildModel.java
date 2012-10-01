@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -35,11 +35,13 @@ package org.databene.commons.tree;
  */
 public class DefaultChildModel<I, V extends Child<I>> implements ChildModel<I, V> {
 
-    public I getId(V element) {
+    @Override
+	public I getId(V element) {
         return (element != null ? element.getId() : null);
     }
 
-    public I getParentId(V child) {
+    @Override
+	public I getParentId(V child) {
         return child.getParentId();
     }
 }

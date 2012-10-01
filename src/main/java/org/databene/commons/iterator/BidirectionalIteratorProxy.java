@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -40,31 +40,39 @@ public abstract class BidirectionalIteratorProxy<E> implements BidirectionalIter
         this.realIterator = realIterator;
     }
 
-    public E first() {
+    @Override
+	public E first() {
         return realIterator.first();
     }
 
-    public boolean hasPrevious() {
+    @Override
+	public boolean hasPrevious() {
         return realIterator.hasPrevious();
     }
 
-    public E previous() {
+    @Override
+	public E previous() {
         return realIterator.previous();
     }
 
-    public E last() {
+    @Override
+	public E last() {
         return realIterator.last();
     }
 
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
         return realIterator.hasNext();
     }
 
-    public E next() {
+    @Override
+	public E next() {
         return realIterator.next();
     }
 
-    public void remove() {
+    @Override
+	public void remove() {
         realIterator.remove();
     }
+    
 }

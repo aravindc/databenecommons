@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,7 +50,8 @@ public class FilenameComparator implements Comparator<File> {
         this.nameComparator = nameComparator;
     }
 
-    public int compare(File o1, File o2) {
+    @Override
+	public int compare(File o1, File o2) {
         return nameComparator.compare(o1.getName(), o2.getName());
     }
 }

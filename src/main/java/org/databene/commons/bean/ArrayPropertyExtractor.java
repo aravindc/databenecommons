@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,7 +50,8 @@ public class ArrayPropertyExtractor<E> extends ThreadSafeConverter<Object[], E[]
         this.propertyType = propertyType;
     }
 
-    public E[] convert(Object[] sourceValue) throws ConversionException {
+    @Override
+	public E[] convert(Object[] sourceValue) throws ConversionException {
         return convert(sourceValue, propertyName, propertyType);
     }
 

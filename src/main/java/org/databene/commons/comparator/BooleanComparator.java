@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -36,7 +36,8 @@ import java.util.Comparator;
  */
 public class BooleanComparator implements Comparator<Boolean> {
 
-    public int compare(Boolean o1, Boolean o2) {
+    @Override
+	public int compare(Boolean o1, Boolean o2) {
         return compare(o1.booleanValue(), o2.booleanValue());
     }
 

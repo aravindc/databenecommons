@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -39,7 +39,8 @@ import java.math.BigDecimal;
  */
 public class NumberComparator<E extends Number> implements Comparator<E> {
 
-    public int compare(E n1, E n2) {
+    @Override
+	public int compare(E n1, E n2) {
         return compareNumbers(n1, n2);
     }
 

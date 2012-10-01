@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -43,10 +43,12 @@ public abstract class AbstractConverter<S, T> implements Converter<S, T> {
 	    this.targetType = targetType;
     }
 
+	@Override
 	public Class<T> getTargetType() {
 		return targetType;
 	}
 
+	@Override
 	public Class<S> getSourceType() {
 		return sourceType;
 	}

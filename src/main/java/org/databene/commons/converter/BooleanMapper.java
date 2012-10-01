@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -56,7 +56,8 @@ public class BooleanMapper<T> extends ThreadSafeConverter<Boolean, T> {
 	    this.nullValue = nullValue;
     }
 
-    public T convert(Boolean sourceValue) throws ConversionException {
+    @Override
+	public T convert(Boolean sourceValue) throws ConversionException {
 	    return (sourceValue != null ? (sourceValue ? trueValue : falseValue) : nullValue);
     }
 

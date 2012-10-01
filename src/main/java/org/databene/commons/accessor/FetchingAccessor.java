@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -45,7 +45,8 @@ public class FetchingAccessor implements Accessor {
         this.accessor = accessor;
     }
 
-    public Object getValue(Object o) {
+    @Override
+	public Object getValue(Object o) {
         return accessor.getValue(provider.getValue(o));
     }
 
@@ -53,4 +54,5 @@ public class FetchingAccessor implements Accessor {
     public String toString() {
         return getClass().getSimpleName() + "[accessor=" + accessor + ", provider=" + provider + "]";
     }
+    
 }

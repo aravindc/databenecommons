@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -82,7 +82,8 @@ public class PrintfConverter extends ThreadSafeConverter<Object, String> {
 
 	// converter interface ---------------------------------------------------------------------------------------------
 
-    public String convert(Object sourceValue) throws ConversionException {
+    @Override
+	public String convert(Object sourceValue) throws ConversionException {
 	    if (sourceValue == null)
 	    	return null;
 	    Formatter formatter = new Formatter(locale);

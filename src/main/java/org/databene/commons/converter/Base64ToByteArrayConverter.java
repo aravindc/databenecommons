@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -36,7 +36,8 @@ public class Base64ToByteArrayConverter extends ThreadSafeConverter<String, byte
         super(String.class, byte[].class);
     }
 
-    public byte[] convert(String target) throws ConversionException {
+    @Override
+	public byte[] convert(String target) throws ConversionException {
         return Base64Codec.decode(target);
     }
 

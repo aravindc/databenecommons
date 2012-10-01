@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -46,7 +46,8 @@ public class ByteArray2StringConverter extends ThreadSafeConverter<byte[], Strin
         this.encoding = encoding;
     }
 
-    public String convert(byte[] target) throws ConversionException {
+    @Override
+	public String convert(byte[] target) throws ConversionException {
         try {
             return new String(target, encoding);
         } catch (UnsupportedEncodingException e) {

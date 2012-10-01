@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -52,11 +52,13 @@ public class ConvertingIterable<S, T> implements HeavyweightTypedIterable<T> {
     
     // interface -------------------------------------------------------------------------------------------------------
 
-    public Class<T> getType() {
+    @Override
+	public Class<T> getType() {
         return converter.getTargetType();
     }
 
-    public HeavyweightIterator<T> iterator() {
+    @Override
+	public HeavyweightIterator<T> iterator() {
         return new ConvertingIterator<S, T>(this.iterable.iterator(), converter);
     }
     

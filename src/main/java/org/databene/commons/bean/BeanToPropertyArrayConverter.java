@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -51,7 +51,8 @@ public class BeanToPropertyArrayConverter<E> extends ThreadSafeConverter<E, Obje
             this.accessors[i] = PropertyAccessorFactory.getAccessor(beanClass, propertyNames[i]);
     }
 
-    public Object[] convert(E bean) throws ConversionException {
+    @Override
+	public Object[] convert(E bean) throws ConversionException {
         Object[] propertyValues = new Object[accessors.length];
         for (int i = 0; i < accessors.length; i++)
             propertyValues[i] = accessors[i].getValue(bean);

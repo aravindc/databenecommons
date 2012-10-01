@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -37,7 +37,8 @@ public class Locale2StringConverter extends ThreadSafeConverter<Locale, String> 
         super(Locale.class, String.class);
     }
 
-    public String convert(Locale target) throws ConversionException {
+    @Override
+	public String convert(Locale target) throws ConversionException {
         return target.toString();
     }
     

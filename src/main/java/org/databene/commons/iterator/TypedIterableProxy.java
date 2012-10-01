@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -47,11 +47,13 @@ public class TypedIterableProxy<E> implements HeavyweightTypedIterable<E> {
         this.iterable = iterable;
     }
 
-    public Class<E> getType() {
+    @Override
+	public Class<E> getType() {
         return type;
     }
 
-    public HeavyweightIterator<E> iterator() {
+    @Override
+	public HeavyweightIterator<E> iterator() {
         Iterator<E> iterator = iterable.iterator();
     	return new HeavyweightIteratorProxy<E>(iterator);
     }

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -67,24 +67,28 @@ public class DefaultContext implements Context {
         	this.map.put((String) entry.getKey(), entry.getValue());
     }
     
-    public synchronized Object get(String key) {
+    @Override
+	public synchronized Object get(String key) {
         Object value = map.get(key);
         if (value == null && defaults != null)
             value = defaults.get(key);
         return value;
     }
 
-    public boolean contains(String key) {
+    @Override
+	public boolean contains(String key) {
         if (map.containsKey(key))
         	return true;
         return (defaults != null && defaults.contains(key));
     }
 
-    public synchronized void set(String key, Object value) {
+    @Override
+	public synchronized void set(String key, Object value) {
         map.put(key, value);
     }
     
-    public synchronized Set<Map.Entry<String, Object>> entrySet() {
+    @Override
+	public synchronized Set<Map.Entry<String, Object>> entrySet() {
         return map.entrySet();
     }
 
@@ -98,11 +102,13 @@ public class DefaultContext implements Context {
             this.set(String.valueOf(entry.getKey()), entry.getValue());
     }
 
-    public void remove(String key) {
+    @Override
+	public void remove(String key) {
 		map.remove(key);
 	}
 	
-    public Set<String> keySet() {
+    @Override
+	public Set<String> keySet() {
         return map.keySet();
     }
 

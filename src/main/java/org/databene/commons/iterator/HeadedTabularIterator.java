@@ -42,6 +42,7 @@ public class HeadedTabularIterator extends IteratorProxy<Object[]> implements Ta
 			this.columnNames = ArrayTypeConverter.convert(source.next(), String.class);
 	}
 
+	@Override
 	public String[] getColumnNames() {
 		return columnNames;
 	}

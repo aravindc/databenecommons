@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -36,7 +36,8 @@ import java.util.Comparator;
  */
 public class DoubleComparator implements Comparator<Double> {
 
-    public int compare(Double d1, Double d2) {
+    @Override
+	public int compare(Double d1, Double d2) {
         return d1.compareTo(d2);
     }
 

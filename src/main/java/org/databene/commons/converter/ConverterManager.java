@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -103,6 +103,7 @@ public class ConverterManager implements ContextAware, Resettable {
         return instance;
     }
 
+	@Override
 	public void setContext(Context context) {
 		this.context = context;
 		for (Converter converter : converterPrototypes.values())
@@ -340,6 +341,7 @@ public class ConverterManager implements ContextAware, Resettable {
         }
     }
 
+	@Override
 	public void reset() {
 		init();
 	}

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -49,6 +49,7 @@ public class MaxNumberStringOperation implements Operation<String, String> {
         this.parser = new NumberParser();
     }
 
+	@Override
 	public String perform(String... args) {
 	    ComparableWrapper<String>[] wrappers = ComparableWrapper.wrapAll(args, parser);
 	    ComparableWrapper<String> min = operation.perform(wrappers);

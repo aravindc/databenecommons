@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -40,6 +40,7 @@ public class FileByNameFilter implements FileFilter {
 	    this.pathFilter = realFilter;
     }
 
+	@Override
 	public boolean accept(File file) {
 	    return (pathFilter == null || pathFilter.accept(file.getAbsolutePath()));
     }

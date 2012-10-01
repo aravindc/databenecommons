@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -38,6 +38,7 @@ public class NamedObjectByPatternFilter<E extends Named> implements Filter<E> {
 		this.nameFilter = new RegexBasedFilter(inclusionPattern, exclusionPattern);
 	}
 
+	@Override
 	public boolean accept(Named candidate) {
 	    return nameFilter.accept(candidate.getName());
 	}

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -37,14 +37,17 @@ public abstract class AbstractTabularIterator implements TabularIterator {
 		this.columnLabels = columnLabels;
 	}
 
+	@Override
 	public String[] getColumnNames() {
 		return columnLabels;
 	}
 
+	@Override
 	public void remove() {
 		throw new UnsupportedOperationException(getClass() + " does not support removal");
 	}
 
+	@Override
 	@SuppressWarnings("unused")
 	public void close() throws IOException {
 		// empty implementation

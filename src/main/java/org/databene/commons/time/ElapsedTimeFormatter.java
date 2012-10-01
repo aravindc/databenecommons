@@ -35,8 +35,6 @@ import org.databene.commons.converter.ThreadSafeConverter;
  */
 public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 	
-	private static final long serialVersionUID = 7309119375905090704L;
-	
 	private static final long SECOND_MILLIS = 1000;
 	private static final long MINUTE_MILLIS = 60 * SECOND_MILLIS;
 	private static final long HOUR_MILLIS   = 60 * MINUTE_MILLIS;
@@ -58,6 +56,7 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 		this.space = space;
 	}
 
+	@Override
 	public String convert(Long millis) throws ConversionException {
 		if (millis < SECOND_MILLIS)
 			return millis + space + "ms";

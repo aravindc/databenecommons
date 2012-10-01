@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -56,6 +56,7 @@ public class RegexReplacer extends ThreadSafeConverter<String, String> {
 	    this.pattern = Pattern.compile(pattern);
     }
 
+	@Override
 	public String convert(String input) throws ConversionException {
 	    return this.pattern.matcher(input).replaceAll(this.replacement);
     }

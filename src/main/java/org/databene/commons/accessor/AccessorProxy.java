@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -45,11 +45,13 @@ public abstract class AccessorProxy<C, V> implements DependentAccessor<C, V> {
         this.realAccessor = realAccessor;
     }
 
-    public V getValue(C item) {
+    @Override
+	public V getValue(C item) {
         return realAccessor.getValue(item);
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
     public List<? extends Accessor<?, ?>> getDependencies() {
         if (realAccessor instanceof DependentAccessor)
             return ((DependentAccessor)realAccessor).getDependencies();

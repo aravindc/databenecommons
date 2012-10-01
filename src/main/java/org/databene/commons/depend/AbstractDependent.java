@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -56,15 +56,18 @@ public abstract class AbstractDependent<E extends Dependent<E>> implements Depen
 
     // Dependent interface --------------------------------------------------------------------------
     
-    public int countProviders() {
+    @Override
+	public int countProviders() {
         return providers.size();
     }
 
-    public E getProvider(int index) {
+    @Override
+	public E getProvider(int index) {
         return providers.get(index).getProvider();
     }
 
-    public boolean requiresProvider(int index) {
+    @Override
+	public boolean requiresProvider(int index) {
         return providers.get(index).isRequired();
     }
 

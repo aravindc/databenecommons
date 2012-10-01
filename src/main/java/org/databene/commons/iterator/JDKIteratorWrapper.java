@@ -43,31 +43,38 @@ public class JDKIteratorWrapper<E> implements BidirectionalIterator<E> {
         this.realIterator = realIterator;
     }
 
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
         return realIterator.hasNext();
     }
 
-    public E next() {
+    @Override
+	public E next() {
         return realIterator.next();
     }
 
-    public void remove() {
+    @Override
+	public void remove() {
         realIterator.remove();
     }
 
-    public E first() {
+    @Override
+	public E first() {
         throw new UnsupportedOperationException("Operation not supported");
     }
 
-    public boolean hasPrevious() {
+    @Override
+	public boolean hasPrevious() {
         throw new UnsupportedOperationException("Operation not supported");
     }
 
-    public E previous() {
+    @Override
+	public E previous() {
         throw new UnsupportedOperationException("Operation not supported");
     }
 
-    public E last() {
+    @Override
+	public E last() {
         throw new UnsupportedOperationException("Operation not supported");
     }
 }

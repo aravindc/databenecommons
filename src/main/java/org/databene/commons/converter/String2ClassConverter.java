@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,7 +42,8 @@ public class String2ClassConverter extends ThreadSafeConverter<String, Class> {
         super(String.class, Class.class);
     }
 
-    public Class convert(String className) throws ConversionException {
+    @Override
+	public Class convert(String className) throws ConversionException {
         return BeanUtil.forName(className);
     }
     

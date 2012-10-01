@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -36,6 +36,7 @@ public class Number2BooleanConverter<S extends Number> extends ThreadSafeConvert
 	    super(sourceType, Boolean.class);
     }
 
+	@Override
 	public Boolean convert(S sourceValue) throws ConversionException {
 	    return (sourceValue.doubleValue() != 0);
     }

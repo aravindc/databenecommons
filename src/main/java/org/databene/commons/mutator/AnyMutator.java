@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -57,7 +57,8 @@ public class AnyMutator implements Mutator {
         this.strict = strict;
     }
 
-    public void setValue(Object target, Object value) throws UpdateFailedException {
+    @Override
+	public void setValue(Object target, Object value) throws UpdateFailedException {
         setValue(target, path, value, strict);
     }
     

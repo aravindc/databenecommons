@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -45,39 +45,46 @@ public class BidirectionalListIterator<E> implements BidirectionalIterator<E> {
         this.index = -1;
     }
 
-    public E first() {
+    @Override
+	public E first() {
         index = 0;
         return list.get(index);
     }
 
-    public boolean hasPrevious() {
+    @Override
+	public boolean hasPrevious() {
         return (index > 0);
     }
 
-    public E previous() {
+    @Override
+	public E previous() {
         if (!hasPrevious())
             throw new IllegalStateException("No previous object exists");
         index--;
         return list.get(index);
     }
 
-    public E last() {
+    @Override
+	public E last() {
         index = list.size() - 1;
         return list.get(index);
     }
 
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
         return (index < list.size() - 1);
     }
 
-    public E next() {
+    @Override
+	public E next() {
         if (!hasNext())
             throw new IllegalStateException("No next object exists");
         index++;
         return list.get(index);
     }
 
-    public void remove() {
+    @Override
+	public void remove() {
         throw new UnsupportedOperationException("Not implemented");
     }
     

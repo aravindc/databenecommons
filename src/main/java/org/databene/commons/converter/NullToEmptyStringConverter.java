@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -36,6 +36,7 @@ public class NullToEmptyStringConverter extends ThreadSafeConverter<String, Stri
 		super(String.class, String.class);
 	}
 
+	@Override
 	public String convert(String sourceValue) throws ConversionException {
 		return (sourceValue == null ? "" : sourceValue);
 	}

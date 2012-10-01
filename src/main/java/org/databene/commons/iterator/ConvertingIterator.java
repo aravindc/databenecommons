@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -49,21 +49,26 @@ public class ConvertingIterator<S, T> implements HeavyweightIterator<T> {
         this.converter = converter;
     }
 
-    public void close() {
+    @Override
+	public void close() {
         if (source instanceof Closeable)
             IOUtil.close((Closeable) source);
     }
 
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
         return source.hasNext();
     }
 
-    public T next() {
+    @Override
+	public T next() {
         S sourceValue = source.next();
         return converter.convert(sourceValue);
     }
 
-    public void remove() {
+    @Override
+	public void remove() {
         source.remove();
     }
+    
 }

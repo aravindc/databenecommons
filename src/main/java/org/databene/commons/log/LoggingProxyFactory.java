@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -74,6 +74,7 @@ public class LoggingProxyFactory {
         	this.level = level;
         }
 
+		@Override
 		public Object invoke(Object object, Method method, Object[] args) throws Throwable {
 			String message = method.getName() + '(' + ArrayFormat.format(args) + ')';
 			switch (level) {

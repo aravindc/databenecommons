@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -170,7 +170,8 @@ public class CompressedIntSet {
     		lastInt = null;
     	}
 
-	    public boolean hasNext() {
+	    @Override
+		public boolean hasNext() {
 	    	if (currentIntRange == null) {
 	    		if (intRangeIterator != null && intRangeIterator.hasNext()) {
 	    			currentIntRange = intRangeIterator.next();
@@ -184,7 +185,8 @@ public class CompressedIntSet {
 	    	return (lastInt == null || lastInt < currentIntRange.max);
 	    }
 
-	    public Integer next() {
+	    @Override
+		public Integer next() {
 	    	if (intRangeIterator != null && currentIntRange == null) {
 	    		if (intRangeIterator.hasNext()) {
 	    			currentIntRange = intRangeIterator.next();
@@ -201,7 +203,8 @@ public class CompressedIntSet {
 	    	return lastInt;
 	    }
 
-	    public void remove() {
+	    @Override
+		public void remove() {
 	    	CompressedIntSet.this.remove(lastInt);
 	    }
     }

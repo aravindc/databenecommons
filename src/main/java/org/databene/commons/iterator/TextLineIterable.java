@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -47,15 +47,18 @@ public class TextLineIterable implements HeavyweightTypedIterable<String> {
         this.uri = uri;
     }
 
-    public Class<String> getType() {
+    @Override
+	public Class<String> getType() {
         return String.class;
     }
 
-    public HeavyweightIterator<String> iterator() {
+    @Override
+	public HeavyweightIterator<String> iterator() {
         try {
             return new ReaderLineIterator(IOUtil.getReaderForURI(uri));
         } catch (IOException e) {
             throw new RuntimeException("Unable to create an Iterator for URI '" + uri + "'", e);
         }
     }
+    
 }

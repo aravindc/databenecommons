@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,7 +50,8 @@ public class StringComparator implements Comparator<String> {
         this.collator = Collator.getInstance(locale);
     }
 
-    public int compare(String o1, String o2) {
+    @Override
+	public int compare(String o1, String o2) {
         return collator.compare(o1, o2);
     }
 

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -63,7 +63,8 @@ class TypedPropertyAccessor<E> implements PropertyAccessor<E, Object> {
         }
     }
 
-    public Object getValue(Object object) {
+    @Override
+	public Object getValue(Object object) {
         if (object == null)
             if (strict)
                 throw new IllegalArgumentException("Trying to get property value '" + propertyName + "' from null");
@@ -76,11 +77,13 @@ class TypedPropertyAccessor<E> implements PropertyAccessor<E, Object> {
         }
     }
 
-    public Class<?> getValueType() {
+    @Override
+	public Class<?> getValueType() {
         return (accessorMethod != null ? accessorMethod.getReturnType() : null);
     }
 
-    public String getPropertyName() {
+    @Override
+	public String getPropertyName() {
         return propertyName;
     }
 }
