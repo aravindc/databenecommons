@@ -275,7 +275,7 @@ public final class IOUtil {
 	public static boolean isAbsoluteRef(String uri, String contextUri) {
 		if (StringUtil.isEmpty(contextUri)) // if there is no context, the URI must be absolute
 			return true;
-		if (SystemInfo.isWindows()) { // recognize Winows drive letter formats like C:\
+		if (SystemInfo.isWindows()) { // recognize Windows drive letter formats like C:\
 			if (uri.length() >= 2 && Character.isLetter(uri.charAt(0)) && uri.charAt(1) == ':' && uri.charAt(1) == '\\')
 				return true;
 		}
