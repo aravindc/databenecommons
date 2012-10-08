@@ -18,6 +18,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+
 package org.databene.commons;
 
 import java.io.BufferedInputStream;
@@ -28,7 +29,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Provides ZIP-related convenience methods.<br/><br/>
@@ -39,6 +44,8 @@ import java.util.zip.ZipOutputStream;
 public class ZipUtil {
 
 	private static final int BUFFER_SIZE = 2048;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ZipUtil.class);
 
 	public static void compress(File source, File zipFile) throws IOException {
 		ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)));
@@ -50,6 +57,22 @@ public class ZipUtil {
 			throw new RuntimeException("Zipping the report failed");
 		}
 	}
+	
+	public static void printContent(File zipFile) {
+		ZipInputStream in = null;
+		try {
+			in = new ZipInputStream(new BufferedInputStream(new FileInputStream(zipFile)));
+			ZipEntry entry;
+			while ((entry = in.getNextEntry()) != null)
+				System.out.println(entry.getName());
+		} catch (IOException e) {
+			LOGGER.error("Error listing archive content of file " + zipFile, e);
+		} finally {
+			IOUtil.close(in);
+		}
+	}
+	
+	// private helpers -------------------------------------------------------------------------------------------------
 
 	private static void addFileOrDirectory(File source, File root, ZipOutputStream out) throws IOException {
 		if (source.isFile())
@@ -73,5 +96,5 @@ public class ZipUtil {
 			out.write(buffer, 0, count);
 		in.close();
 	}
-
+	
 }
