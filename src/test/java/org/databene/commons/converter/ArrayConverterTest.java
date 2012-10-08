@@ -50,6 +50,7 @@ public class ArrayConverterTest {
 	
 	@Test
 	public void testArrayTypeConversion() {
+		@SuppressWarnings("unchecked")
 		ArrayConverter<String, Integer> converter = new ArrayConverter<String, Integer>(String.class, Integer.class);
 		assertEqualArrays(INT_1_3, converter.convert(STRING_1_3));
 	}
