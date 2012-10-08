@@ -31,6 +31,7 @@ import java.util.Locale;
 
 import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
+import org.databene.commons.IOUtil;
 
 /**
  * {@link Converter} implementation that uses a {@link Formatter} 
@@ -87,7 +88,11 @@ public class PrintfConverter extends ThreadSafeConverter<Object, String> {
 	    if (sourceValue == null)
 	    	return null;
 	    Formatter formatter = new Formatter(locale);
-	    return formatter.format(pattern, sourceValue).out().toString();
+	    try {
+	    	return formatter.format(pattern, sourceValue).out().toString();
+	    } finally {
+	    	IOUtil.close(formatter);
+	    }
     }
 
 }
