@@ -116,21 +116,27 @@ public final class FileUtil {
 		long length = file1.length();
 		if (length != file2.length())
 			return false;
+		InputStream in1 = null;
+		InputStream in2 = null;
+		boolean equal = true;
 		try {
 			LOGGER.debug("Comparing content of " + file1 + " and " + file2);
-			InputStream in1 = new BufferedInputStream(new FileInputStream(file1));
-			InputStream in2 = new BufferedInputStream(new FileInputStream(file2));
-			for (long i = 0; i < length; i++) {
+			in1 = new BufferedInputStream(new FileInputStream(file1));
+			in2 = new BufferedInputStream(new FileInputStream(file2));
+			for (long i = 0; equal && i < length; i++) {
 				if (in1.read() != in2.read()) {
 					LOGGER.debug("files unequal");
-					return false;
+					equal = false;
 				}
 			}
 		} catch (IOException e) {
 			throw new RuntimeException("Error comparing " + file1 + " with " + file2, e);
+		} finally {
+			IOUtil.close(in1);
+			IOUtil.close(in2);
 		}
 		LOGGER.debug("files equal");
-		return true;
+		return equal;
 	}
 
 	// private helpers -------------------------------------------------------------------------------------------------
