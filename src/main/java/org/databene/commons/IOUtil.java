@@ -132,26 +132,31 @@ public final class IOUtil {
 
     public static boolean isURIAvailable(String uri) {
     	LOGGER.debug("isURIAvailable({})", uri);
-        InputStream stream = null;
-        try {
-            if (uri.startsWith("string://"))
-                return true;
-            if (uri.startsWith("http://"))
-                return httpUrlAvailable(uri);
-            if (uri.startsWith("file:") && !uri.startsWith("file://"))
-                stream = getFileOrResourceAsStream(uri.substring("file:".length()), false);
-            else {
-	            if (!uri.contains("://"))
-	                uri = "file://" + uri;
-	            if (uri.startsWith("file://"))
-	                stream = getFileOrResourceAsStream(uri.substring("file://".length()), false);
+    	boolean available;
+        if (uri.startsWith("string://")) {
+        	available = true;
+        } else if (uri.startsWith("http://")) {
+            available = httpUrlAvailable(uri);
+        } else {
+            InputStream stream = null;
+            try {
+            	if (uri.startsWith("file:") && !uri.startsWith("file://")) {
+            		stream = getFileOrResourceAsStream(uri.substring("file:".length()), false);
+            	} else {
+		            if (!uri.contains("://"))
+		                uri = "file://" + uri;
+		            if (uri.startsWith("file://"))
+		                stream = getFileOrResourceAsStream(uri.substring("file://".length()), false);
+                }
+                available = (stream != null);
+            } catch (FileNotFoundException e) {
+                available = false;
+            } finally {
+                close(stream);
             }
-            return stream != null;
-        } catch (FileNotFoundException e) {
-            return false;
-        } finally {
-            close(stream);
         }
+    	LOGGER.debug("isURIAvailable({}) returns {}", uri, available);
+        return available;
     }
 
     public static String getContentOfURI(String uri) throws IOException {
@@ -290,9 +295,11 @@ public final class IOUtil {
 	}
 
 	private static String resolveRelativeFile(String contextPath, String relativePath) {
-		if (relativePath.charAt(0) == '/' || relativePath.charAt(0) == File.separatorChar)
+		char firstChar = relativePath.charAt(0);
+		boolean isAbsolutePath = firstChar == '/' || firstChar == File.separatorChar;
+		if (isAbsolutePath || isURIAvailable(relativePath))
 			return relativePath;
-		else 
+		else
 			return new File(contextPath, relativePath).getPath();
     }
 
@@ -563,8 +570,14 @@ public final class IOUtil {
      */
     private static InputStream getResourceAsStream(String name, boolean required) {
     	LOGGER.debug("getResourceAsStream({}, {})", name, required);
-    	String searchedName = (name.startsWith("/") ? name : "/" + name);
-        InputStream stream = IOUtil.class.getResourceAsStream(searchedName);
+		InputStream stream = null;
+        ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+        if (contextClassLoader != null)
+        	stream = contextClassLoader.getResourceAsStream(name);
+        if (stream == null) {
+        	String searchedName = (name.startsWith("/") ? name : '/' + name);
+            stream = IOUtil.class.getResourceAsStream(searchedName);
+        }
         if (required && stream == null)
             throw new ConfigurationError("Resource not found: " + name);
         return stream;
