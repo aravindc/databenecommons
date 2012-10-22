@@ -268,6 +268,8 @@ public final class IOUtil {
 
     public static String resolveRelativeUri(String relativeUri, String contextUri) {
 		LOGGER.debug("resolveRelativeUri({}, {})", relativeUri, contextUri);
+		if (contextUri == null)
+			return relativeUri;
     	if (isAbsoluteRef(relativeUri, contextUri))
     		return relativeUri;
     	String contextProtocol = getProtocol(contextUri);
