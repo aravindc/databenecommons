@@ -21,6 +21,7 @@
 
 package org.databene.commons.converter;
 
+import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
 
 /**
@@ -44,5 +45,10 @@ public abstract class ConverterProxy<S, T> extends ConverterWrapper<S, T> implem
 	public Class<T> getTargetType() {
 	    return realConverter.getTargetType();
     }
-
+	
+	@Override
+	public T convert(S sourceValue) throws ConversionException {
+		return realConverter.convert(sourceValue);
+	}
+	
 }
