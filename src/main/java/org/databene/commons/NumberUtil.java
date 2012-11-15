@@ -43,7 +43,7 @@ public class NumberUtil {
 	
 	// constants -------------------------------------------------------------------------------------------------------
 	
-	private static final Map<Class<? extends Number>, ? extends Number> minValues = 
+	private static final Map<Class<? extends Number>, ? extends Number> MIN_VALUES = 
 		CollectionUtil.buildMap(
 				byte.class,       Byte.MIN_VALUE, 
 				Byte.class,       Byte.MIN_VALUE, 
@@ -55,13 +55,13 @@ public class NumberUtil {
 				Long.class,       Long.MIN_VALUE, 
 				float.class,      Float.MIN_VALUE, 
 				Float.class,      Float.MIN_VALUE, 
-				double.class,     Double.MIN_VALUE, 
-				Double.class,     Double.MIN_VALUE, 
-				BigDecimal.class, new BigDecimal(Double.MIN_VALUE), 
+				double.class,     - Double.MAX_VALUE, 
+				Double.class,     - Double.MAX_VALUE, 
+				BigDecimal.class, new BigDecimal(- Double.MAX_VALUE), 
 				BigInteger.class, BigInteger.valueOf(Long.MIN_VALUE) 
 		);
 	
-	private static final Map<Class<? extends Number>, ? extends Number> maxValues = 
+	private static final Map<Class<? extends Number>, ? extends Number> MAX_VALUES = 
 		CollectionUtil.buildMap(
 				byte.class,       Byte.MAX_VALUE, 
 				Byte.class,       Byte.MAX_VALUE, 
@@ -142,8 +142,15 @@ public class NumberUtil {
     	return (numberType != BigDecimal.class && numberType != BigInteger.class);
     }
 
+    public static <T extends Number> T minValue(Class<T> numberType) {
+    	Number value = MIN_VALUES.get(numberType);
+    	if (value == null)
+    		throw new IllegalArgumentException("Not a supported number type: " + numberType);
+		return (T) value;
+    }
+    
     public static <T extends Number> T maxValue(Class<T> numberType) {
-    	Number value = maxValues.get(numberType);
+    	Number value = MAX_VALUES.get(numberType);
     	if (value == null)
     		throw new IllegalArgumentException("Not a supported number type: " + numberType);
 		return (T) value;
@@ -153,14 +160,7 @@ public class NumberUtil {
     	if (isLimited(numberType))
     		return 1 + (int) Math.log10(maxValue(numberType).doubleValue());
     	else
-    		return 1+ (int) Math.log10(maxValue(double.class));
-    }
-    
-    public static <T extends Number> T minValue(Class<T> numberType) {
-    	Number value = minValues.get(numberType);
-    	if (value == null)
-    		throw new IllegalArgumentException("Not a supported number type: " + numberType);
-		return (T) value;
+    		return 1 + (int) Math.log10(maxValue(double.class));
     }
     
 }
