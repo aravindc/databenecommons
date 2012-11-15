@@ -48,7 +48,7 @@ public class ArrayFormat extends Format {
     private static final long serialVersionUID = 290320869220307493L;
     
 	private static final String DEFAULT_SEPARATOR = ", ";
-    private static final Converter<Object, String> DEFAULT_ITEM_FORMATTER = new ToStringConverter();
+    private static final Converter<Object, String> DEFAULT_ITEM_FORMATTER = new ToStringConverter("null");
 
     // attributes ------------------------------------------------------------------------------------------------------
 
