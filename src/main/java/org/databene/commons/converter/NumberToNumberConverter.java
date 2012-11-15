@@ -26,7 +26,7 @@
 
 package org.databene.commons.converter;
 
-import org.databene.commons.ConversionException;
+import org.databene.commons.Converter;
 
 import java.math.BigInteger;
 import java.math.BigDecimal;
@@ -37,18 +37,40 @@ import java.math.BigDecimal;
  * Created: 16.06.2007 11:51:14
  * @author Volker Bergmann
  */
-public class NumberToNumberConverter<S extends Number, T extends Number> extends ThreadSafeConverter<S, T> {
+public class NumberToNumberConverter<S extends Number, T extends Number> extends ConverterProxy<S, T> {
 
-    public NumberToNumberConverter(Class<S> sourceType, Class<T> targetType) {
-        super(sourceType, targetType);
+	@SuppressWarnings("unchecked")
+	public NumberToNumberConverter(Class<T> targetType) {
+        this((Class<S>) Number.class, targetType);
     }
-
-    @Override
-	public T convert(S sourceValue) throws ConversionException {
-        return convert(sourceValue, targetType); // TODO v0.5.x improve performance
+    
+    @SuppressWarnings("unchecked")
+	public NumberToNumberConverter(Class<S> sourceType, Class<T> targetType) {
+        super((Converter<S, T>) createConverter(targetType));
     }
+    
+	private static <TT extends Number> Converter<Number, ? extends Number> createConverter(Class<TT> targetType) {
+		if (Integer.class == targetType || int.class == targetType)
+			return new Number2IntegerConverter();
+		else if (Long.class == targetType || long.class == targetType)
+			return new Number2LongConverter();
+		else if (Byte.class == targetType || byte.class == targetType)
+			return new Number2ByteConverter();
+		else if (Short.class == targetType || short.class == targetType)
+			return new Number2ShortConverter();
+		else if (Double.class == targetType || double.class == targetType)
+			return new Number2DoubleConverter();
+		else if (Float.class.equals(targetType) || float.class == targetType)
+			return new Number2FloatConverter();
+		else if (BigInteger.class.equals(targetType))
+			return new Number2BigIntegerConverter();
+		else if (BigDecimal.class.equals(targetType))
+			return new Number2BigDecimalConverter();
+		else 
+		    throw new IllegalArgumentException("Not a supported number type: " + targetType);
+	}
 
-    /**
+	/**
      * Converts a number of one number type to another number type.
      * @param src the number to convert
      * @param targetType the target number type of the conversion
@@ -58,50 +80,24 @@ public class NumberToNumberConverter<S extends Number, T extends Number> extends
     public static <TT extends Number> TT convert(Number src, Class<TT> targetType) {
     	if (src == null)
     		return null;
-        if (Integer.class == targetType)
+    	else if (Integer.class == targetType || int.class == targetType)
             return (TT) Integer.valueOf(src.intValue());
-        if (Long.class == targetType)
+    	else if (Long.class == targetType || long.class == targetType)
             return (TT) Long.valueOf(src.longValue());
-        if (Byte.class == targetType)
+    	else if (Byte.class == targetType || byte.class == targetType)
             return (TT) Byte.valueOf(src.byteValue());
-        if (Double.class == targetType)
+    	else if (Short.class == targetType || short.class == targetType)
+            return (TT) Short.valueOf(src.byteValue());
+    	else if (Double.class == targetType || double.class == targetType)
             return (TT) Double.valueOf(src.doubleValue());
-        if (Float.class.equals(targetType))
+    	else if (Float.class.equals(targetType) || float.class == targetType)
             return (TT) Float.valueOf(src.floatValue());
-        if (BigInteger.class.equals(targetType))
+    	else if (BigInteger.class.equals(targetType))
             return (TT) BigInteger.valueOf(src.longValue());
         else if (BigDecimal.class.equals(targetType))
             return (TT) BigDecimal.valueOf(src.doubleValue());
-        else {
-            Class<?> primitiveClass = JavaType.getPrimitiveClass(targetType);
-            return (TT) convertNumberToPrimitive(src, primitiveClass);
-        }
-    }
-
-    /**
-     * Converts a number object to an instance of a primitive class
-     * (returned as the respective number wrapper).
-     * @param src the object to convert
-     * @param targetType the primitive target type of the conversion
-     * @return an object of the primitive target type
-     */
-    private static Object convertNumberToPrimitive(Number src, Class<?> targetType) {
-    	if (src == null)
-    		return null;
-        if (int.class.equals(targetType))
-            return src.intValue();
-        else if (byte.class.equals(targetType))
-            return src.byteValue();
-        else if (short.class.equals(targetType))
-            return src.shortValue();
-        else if (long.class.equals(targetType))
-            return src.longValue();
-        else if (float.class.equals(targetType))
-            return src.floatValue();
-        else if (double.class.equals(targetType))
-            return src.doubleValue();
-        else
-            throw new UnsupportedOperationException("Can't convert '" + src + "' to " + targetType);
+		else 
+		    throw new IllegalArgumentException("Not a supported number type: " + targetType);
     }
 
 }
