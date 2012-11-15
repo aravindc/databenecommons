@@ -26,6 +26,7 @@
 
 package org.databene.commons.converter;
 
+import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -108,7 +109,9 @@ public class ToStringConverter extends FormatHolder implements Converter<Object,
         } else if (JavaType.isDecimalType(sourceType)) {
         	if (decimalConverter != null)
         		return decimalConverter.convert((Number) source);
-        	else {
+        	else if (sourceType == BigDecimal.class) {
+        		return String.valueOf(source);
+        	} else {
         		Double value = ((Number) source).doubleValue();
         		if (value == Math.floor(value))
         			return String.valueOf(value.longValue());
