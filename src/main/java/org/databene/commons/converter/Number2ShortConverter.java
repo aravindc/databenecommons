@@ -24,9 +24,9 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * TODO Document class.<br/><br/>
+ * Converts {@link Number}s to {@link Short}s.<br/><br/>
  * Created: 15.11.2012 10:25:52
- * @since TODO version
+ * @since 0.5.20
  * @author Volker Bergmann
  */
 public class Number2ShortConverter extends ThreadSafeConverter<Number, Short> {
