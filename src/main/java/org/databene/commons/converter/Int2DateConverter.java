@@ -35,6 +35,10 @@ public class Int2DateConverter extends ConverterChain<Integer, Date> {
 		super(new NumberToNumberConverter<Integer, Long>(Integer.class, Long.class),
 				new Long2DateConverter());
 	}
-
+	
+	@Override
+	public Class<Integer> getSourceType() {
+		return Integer.class;
+	}
 	
 }
