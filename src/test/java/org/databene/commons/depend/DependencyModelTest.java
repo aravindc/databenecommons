@@ -104,7 +104,6 @@ public class DependencyModelTest {
         Dep b = new Dep("b", a);
         a.addRequiredProvider(b);
         expectOrder(b, a, a, b);
-        fail(CyclicDependencyException.class.getSimpleName() + " expected");
     }
 
 	@Test
@@ -135,6 +134,22 @@ public class DependencyModelTest {
         a.addRequiredProvider(c);
         expectOrder(true, c, b, a, zero, 
                 zero, a, b, c);
+    }
+    
+	@Test
+    public void testIssue() {
+        Dep actReProcDef = new Dep("act_re_procdef");
+        Dep actRuExecution = new Dep("act_ru_execution");
+        actRuExecution.addRequiredProvider(actRuExecution);
+        Dep actRuTask = new Dep("act_ru_task");
+        actRuTask.addRequiredProvider(actReProcDef);
+        actRuTask.addRequiredProvider(actRuExecution);
+        actRuTask.addRequiredProvider(actRuExecution);
+        Dep actRuIdentityLink = new Dep("act_ru_identitylink");
+        actRuIdentityLink.addRequiredProvider(actReProcDef);
+        actRuIdentityLink.addRequiredProvider(actRuTask);
+        expectOrder(true, actRuIdentityLink, actRuTask, actRuExecution, actReProcDef,
+                actReProcDef, actRuExecution, actRuTask, actRuIdentityLink);
     }
     
     // private helper -------------------------------------------------------------------------------
