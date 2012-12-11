@@ -52,7 +52,7 @@ class Node<E extends Dependent<E>> {
         this.providers = new ArrayList<Node<E>>();
         this.providerRequired = new ArrayList<Boolean>();
         this.clients = new ArrayList<Node<E>>();
-        this.state = INITIALIZABLE;
+        this.state = INITIALIZABLE; // As long as no providers are added, the node is initializable
     }
     
     // properties ------------------------------------------------------------------------------------------------------
@@ -80,7 +80,8 @@ class Node<E extends Dependent<E>> {
     }
     
     public Node<E> addProvider(Node<E> provider, boolean required) {
-        this.state = INACTIVE;
+    	if (!hasForeignProviders() && provider != this) // A provider is about to be added. If this was a standalone node so far,...
+    		this.state = INACTIVE;                      // ...I need to reconsider
         if (this.providers.contains(provider)) {
             if (required && !required(provider)) {
                 providerRequired.set(providers.indexOf(provider), Boolean.TRUE);
