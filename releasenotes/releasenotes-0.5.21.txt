@@ -1,0 +1,14 @@
+release notes databene commons 0.5.21
+-------------------------------------
+
+Enhancements
+------------
+
+
+Changes
+-------
+
+  
+Bug Fixes
+---------
+- DependencyModel fails on self-referencing nodes with clients
