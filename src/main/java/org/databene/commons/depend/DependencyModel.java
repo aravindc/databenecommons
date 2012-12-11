@@ -74,7 +74,7 @@ public class DependencyModel<E extends Dependent<E>> {
         // set up lists for processing
         List<Node<E>> heads = new ArrayList<Node<E>>();
         List<Node<E>> tails = new ArrayList<Node<E>>();
-        List<Node<E>> tmp = new ArrayList<Node<E>>(nodeMappings.size());
+        List<Node<E>> pending = new ArrayList<Node<E>>(nodeMappings.size());
         List<Node<E>> orderedNodes = new ArrayList<Node<E>>(nodeMappings.size());
         List<Node<E>> incompletes = new ArrayList<Node<E>>();
         
@@ -83,15 +83,15 @@ public class DependencyModel<E extends Dependent<E>> {
             Iterator<Node<E>> iterator = nodeMappings.values().iterator();
             while (iterator.hasNext()) {
                 Node<E> node = iterator.next();
-                if (node.hasClients()) {
-                    if (node.hasProviders()) {
-                        tmp.add(node);
+                if (node.hasForeignClients()) {
+                    if (node.hasForeignProviders()) {
+                        pending.add(node);
                     } else {
                         node.initialize();
                         heads.add(node);
                     }
                 } else {
-                    if (node.hasProviders()) {
+                    if (node.hasForeignProviders()) {
                         tails.add(node);
                     } else {
                         node.initialize();
@@ -104,21 +104,21 @@ public class DependencyModel<E extends Dependent<E>> {
             orderedNodes.addAll(heads);
             
             // sort remaining nodes
-            while (tmp.size() > 0) {
-                boolean found = extractNodes(tmp, INITIALIZABLE, orderedNodes, null);
+            while (pending.size() > 0) {
+                boolean found = extractNodes(pending, INITIALIZABLE, orderedNodes, null);
                 if (!found)
-                    found = extractNodes(tmp, PARTIALLY_INITIALIZABLE, orderedNodes, incompletes);
+                    found = extractNodes(pending, PARTIALLY_INITIALIZABLE, orderedNodes, incompletes);
                 if (!found) {
                     if (acceptingCycles) {
                         // force one node
-                        Node<E> node = findForceable(tmp);
+                        Node<E> node = findForceable(pending);
                         LOGGER.debug("forcing " + node); 
-                        tmp.remove(node);
+                        pending.remove(node);
                         node.force();
                         orderedNodes.add(node);
                         incompletes.add(node);
                     } else
-                        throw new CyclicDependencyException("Cyclic dependency in " + tmp);
+                        throw new CyclicDependencyException("Cyclic dependency in " + pending);
                 }
                 postProcessNodes(incompletes);
             }
@@ -147,7 +147,7 @@ public class DependencyModel<E extends Dependent<E>> {
             return result;
         } catch (RuntimeException e) {
             if (!(e instanceof CyclicDependencyException))
-                logState(tmp);
+                logState(pending);
             throw e;
         }
     }

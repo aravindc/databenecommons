@@ -95,8 +95,13 @@ class Node<E extends Dependent<E>> {
         return this;
     }
     
-    public boolean hasProviders() {
-        return (providers.size() > 0);
+    public boolean hasForeignProviders() {
+        if (providers.size() == 0)
+        	return false;
+        for (Node<E> provider : providers)
+        	if (provider != this)
+        		return true;
+        return false;
     }
     
     public boolean required(Node<E> provider) {
@@ -112,8 +117,13 @@ class Node<E extends Dependent<E>> {
             this.clients.add(client);
     }
     
-    public boolean hasClients() {
-        return (clients.size() > 0);
+    public boolean hasForeignClients() {
+    	if (clients.size() == 0)
+    		return false;
+    	for (Node<E> client : clients)
+    		if (client != this)
+    			return true;
+    	return false;
     }
     
     // interface -------------------------------------------------------------------------------------------------------
@@ -125,7 +135,7 @@ class Node<E extends Dependent<E>> {
         boolean initializable = true;
         boolean partiallyInitializable = true;
         for (Node<E> provider : providers)
-            if (!allowsClientInitialization(provider.getState())) {
+            if (provider != this && !allowsClientInitialization(provider.getState())) {
                 initializable = false;
                 if (required(provider))
                     partiallyInitializable = false;
@@ -142,10 +152,10 @@ class Node<E extends Dependent<E>> {
         }
         if (state != INACTIVE)
             return;
-        if (!hasProviders())
+        if (!hasForeignProviders())
             this.state = FORCEABLE;
         for (Node<E> provider : providers)
-            if (provider.getState() == INITIALIZED) {
+            if (provider != this && provider.getState() == INITIALIZED) {
                 this.state = FORCEABLE;
                 return;
             }
