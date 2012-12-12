@@ -30,6 +30,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import org.databene.commons.collection.ListBasedSet;
+import org.databene.commons.collection.MapEntry;
 
 /**
  * Map implementation that tracks the order in which elements where added
@@ -73,6 +74,17 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
     
     
     
+    // custom interface ------------------------------------------------------------------------------------------------
+    
+	public Map.Entry<K, V> getEntry(K key) {
+		if (containsKey(key))
+			return new MapEntry<K, V>(key, get(key));
+		else
+			return null;
+    }
+	
+	
+	
     // Map interface implementation ------------------------------------------------------------------------------------
 
     @Override
@@ -208,8 +220,6 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
     public boolean equalsIgnoreOrder(Map<K, V> that) {
         if (this == that)
             return true;
-        if (that == null || this.getClass() != that.getClass())
-            return false;
         if (this.size() != that.size())
         	return false;
         for (Map.Entry<K, V> entry : that.entrySet()) {
