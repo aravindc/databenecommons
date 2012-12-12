@@ -49,6 +49,7 @@ public class ClassCache {
 	private static final Logger logger = LoggerFactory.getLogger(ClassCache.class); 
 	
     private Map<String, Class<?>> classes;
+	private Set<String> noClasses = new HashSet<String>(1000);
 	private Set<String> packages;
 	
     public ClassCache() {
@@ -73,13 +74,16 @@ public class ClassCache {
 		Class<?> result = classes.get(name);
 		if (result != null)
 			return result;
-		try {
-			result = BeanUtil.forName(name);
-			classes.put(result.getSimpleName(), result);
-			return result;
-		} catch (ConfigurationError e) {
-			if (logger.isDebugEnabled())
-				logger.debug("class not found: " + name);
+		if (!noClasses.contains(name)) {
+			try {
+				result = BeanUtil.forName(name);
+				classes.put(result.getSimpleName(), result);
+				return result;
+			} catch (ConfigurationError e) {
+				noClasses.add(name);
+				if (logger.isDebugEnabled())
+					logger.debug("class not found: " + name);
+			}
 		}
 		for (String pkg : packages) {
 			try {
