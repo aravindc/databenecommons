@@ -86,13 +86,17 @@ public class ClassCache {
 			}
 		}
 		for (String pkg : packages) {
-			try {
-				result = BeanUtil.forName(pkg + '.' + name);
-				classes.put(result.getSimpleName(), result);
-				return result;
-			} catch (ConfigurationError e) {
-				if (logger.isDebugEnabled())
-					logger.debug("class not found: " + name);
+			String fqnTrial = pkg + '.' + name;
+			if (!noClasses.contains(fqnTrial)) {
+				try {
+					result = BeanUtil.forName(fqnTrial);
+					classes.put(result.getSimpleName(), result);
+					return result;
+				} catch (ConfigurationError e) {
+					noClasses.add(fqnTrial);
+					if (logger.isDebugEnabled())
+						logger.debug("class not found: " + name);
+				}
 			}
 		}
 		throw new ConfigurationError("Class not found: " + name);
