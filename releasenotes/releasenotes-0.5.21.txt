@@ -3,6 +3,7 @@ release notes databene commons 0.5.21
 
 Enhancements
 ------------
+- Improved performance of OrderedNameMap
 
 
 Changes
