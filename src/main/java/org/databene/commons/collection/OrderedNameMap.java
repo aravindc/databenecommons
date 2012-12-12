@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -26,9 +26,9 @@
 
 package org.databene.commons.collection;
 
+import java.util.List;
 import java.util.Map;
 
-import org.databene.commons.NullSafeComparator;
 import org.databene.commons.OrderedMap;
 
 /**
@@ -38,11 +38,12 @@ import org.databene.commons.OrderedMap;
  * @since 0.5.2
  * @author Volker Bergmann
  */
-public class OrderedNameMap<E> extends OrderedMap<String, E> {
+public class OrderedNameMap<E> extends MapProxy<OrderedMap<String, E>, String, E> {
 	
-	private static final long serialVersionUID = 3325805664883631735L;
-	
+	/** caseSupport setting which respects capitalization */
 	private static final int CASE_SENSITIVE   = 0;
+	
+	/** caseSupport setting which preserves capitalization for stored entries but  */
 	private static final int CASE_INSENSITIVE = 1;
 	private static final int CASE_IGNORANT    = 2;
 	
@@ -55,16 +56,27 @@ public class OrderedNameMap<E> extends OrderedMap<String, E> {
 	}
     
     public OrderedNameMap(int caseSupport) {
+    	super(OrderedNameMap.<E>createRealMap(caseSupport));
 		this.caseSupport = caseSupport;
 	}
 
     public OrderedNameMap(OrderedNameMap<E> that) {
+    	super(OrderedNameMap.<E>createRealMap(that.caseSupport));
 		this.caseSupport = that.caseSupport;
 		putAll(that);
 	}
 
-    public static <T> OrderedNameMap<T> createCaseSensitiveMap() {
-    	return new OrderedNameMap<T>();
+    private static <T> OrderedMap<String, T> createRealMap(int caseSupport) {
+		switch (caseSupport) {
+			case CASE_SENSITIVE:   return new CaseSensitiveOrderedNameMap<T>();
+			case CASE_INSENSITIVE: return new CaseInsensitiveOrderedNameMap<T>();
+			case CASE_IGNORANT:    return new CaseIgnorantOrderedNameMap<T>();
+			default: throw new IllegalArgumentException("Illegal caseSupport setting: " + caseSupport);
+		}
+	}
+
+	public static <T> OrderedNameMap<T> createCaseSensitiveMap() {
+    	return new OrderedNameMap<T>(CASE_SENSITIVE);
     }
 
     public static <T> OrderedNameMap<T> createCaseInsensitiveMap() {
@@ -75,74 +87,17 @@ public class OrderedNameMap<E> extends OrderedMap<String, E> {
     	return new OrderedNameMap<T>(CASE_IGNORANT);
     }
 
-    // Map interface implementation ------------------------------------------------------------------------------------
+	public Map.Entry<String, E> getEntry(String key) {
+		return realMap.getEntry(key);
+    }
+
+    public boolean equalsIgnoreOrder(Map<String, E> that) {
+		return realMap.equalsIgnoreOrder(that);
+    }
     
 	@Override
-	public boolean containsKey(Object key) {
-        return containsKey((String) key);
-    }
-
-	public boolean containsKey(String key) {
-        boolean result = super.containsKey(normalizeKey(key));
-        if (result || caseSupport == CASE_SENSITIVE)
-        	return result;
-        for (String tmp : super.keySet())
-        	if (tmp.equalsIgnoreCase(key))
-        		return true;
-		return result;
-    }
-
-	@Override
-	public E get(Object key) {
-		return get((String) key);
+	public List<E> values() {
+		return realMap.values();
 	}
 	
-	public E get(String key) {
-        E result = super.get(normalizeKey(key));
-        if (result != null || caseSupport == CASE_SENSITIVE)
-        	return result;
-        for (Map.Entry<String, E> entry : super.entrySet()) {
-	        String tmp = entry.getKey();
-	        if ((tmp == null && key == null) || (tmp != null && tmp.equalsIgnoreCase(key)))
-        		return entry.getValue();
-        }
-		return null;
-    }
-
-	public Map.Entry<String, E> getEntry(String key) {
-        String normalizedKey = normalizeKey(key);
-		E value = super.get(normalizedKey);
-        if (value != null || caseSupport == CASE_SENSITIVE)
-        	return new MapEntry<String, E>((caseSupport == CASE_IGNORANT ? normalizedKey : key), value);
-        for (Map.Entry<String, E> entry : super.entrySet()) {
-	        String tmp = entry.getKey();
-	        if ((tmp == null && key == null) || (tmp != null && tmp.equalsIgnoreCase(key))) {
-				String resultKey = caseSupport == CASE_IGNORANT ? normalizedKey : entry.getKey();
-				return new MapEntry<String, E>(resultKey, entry.getValue());
-			}
-        }
-		return null;
-    }
-
-    @Override
-    public E put(String key, E value) {
-        return super.put(normalizeKey(key), value);
-    }
-
-    public E remove(String key) {
-        E result = super.remove(normalizeKey(key));
-        if (result != null || caseSupport != CASE_INSENSITIVE)
-        	return result;
-        for (Map.Entry<String, E> entry : super.entrySet())
-        	if (NullSafeComparator.equals(entry.getKey(), key))
-        		return super.remove(entry.getKey());
-        return null;
-    }
-
-    // private helpers -------------------------------------------------------------------------------------------------
-    
-    private String normalizeKey(String key) {
-		return (caseSupport == CASE_IGNORANT && key != null ? key.toLowerCase() : key);
-	}
-    
 }
