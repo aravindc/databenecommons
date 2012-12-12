@@ -49,8 +49,8 @@ public class ClassCache {
 	private static final Logger logger = LoggerFactory.getLogger(ClassCache.class); 
 	
     private Map<String, Class<?>> classes;
-	private Set<String> noClasses = new HashSet<String>(1000);
 	private Set<String> packages;
+	private Set<String> nonClassNames = new HashSet<String>(1000);
 	
     public ClassCache() {
 		classes = new HashMap<String, Class<?>>();
@@ -74,26 +74,26 @@ public class ClassCache {
 		Class<?> result = classes.get(name);
 		if (result != null)
 			return result;
-		if (!noClasses.contains(name)) {
+		if (!nonClassNames.contains(name)) {
 			try {
 				result = BeanUtil.forName(name);
 				classes.put(result.getSimpleName(), result);
 				return result;
 			} catch (ConfigurationError e) {
-				noClasses.add(name);
+				nonClassNames.add(name);
 				if (logger.isDebugEnabled())
 					logger.debug("class not found: " + name);
 			}
 		}
 		for (String pkg : packages) {
 			String fqnTrial = pkg + '.' + name;
-			if (!noClasses.contains(fqnTrial)) {
+			if (!nonClassNames.contains(fqnTrial)) {
 				try {
 					result = BeanUtil.forName(fqnTrial);
 					classes.put(result.getSimpleName(), result);
 					return result;
 				} catch (ConfigurationError e) {
-					noClasses.add(fqnTrial);
+					nonClassNames.add(fqnTrial);
 					if (logger.isDebugEnabled())
 						logger.debug("class not found: " + name);
 				}
