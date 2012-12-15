@@ -46,7 +46,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ClassCache {
 	
-	private static final Logger logger = LoggerFactory.getLogger(ClassCache.class); 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ClassCache.class); 
 	
     private Map<String, Class<?>> classes;
 	private Set<String> packages;
@@ -81,8 +81,7 @@ public class ClassCache {
 				return result;
 			} catch (ConfigurationError e) {
 				nonClassNames.add(name);
-				if (logger.isDebugEnabled())
-					logger.debug("class not found: " + name);
+				LOGGER.debug("class not found: {}", name);
 			}
 		}
 		for (String pkg : packages) {
@@ -94,8 +93,7 @@ public class ClassCache {
 					return result;
 				} catch (ConfigurationError e) {
 					nonClassNames.add(fqnTrial);
-					if (logger.isDebugEnabled())
-						logger.debug("class not found: " + name);
+					LOGGER.debug("class not found: {}", name);
 				}
 			}
 		}
