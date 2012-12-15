@@ -58,6 +58,4 @@ public abstract class AbstractConverterTest {
 	    }
     }
 	
-	// TODO v0.5.x add further common test features, e.g. multithreaded tests for predefined samples
-
 }
