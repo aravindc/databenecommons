@@ -32,6 +32,7 @@ import org.databene.commons.BeanUtil;
 import org.databene.commons.ConfigurationError;
 import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
+import org.databene.commons.LoggerEscalator;
 import org.databene.commons.StringUtil;
 
 /**
@@ -39,14 +40,17 @@ import org.databene.commons.StringUtil;
  * Created: 15.03.2008 12:49:10
  * @since 0.4.0
  * @author Volker Bergmann
+ * @deprecated The class is obsolete and will be removed soon
  */
+@Deprecated
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class String2ConverterConverter extends ThreadSafeConverter<String, Converter> {
-
-	// TODO v0.5.x resolve scripts
 	
+	private static LoggerEscalator escalator = new LoggerEscalator();
+
     public String2ConverterConverter() {
         super(String.class, Converter.class);
+        escalator.escalate("Class is deprecated: " + getClass(), this, null);
     }
 
 	@Override
