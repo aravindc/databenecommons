@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -21,10 +21,12 @@
 
 package org.databene.commons.time;
 
+import java.io.File;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 import org.databene.commons.ConversionException;
+import org.databene.commons.converter.PropertyResourceBundleConverter;
 import org.databene.commons.converter.ThreadSafeConverter;
 
 /**
@@ -40,26 +42,32 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 	private static final long HOUR_MILLIS   = 60 * MINUTE_MILLIS;
 	private static final long DAY_MILLIS    = 24 * HOUR_MILLIS;
 	
-	private char decimalSeparator;
-	private String space;
+	private static final String UNIT_BUNDLE_NAME = ElapsedTimeFormatter.class.getPackage().getName().replace(".", File.separator) + File.separator + "timeUnits";
+	private final PropertyResourceBundleConverter unitConverter;
+	
+	private final char decimalSeparator;
+	private final boolean localUnits;
+	private final String space;
 	
 	private static final ElapsedTimeFormatter DEFAULT_INSTANCE = new ElapsedTimeFormatter();
 
 	public ElapsedTimeFormatter() {
-		this(Locale.getDefault(), " ");
+		this(Locale.getDefault(), " ", true);
 	}
 	
-	public ElapsedTimeFormatter(Locale locale, String space) {
+	public ElapsedTimeFormatter(Locale locale, String space, boolean localUnits) {
 		super(Long.class, String.class);
 		DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(locale);
 		this.decimalSeparator = symbols.getDecimalSeparator();
 		this.space = space;
+		this.localUnits = localUnits;
+		this.unitConverter = new PropertyResourceBundleConverter(UNIT_BUNDLE_NAME, locale);
 	}
 
 	@Override
 	public String convert(Long millis) throws ConversionException {
 		if (millis < SECOND_MILLIS)
-			return millis + space + "ms";
+			return render(millis, 1, "ms");
 		else if (millis < MINUTE_MILLIS)
 			return render(millis, SECOND_MILLIS, "s");
 		else if (millis < HOUR_MILLIS)
@@ -67,7 +75,7 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 		else if (millis < DAY_MILLIS)
 			return render(millis, HOUR_MILLIS, "h");
 		else
-			return render(millis, DAY_MILLIS, "d"); // TODO v0.5.x I18N OF UOM
+			return render(millis, DAY_MILLIS, "d");
 	}
 	
 	public static String format(long millis) {
@@ -76,7 +84,7 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 	
 	// private helper --------------------------------------------------------------------------------------------------
 
-	private String render(long millis, long base, String unit) {
+	private String render(long millis, long base, String unitCode) {
 		long prefix = millis / base;
 		long postfix = (millis - prefix * base + base / 20) * 10 / base;
 		if (postfix >= 10) {
@@ -87,7 +95,9 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 		builder.append(prefix);
 		if (postfix != 0 && prefix / 10 == 0)
 			builder.append(decimalSeparator).append(postfix);
-		builder.append(space).append(unit);
+		builder.append(space);
+		String unit = (localUnits ? unitConverter.convert(unitCode) : unitCode);
+		builder.append(unit);
 		return builder.toString();
 	}
 
