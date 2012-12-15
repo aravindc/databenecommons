@@ -765,7 +765,7 @@ public final class StringUtil {
 	    return text.substring(start, end);
     }
 
-	public static List<String> splitLines(String text) { // TODO v0.5.x this leaves out empty lines in between
+	public static List<String> splitLines(String text) {
 		if (text == null)
 			return null;
 	    List<String> lines = new ArrayList<String>();
@@ -776,11 +776,9 @@ public final class StringUtil {
 	    for (int i = 0; i < text.length(); i++) {
 	    	char c = text.charAt(i);
 	    	if (isLineSeparatorChar(c)) {
-	    		if (mode == TEXT_MODE) {
-	    			lines.add(builder.toString());
-	    			builder.delete(0, builder.length());
-	    			mode = LF_MODE;
-	    		}
+    			lines.add(builder.toString());
+    			builder.delete(0, builder.length());
+    			mode = LF_MODE;
 	    	} else {
 	    		if (mode == LF_MODE)
 	    			mode = TEXT_MODE;
