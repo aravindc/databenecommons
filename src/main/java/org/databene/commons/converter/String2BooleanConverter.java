@@ -18,9 +18,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+
 package org.databene.commons.converter;
 
-import org.databene.commons.BeanUtil;
 import org.databene.commons.ConversionException;
 import org.databene.commons.StringUtil;
 
@@ -30,18 +30,23 @@ import org.databene.commons.StringUtil;
  * @since 0.5.0
  * @author Volker Bergmann
  */
-public class String2BooleanConverter extends ConstructorInvoker<String, Boolean> {
+public class String2BooleanConverter extends ThreadSafeConverter<String, Boolean> {
 
-	public String2BooleanConverter(Class<String> String) {
-	    super(String.class, BeanUtil.findConstructor(Boolean.class, String.class));
+	public String2BooleanConverter() {
+	    super(String.class, Boolean.class);
     }
 
 	@Override
 	public Boolean convert(String sourceValue) throws ConversionException {
 	    if (StringUtil.isEmpty(sourceValue))
 	    	return null;
+	    sourceValue = sourceValue.trim();
+	    if ("true".equalsIgnoreCase(sourceValue))
+	    	return true;
+	    else if ("false".equalsIgnoreCase(sourceValue))
+	    	return false;
 	    else
-	    	return super.convert(sourceValue);
+	    	throw new IllegalArgumentException("Not a boolean value: " + sourceValue);
 	}
 	
 }
