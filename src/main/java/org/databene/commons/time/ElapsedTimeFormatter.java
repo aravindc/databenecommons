@@ -43,11 +43,12 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 	private static final long DAY_MILLIS    = 24 * HOUR_MILLIS;
 	
 	private static final String UNIT_BUNDLE_NAME = ElapsedTimeFormatter.class.getPackage().getName().replace(".", File.separator) + File.separator + "timeUnits";
-	private final PropertyResourceBundleConverter unitConverter;
 	
 	private final char decimalSeparator;
-	private final boolean localUnits;
 	private final String space;
+	private final boolean localUnits;
+	
+	private final PropertyResourceBundleConverter unitConverter;
 	
 	private static final ElapsedTimeFormatter DEFAULT_INSTANCE = new ElapsedTimeFormatter();
 
