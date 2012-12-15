@@ -304,4 +304,15 @@ public final class FileUtil {
 		}
 	}
 	
+	/** Creates a {@link File} object from a path string, resolving Unix-style user home folder references. */
+	public static File newFile(String path) {
+		if (!SystemInfo.isWindows()) {
+			if (path.startsWith("~/"))
+				return new File(SystemInfo.getUserHome(), path.substring(2));
+			else if (path.startsWith("~"))
+				return new File(new File(SystemInfo.getUserHome()).getParentFile(), path.substring(1));
+		}
+		return new File(path);
+	}
+	
 }
