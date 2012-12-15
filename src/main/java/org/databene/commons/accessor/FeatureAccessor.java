@@ -48,7 +48,7 @@ import java.util.Map;
  */
 public class FeatureAccessor<C, V> implements Accessor<C, V> {
     
-    private static Logger logger = LoggerFactory.getLogger(FeatureAccessor.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(FeatureAccessor.class);
     
     private static Escalator escalator = new LoggerEscalator();
 
@@ -61,8 +61,7 @@ public class FeatureAccessor<C, V> implements Accessor<C, V> {
     }
     
     public FeatureAccessor(String featureName, boolean strict) {
-        if (logger.isDebugEnabled())
-            logger.debug("FeatureAccessor(" + featureName + ", " + strict + ")");
+        LOGGER.debug("FeatureAccessor({}, {})", featureName, strict);
         this.featureName = featureName;
     }
     
@@ -85,8 +84,7 @@ public class FeatureAccessor<C, V> implements Accessor<C, V> {
     // static convenience methods --------------------------------------------------------------------------------------
 
     public static Object getValue(Object target, String featureName) {
-        if (logger.isDebugEnabled())
-            logger.debug("getValue(" + target + ", " + featureName + ")");
+        LOGGER.debug("getValue({}, {})", target, featureName);
         return getValue(target, featureName, true);
     }
 
