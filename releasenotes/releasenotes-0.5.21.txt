@@ -4,12 +4,17 @@ release notes databene commons 0.5.21
 Enhancements
 ------------
 - Improved performance of OrderedNameMap
+- New method ExceptionUtil.containsException()
+- New method FileUtil.newFile() which resolves paths like ~/data.txt
+- ElapsedTimeFormatter supports internationalization of time units
 
 
 Changes
 -------
+- Deprecated class String2ConverterConverter
 
   
 Bug Fixes
 ---------
 - DependencyModel fails on self-referencing nodes with clients
+- StringUtil.splitLine() ignores empty lines in between
