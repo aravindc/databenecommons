@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,4 +42,15 @@ public class ExceptionUtil {
 			result = result.getCause();
 		return result;
 	}
+	
+	/** Scans recursively through an Exception and its 'cause' chain and tells if a given Exception type is contained. */
+	public static boolean containsException(Class<? extends Throwable> exceptionType, Throwable exception) {
+		do {
+			if (exceptionType.isAssignableFrom(exception.getClass()))
+				return true;
+			exception = exception.getCause();
+		} while (exception != null);
+		return false;
+	}
+	
 }
