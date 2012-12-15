@@ -133,6 +133,19 @@ public class FileUtilTest {
 		FileUtil.fileOfLimitedPathLength(root, "test", ".xml", 10, false);
 	}
 	
+	@Test
+	public void testNewFile() {
+		// file relative to working dir
+		assertEquals(new File(SystemInfo.getCurrentDir(), "x").getAbsoluteFile(), FileUtil.newFile("x").getAbsoluteFile());
+		if (!SystemInfo.isWindows()) {
+			// file in user home
+			assertEquals(new File(SystemInfo.getUserHome(), "x").getAbsolutePath(), FileUtil.newFile("~/x").getAbsolutePath());
+			// file in other user's home
+			File otherUsersHome = new File(new File(SystemInfo.getUserHome()).getParentFile(), "qawsed");
+			assertEquals(new File(otherUsersHome, "x").getAbsolutePath(), FileUtil.newFile("~qawsed/x").getAbsolutePath());
+		}
+	}
+	
 	// test helpers ----------------------------------------------------------------------------------------------------
 
 	private void check(String regex, boolean acceptingFiles, boolean acceptingFolders, boolean recursive, 
