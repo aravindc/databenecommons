@@ -12,6 +12,7 @@ Enhancements
 Changes
 -------
 - Deprecated class String2ConverterConverter
+- Made String2BooleanConverter more restrictive
 
   
 Bug Fixes
