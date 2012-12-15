@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -37,7 +37,7 @@ public class ElapsedTimeFormatterTest {
 
 	@Test
 	public void testGerman() {
-		ElapsedTimeFormatter format = new ElapsedTimeFormatter(Locale.GERMAN, " ");
+		ElapsedTimeFormatter format = new ElapsedTimeFormatter(Locale.GERMAN, " ", true);
 		assertEquals("123 ms", format.convert(123L));
 		assertEquals("1,2 s",  format.convert(1234L));
 		assertEquals("1,3 s",  format.convert(1256L));
@@ -45,22 +45,31 @@ public class ElapsedTimeFormatterTest {
 		assertEquals("12 s",   format.convert(12345L));
 		assertEquals("2,1 min",  format.convert(123456L));
 		assertEquals("3 min",    format.convert(180000L));
-		assertEquals("3,4 h",  format.convert(12345678L));
+		assertEquals("3,4 Std",  format.convert(12345678L));
 		assertEquals("1,4 d",  format.convert(123456789L));
 	}
 	
 	@Test
 	public void testUS() {
-		ElapsedTimeFormatter format = new ElapsedTimeFormatter(Locale.US, " ");
+		ElapsedTimeFormatter format = new ElapsedTimeFormatter(Locale.US, " ", true);
 		assertEquals("123 ms", format.convert(123L));
 		assertEquals("1.2 s",  format.convert(1234L));
+		assertEquals("3.4 h",  format.convert(12345678L));
+		assertEquals("1.4 d",  format.convert(123456789L));
 	}
 	
 	@Test
 	public void testHtml() {
-		ElapsedTimeFormatter format = new ElapsedTimeFormatter(Locale.US, "&nbsp;");
+		ElapsedTimeFormatter format = new ElapsedTimeFormatter(Locale.US, "&nbsp;", true);
 		assertEquals("123&nbsp;ms", format.convert(123L));
 		assertEquals("1.2&nbsp;s",  format.convert(1234L));
+	}
+	
+	@Test
+	public void testGermanWithInternationalUnits() {
+		ElapsedTimeFormatter format = new ElapsedTimeFormatter(Locale.GERMAN, " ", false);
+		assertEquals("123 ms", format.convert(123L));
+		assertEquals("3,4 h",  format.convert(12345678L));
 	}
 	
 }
