@@ -74,8 +74,7 @@ public class SwingTreeModelAdapter<E> extends AbstractTreeModel {
 
 	@Override
 	public void valueForPathChanged(TreePath path, Object newValue) {
-		// TODO implement TreeModel.valueForPathChanged
-		throw new UnsupportedOperationException("TreeModel.valueForPathChanged() is not implemented");
+		// nothing to do: org.databene.commons.TreeModel does not support changing of path values
 	}
 
 }
