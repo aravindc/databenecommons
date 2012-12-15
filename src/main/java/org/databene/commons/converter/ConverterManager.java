@@ -194,7 +194,7 @@ public class ConverterManager implements ContextAware, Resettable {
         if (targetType.getEnumConstants() != null)
             return new String2EnumConverter(targetType);
         else if (targetType == Boolean.class)
-            return new String2BooleanConverter(targetType);
+            return new String2BooleanConverter();
         else if (Number.class.isAssignableFrom(targetType)) {
         	if (targetType != Number.class)
         		return new String2NumberConverter((Class<Number>) targetType);
