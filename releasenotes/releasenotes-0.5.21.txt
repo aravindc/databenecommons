@@ -13,6 +13,8 @@ Changes
 -------
 - Deprecated class String2ConverterConverter
 - Made String2BooleanConverter more restrictive
+- ClassCache: Allowing import overrides
+- Made ContextStack an interface, moved former implementation to SimpleContextStack and removed locks
 
   
 Bug Fixes
