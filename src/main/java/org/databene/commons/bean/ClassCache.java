@@ -26,8 +26,10 @@
 
 package org.databene.commons.bean;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -49,12 +51,12 @@ public class ClassCache {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClassCache.class); 
 	
     private Map<String, Class<?>> classes;
-	private Set<String> packages;
+	private List<String> packages;
 	private Set<String> nonClassNames = new HashSet<String>(1000);
 	
     public ClassCache() {
 		classes = new HashMap<String, Class<?>>();
-		packages = new HashSet<String>();
+		packages = new ArrayList<String>();
 		importPackage("java.lang");
 	}
 
