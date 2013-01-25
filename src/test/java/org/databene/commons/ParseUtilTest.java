@@ -111,11 +111,11 @@ public class ParseUtilTest {
 		assertTrue(ParseUtil.parseBoolean("true"));
 		assertTrue(ParseUtil.parseBoolean("TRUE"));
 		assertTrue(ParseUtil.parseBoolean("True"));
-		assertTrue(ParseUtil.parseBoolean(" True "));
+		assertTrue(ParseUtil.parseBoolean(" True ", true));
 		assertFalse(ParseUtil.parseBoolean("false"));
 		assertFalse(ParseUtil.parseBoolean("FALSE"));
 		assertFalse(ParseUtil.parseBoolean("False"));
-		assertFalse(ParseUtil.parseBoolean(" False "));
+		assertFalse(ParseUtil.parseBoolean(" False ", true));
 	}
     
 	@Test(expected = SyntaxError.class)
@@ -126,6 +126,11 @@ public class ParseUtilTest {
 	@Test(expected = SyntaxError.class)
 	public void testParseBoolean_empty() {
 		assertNull(ParseUtil.parseBoolean("  "));
+	}
+    
+	@Test(expected = SyntaxError.class)
+	public void testParseBoolean_unaccepted_whitespace() {
+		assertNull(ParseUtil.parseBoolean(" true "));
 	}
     
 	// implementation --------------------------------------------------------------------------------------------------
