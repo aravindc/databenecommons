@@ -254,6 +254,16 @@ public final class BeanUtil {
         return Collection.class.isAssignableFrom(type);
     }
 
+	public static Class<?>[] getTypes(Object... objects) {
+		Class<?>[] result = null;
+        if (objects != null) {
+        	result = new Class[objects.length];
+            for (int i = 0; i < objects.length; i++)
+                result[i] = (objects[i] != null ? objects[i].getClass() : null);
+        }
+		return result;
+	}
+
     // field operations ------------------------------------------------------------------------------------------------
 
     /**
@@ -626,12 +636,7 @@ public final class BeanUtil {
 	public static Object invoke(boolean strict, Object target, String methodName, Object ... args) {
     	if (target == null)
             throw new IllegalArgumentException("target is null");
-        Class[] argTypes = null;
-        if (args != null) {
-        	argTypes = new Class[args.length];
-            for (int i = 0; i < args.length; i++)
-                argTypes[i] = (args[i] != null ? args[i].getClass() : null);
-        }
+        Class[] argTypes = getTypes(args);
         Method method;
         if (target instanceof Class)
         	method = getMethod((Class) target, methodName, argTypes);
