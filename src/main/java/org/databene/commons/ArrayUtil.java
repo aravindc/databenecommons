@@ -313,6 +313,18 @@ public final class ArrayUtil {
         return (T[]) Array.newInstance(componentType, length);
     }
 
+    public static <T> T[] append(T[] newValues, T[] array) {
+        if (array == null) {
+            return newValues.clone();
+        } else {
+            T[] newArray = newInstance(componentType(array), array.length + newValues.length);
+            System.arraycopy(array, 0, newArray, 0, array.length);
+            for (int i = 0; i < newValues.length; i++)
+            	newArray[array.length + i] = newValues[i];
+            return newArray;
+        }
+    }
+
     @SuppressWarnings("unchecked")
     public static <T> T[] append(T value, T[] array) {
         if (array == null) {
