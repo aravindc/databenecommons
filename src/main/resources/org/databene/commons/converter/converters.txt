@@ -7,6 +7,7 @@ org.databene.commons.converter.Locale2StringConverter
 org.databene.commons.converter.String2ClassConverter
 org.databene.commons.converter.Class2StringConverter
 org.databene.commons.converter.Date2TimestampConverter
+org.databene.commons.converter.Date2TimeConverter
 org.databene.commons.converter.Timestamp2DateConverter
 org.databene.commons.converter.Date2CalendarConverter
 org.databene.commons.converter.Calendar2DateConverter
