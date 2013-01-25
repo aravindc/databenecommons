@@ -172,26 +172,31 @@ public final class TimeUtil {
     private static DateFormat mdf = new SimpleDateFormat("MM/yy");
 
     public static String formatMonth(Calendar calendar) {
-//        return formatDate(calendar.getTime());
         return mdf.format(calendar.getTime());
     }
 
     public static int year(Date date) {
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        return calendar.get(Calendar.YEAR);
+        return dateField(date, Calendar.YEAR);
     }
 
     public static int month(Date date) {
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        return calendar.get(Calendar.MONTH);
+        return dateField(date, Calendar.MONTH);
     }
 
     public static int dayOfMonth(Date date) {
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        return calendar.get(Calendar.DAY_OF_MONTH) + 1;
+        return dateField(date, Calendar.DAY_OF_MONTH);
+    }
+
+    public static int hour(Date date) {
+        return dateField(date, Calendar.HOUR_OF_DAY);
+    }
+
+    public static int minute(Date date) {
+        return dateField(date, Calendar.MINUTE);
+    }
+
+    public static int second(Date date) {
+        return dateField(date, Calendar.SECOND);
     }
 
     public static Date lastDayOfMonth(Date date) {
@@ -400,6 +405,12 @@ public final class TimeUtil {
     }
     
     // private helpers -------------------------------------------------------------------------------------------------
+
+	private static int dateField(Date date, int field) {
+		Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+		return calendar.get(field);
+	}
 
 	private static String formatSimplified(int hours, int minutes, int seconds, int millis, boolean includeMillies) {
     	StringBuilder builder = new StringBuilder();
