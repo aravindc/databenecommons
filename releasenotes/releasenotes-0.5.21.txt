@@ -3,10 +3,14 @@ release notes databene commons 0.5.21
 
 Enhancements
 ------------
+- Created Date2TimeConverter
 - Improved performance of OrderedNameMap
 - New method ExceptionUtil.containsException()
 - New method FileUtil.newFile() which resolves paths like ~/data.txt
 - ElapsedTimeFormatter supports internationalization of time units
+- new method ArrayUtil.append(T[] newValues, T[] array)
+- new method BeanUtil.getTypes(Object... objects) -> Class<?>[]
+- New TimeUtil methods: hour(Date), minute(Date), second(Date) 
 
 
 Changes
