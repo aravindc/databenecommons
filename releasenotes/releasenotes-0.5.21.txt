@@ -1,6 +1,7 @@
 release notes databene commons 0.5.21
 -------------------------------------
 
+
 Enhancements
 ------------
 - Created Date2TimeConverter
@@ -11,6 +12,7 @@ Enhancements
 - new method ArrayUtil.append(T[] newValues, T[] array)
 - new method BeanUtil.getTypes(Object... objects) -> Class<?>[]
 - New TimeUtil methods: hour(Date), minute(Date), second(Date) 
+- New method: ParseUtil.parseBoolean(String s)
 
 
 Changes
