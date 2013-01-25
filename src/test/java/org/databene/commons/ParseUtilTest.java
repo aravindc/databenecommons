@@ -104,6 +104,29 @@ public class ParseUtilTest {
     	checkHexChars("0123456789abcdefABCDEF");
     	checkNonHexChars("gG!%-.");
     }
+	
+	@Test
+	public void testParseBoolean() {
+		assertNull(ParseUtil.parseBoolean(null));
+		assertTrue(ParseUtil.parseBoolean("true"));
+		assertTrue(ParseUtil.parseBoolean("TRUE"));
+		assertTrue(ParseUtil.parseBoolean("True"));
+		assertTrue(ParseUtil.parseBoolean(" True "));
+		assertFalse(ParseUtil.parseBoolean("false"));
+		assertFalse(ParseUtil.parseBoolean("FALSE"));
+		assertFalse(ParseUtil.parseBoolean("False"));
+		assertFalse(ParseUtil.parseBoolean(" False "));
+	}
+    
+	@Test(expected = SyntaxError.class)
+	public void testParseBoolean_illegal() {
+		assertNull(ParseUtil.parseBoolean("nix"));
+	}
+    
+	@Test(expected = SyntaxError.class)
+	public void testParseBoolean_empty() {
+		assertNull(ParseUtil.parseBoolean("  "));
+	}
     
 	// implementation --------------------------------------------------------------------------------------------------
 

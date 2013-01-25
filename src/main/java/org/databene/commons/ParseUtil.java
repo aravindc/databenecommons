@@ -265,6 +265,18 @@ public final class ParseUtil {
 			pos.setIndex(i + 1);
 	}
 
+    public static Boolean parseBoolean(String s) {
+    	if (s == null)
+    		return null;
+    	s = s.trim();
+    	if ("true".equalsIgnoreCase(s))
+    		return true;
+    	else if ("false".equalsIgnoreCase(s))
+    		return false;
+    	else
+    		throw new SyntaxError("Not a boolean value", s);
+    }
+
 	// private helpers -------------------------------------------------------------------------------------------------
 
     private static void addPart(String partString, List<Object> parts, Boolean numMode) {
