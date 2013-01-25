@@ -266,9 +266,14 @@ public final class ParseUtil {
 	}
 
     public static Boolean parseBoolean(String s) {
+    	return parseBoolean(s, false);
+    }
+
+    public static Boolean parseBoolean(String s, boolean acceptWhitespace) {
     	if (s == null)
     		return null;
-    	s = s.trim();
+    	if (acceptWhitespace)
+    		s = s.trim();
     	if ("true".equalsIgnoreCase(s))
     		return true;
     	else if ("false".equalsIgnoreCase(s))
