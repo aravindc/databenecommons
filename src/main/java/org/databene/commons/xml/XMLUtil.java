@@ -56,6 +56,7 @@ import org.databene.commons.ErrorHandler;
 import org.databene.commons.Filter;
 import org.databene.commons.IOUtil;
 import org.databene.commons.Level;
+import org.databene.commons.ParseUtil;
 import org.databene.commons.StringUtil;
 import org.databene.commons.SyntaxError;
 import org.databene.commons.SystemInfo;
@@ -336,7 +337,7 @@ public class XMLUtil {
 		String stringValue = element.getAttribute(attributeName);
 		if (StringUtil.isEmpty(stringValue) && required)
 			throw new SyntaxError("Missing attribute '" + attributeName + "'", XMLUtil.format(element));
-		return Boolean.parseBoolean(stringValue);
+		return ParseUtil.parseBoolean(stringValue);
 	}
 
 	public static boolean getBooleanAttributeWithDefault(Element element, String attributeName, boolean defaultValue) {
