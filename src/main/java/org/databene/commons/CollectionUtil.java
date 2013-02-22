@@ -53,6 +53,13 @@ public final class CollectionUtil {
         return result;
     }
 
+    public static <P, C extends P> List<P> toListOfType(Class<P> type, C ... array) {
+        List<P> result = new ArrayList<P>(array.length);
+        for (C item : array)
+            result.add(item);
+        return result;
+    }
+
     /**
      * Creates a HashSet filled with the specified elements
      * @param elements the content of the Set
