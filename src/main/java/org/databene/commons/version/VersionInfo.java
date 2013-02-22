@@ -26,6 +26,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.validation.constraints.NotNull;
+
+import org.databene.commons.Assert;
 import org.databene.commons.DeploymentError;
 import org.databene.commons.IOUtil;
 import org.databene.commons.ProgrammerError;
@@ -44,10 +47,10 @@ import org.w3c.dom.Element;
  */
 public class VersionInfo {
 
-	private static final String VERSION_SUFFIX = "_version";
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(VersionInfo.class);
 	
+	private static final String VERSION_SUFFIX = "_version";
+
 	private static final Map<String, VersionInfo> INSTANCES = new HashMap<String, VersionInfo>();
 	
 	private static final String VERSION_FILE_PATTERN = "org/databene/{0}/version.properties";
@@ -60,7 +63,9 @@ public class VersionInfo {
 
 	private String buildNumber;
 
-	public static VersionInfo getInfo(String name) {
+	public static VersionInfo getInfo(@NotNull String name) {
+		Assert.notNull(name, "name");
+		name = normalizeName(name);
 		VersionInfo result = INSTANCES.get(name);
 		if (result == null) {
 			result = new VersionInfo(name);
@@ -70,7 +75,8 @@ public class VersionInfo {
 	}
 
 	private VersionInfo(String name) {
-		this.name = name;
+		Assert.notNull(name, "name");
+		this.name = normalizeName(name);
 		this.dependencies = new HashMap<String, String>();
 		readVersionInfo(this);
 	}
@@ -105,25 +111,28 @@ public class VersionInfo {
 						"but found " + library + ' ' + actualVersion);
 		}
 	}
+	
+	
+	
+	// private helper methods ------------------------------------------------------------------------------------------
+
+	private static String normalizeName(String name) {
+		if (name.contains("."))
+			name = name.replace('.', '/');
+		return name;
+	}
 
 	private static void readVersionInfo(VersionInfo versionInfo) {
 		versionInfo.version = "<unknown version>";
 	    try {
-	    	String versionFileName = VERSION_FILE_PATTERN.replace("{0}", versionInfo.name);
-	        if (IOUtil.isURIAvailable(versionFileName)) {			// This works in Maven, but...
-	    		Map<String, String> props = IOUtil.readProperties(versionFileName);
-	    		for (Entry<String, String> dependency : props.entrySet()) {
-	    			String dependencyName = dependency.getKey();
-					String dependencyVersion = dependency.getValue();
-					if ("build_number".equals(dependencyName))
-	    				versionInfo.buildNumber = dependencyVersion;
-	    			else
-	    				addDependency(dependencyName, dependencyVersion, versionInfo);
-	    		}
-	    		versionInfo.version = props.get(versionInfo.name + VERSION_SUFFIX);
-	        } else {
+			String versionFileName;
+	    	if (versionInfo.name.contains("/"))
+	    		versionFileName = versionInfo.name + "/version.properties";
+	    	else
+	    		versionFileName = VERSION_FILE_PATTERN.replace("{0}", versionInfo.name);
+	    	boolean ok = readVersionInfo(versionInfo, versionFileName);
+	        if (!ok)
 	        	LOGGER.warn("Version number file '" + versionFileName + "' not found, falling back to POM");
-	        }
 	        if (versionInfo.version.startsWith("${") || versionInfo.version.startsWith("<unknown")) { // ...in Eclipse no filtering is applied,...
 	        	VersionInfo.development = true;
 	        	if (versionInfo.version.startsWith("${"))
@@ -147,6 +156,23 @@ public class VersionInfo {
         }
     }
 
+	private static boolean readVersionInfo(VersionInfo versionInfo, String versionFileName) throws IOException {
+        if (IOUtil.isURIAvailable(versionFileName)) {
+    		Map<String, String> props = IOUtil.readProperties(versionFileName);
+    		for (Entry<String, String> dependency : props.entrySet()) {
+    			String dependencyName = dependency.getKey();
+				String dependencyVersion = dependency.getValue();
+				if ("build_number".equals(dependencyName))
+    				versionInfo.buildNumber = dependencyVersion;
+    			else
+    				addDependency(dependencyName, dependencyVersion, versionInfo);
+    		}
+    		versionInfo.version = props.get(versionInfo.name + VERSION_SUFFIX);
+    		return true;
+        } else
+        	return false;
+	}
+	
 	private static void addDependency(String dependencyName,
 			String dependencyVersion, VersionInfo versionInfo) {
 		if (!dependencyName.endsWith(VERSION_SUFFIX))
