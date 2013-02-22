@@ -86,11 +86,15 @@ public class OrderedNameMap<E> extends MapProxy<OrderedMap<String, E>, String, E
     public static <T> OrderedNameMap<T> createCaseIgnorantMap() {
     	return new OrderedNameMap<T>(CASE_IGNORANT);
     }
+    
+	public E elementAt(int index) {
+		return realMap.elementAt(index);
+    }
 
 	public Map.Entry<String, E> getEntry(String key) {
 		return realMap.getEntry(key);
     }
-
+	
     public boolean equalsIgnoreOrder(Map<String, E> that) {
 		return realMap.equalsIgnoreOrder(that);
     }
