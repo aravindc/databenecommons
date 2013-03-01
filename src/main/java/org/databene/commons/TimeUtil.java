@@ -29,6 +29,7 @@ package org.databene.commons;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.Callable;
 import java.sql.Time;
@@ -57,6 +58,10 @@ public final class TimeUtil {
         return new GregorianCalendar().get(Calendar.YEAR);
     }
 
+	public static boolean isBusinessDay(Calendar day, Locale locale) {
+		return !isWeekend(day); // TODO improve
+	}
+    
     public static boolean isWeekend(Calendar day) {
         int dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
         return (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY);
