@@ -32,9 +32,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * TODO Document class.<br/><br/>
+ * Combines several contexts to a {@link Stack}, querying recursively in the {@link #get(String)} method 
+ * until an entry is found or the stack is completely iterated.<br/><br/>
  * Created: 09.01.2013 13:06:13
- * @since TODO version
+ * @since 0.5.21
  * @author Volker Bergmann
  */
 public class SimpleContextStack implements ContextStack {
