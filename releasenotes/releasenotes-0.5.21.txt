@@ -16,6 +16,8 @@ Enhancements
 - OrderedNameMap:
   - Improved performance 
   - Added method elementAt(int index)
+- New method SwingUtil.bindKeyToAction
+- New class NullSafeFormat
 
 
 Changes
