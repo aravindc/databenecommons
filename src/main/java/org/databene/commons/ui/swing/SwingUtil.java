@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -147,4 +147,9 @@ public class SwingUtil {
 		return new Color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
 	}
 
+	public static void bindKeyToAction(int keyCode, int modifiers, Action action, JComponent component) {
+		KeyStroke redoKey = KeyStroke.getKeyStroke(keyCode, modifiers);
+		component.getInputMap().put(redoKey, action);
+	}
+	
 }
