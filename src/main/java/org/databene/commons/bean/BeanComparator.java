@@ -40,10 +40,10 @@ import java.util.Comparator;
  * @author Volker Bergmann
  * @see ComparatorFactory
  */
-public class BeanComparator implements Comparator<Object> {
+public class BeanComparator<E> implements Comparator<E> {
 
     private Comparator<Object> propertyComparator;
-	private PropertyAccessor<Object, ?> propertyAccessor;
+	private PropertyAccessor<E, ?> propertyAccessor;
 
     // constructor -----------------------------------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ public class BeanComparator implements Comparator<Object> {
     // interface -------------------------------------------------------------------------------------------------------
 
     @Override
-	public int compare(Object o1, Object o2) {
+	public int compare(E o1, E o2) {
         try {
         	Object v1 = propertyAccessor.getValue(o1);
         	Object v2 = propertyAccessor.getValue(o2);
