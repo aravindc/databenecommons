@@ -1,0 +1,15 @@
+release notes databene commons 0.5.22
+-------------------------------------
+
+
+Enhancements
+------------
+
+
+Changes
+-------
+
+  
+Bug Fixes
+---------
+- Windows issue: ConfigurationError: Resource not found: org\databene\commons\time\timeUnits.properties
