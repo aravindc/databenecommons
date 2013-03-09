@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -21,7 +21,6 @@
 
 package org.databene.commons.time;
 
-import java.io.File;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
@@ -42,7 +41,7 @@ public class ElapsedTimeFormatter extends ThreadSafeConverter<Long, String> {
 	private static final long HOUR_MILLIS   = 60 * MINUTE_MILLIS;
 	private static final long DAY_MILLIS    = 24 * HOUR_MILLIS;
 	
-	private static final String UNIT_BUNDLE_NAME = ElapsedTimeFormatter.class.getPackage().getName().replace(".", File.separator) + File.separator + "timeUnits";
+	private static final String UNIT_BUNDLE_NAME = ElapsedTimeFormatter.class.getPackage().getName() + ".timeUnits";
 	
 	private final char decimalSeparator;
 	private final String space;
