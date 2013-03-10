@@ -87,9 +87,11 @@ public class ErrorHandler {
 				case info  : logger.info( message); break;
 				case warn  : logger.warn( message); break;
 				case error : logger.error(message, t); break;
-				case fatal : logger.error(message, t);
-							 throw new RuntimeException(t);
-				case ignore: // ignore
+				case fatal : if (t instanceof RuntimeException)
+								throw (RuntimeException) t;
+							 else
+								throw new RuntimeException(t);
+				case ignore: break; // ignore
 			}
 		} else
 			handleError(message + SystemInfo.getLineSeparator() + t.toString());
