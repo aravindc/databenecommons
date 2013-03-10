@@ -189,6 +189,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.6.1</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+				<!--  
 				<executions>
 					<execution>
 						<goals>
@@ -197,6 +201,7 @@
 						</goals>
 					</execution>
 				</executions>
+				-->
 			</plugin>
         </plugins>
     </build>
