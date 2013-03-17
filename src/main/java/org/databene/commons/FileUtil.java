@@ -314,5 +314,9 @@ public final class FileUtil {
 		}
 		return new File(path);
 	}
+
+	public static boolean isXMLFile(String filePath) {
+		return filePath.toLowerCase().endsWith(".xml");
+	}
 	
 }
