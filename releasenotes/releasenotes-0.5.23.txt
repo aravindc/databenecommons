@@ -1,0 +1,17 @@
+release notes databene commons 0.5.23
+-------------------------------------
+
+
+Enhancements
+------------
+- New method MathUtil.digitCount()
+- New method FileUtil.isXMLFile()
+
+
+Changes
+-------
+- Renamed MathUtil.prefixDigits() to MathUtil.prefixDigitCount()
+
+
+Bug Fixes
+---------
