@@ -59,12 +59,19 @@ public class MathUtil {
         return value;
     }
     
-    public static int prefixDigits(double number) {
-        number = Math.abs(number);
-        if (number <= 1)
+    public static int prefixDigitCount(double number) {
+        return nonNegativeDigitCount((long) Math.abs(number));
+    }
+
+    public static int digitCount(long number) {
+        return nonNegativeDigitCount(Math.abs(number));
+    }
+
+	private static int nonNegativeDigitCount(long number) {
+		if (number <= 1)
             return 1;
         return 1 + (int) Math.log10(number);
-    }
+	}
 
 	public static int sumOfDigits(int i) {
 		int tmp = i;
