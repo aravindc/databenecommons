@@ -36,9 +36,13 @@ package org.databene.commons;
 
 public class ParseException extends RuntimeException {
 	
+	private static final long serialVersionUID = -3893735778927506664L;
+	
 	private final String parsedText;
 	private final int line;
 	private final int column;
+	
+	
 	
 	// constructors ----------------------------------------------------------------------------------------------------
 
@@ -47,10 +51,7 @@ public class ParseException extends RuntimeException {
 	}
 
 	public ParseException(String message, String parsedText, int line, int column) {
-		super(message);
-		this.parsedText = parsedText;
-		this.line = line;
-		this.column = column;
+		this(message, null, parsedText, line, column);
 	}
 	
 	public ParseException(String message, Throwable cause, String parsedText, int line, int column) {
@@ -59,6 +60,8 @@ public class ParseException extends RuntimeException {
 		this.line = line;
 		this.column = column;
 	}
+	
+	
 	
 	// properties ------------------------------------------------------------------------------------------------------
 
@@ -73,7 +76,7 @@ public class ParseException extends RuntimeException {
 	public String getParsedText() {
     	return parsedText;
     }
-
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder(getMessage());
@@ -85,6 +88,4 @@ public class ParseException extends RuntimeException {
 	    return builder.toString();
 	}
 	
-	private static final long serialVersionUID = -3893735778927506664L;
-
 }
