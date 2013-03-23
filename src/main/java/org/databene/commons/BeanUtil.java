@@ -670,14 +670,14 @@ public final class BeanUtil {
         return invoke(target, method, true, args);
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({ "unchecked", "rawtypes" }) // TODO test for 1. args=null, 2. args.length < paramTypes.length
 	public static Object invoke(Object target, Method method, boolean strict, Object[] args) {
         try {
             Object[] params;
     		Class<?>[] paramTypes = method.getParameterTypes();
             if (paramTypes.length == 0) {
             	params = null;
-            } else if (args.length == paramTypes.length) {
+            } else if (args.length == paramTypes.length) { // exact match
             	// map one to one
             	if (strict) {
             		params = args;
@@ -693,7 +693,7 @@ public final class BeanUtil {
 						}
             		}
             	}
-        	} else {
+        	} else if (args.length > paramTypes.length) { // varargs params?
         		// map varargs
         		params = new Object[paramTypes.length];
         		for (int i = 0; i < paramTypes.length - 1; i++)
@@ -707,6 +707,16 @@ public final class BeanUtil {
 	                Array.set(varargs, i, param);
                 }
 				params[params.length - 1] = varargs;
+            } else if (args.length == paramTypes.length - 1) { // varargs of length 0
+        		params = new Object[paramTypes.length];
+        		for (int i = 0; i < paramTypes.length - 1; i++)
+        			params[i] = (strict ? args[i] : AnyConverter.convert(args[i], paramTypes[i]));
+        		Class<?> varargsComponentType = paramTypes[paramTypes.length - 1].getComponentType();
+        		Object varargs = Array.newInstance(varargsComponentType, 0);
+				params[params.length - 1] = varargs;
+            } else {
+            	throw new RuntimeException("Method " + method.getName() + " requires " + paramTypes.length + " params, " +
+            			"but only " + args.length + " were provided. ");
             }
             return method.invoke(target, params);
         } catch (IllegalAccessException e) {
