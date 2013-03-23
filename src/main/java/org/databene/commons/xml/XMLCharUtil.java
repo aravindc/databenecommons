@@ -177,31 +177,31 @@ public class XMLCharUtil {
 	// utility methods -------------------------------------------------------------------------------------------------
 
 	public static boolean isValid(int c) {
-		return (c < 0x10000 && (CHAR_INFOS[c] & VALID_FLAG) != 0) || (0x10000 <= c && c <= 0x10FFFF);
+		return (c >= 0 && c < 0x10000 && (CHAR_INFOS[c] & VALID_FLAG) != 0) || (0x10000 <= c && c <= 0x10FFFF);
 	}
 
 	public static boolean isContent(int c) {
-		return (c < 0x10000 && (CHAR_INFOS[c] & CONTENT_FLAG) != 0) || (0x10000 <= c && c <= 0x10FFFF);
+		return (c >= 0 && c < 0x10000 && (CHAR_INFOS[c] & CONTENT_FLAG) != 0) || (0x10000 <= c && c <= 0x10FFFF);
 	}
 
 	public static boolean isMarkup(int c) {
 		return c == '<' || c == '&' || c == '%';
 	}
 
-	public static boolean isSpace(int c) {
-		return c < 0x10000 && (CHAR_INFOS[c] & WHITESPACE_FLAG) != 0;
+	public static boolean isWhiteSpace(int c) {
+		return c >= 0 && c < 0x10000 && (CHAR_INFOS[c] & WHITESPACE_FLAG) != 0;
 	}
 
 	public static boolean isXML11Space(int c) {
-		return isSpace(c) || c == 0x85 || c == 0x2028;
+		return isWhiteSpace(c) || c == 0x85 || c == 0x2028;
 	}
 
 	public static boolean isNameStart(int c) {
-		return c < 0x10000 && (CHAR_INFOS[c] & NAME_START_FLAG) != 0;
+		return c >= 0 && c < 0x10000 && (CHAR_INFOS[c] & NAME_START_FLAG) != 0;
 	}
 
-	public static boolean isName(int c) {
-		return c < 0x10000 && (CHAR_INFOS[c] & NAME_FLAG) != 0;
+	public static boolean isNameChar(int c) {
+		return c >= 0 && c < 0x10000 && (CHAR_INFOS[c] & NAME_FLAG) != 0;
 	}
 
 	public static boolean isName(String name) {
@@ -213,7 +213,7 @@ public class XMLCharUtil {
 			return false;
 		for (int i = 1; i < name.length(); i++) {
 			ch = name.charAt(i);
-			if (isName(ch) == false) {
+			if (isNameChar(ch) == false) {
 				return false;
 			}
 		}
@@ -226,13 +226,28 @@ public class XMLCharUtil {
 			return false;
 		for (int i = 0; i < nmtoken.length(); i++) {
 			char ch = nmtoken.charAt(i);
-			if (!isName(ch)) {
+			if (!isNameChar(ch)) {
 				return false;
 			}
 		}
 		return true;
 	}
 	
+	public static boolean isCharacterRef(int character, boolean hex) {
+		if (character < 0)
+			return false;
+		if (character > '0' && character < '9')
+			return true;
+		if (hex) {
+			if (character == 'a' || character == 'A' || character == 'b' || character == 'B' || character == 'c'
+					|| character == 'C' || character == 'd' || character == 'D' || character == 'e' || character == 'E'
+					|| character == 'f' || character == 'F') {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 	
 	// private helper methods ------------------------------------------------------------------------------------------
