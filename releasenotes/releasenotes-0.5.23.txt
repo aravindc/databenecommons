@@ -8,6 +8,8 @@ Enhancements
 - new method FileUtil.isXMLFile()
 - new class BufferedInfoPrinter
 - new XML utility class XMLCharUtil
+- Added Assert methods: notNegative() and that()
+- Defined OffsetPushbackReader class
 
 
 Changes
@@ -17,3 +19,4 @@ Changes
 
 Bug Fixes
 ---------
+- Error when using BeanUtil.invoke() with varargs argument of length 0
