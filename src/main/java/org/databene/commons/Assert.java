@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -131,6 +131,16 @@ public class Assert {
 	public static void found(Object object, String name) {
 		 if (object == null)
 			 throw new AssertionError(name + " not found");
+	}
+
+	public static void notNegative(Number value, String role) {
+		if (value.doubleValue() < 0)
+			 throw new AssertionError(role + " is less than zero: " + value);
+	}
+
+	public static void that(boolean flag, String message) {
+		if (!flag)
+			throw new AssertionError(message);
 	}
 
 }
