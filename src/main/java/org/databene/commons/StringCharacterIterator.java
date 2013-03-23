@@ -29,7 +29,7 @@ package org.databene.commons;
 /**
  * Supports iterating the characters of a String.
  * This is especially useful for writing parsers that iterate over Strings,
- * since it encapsules the cursor index.<br/>
+ * since it encapsulates the cursor index.<br/>
  * <br/>
  * Created: 18.08.2006 19:21:45
  * @author Volker Bergmann
@@ -39,8 +39,8 @@ public class StringCharacterIterator implements CharacterIterator {
     /** The String to iterate */
     private String source;
 
-    /** The cursor index */
-    private int index;
+    /** The cursor offset */
+    private int offset;
 
     private int line;
     
@@ -56,11 +56,11 @@ public class StringCharacterIterator implements CharacterIterator {
     }
 
     /** Creates an iterator that starts at a specified position */
-    public StringCharacterIterator(String source, int index) {
+    public StringCharacterIterator(String source, int offset) {
         if (source == null)
             throw new IllegalArgumentException("source string must not be null");
         this.source = source;
-        this.index = index;
+        this.offset = offset;
         this.line = 1;
         this.column = 1;
         this.lastLineLength = 1;
@@ -75,7 +75,7 @@ public class StringCharacterIterator implements CharacterIterator {
      */
     @Override
 	public boolean hasNext() {
-        return index < source.length();
+        return offset < source.length();
     }
 
     /**
@@ -84,15 +84,15 @@ public class StringCharacterIterator implements CharacterIterator {
      */
     @Override
 	public char next() {
-        if (index >= source.length())
+        if (offset >= source.length())
             throw new IllegalStateException("Reached the end of the string");
-        if (source.charAt(index) == '\n') {
+        if (source.charAt(offset) == '\n') {
         	lastLineLength = column;
         	line++;
         	column = 1;
         } else
         	column++;
-        return source.charAt(index++);
+        return source.charAt(offset++);
     }
 
     /**
@@ -109,45 +109,45 @@ public class StringCharacterIterator implements CharacterIterator {
 	public char peekNext() {
 		if (!hasNext())
 			return 0;
-        return source.charAt(index);
+        return source.charAt(offset);
 	}
 
-    /**
-     * Pushes back the cursor by one character.
-     */
+    /** Pushes back the cursor by one character. */
     public void pushBack() {
-        if (index > 0) {
-            if (index - 1 < source.length() && source.charAt(index - 1) == '\n') {
+        if (offset > 0) {
+            if (offset - 1 < source.length() && source.charAt(offset - 1) == '\n') {
             	line--;
             	column = lastLineLength;
             } else
                 column--;
-            index--;
+            offset--;
         } else
             throw new IllegalStateException("cannot pushBack before start of string: " + source);
     }
 
-    /**
-     * @return the cursor index.
-     */
-    public int index() {
-        return index;
+    /** @return the cursor offset. */
+    public int getOffset() {
+        return offset;
     }
-
+    
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+	
     public void skipWhitespace() {
-        while (index < source.length() && Character.isWhitespace(source.charAt(index)))
-            index++;
+        while (offset < source.length() && Character.isWhitespace(source.charAt(offset)))
+            offset++;
     }
 
     public String parseLetters() {
         StringBuilder builder = new StringBuilder();
-        while (index < source.length() && Character.isLetter(source.charAt(index)))
-            builder.append(source.charAt(index++));
+        while (offset < source.length() && Character.isLetter(source.charAt(offset)))
+            builder.append(source.charAt(offset++));
         return builder.toString();
     }
 
     public String remainingText() {
-        return source.substring(index);
+        return source.substring(offset);
     }
 
 	public void assertNext(char c) {
