@@ -141,11 +141,6 @@ public class CompressedLongSet {
 	// java.lang.Object overrrides -------------------------------------------------------------------------------------
 
 	@Override
-	public String toString() {
-	    return numbers.values().toString();
-	}
-
-	@Override
     public boolean equals(Object obj) {
 	    if (this == obj)
 		    return true;
@@ -155,6 +150,16 @@ public class CompressedLongSet {
 	    return this.equals(that.numbers);
     }
 	
+	@Override
+	public int hashCode() {
+		return numbers.hashCode();
+	}
+	
+	@Override
+	public String toString() {
+	    return numbers.values().toString();
+	}
+
 	
 	
 	// Iterator class --------------------------------------------------------------------------------------------------

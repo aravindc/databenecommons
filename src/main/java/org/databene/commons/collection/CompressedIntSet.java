@@ -140,11 +140,6 @@ public class CompressedIntSet {
 	// java.lang.Object overrides --------------------------------------------------------------------------------------
 
 	@Override
-	public String toString() {
-	    return numbers.values().toString();
-	}
-
-	@Override
     public boolean equals(Object obj) {
 	    if (this == obj)
 		    return true;
@@ -154,11 +149,21 @@ public class CompressedIntSet {
 	    return this.equals(that.numbers);
     }
 	
+    @Override
+	public int hashCode() {
+		return numbers.hashCode();
+	}
+    
+	@Override
+	public String toString() {
+	    return numbers.values().toString();
+	}
+	
 	
 	
 	// Iterator class --------------------------------------------------------------------------------------------------
 	
-    public class CompressedSetIterator implements Iterator<Integer> {
+	public class CompressedSetIterator implements Iterator<Integer> {
     	
     	protected Iterator<IntRange> intRangeIterator;
     	protected IntRange currentIntRange;
