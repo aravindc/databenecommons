@@ -7,7 +7,6 @@ Enhancements
 - new method MathUtil.digitCount()
 - new method FileUtil.isXMLFile()
 - new class BufferedInfoPrinter
-- new XML utility class XMLCharUtil
 - Added Assert methods: notNegative() and that()
 - Defined OffsetPushbackReader class
 
