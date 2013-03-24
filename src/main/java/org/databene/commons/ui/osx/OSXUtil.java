@@ -42,6 +42,9 @@ public class OSXUtil {
 		// Get OSX Application
     	Class<?> applicationClass = BeanUtil.forName("com.apple.eawt.Application");
     	Object osxApplication = BeanUtil.invokeStatic(applicationClass, "getApplication");
+    	if (application.supportsPreferences())
+    		BeanUtil.invoke(osxApplication, "setEnabledPreferencesMenu", true);
+    	
     	// add ApplicationListener
         Class<?> applicationListenerClass = BeanUtil.forName("com.apple.eawt.ApplicationListener");
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -50,16 +53,17 @@ public class OSXUtil {
 				new Class[] { applicationListenerClass }, 
 				new OSXInvocationHandler(application));
 		BeanUtil.invoke(osxApplication, "addApplicationListener", new Object[] { osxAdapterProxy });
-		// 
-			String iconPath = application.iconPath();
-			if (iconPath != null) {
-				try {
-					InputStream icon = ClassLoader.getSystemResourceAsStream(iconPath);
-					BeanUtil.invoke(osxApplication, "setDockIconImage", ImageIO.read(icon));
-				} catch (IOException e) {
-					// ignore errors 
-				}
+		
+		// set dock icon image
+		String iconPath = application.iconPath();
+		if (iconPath != null) {
+			try {
+				InputStream icon = ClassLoader.getSystemResourceAsStream(iconPath);
+				BeanUtil.invoke(osxApplication, "setDockIconImage", ImageIO.read(icon));
+			} catch (IOException e) {
+				// ignore errors 
 			}
+		}
     }
 
 }

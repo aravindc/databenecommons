@@ -43,11 +43,13 @@ public class OSXInvocationHandler implements InvocationHandler {
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		if ("handleQuit".equals(method.getName()))
+		if ("handleQuit".equals(method.getName())) {
 			application.exit();
-		else if ("handleAbout".equals(method.getName())) {
+		} else if ("handleAbout".equals(method.getName())) {
 			BeanUtil.invoke(args[0], "setHandled", true);
 			application.about();
+		} else if ("handlePreferences".equals(method.getName())) {
+			application.preferences();
 		}
 		return null;
 	}

@@ -31,4 +31,6 @@ public interface JavaApplication {
 	String iconPath();
 	void about();
 	void exit();
+	boolean supportsPreferences();
+	void preferences();
 }
