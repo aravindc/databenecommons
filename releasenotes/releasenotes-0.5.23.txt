@@ -9,7 +9,7 @@ Enhancements
 - new class BufferedInfoPrinter
 - Added Assert methods: notNegative() and that()
 - Defined OffsetPushbackReader class
-
+- new method CollectionUtil.toSortedList()
 
 Changes
 -------
