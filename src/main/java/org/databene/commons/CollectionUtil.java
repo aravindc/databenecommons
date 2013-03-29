@@ -30,6 +30,8 @@ import java.util.*;
 import java.lang.reflect.Array;
 import java.lang.reflect.Modifier;
 
+import org.databene.commons.collection.SortedList;
+
 /**
  * Provides Collection-related utility methods.<br/>
  * <br/>
@@ -46,7 +48,7 @@ public final class CollectionUtil {
      * @param array the array to convert into a list.
      * @return a list containing all elements of the given array.
      */
-    public static <T> List<T> toList(T ... array) {
+    public static <T, U extends T> List<T> toList(U ... array) {
         List<T> result = new ArrayList<T>(array.length);
         for (T item : array)
             result.add(item);
@@ -79,7 +81,11 @@ public final class CollectionUtil {
             set.add(element);
         return set;
     }
-
+    
+    public static <T extends Comparable<T>, U extends T> SortedList<T> toSortedList(U ... elements) {
+    	return new SortedList<T>(CollectionUtil.<T,U>toList(elements), new ComparableComparator<T>());
+    }
+    
 	public static Set<Character> toCharSet(char[] chars) {
         HashSet<Character> set = new HashSet<Character>();
         if (chars != null)
