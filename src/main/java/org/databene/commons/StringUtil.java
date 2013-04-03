@@ -824,5 +824,13 @@ public final class StringUtil {
 	public static String quoteIfNotNull(String text) {
 		return (text != null ? "'" + text + "'" : text);
 	}
+	
+	public static String getLeadingWhitespace(String line) {
+		int i;
+		for (i = 0; i < line.length() && Character.isWhitespace(line.charAt(i)); i++) {
+			// empty iteration for index counting
+		}
+		return line.substring(0, i);
+	}
 
 }

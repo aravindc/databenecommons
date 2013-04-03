@@ -412,13 +412,23 @@ public class StringUtilTest {
 		assertFalse(StringUtil.isLineSeparatorChar('x'));
 	}
 
+	@Test
+	public void testGetLeadingWhitespace() {
+		assertEquals("", StringUtil.getLeadingWhitespace(""));
+		assertEquals("", StringUtil.getLeadingWhitespace("x"));
+		assertEquals(" ", StringUtil.getLeadingWhitespace(" "));
+		assertEquals(" ", StringUtil.getLeadingWhitespace(" !"));
+		assertEquals("\t \t", StringUtil.getLeadingWhitespace("\t \t"));
+		assertEquals("\t \t", StringUtil.getLeadingWhitespace("\t \t_"));
+	}
+
 	// helpers ---------------------------------------------------------------------------------------------------------
 
-	private void checkSplitFirst(String parent, String child, String path) {
+	private static void checkSplitFirst(String parent, String child, String path) {
 		assertTrue(Arrays.equals(ArrayUtil.buildObjectArrayOfType(String.class, parent, child), StringUtil.splitOnFirstSeparator(path, '=')));
 	}
 
-	private void checkSplitLast(String parent, String child, String path) {
+	private static void checkSplitLast(String parent, String child, String path) {
 		assertTrue(Arrays.equals(ArrayUtil.buildObjectArrayOfType(String.class, parent, child), StringUtil.splitOnLastSeparator(path, '.')));
 	}
 	
