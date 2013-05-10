@@ -26,6 +26,7 @@
 
 package org.databene.commons;
 
+import java.io.Closeable;
 import java.io.IOException;
 
 /**
@@ -33,8 +34,7 @@ import java.io.IOException;
  * <br/>
  * Created: 06.06.2007 19:25:43
  */
-public interface DocumentWriter<E> {
+public interface DocumentWriter<E> extends Closeable {
     void setVariable(String name, Object value);
     void writeElement(E element) throws IOException;
-    void close() throws IOException;
 }
