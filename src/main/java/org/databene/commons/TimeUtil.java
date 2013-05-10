@@ -53,7 +53,9 @@ public final class TimeUtil {
 	public static TimeZone CENTRAL_EUROPEAN_TIME = TimeZone.getTimeZone("CET");
 	public static TimeZone PACIFIC_STANDARD_TIME = TimeZone.getTimeZone("PST");
 	public static TimeZone SNGAPORE_TIME = TimeZone.getTimeZone("SGT");
-
+	
+	private static final GregorianCalendar GREGORIAN_CALENDAR = new GregorianCalendar();
+	
 	public static int currentYear() {
         return new GregorianCalendar().get(Calendar.YEAR);
     }
@@ -65,6 +67,10 @@ public final class TimeUtil {
     public static boolean isWeekend(Calendar day) {
         int dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
         return (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY);
+    }
+    
+    public static boolean isLeapYear(int year) {
+    	return GREGORIAN_CALENDAR.isLeapYear(year);
     }
 
     public static Date today() {
