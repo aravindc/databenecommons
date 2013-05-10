@@ -30,6 +30,7 @@ import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.databene.commons.Capitalization;
@@ -137,6 +138,13 @@ public class ToStringConverter extends FormatHolder implements Converter<Object,
         	else
         		result = new SimpleDateFormat().format((Date) source);
         	return applyCapitalization(dateCapitalization, result);
+        } else if (source instanceof Calendar) {
+        	String result;
+        	if (datePattern != null)
+        		result = new SimpleDateFormat(datePattern).format(((Calendar) source).getTime());
+        	else
+        		result = new SimpleDateFormat().format(((Calendar) source).getTime());
+        	return applyCapitalization(dateCapitalization, result);
         } else {
 	        ConverterManager manager = ConverterManager.getInstance();
 			Converter converter = manager.createConverter(sourceType, String.class);
@@ -144,7 +152,7 @@ public class ToStringConverter extends FormatHolder implements Converter<Object,
         }
     }
 
-	private String applyCapitalization(Capitalization capitalization, String text) {
+	private static String applyCapitalization(Capitalization capitalization, String text) {
 		if (text == null)
 			return null;
 		switch (capitalization) {
