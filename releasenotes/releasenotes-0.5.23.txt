@@ -10,6 +10,10 @@ Enhancements
 - Added Assert methods: notNegative() and that()
 - Defined OffsetPushbackReader class
 - new method CollectionUtil.toSortedList()
+- new method TimeUtil.isLeapYear()
+- ToStringConverter supports Calendar class
+- new method ConsoleInfoPrinter.printFile(String uri)
+
 
 Changes
 -------
