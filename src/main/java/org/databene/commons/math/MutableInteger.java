@@ -41,7 +41,11 @@ public class MutableInteger {
 	public MutableInteger(int value) {
 		this.value = value;
     }
-
+	
+	public void increment() {
+		this.value++;
+	}
+	
 	@Override
     public int hashCode() {
 	    return value;
