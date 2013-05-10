@@ -26,6 +26,11 @@
 
 package org.databene.commons.ui;
 
+import java.io.IOException;
+
+import org.databene.commons.IOUtil;
+import org.databene.commons.ReaderLineIterator;
+
 /**
  * {@link InfoPrinter} implementation that prints info to the console.<br/>
  * <br/>
@@ -45,5 +50,16 @@ public class ConsoleInfoPrinter extends InfoPrinter {
 		for (String helpLine : helpLines)
 			System.out.println(helpLine);
 	}
-
+	
+	public static void printFile(String uri) throws IOException {
+		ReaderLineIterator iterator = null;
+		try {
+			iterator = new ReaderLineIterator(IOUtil.getReaderForURI(uri));
+			while (iterator.hasNext())
+				System.out.println(iterator.next());
+		} finally {
+			IOUtil.close(iterator);
+		}
+	}
+	
 }
