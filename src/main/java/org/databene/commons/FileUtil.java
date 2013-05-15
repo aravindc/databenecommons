@@ -139,29 +139,6 @@ public final class FileUtil {
 		return equal;
 	}
 
-	// private helpers -------------------------------------------------------------------------------------------------
-
-	private static void copyFile(File srcFile, File targetFile)
-			throws FileNotFoundException, IOException {
-		InputStream in = new BufferedInputStream(new FileInputStream(srcFile));
-        OutputStream out = null;
-        try {
-	        out = new FileOutputStream(targetFile);
-	        IOUtil.transfer(in, out);
-        } finally {
-	        IOUtil.close(out);
-	        IOUtil.close(in);
-        }
-	}
-
-	private static void copyDirectory(File srcDirectory, File targetDirectory, boolean overwrite, FileFilter filter) throws FileNotFoundException, IOException {
-		ensureDirectoryExists(targetDirectory);
-		for (File src : srcDirectory.listFiles()) {
-			File dstFile = new File(targetDirectory, src.getName());
-			copy(src, dstFile, overwrite, filter);
-		}
-	}
-
     public static void deleteIfExists(File file) {
 	    if (file.exists()) {
 	    	if (!file.delete())
@@ -319,4 +296,29 @@ public final class FileUtil {
 		return filePath.toLowerCase().endsWith(".xml");
 	}
 	
+	
+	
+	// private helpers -------------------------------------------------------------------------------------------------
+
+	private static void copyFile(File srcFile, File targetFile)
+			throws FileNotFoundException, IOException {
+		InputStream in = new BufferedInputStream(new FileInputStream(srcFile));
+        OutputStream out = null;
+        try {
+	        out = new FileOutputStream(targetFile);
+	        IOUtil.transfer(in, out);
+        } finally {
+	        IOUtil.close(out);
+	        IOUtil.close(in);
+        }
+	}
+
+	private static void copyDirectory(File srcDirectory, File targetDirectory, boolean overwrite, FileFilter filter) throws FileNotFoundException, IOException {
+		ensureDirectoryExists(targetDirectory);
+		for (File src : srcDirectory.listFiles()) {
+			File dstFile = new File(targetDirectory, src.getName());
+			copy(src, dstFile, overwrite, filter);
+		}
+	}
+
 }
