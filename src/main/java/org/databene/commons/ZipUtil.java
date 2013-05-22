@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -46,7 +46,16 @@ public class ZipUtil {
 	private static final int BUFFER_SIZE = 2048;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ZipUtil.class);
-
+	
+	public static void compressAndDelete(File source, File zipFile) {
+		try {
+			compress(source, zipFile);
+			source.delete();
+		} catch (IOException e) {
+			throw new RuntimeException("Unexpected error", e);
+		}
+	}
+	
 	public static void compress(File source, File zipFile) throws IOException {
 		ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)));
 		out.setMethod(ZipOutputStream.DEFLATED);
