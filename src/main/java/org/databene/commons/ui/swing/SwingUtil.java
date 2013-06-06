@@ -27,6 +27,7 @@
 package org.databene.commons.ui.swing;
 
 import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
 
 import org.databene.commons.BeanUtil;
 
@@ -150,6 +151,18 @@ public class SwingUtil {
 	public static void bindKeyToAction(int keyCode, int modifiers, Action action, JComponent component) {
 		KeyStroke redoKey = KeyStroke.getKeyStroke(keyCode, modifiers);
 		component.getInputMap().put(redoKey, action);
+	}
+	
+	public static void autoSizeTableColumns(JTable table) {
+		 for (int column = 0; column < table.getColumnCount(); column++) {
+			 int columnWidth = 0;
+			 for (int row = 0; row < table.getRowCount(); row++) {
+			     TableCellRenderer renderer = table.getCellRenderer(row, column);
+			     Component comp = table.prepareRenderer(renderer, row, column);
+			     columnWidth = Math.max(comp.getPreferredSize().width, columnWidth);
+			 }
+			 table.getColumnModel().getColumn(column).setPreferredWidth(columnWidth);
+		 }
 	}
 	
 }
