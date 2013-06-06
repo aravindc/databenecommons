@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2005-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2005-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -33,6 +33,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -42,7 +43,49 @@ import java.util.TimeZone;
  * @author Volker Bergmann
  */
 public class TimeUtilTest {
-
+	
+	private static final Calendar NEW_YEARS_DAY_2013 = calendar(2013, Calendar.JANUARY, 1);
+	private static final Calendar MEMORIAL_DAY_2013 = calendar(2013, Calendar.MAY, 27);
+	private static final Calendar INDEPENDANCE_DAY_2013 = calendar(2013, Calendar.JULY, 4);
+	
+	
+	
+	// tests -----------------------------------------------------------------------------------------------------------
+	
+	@Test
+	public void testIsBusinessDay() {
+		assertFalse(TimeUtil.isBusinessDay(NEW_YEARS_DAY_2013, Locale.US));
+		assertFalse(TimeUtil.isBusinessDay(NEW_YEARS_DAY_2013, Locale.GERMANY));
+		assertFalse(TimeUtil.isBusinessDay(MEMORIAL_DAY_2013, Locale.US));
+		assertTrue(TimeUtil.isBusinessDay(MEMORIAL_DAY_2013, Locale.GERMANY));
+		assertFalse(TimeUtil.isBusinessDay(INDEPENDANCE_DAY_2013, Locale.US));
+		assertTrue(TimeUtil.isBusinessDay(INDEPENDANCE_DAY_2013, Locale.GERMANY));
+	}
+	
+	@Test
+	public void testIsLastWeekdayOfTypeInMonth() {
+		assertFalse(TimeUtil.isLastWeekdayOfTypeInMonth(Calendar.MONDAY, calendar(2013, 4, 19))); // Sunday
+		assertFalse(TimeUtil.isLastWeekdayOfTypeInMonth(Calendar.MONDAY, calendar(2013, 4, 20))); // 2nd last Monday
+		assertTrue(TimeUtil.isLastWeekdayOfTypeInMonth(Calendar.MONDAY, calendar(2013, 4, 27)));  // last Monday
+	}
+	
+	@Test
+	public void testMonthLength() {
+		assertEquals(31, TimeUtil.monthLength(Calendar.JANUARY, 2013));
+		assertEquals(28, TimeUtil.monthLength(Calendar.FEBRUARY, 2013));
+		assertEquals(29, TimeUtil.monthLength(Calendar.FEBRUARY, 2012));
+		assertEquals(31, TimeUtil.monthLength(Calendar.MARCH, 2013));
+		assertEquals(30, TimeUtil.monthLength(Calendar.APRIL, 2013));
+		assertEquals(31, TimeUtil.monthLength(Calendar.MAY, 2013));
+		assertEquals(30, TimeUtil.monthLength(Calendar.JUNE, 2013));
+		assertEquals(31, TimeUtil.monthLength(Calendar.JULY, 2013));
+		assertEquals(31, TimeUtil.monthLength(Calendar.AUGUST, 2013));
+		assertEquals(30, TimeUtil.monthLength(Calendar.SEPTEMBER, 2013));
+		assertEquals(31, TimeUtil.monthLength(Calendar.OCTOBER, 2013));
+		assertEquals(30, TimeUtil.monthLength(Calendar.NOVEMBER, 2013));
+		assertEquals(31, TimeUtil.monthLength(Calendar.DECEMBER, 2013));
+	}
+	
 	@Test
 	public void testFirstDayOfMonth() {
 		assertEquals(TimeUtil.date(1970, 0, 1), TimeUtil.firstDayOfMonth(TimeUtil.date(0)));
@@ -223,4 +266,13 @@ public class TimeUtilTest {
 		assertEquals(TimeUtil.time(8, 30, 23, 0), TimeUtil.parse("08:30:23"));
 		assertEquals(TimeUtil.timestamp(2012, 3, 26, 8, 30, 23, 123000000), TimeUtil.parse("2012-04-26 08:30:23.123"));
 	}
+	
+	
+	
+	// helpers ---------------------------------------------------------------------------------------------------------
+	
+	private static Calendar calendar(int year, int month, int day) {
+		return TimeUtil.calendar(year, month, day);
+	}
+	
 }
