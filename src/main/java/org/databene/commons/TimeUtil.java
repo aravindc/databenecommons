@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -54,6 +54,8 @@ public final class TimeUtil {
 	public static TimeZone PACIFIC_STANDARD_TIME = TimeZone.getTimeZone("PST");
 	public static TimeZone SNGAPORE_TIME = TimeZone.getTimeZone("SGT");
 	
+    private static final int[] MONTH_LENGTHS = { 31, 28, 31,  30, 31, 30,  31, 31, 30, 31, 30, 31 };
+    
 	private static final GregorianCalendar GREGORIAN_CALENDAR = new GregorianCalendar();
 	
 	public static int currentYear() {
@@ -61,10 +63,55 @@ public final class TimeUtil {
     }
 
 	public static boolean isBusinessDay(Calendar day, Locale locale) {
-		return !isWeekend(day); // TODO improve
+        int dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
+        if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY)
+        	return false;
+		String country = locale.getCountry();
+		if ("US".equalsIgnoreCase(country))
+			return !isFederalHolidayInUSA(day);
+		else if ("DE".equalsIgnoreCase(country))
+			return !isHolidayInGermany(day);
+		return true;
 	}
     
-    public static boolean isWeekend(Calendar day) {
+    private static boolean isFederalHolidayInUSA(Calendar day) {
+        int dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
+        int month = day.get(Calendar.MONTH);
+        int dayOfMonth = day.get(Calendar.DAY_OF_MONTH);
+        if (month == Calendar.JANUARY && dayOfMonth == 1)
+        	return true; // New Year's day
+        if (dayOfWeek == Calendar.MONDAY && month == Calendar.MAY && isLastWeekdayOfTypeInMonth(Calendar.MONDAY, day))
+			return true; // memorial day is the last Monday in May
+		else if (month == Calendar.JULY && dayOfMonth == 4)
+			return true; // independence day
+        // TODO other federal holidays
+		return false;
+	}
+
+    private static boolean isHolidayInGermany(Calendar day) {
+        int month = day.get(Calendar.MONTH);
+        int dayOfMonth = day.get(Calendar.DAY_OF_MONTH);
+        if (month == Calendar.JANUARY && dayOfMonth == 1)
+        	return true; // New Year's day
+        // TODO other holidays
+		return false;
+	}
+
+	public static boolean isLastWeekdayOfTypeInMonth(int dayOfWeek, Calendar day) {
+		if (day.get(Calendar.DAY_OF_WEEK) != dayOfWeek)
+			return false;
+    	Calendar check = (Calendar) day.clone();
+    	check.add(Calendar.DAY_OF_MONTH, 7);
+		return check.get(Calendar.MONTH) > day.get(Calendar.MONTH);
+	}
+    
+    public static int monthLength(int month, int year) {
+    	if (month != Calendar.FEBRUARY)
+    		return MONTH_LENGTHS[month];
+    	return (isLeapYear(year) ? 29 : 28);
+    }
+
+	public static boolean isWeekend(Calendar day) {
         int dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
         return (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY);
     }
