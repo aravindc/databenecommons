@@ -27,6 +27,7 @@
 package org.databene.commons;
 
 import org.databene.commons.collection.MapEntry;
+import org.databene.commons.converter.ToStringConverter;
 import org.databene.commons.file.FileByNameFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -501,16 +502,16 @@ public final class IOUtil {
         return target;
     }
 
-    public static void writeProperties(Map<String, String> properties, String filename) throws IOException {
+    public static void writeProperties(Map<String, ?> properties, String filename) throws IOException {
         writeProperties(properties, filename, SystemInfo.getFileEncoding());
     }
 
-    public static void writeProperties(Map<String, String> properties, String filename, String encoding) throws IOException {
+    public static void writeProperties(Map<String, ?> properties, String filename, String encoding) throws IOException {
         PrintWriter stream = null;
         try {
             stream = IOUtil.getPrinterForURI(filename, encoding);
-            for (Map.Entry<String, String> entry : properties.entrySet())
-                stream.println(entry.getKey() + "=" + entry.getValue());
+            for (Map.Entry<String, ?> entry : properties.entrySet())
+                stream.println(entry.getKey() + "=" + ToStringConverter.convert(entry.getValue(), ""));
         } finally {
             IOUtil.close(stream);
         }
