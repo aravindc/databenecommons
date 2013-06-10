@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -854,6 +854,18 @@ public final class BeanUtil {
     }
 
     /**
+     * Finds all property descriptors of a bean class
+     * @param type the class to check
+     * @return all found property descriptors
+     */
+    public static PropertyDescriptor[] getPropertyDescriptors(Class<?> type) {
+        try {
+            return Introspector.getBeanInfo(type).getPropertyDescriptors();
+        } catch (IntrospectionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /**
      * Copies a Map's values to the properties of a JavaBean,
      * using the Map entries' key values as bean property names.
      */
@@ -866,8 +878,8 @@ public final class BeanUtil {
         }
     }
 */
-    /*
-    public static void mapProperties(Map<String, Object> properties, Object bean) {
+    
+    public static void setPropertyValues(Object bean, Map<String, ?> properties) {
         Class<?> beanClass = bean.getClass();
         Method writeMethod = null;
         try {
@@ -878,7 +890,7 @@ public final class BeanUtil {
                 Object value = properties.get(name);
                 if (value != null) {
                     writeMethod = propertyDescriptor.getWriteMethod();
-                    Object targetTypeObject = ConverterUtil.convert(value, propertyDescriptor.getPropertyType());
+                    Object targetTypeObject = AnyConverter.convert(value, propertyDescriptor.getPropertyType());
                     writeMethod.invoke(bean, targetTypeObject);
                 }
             }
@@ -890,26 +902,24 @@ public final class BeanUtil {
             throw ExceptionMapper.configurationException(e, writeMethod);
         }
     }
-    */
-
-    /**
-     * Finds all property descriptors of a bean class
-     * @param type the class to check
-     * @return all found property descriptors
-     */
-    public static PropertyDescriptor[] getPropertyDescriptors(Class<?> type) {
-        try {
-            return Introspector.getBeanInfo(type).getPropertyDescriptors();
-        } catch (IntrospectionException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    
 /*
     public static Class getPropertyType(Class beanClass, String propertyName) {
         PropertyDescriptor descriptor = getPropertyDescriptor(beanClass, propertyName);
         return (descriptor != null ? descriptor.getPropertyType() : null);
     }
 */
+
+    public static Map<String, ?> getPropertyValues(Object bean, boolean includeClass) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	PropertyDescriptor[] descriptors = getPropertyDescriptors(bean.getClass());
+    	for (PropertyDescriptor descriptor : descriptors) {
+    		String propertyName = descriptor.getName();
+			if (includeClass || !"class".equals(propertyName))
+				result.put(propertyName, getPropertyValue(bean, descriptor));
+    	}
+        return result;
+    }
 
     /**
      * Queries a property value on a JavaBean instance
@@ -922,15 +932,19 @@ public final class BeanUtil {
     }
 
     public static Object getPropertyValue(Object bean, String propertyName, boolean propertyRequired) {
-        Method readMethod = null;
+        PropertyDescriptor descriptor = getPropertyDescriptor(bean.getClass(), propertyName);
+        if (descriptor == null) {
+        	if (propertyRequired)
+        		throw new ConfigurationError("Property '" + propertyName + "' not found in class " + bean.getClass());
+        	else 
+        		return null;
+        }
+        return getPropertyValue(bean, descriptor);
+    }
+
+	private static Object getPropertyValue(Object bean, PropertyDescriptor descriptor) {
+		Method readMethod = null;
         try {
-            PropertyDescriptor descriptor = getPropertyDescriptor(bean.getClass(), propertyName);
-            if (descriptor == null) {
-            	if (propertyRequired)
-            		throw new ConfigurationError("Property '" + propertyName + "' not found in class " + bean.getClass());
-            	else 
-            		return null;
-            }
 			readMethod = descriptor.getReadMethod();
             return readMethod.invoke(bean);
         } catch (IllegalAccessException e) {
@@ -938,13 +952,13 @@ public final class BeanUtil {
         } catch (InvocationTargetException e) {
             throw ExceptionMapper.configurationException(e, readMethod);
         }
-    }
-
+	}
+    
     /**
-     * sets a property value on a JavaBean instance.
-     * @param bean
-     * @param propertyName
-     * @param propertyValue
+     * Sets a property value on a JavaBean object.
+     * @param bean the bean on which to set the property
+     * @param propertyName the name of the property to set
+     * @param propertyValue the value to set the property to
      */
     public static void setPropertyValue(Object bean, String propertyName, Object propertyValue) {
         setPropertyValue(bean, propertyName, propertyValue, true);
