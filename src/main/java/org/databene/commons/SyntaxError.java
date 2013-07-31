@@ -32,7 +32,7 @@ public class SyntaxError extends ParseException {
 	private static final long serialVersionUID = 835847387636212632L;
 
 	public SyntaxError(String message, String parsedText) {
-		super(message + ": " + parsedText, parsedText);
+		super(message, parsedText);
 	}
 
 	public SyntaxError(String message, String parsedText, int line, int column) {
