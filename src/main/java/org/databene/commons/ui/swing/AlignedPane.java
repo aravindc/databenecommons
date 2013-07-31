@@ -79,6 +79,44 @@ public class AlignedPane extends JPanel implements SwingConstants {
     
     // interface -------------------------------------------------------------------------------------------------------
 
+    public void addRow(String title, Component component) {
+        if (orientation == HORIZONTAL) {
+            add(new JLabel(title));
+            add(component);
+        } else {
+            endRow();
+            addElement(title, component, columns - 1);
+            endRow();
+        }
+    }
+
+    public void addRow(Component component) {
+        if (orientation == HORIZONTAL) {
+            add(component, gbc);
+            gbc.gridx++;
+        } else {
+            endRow();
+            gbc.weightx = 1;
+            gbc.weighty = (component instanceof JTextArea ? 1 : 0);
+            gbc.gridwidth = columns;
+            add(component, gbc);
+            newRow();
+        }
+    }
+
+    public void addTallRow(Component component) {
+        if (orientation == HORIZONTAL) {
+            add(component);
+        } else {
+            endRow();
+            gbc.weightx = 1;
+            gbc.weighty = 1;
+            gbc.gridwidth = columns;
+            add(component, gbc);
+            newRow();
+        }
+    }
+
     public void addElement(String title, Component component) {
         addElement(title, component, 1);
     }
@@ -121,45 +159,6 @@ public class AlignedPane extends JPanel implements SwingConstants {
 		gbc.gridy++;
 		gbc.gridx = 0;
 	}
-
-    public void addRow(String title, Component component) {
-        JLabel label = new JLabel(title);
-        if (orientation == HORIZONTAL) {
-            add(label);
-            add(component);
-        } else {
-            endRow();
-            addElement(title, component, columns - 1);
-            endRow();
-        }
-    }
-
-    public void addRow(Component component) {
-        if (orientation == HORIZONTAL) {
-            add(component, gbc);
-            gbc.gridx++;
-        } else {
-            endRow();
-            gbc.weightx = 1;
-            gbc.weighty = (component instanceof JTextArea ? 1 : 0);
-            gbc.gridwidth = columns;
-            add(component, gbc);
-            newRow();
-        }
-    }
-
-    public void addTallRow(Component component) {
-        if (orientation == HORIZONTAL) {
-            add(component);
-        } else {
-            endRow();
-            gbc.weightx = 1;
-            gbc.weighty = 1;
-            gbc.gridwidth = columns;
-            add(component, gbc);
-            newRow();
-        }
-    }
 
     public void addSeparator() {
         addLabelRow(" ");
