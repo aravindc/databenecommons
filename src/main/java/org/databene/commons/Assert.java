@@ -138,6 +138,11 @@ public class Assert {
 			 throw new AssertionError(role + " is less than zero: " + value);
 	}
 
+	public static void positive(Number value, String role) {
+		if (value.doubleValue() <= 0)
+			 throw new AssertionError(role + " is not positive: " + value);
+	}
+
 	public static void that(boolean flag, String message) {
 		if (!flag)
 			throw new AssertionError(message);
