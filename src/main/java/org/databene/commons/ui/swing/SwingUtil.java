@@ -149,8 +149,12 @@ public class SwingUtil {
 	}
 
 	public static void bindKeyToAction(int keyCode, int modifiers, Action action, JComponent component) {
-		KeyStroke redoKey = KeyStroke.getKeyStroke(keyCode, modifiers);
-		component.getInputMap().put(redoKey, action);
+		bindKeyToAction(keyCode, modifiers, action, component, JComponent.WHEN_FOCUSED);
+	}
+	
+	public static void bindKeyToAction(int keyCode, int modifiers, Action action, JComponent component, int condition) {
+		KeyStroke keyStroke = KeyStroke.getKeyStroke(keyCode, modifiers);
+		component.getInputMap(condition).put(keyStroke, action);
 	}
 	
 	public static void autoSizeTableColumns(JTable table) {
