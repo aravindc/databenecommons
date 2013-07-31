@@ -21,6 +21,7 @@
 
 package org.databene.commons;
 
+import java.text.Collator;
 import java.util.Comparator;
 
 /**
@@ -30,10 +31,16 @@ import java.util.Comparator;
  * @author Volker Bergmann
  */
 public class NameComparator implements Comparator<Named> {
-
+	
+	private Comparator<String> nameComparator;
+	
+	public NameComparator() {
+		this.nameComparator = new NullSafeComparator<String>(Collator.getInstance());
+	}
+	
 	@Override
 	public int compare(Named named1, Named named2) {
-	    return named1.getName().compareTo(named2.getName());
+	    return nameComparator.compare(named1.getName(), named2.getName());
     }
 
 }
