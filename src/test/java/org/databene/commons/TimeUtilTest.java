@@ -267,7 +267,10 @@ public class TimeUtilTest {
 		assertEquals(TimeUtil.timestamp(2012, 3, 26, 8, 30, 23, 123000000), TimeUtil.parse("2012-04-26 08:30:23.123"));
 	}
 	
-	
+	@Test
+	public void testDaysBetween() {
+		assertEquals(1, TimeUtil.daysBetween(TimeUtil.date(1975, 6, 31), TimeUtil.date(1975, 7, 1)));
+	}
 	
 	// helpers ---------------------------------------------------------------------------------------------------------
 	
