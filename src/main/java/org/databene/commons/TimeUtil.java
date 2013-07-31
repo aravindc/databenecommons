@@ -111,6 +111,10 @@ public final class TimeUtil {
     	return (isLeapYear(year) ? 29 : 28);
     }
 
+    public static int yearLength(int year) {
+    	return (isLeapYear(year) ? 366 : 365);
+    }
+
 	public static boolean isWeekend(Calendar day) {
         int dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
         return (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY);
@@ -187,6 +191,20 @@ public final class TimeUtil {
         return calendar;
     }
 
+    public static Calendar calendar(int year, int month, int day,
+            int hours, int minutes, int seconds, int milliseconds, TimeZone timeZone) {
+		GregorianCalendar calendar = new GregorianCalendar(year, month, day, hours, minutes, seconds);
+		calendar.setTimeZone(timeZone);
+		calendar.set(Calendar.MILLISECOND, milliseconds);
+		return calendar;
+	}
+
+    public static Calendar calendar(long millis) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(millis);
+        return calendar;
+    }
+
     public static Calendar calendar(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -199,12 +217,22 @@ public final class TimeUtil {
         return calendar;
     }
 
-    private static DateFormat df = DateFormat.getDateInstance();
+    private static DateFormat DEFAULT_DATE_FORMAT = DateFormat.getDateInstance();
 
     public static String formatDate(Date date) {
-        return df.format(date);
+    	synchronized (DEFAULT_DATE_FORMAT) {
+            return DEFAULT_DATE_FORMAT.format(date);
+		}
     }
 
+    private static DateFormat NUMBER_DATE_FORMAT = new SimpleDateFormat("yyyyMMdd");
+
+	public static String formatAsNumber(Date date) {
+		synchronized (NUMBER_DATE_FORMAT) {
+			return NUMBER_DATE_FORMAT.format(date);
+		}
+	}
+    
     public static Date max(Date date1, Date date2) {
         return (date1.before(date2) ? date2 : date1);
     }
@@ -327,6 +355,27 @@ public final class TimeUtil {
         return years;
     }
 
+    public static int daysBetween(Date from, Date until) {
+        Calendar fromCalendar = calendar(from);
+        Calendar untilCalendar = calendar(until);
+        return daysBetween(fromCalendar, untilCalendar);
+    }
+    
+    public static int daysBetween(Calendar fromCalendar, Calendar untilCalendar) {
+		return julianDay(untilCalendar.get(Calendar.YEAR), untilCalendar.get(Calendar.MONTH) + 1, untilCalendar.get(Calendar.DAY_OF_MONTH)) -
+				julianDay(fromCalendar.get(Calendar.YEAR), fromCalendar.get(Calendar.MONTH) + 1, fromCalendar.get(Calendar.DAY_OF_MONTH));
+	}
+
+	/** Calculates the julian day of a {@link Calendar}. 
+     *  See http://en.wikipedia.org/wiki/Julian_day */
+	public static int julianDay(int year, int month, int day) {
+		int a = (14 - month) / 12;
+		int y = year + 4800 - a;
+		int m = month + 12 * a - 3;
+		int jdn = day + (153 * m + 2)/5 + 365*y + y/4 - y/100 + y/400 - 32045;
+		return jdn;
+	}
+    
     public static long millis(int year, int month, int day, int hour, int minute, int second) {
     	GregorianCalendar calendar = new GregorianCalendar(year, month, day, hour, minute, second);
     	return calendar.getTimeInMillis();
@@ -533,5 +582,5 @@ public final class TimeUtil {
 			builder.append('0');
 		builder.append(millis);
 	}
-    
+
 }
