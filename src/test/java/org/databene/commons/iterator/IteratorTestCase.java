@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -30,6 +30,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import static org.junit.Assert.*;
+
 /**
  * Parent class for {@link Iterator} test classes.<br/><br/>
  * @author Volker Bergmann
@@ -39,18 +41,18 @@ public abstract class IteratorTestCase {
     public static <T> void checkUniqueIteration(Iterator<T> iterator, int count) {
         Set<T> items = new HashSet<T>(count);
         for (int i = 0; i < count; i++) {
-            assert iterator.hasNext();
+            assertTrue(iterator.hasNext());
             T item = iterator.next();
-            assert !items.contains(item); // check uniqueness
+            assertFalse(items.contains(item)); // check uniqueness
             items.add(item);
         }
     }
 
 	public static <T> NextHelper expectNextElements(Iterator<?> iterator, T... expectedValues) {
 		for (T expected : expectedValues) {
-			assert iterator.hasNext();
+			assertTrue("Iterator is expected to have a next, but does not", iterator.hasNext());
 			Object actual = iterator.next();
-			assert expected.equals(actual);
+			assertEquals(expected, actual);
 		}
 		return new NextHelper(iterator);
 	}
@@ -64,11 +66,11 @@ public abstract class IteratorTestCase {
 		}
 		
 		public void withNext() {
-			assert iterator.hasNext();
+			assertTrue("Iterator is expected to have a next, but it does not", iterator.hasNext());
 		}
 		
 		public void withNoNext() {
-			assert !iterator.hasNext();
+			assertFalse("Iterator is expected to have no next, but it has", iterator.hasNext());
 		}
 	}
 	
