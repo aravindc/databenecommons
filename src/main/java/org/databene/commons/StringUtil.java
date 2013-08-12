@@ -479,6 +479,8 @@ public final class StringUtil {
     public static String[] splitOnFirstSeparator(String path, char separator) {
         if (path == null)
             return new String[] { null, null };
+        if (path.indexOf(separator) < 0)
+        	return new String[] { path, null };
         int sepIndex = path.indexOf(separator);
         return splitAroundSeparator(path, sepIndex);
     }
