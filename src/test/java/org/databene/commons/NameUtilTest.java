@@ -45,7 +45,7 @@ public class NameUtilTest {
 	public void testOrderByName() {
 		Named[] array = new Named[] { A_C, AC, A_B, AB };
 		NameUtil.orderByName(array);
-		Named[] expected = new Named[] { AB, AC, A_B, A_C };
+		Named[] expected = new Named[] { A_B, A_C, AB, AC };
 		assertTrue(Arrays.equals(expected, array));
 	}
 	

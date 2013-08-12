@@ -251,7 +251,7 @@ public class StringUtilTest {
 	@Test
     public void testSplitOnFirstSeparator() {
     	checkSplitFirst(null , null, null   );
-    	checkSplitFirst(null , "x" , "x"    );
+    	checkSplitFirst("x" , null ,"x"    );
     	checkSplitFirst("x"  , ""  , "x="  );
     	checkSplitFirst(""   , "y" , "=y"  );
     	checkSplitFirst("x"  , "y" , "x=y"  );
