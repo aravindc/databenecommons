@@ -267,6 +267,26 @@ public final class IOUtil {
             throw new ConfigurationError("Can't to handle URL " + localUri);
     }
 
+    /**
+     * Returns an InputStream to a file resource on the class path.
+     * @param name the file's name
+     * @return an InputStream to the resource
+     */
+    public static InputStream getResourceAsStream(String name, boolean required) {
+    	LOGGER.debug("getResourceAsStream({}, {})", name, required);
+		InputStream stream = null;
+        ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+        if (contextClassLoader != null)
+        	stream = contextClassLoader.getResourceAsStream(name);
+        if (stream == null) {
+        	String searchedName = (name.startsWith("/") ? name : '/' + name);
+            stream = IOUtil.class.getResourceAsStream(searchedName);
+        }
+        if (required && stream == null)
+            throw new ConfigurationError("Resource not found: " + name);
+        return stream;
+    }
+
     public static String resolveRelativeUri(String relativeUri, String contextUri) {
 		LOGGER.debug("resolveRelativeUri({}, {})", relativeUri, contextUri);
 		if (contextUri == null)
@@ -564,26 +584,6 @@ public final class IOUtil {
             return new FileInputStream(filename);
         } else
             return getResourceAsStream(filename, required);
-    }
-
-    /**
-     * Returns an InputStream to a resource on the class path.
-     * @param name the file's name
-     * @return an InputStream to the resource
-     */
-    private static InputStream getResourceAsStream(String name, boolean required) {
-    	LOGGER.debug("getResourceAsStream({}, {})", name, required);
-		InputStream stream = null;
-        ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-        if (contextClassLoader != null)
-        	stream = contextClassLoader.getResourceAsStream(name);
-        if (stream == null) {
-        	String searchedName = (name.startsWith("/") ? name : '/' + name);
-            stream = IOUtil.class.getResourceAsStream(searchedName);
-        }
-        if (required && stream == null)
-            throw new ConfigurationError("Resource not found: " + name);
-        return stream;
     }
 
     private static boolean httpUrlAvailable(String urlString) {
