@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -28,12 +28,15 @@ package org.databene.commons.xml;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -41,9 +44,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.databene.commons.ArrayUtil;
 import org.databene.commons.CollectionUtil;
 import org.databene.commons.Encodings;
+import org.databene.commons.IOUtil;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
 import org.junit.Test;
@@ -185,10 +191,61 @@ public class XMLUtilTest {
 		Element element = XMLUtil.parseStringAsElement("<stmt><!-- xxx -->Al<!-- xyz -->pha<!--z--></stmt>");
 		assertEquals("Alpha", XMLUtil.getWholeText(element));
 	}
+	
+	@Test
+	public void testCreateDocument() {
+		Document document = XMLUtil.createDocument("theRoot");
+		assertNotNull(document);
+		Element rootElement = document.getDocumentElement();
+		assertEquals("theRoot", rootElement.getNodeName());
+		assertEquals(0, rootElement.getChildNodes().getLength());
+	}
+
+	@Test
+	public void testSetProperty_root() {
+		Document document = XMLUtil.createDocument();
+		XMLUtil.setProperty("theRoot", "rootValue", document);
+		assertEquals("rootValue", document.getDocumentElement().getTextContent());
+	}
+
+	@Test
+	public void testSetProperty_complex() {
+		Document document = XMLUtil.createDocument();
+		XMLUtil.setProperty("theRoot.aGroup", "groupValue", document);
+		Element rootElement = document.getDocumentElement();
+		assertEquals("theRoot", rootElement.getNodeName());
+		NodeList rootChildren = rootElement.getChildNodes();
+		assertEquals(1, rootChildren.getLength());
+		Node firstChild = rootChildren.item(0);
+		assertEquals("aGroup", firstChild.getNodeName());
+		assertEquals("groupValue", firstChild.getTextContent());
+	}
+
+	@Test
+	public void testParseAsProperties() throws FileNotFoundException, IOException {
+		Properties expected = new Properties();
+		expected.setProperty("root.topProp", "topValue");
+		expected.setProperty("root.group.groupProp", "groupValue");
+		expected.setProperty("root.emptyProp", "");
+		Properties props = XMLUtil.parseAsProperties(new FileInputStream("src/test/resources/org/databene/commons/xml/properties.xml"));
+		assertEquals(expected, props);
+	}
+
+	@Test
+	public void testSaveAsProperties() throws FileNotFoundException, IOException {
+		Properties props = new Properties();
+		props.setProperty("root.topProp", "topValue");
+		props.setProperty("root.group.groupProp", "groupValue");
+		props.setProperty("root.emptyProp", "");
+		XMLUtil.saveAsProperties(props, new File("target/testSaveAsProperties-actual.xml"), Encodings.UTF_8);
+		String actual = IOUtil.getContentOfURI("target/testSaveAsProperties-actual.xml");
+		String expected = IOUtil.getContentOfURI("org/databene/commons/xml/properties.xml");
+		assertEquals(expected, actual);
+	}
 
 	// private helpers -------------------------------------------------------------------------------------------------
 
-    private void checkXML(Document document) {
+    private static void checkXML(Document document) {
         Element root = document.getDocumentElement();
         assertEquals("root", root.getNodeName());
         assertEquals("1", root.getAttribute("att"));
@@ -196,16 +253,16 @@ public class XMLUtilTest {
     }
     
     @SuppressWarnings("unchecked")
-    private Element createElementWithAttributes(Document document, String name, String... attKeysAndValues) {
+    private static Element createElementWithAttributes(Document document, String name, String... attKeysAndValues) {
         Map<String, String> attMap = CollectionUtil.buildMap((Object[]) attKeysAndValues);
         return createElement(document, name, attMap);
     }
     
-    private Element createElementWithChildren(Document document, String name, Element... children) {
+    private static Element createElementWithChildren(Document document, String name, Element... children) {
         return createElement(document, name, new HashMap<String, String>(), children);
     }
 
-    private Element createElement(Document document, String name, Map<String, String> attributes, Element... children) {
+    private static Element createElement(Document document, String name, Map<String, String> attributes, Element... children) {
 		Element element = document.createElement(name);
 		for (Map.Entry<String, String> attribute : attributes.entrySet())
 			element.setAttribute(attribute.getKey(), attribute.getValue());
@@ -214,7 +271,7 @@ public class XMLUtilTest {
 		return element;
     }
 
-	private Document createDocument() {
+	private static Document createDocument() {
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
