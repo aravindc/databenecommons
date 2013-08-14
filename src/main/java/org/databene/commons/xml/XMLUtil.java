@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -28,7 +28,9 @@ package org.databene.commons.xml;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -39,11 +41,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.sax.SAXTransformerFactory;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
@@ -77,8 +87,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 /**
- * Provides XML Utility methods.<br/>
- * <br/>
+ * Provides XML Utility methods.<br/><br/>
  * Created: 25.08.2007 22:09:26
  * @author Volker Bergmann
  */
@@ -284,7 +293,7 @@ public class XMLUtil {
 		try {
 			if (classLoader == null)
 				classLoader = Thread.currentThread().getContextClassLoader();
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(DOCUMENT_BUILDER_FACTORY_IMPL, classLoader);
+			DocumentBuilderFactory factory = createDocumentBuilderFactory(classLoader);
             factory.setNamespaceAware(true);
             if (schemaUri != null)
             	activateXmlSchemaValidation(factory, schemaUri);
@@ -301,6 +310,11 @@ public class XMLUtil {
         } catch (SAXException e) {
             throw new ConfigurationError(e);
         }
+	}
+
+	public static DocumentBuilderFactory createDocumentBuilderFactory(ClassLoader classLoader) {
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(DOCUMENT_BUILDER_FACTORY_IMPL, classLoader);
+		return factory;
 	}
 
     public static NamespaceAlias namespaceAlias(Document document, String namespaceUri) {
@@ -505,6 +519,109 @@ public class XMLUtil {
 			}
 			
 		};
+	}
+
+	public static Properties parseAsProperties(InputStream in) throws IOException {
+		try {
+			Element root = parse(in).getDocumentElement();
+			Properties props = new Properties();
+			parsePropertyElement(root, props, "");
+			return props;
+		} finally {
+			in.close();
+		}
+	}
+
+	@SuppressWarnings("null")
+	public static void saveAsProperties(Properties properties, File file, String encoding) throws FileNotFoundException {
+		if (properties.size() == 0)
+			throw new IllegalArgumentException("Cannot save empty Properties");
+		Document document = null;
+		for (Map.Entry<Object, Object> entry : properties.entrySet()) {
+			String key = (String) entry.getKey();
+			String value = (String) entry.getValue();
+			String[] prefixAndRemainingPath = StringUtil.splitOnFirstSeparator(key, '.');
+			if (document == null)
+				document = createDocument(prefixAndRemainingPath[0]);
+			String rootElementName = document.getDocumentElement().getNodeName();
+			if (!key.startsWith(rootElementName + '.'))
+				throw new SyntaxError("Required prefix '" + rootElementName + "' not present in key", key);
+			setProperty(prefixAndRemainingPath[1], value, document.getDocumentElement(), document);
+		}
+		document.setXmlStandalone(true); // needed to omit standalone="yes/no" in the XML header
+		saveDocument(document, file, encoding);
+	}
+	
+	public static void saveDocument(Document document, File file, String encoding) throws FileNotFoundException {
+        try {
+			// create file and write header
+			SAXTransformerFactory tf = (SAXTransformerFactory) SAXTransformerFactory.newInstance();
+			Transformer transformer = tf.newTransformer();
+			transformer.setOutputProperty(OutputKeys.ENCODING, encoding);
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}" + "indent-amount", "2");
+			StreamResult out = new StreamResult(new FileOutputStream(file));
+			transformer.transform(new DOMSource(document), out);
+		} catch (TransformerConfigurationException e) {
+			throw new ConfigurationError(e);
+		} catch (TransformerException e) {
+			throw new ConfigurationError(e);
+		}
+
+	}
+	
+	public static Document createDocument(String rootElementName) {
+		Document document = createDocument();
+		Element rootElement = document.createElement(rootElementName);
+		document.appendChild(rootElement);
+		return document;
+	}
+	
+	public static Document createDocument() {
+		try {
+			DocumentBuilder documentBuilder = createDocumentBuilderFactory(null).newDocumentBuilder();
+			return documentBuilder.newDocument();
+		} catch (ParserConfigurationException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public static void setProperty(String key, String value, Document document) {
+		String[] prefixAndRemainingPath = StringUtil.splitOnFirstSeparator(key, '.');
+		Element rootElement = document.getDocumentElement();
+		if (rootElement == null) {
+			rootElement = document.createElement(prefixAndRemainingPath[0]);
+			document.appendChild(rootElement);
+		} else if (!key.equals(rootElement.getNodeName()))
+			throw new IllegalArgumentException("Cannot set a property '" + key + "' on a document with root <" + rootElement.getNodeName() + ">");
+		setProperty(prefixAndRemainingPath[1], value, rootElement, document);
+	}
+	
+	public static void setProperty(String key, String value, Element element, Document document) {
+		if (!StringUtil.isEmpty(key)) {
+			String[] prefixAndRemainingPath = StringUtil.splitOnFirstSeparator(key, '.');
+			String childName = prefixAndRemainingPath[0];
+			Element child = getChildElement(element, false, false, childName);
+			if (child == null) {
+				child = document.createElement(childName);
+				element.appendChild(child);
+			}
+			setProperty(prefixAndRemainingPath[1], value, child, document);
+		} else {
+			element.setTextContent(value);
+		}
+	}
+
+	private static void parsePropertyElement(Element element, Properties props, String parentPath) {
+		String path = (parentPath.length() > 0 ? parentPath + '.' : "") + element.getNodeName();
+		Element[] childElements = getChildElements(element);
+		if (childElements.length > 0) {
+			for (Element childElement : childElements)
+				parsePropertyElement(childElement, props, path);
+		} else {
+			String text = StringUtil.nullToEmpty(getText(element));
+			props.put(path, text);
+		}
 	}
 
 }
