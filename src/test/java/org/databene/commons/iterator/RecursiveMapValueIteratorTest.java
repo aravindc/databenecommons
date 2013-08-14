@@ -28,13 +28,13 @@ import org.databene.commons.OrderedMap;
 import org.junit.Test;
 
 /**
- * TODO Document class.<br/><br/>
+ * Tests the {@link RecursiveMapValueIterator}.<br/><br/>
  * Created: 04.08.2013 08:26:19
- * @since TODO version
+ * @since 0.5.24
  * @author Volker Bergmann
  */
 
-public class RecursiveMapIteratorTest extends IteratorTestCase {
+public class RecursiveMapValueIteratorTest extends IteratorTestCase {
 	
 	@SuppressWarnings({ "cast", "unchecked" })
 	@Test
