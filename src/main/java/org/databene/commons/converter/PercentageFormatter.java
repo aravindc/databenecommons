@@ -26,9 +26,9 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * TODO Document class.<br/><br/>
+ * Formats percentage values.<br/><br/>
  * Created: 19.06.2013 07:30:33
- * @since TODO version
+ * @since 0.5.24
  * @author Volker Bergmann
  */
 

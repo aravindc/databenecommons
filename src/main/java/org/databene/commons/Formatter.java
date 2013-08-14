@@ -30,9 +30,9 @@ import java.util.Date;
 import org.databene.commons.converter.PercentageFormatter;
 
 /**
- * TODO Document class.<br/><br/>
+ * Provides text formatting features for different data types.<br/><br/>
  * Created: 06.07.2013 10:21:19
- * @since TODO version
+ * @since 0.5.24
  * @author Volker Bergmann
  */
 

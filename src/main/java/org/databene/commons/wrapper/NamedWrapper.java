@@ -24,9 +24,9 @@ package org.databene.commons.wrapper;
 import org.databene.commons.Named;
 
 /**
- * TODO Document class.<br/><br/>
+ * Wraps a {@link Named} object.<br/><br/>
  * Created: 20.06.2013 06:48:24
- * @since TODO version
+ * @since 0.5.24
  * @author Volker Bergmann
  */
 

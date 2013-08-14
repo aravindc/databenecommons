@@ -23,16 +23,17 @@ package org.databene.commons.iterator;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 /**
- * TODO Document class.<br/><br/>
+ * Allows linear iteration over nested {@link Set}s using a plain {@link Iterator}.<br/><br/>
  * Created: 04.08.2013 07:58:05
- * @since TODO version
+ * @since 0.5.24
  * @author Volker Bergmann
  */
 
-public class RecursiveMapValueIterator<E> implements Iterator<E> { // TODO test
+public class RecursiveMapValueIterator<E> implements Iterator<E> {
 	
 	private Stack<Iterator<?>> iterators;
 	private E next;
