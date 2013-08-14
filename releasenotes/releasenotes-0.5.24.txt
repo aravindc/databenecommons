@@ -6,7 +6,9 @@ Enhancements
 ------------
 - Mapping of Properties structures to XML files and vice-versa
 - Merging simple and XML-formed properties files
-- Defined RecursiveMapIterator
+- Created RecursiveMapIterator
+- Created Formatter and PercentageFormatter as data formatting utilities
+
 
 Changes
 -------
