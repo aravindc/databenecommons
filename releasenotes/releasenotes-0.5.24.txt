@@ -8,6 +8,8 @@ Enhancements
 - Merging simple and XML-formed properties files
 - Created RecursiveMapIterator
 - Created Formatter and PercentageFormatter as data formatting utilities
+- TimeUtil: firstDayOfWeek(), lastDayOfWeek()
+- Implemented Timespan.dayIterator()
 
 
 Changes
@@ -18,3 +20,4 @@ Changes
 Bug Fixes
 ---------
 - Fixed StringUtil.splitOnFirstSeparator()
+- Timespan.contains() does not include startDate and endDate
