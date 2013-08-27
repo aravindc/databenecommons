@@ -87,6 +87,28 @@ public class TimeUtilTest {
 	}
 	
 	@Test
+	public void testFirstDayOfWeek() {
+		assertEquals(TimeUtil.date(2013, 7, 26), TimeUtil.firstDayOfWeek(TimeUtil.date(2013, 7, 26)));
+		assertEquals(TimeUtil.date(2013, 7, 26), TimeUtil.firstDayOfWeek(TimeUtil.date(2013, 7, 27)));
+		assertEquals(TimeUtil.date(2013, 7, 26), TimeUtil.firstDayOfWeek(TimeUtil.date(2013, 7, 28)));
+		assertEquals(TimeUtil.date(2013, 7, 26), TimeUtil.firstDayOfWeek(TimeUtil.date(2013, 7, 29)));
+		assertEquals(TimeUtil.date(2013, 7, 26), TimeUtil.firstDayOfWeek(TimeUtil.date(2013, 7, 30)));
+		assertEquals(TimeUtil.date(2013, 7, 26), TimeUtil.firstDayOfWeek(TimeUtil.date(2013, 7, 31)));
+		assertEquals(TimeUtil.date(2013, 7, 26), TimeUtil.firstDayOfWeek(TimeUtil.date(2013, 8,  1)));
+	}
+	
+	@Test
+	public void testLastDayOfWeek() {
+		assertEquals(TimeUtil.date(2013, 8, 1), TimeUtil.lastDayOfWeek(TimeUtil.date(2013, 7, 26)));
+		assertEquals(TimeUtil.date(2013, 8, 1), TimeUtil.lastDayOfWeek(TimeUtil.date(2013, 7, 27)));
+		assertEquals(TimeUtil.date(2013, 8, 1), TimeUtil.lastDayOfWeek(TimeUtil.date(2013, 7, 28)));
+		assertEquals(TimeUtil.date(2013, 8, 1), TimeUtil.lastDayOfWeek(TimeUtil.date(2013, 7, 29)));
+		assertEquals(TimeUtil.date(2013, 8, 1), TimeUtil.lastDayOfWeek(TimeUtil.date(2013, 7, 30)));
+		assertEquals(TimeUtil.date(2013, 8, 1), TimeUtil.lastDayOfWeek(TimeUtil.date(2013, 7, 31)));
+		assertEquals(TimeUtil.date(2013, 8, 1), TimeUtil.lastDayOfWeek(TimeUtil.date(2013, 8,  1)));
+	}
+	
+	@Test
 	public void testFirstDayOfMonth() {
 		assertEquals(TimeUtil.date(1970, 0, 1), TimeUtil.firstDayOfMonth(TimeUtil.date(0)));
 		assertEquals(TimeUtil.date(2008, 1, 1), TimeUtil.firstDayOfMonth(TimeUtil.date(2008, 1, 15)));

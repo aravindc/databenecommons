@@ -57,6 +57,7 @@ public final class TimeUtil {
     private static final int[] MONTH_LENGTHS = { 31, 28, 31,  30, 31, 30,  31, 31, 30, 31, 30, 31 };
     
 	private static final GregorianCalendar GREGORIAN_CALENDAR = new GregorianCalendar();
+	public static final int DECADE = 100;
 	
 	public static int currentYear() {
         return new GregorianCalendar().get(Calendar.YEAR);
@@ -295,6 +296,20 @@ public final class TimeUtil {
     	cal.set(Calendar.SECOND, 0);
     	cal.set(Calendar.MILLISECOND, 0);
     	return cal.getTime();
+    }
+    
+    public static Date firstDayOfWeek(Date date) {
+    	Calendar cal = calendar(date);
+    	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+    	dayOfWeek = (dayOfWeek == 1 ? 7 : dayOfWeek - 1); // by default, sunday seems to be the first day of a week
+    	return TimeUtil.addDays(date, 1 - dayOfWeek);
+    }
+    
+    public static Date lastDayOfWeek(Date date) {
+    	Calendar cal = calendar(date);
+    	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+    	dayOfWeek = (dayOfWeek == 1 ? 7 : dayOfWeek - 1); // by default, sunday seems to be the first day of a week
+    	return TimeUtil.addDays(date, 7 - dayOfWeek);
     }
     
     public static Date firstDayOfMonth(Date date) {
