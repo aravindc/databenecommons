@@ -26,7 +26,10 @@
 
 package org.databene.commons;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.text.SimpleDateFormat;
 
 /**
@@ -61,7 +64,7 @@ public class Timespan {
     }
 
     public boolean contains(Date date) {
-        return (this.startDate.before(date) && this.endDate.after(date));
+        return (!this.startDate.after(date) && !this.endDate.before(date));
     }
 
     public static Timespan intersection(Timespan span1, Timespan span2) {
@@ -96,6 +99,13 @@ public class Timespan {
         return new Timespan(startDate, endDate);
     }
 
+	public Iterator<Date> dayIterator() {
+		List<Date> dates = new ArrayList<Date>();
+		for (Date date = startDate; !date.after(endDate); date = TimeUtil.addDays(date, 1))
+			dates.add(date);
+		return dates.iterator();
+	}
+    
     @Override
     public String toString() {
         if (startDate != null)
@@ -135,6 +145,5 @@ public class Timespan {
 			return (startDate.equals(that.startDate));
 		return true;
 	}
-    
-    
+
 }
