@@ -28,6 +28,7 @@ package org.databene.commons.ui.swing;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableRowSorter;
 
 import org.databene.commons.BeanUtil;
 
@@ -169,4 +170,11 @@ public class SwingUtil {
 		 }
 	}
 	
+	public static void applyRowSorter(JTable table) {
+		@SuppressWarnings({ "rawtypes", "unchecked" })
+		TableRowSorter<?> sorter = new TableRowSorter(table.getModel());
+		sorter.setSortsOnUpdates(true);
+		table.setRowSorter(sorter);
+	}
+
 }
