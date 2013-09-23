@@ -116,6 +116,10 @@ public final class TimeUtil {
     	return (isLeapYear(year) ? 366 : 365);
     }
 
+	public static boolean isWeekend(Date date) {
+		return isWeekend(calendar(date));
+	}
+
 	public static boolean isWeekend(Calendar day) {
         int dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
         return (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY);
