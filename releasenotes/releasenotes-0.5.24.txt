@@ -12,11 +12,6 @@ Enhancements
 - Implemented Timespan.dayIterator()
 
 
-Changes
--------
-- 
-
-
 Bug Fixes
 ---------
 - Fixed StringUtil.splitOnFirstSeparator()
