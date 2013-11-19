@@ -128,4 +128,12 @@ public class MathUtil {
         return result;
     }
     
+    public static double max(double... args) {
+        double result = args[0];
+        for (int i = 1; i < args.length; i++)
+            if (args[i] > result)
+                result = args[i];
+        return result;
+    }
+    
 }
