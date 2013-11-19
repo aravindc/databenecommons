@@ -147,7 +147,7 @@ public class OrderedSet<E> implements Set<E> {
     // List interface --------------------------------------------------------------------------------------------------
 
     public E get(int index) {
-        return map.elementAt(index);
+        return map.valueAt(index);
     }
     
     // java.lang.Object overrides --------------------------------------------------------------------------------------

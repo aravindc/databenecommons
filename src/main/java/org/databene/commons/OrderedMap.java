@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -185,8 +185,12 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
 
     // List/Vector interface -------------------------------------------------------------------------------------------
 
-    public V elementAt(int index) {
+    public V valueAt(int index) {
         return values.get(index);
+    }
+    
+    public int indexOfValue(V value) {
+    	return values.indexOf(value);
     }
 
     /**
