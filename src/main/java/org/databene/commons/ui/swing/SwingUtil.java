@@ -39,55 +39,61 @@ import java.awt.geom.Rectangle2D;
  * Provides Swing utilities.<br/>
  * <br/>
  * Created: 23.04.2007 22:41:21
+ * 
  * @since 0.5.13
  * @author Volker Bergmann
  */
 public class SwingUtil {
 
-    public static void repaintLater(final Component component) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
+	public static void repaintLater(final Component component) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
-                component.repaint();
-            }
-        });
-    }
+				component.repaint();
+			}
+		});
+	}
 
-    public static void center(Component component) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (screenSize.width - component.getWidth()) / 2;
-        int y = (screenSize.height - component.getHeight()) / 2;
-        component.setLocation(x, y);
-    }
-    
-    public static <T extends Component> T showInModalDialog(T mainComponent, String title, Component parentComponent) {
-    	return SimpleDialog.showModalDialog(mainComponent, title, parentComponent);
-    }
+	public static void center(Component component) {
+		Dimension screenSize = getScreenSize();
+		int x = (screenSize.width - component.getWidth()) / 2;
+		int y = (screenSize.height - component.getHeight()) / 2;
+		component.setLocation(x, y);
+	}
 
-    public static void showInFrame(Component component, String title) {
-        JFrame frame = new JFrame(title);
-        frame.getContentPane().add(component, BorderLayout.CENTER);
-        frame.pack();
-        center(frame);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-    }
-    
-    public static Rectangle fitRectangles(Dimension imageSize, Dimension size) {
-        double aspectX = (double) size.width / imageSize.width;
-        double aspectY = (double) size.height / imageSize.height;
-        double aspect = Math.min(aspectX, aspectY);
-        int paintedWidth = (int) (imageSize.width * aspect);
-        int paintedHeight = (int) (imageSize.height * aspect);
-        int x = (size.width - paintedWidth) / 2;
-        int y = (size.height - paintedHeight) / 2;
-        return new Rectangle(x, y, paintedWidth, paintedHeight);
-    }
-    
-    public static boolean isLookAndFeelNative() {
-    	return UIManager.getSystemLookAndFeelClassName().equals(UIManager.getLookAndFeel().getClass().getName());
-    }
-    
+	public static Dimension getScreenSize() {
+		return Toolkit.getDefaultToolkit().getScreenSize();
+	}
+
+	public static <T extends Component> T showInModalDialog(T mainComponent, String title, boolean cancellable,
+			Component parentComponent) {
+		return SimpleDialog.showModalDialog(mainComponent, title, cancellable, parentComponent);
+	}
+
+	public static void showInFrame(Component component, String title) {
+		JFrame frame = new JFrame(title);
+		frame.getContentPane().add(component, BorderLayout.CENTER);
+		frame.pack();
+		center(frame);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}
+
+	public static Rectangle fitRectangles(Dimension imageSize, Dimension size) {
+		double aspectX = (double) size.width / imageSize.width;
+		double aspectY = (double) size.height / imageSize.height;
+		double aspect = Math.min(aspectX, aspectY);
+		int paintedWidth = (int) (imageSize.width * aspect);
+		int paintedHeight = (int) (imageSize.height * aspect);
+		int x = (size.width - paintedWidth) / 2;
+		int y = (size.height - paintedHeight) / 2;
+		return new Rectangle(x, y, paintedWidth, paintedHeight);
+	}
+
+	public static boolean isLookAndFeelNative() {
+		return UIManager.getSystemLookAndFeelClassName().equals(UIManager.getLookAndFeel().getClass().getName());
+	}
+
 	public static Window getWindowForComponent(Component parentComponent) {
 		if (parentComponent == null)
 			return null;
@@ -95,7 +101,7 @@ public class SwingUtil {
 			return (Window) parentComponent;
 		return getWindowForComponent(parentComponent.getParent());
 	}
-	
+
 	public static void equalizeButtonSizes(Graphics g, JButton... buttons) {
 
 		String[] labels = BeanUtil.extractProperties(buttons, "text", String.class);
@@ -107,10 +113,8 @@ public class SwingUtil {
 		FontMetrics metrics = button0.getFontMetrics(button0.getFont());
 		for (int i = 0; i < labels.length; ++i) {
 			textBounds = metrics.getStringBounds(labels[i], g);
-			maxSize.width = Math
-					.max(maxSize.width, (int) textBounds.getWidth());
-			maxSize.height = Math.max(maxSize.height,
-					(int) textBounds.getHeight());
+			maxSize.width = Math.max(maxSize.width, (int) textBounds.getWidth());
+			maxSize.height = Math.max(maxSize.height, (int) textBounds.getHeight());
 		}
 
 		Insets insets = button0.getBorder().getBorderInsets(button0);
@@ -138,7 +142,7 @@ public class SwingUtil {
 		button.setBorderPainted(false);
 		return button;
 	}
-	
+ 
 	public static Color getUIPanelBackground() {
 		return getUIColor("Panel.background");
 	}
@@ -152,24 +156,24 @@ public class SwingUtil {
 	public static void bindKeyToAction(int keyCode, int modifiers, Action action, JComponent component) {
 		bindKeyToAction(keyCode, modifiers, action, component, JComponent.WHEN_FOCUSED);
 	}
-	
+ 
 	public static void bindKeyToAction(int keyCode, int modifiers, Action action, JComponent component, int condition) {
 		KeyStroke keyStroke = KeyStroke.getKeyStroke(keyCode, modifiers);
 		component.getInputMap(condition).put(keyStroke, action);
 	}
-	
+ 
 	public static void autoSizeTableColumns(JTable table) {
-		 for (int column = 0; column < table.getColumnCount(); column++) {
-			 int columnWidth = 0;
-			 for (int row = 0; row < table.getRowCount(); row++) {
-			     TableCellRenderer renderer = table.getCellRenderer(row, column);
-			     Component comp = table.prepareRenderer(renderer, row, column);
-			     columnWidth = Math.max(comp.getPreferredSize().width, columnWidth);
-			 }
-			 table.getColumnModel().getColumn(column).setPreferredWidth(columnWidth);
-		 }
+		for (int column = 0; column < table.getColumnCount(); column++) {
+			int columnWidth = 0;
+			for (int row = 0; row < table.getRowCount(); row++) {
+				TableCellRenderer renderer = table.getCellRenderer(row, column);
+				Component comp = table.prepareRenderer(renderer, row, column);
+				columnWidth = Math.max(comp.getPreferredSize().width, columnWidth);
+			}
+			table.getColumnModel().getColumn(column).setPreferredWidth(columnWidth);
+		}
 	}
-	
+
 	public static void applyRowSorter(JTable table) {
 		@SuppressWarnings({ "rawtypes", "unchecked" })
 		TableRowSorter<?> sorter = new TableRowSorter(table.getModel());
@@ -177,4 +181,14 @@ public class SwingUtil {
 		table.setRowSorter(sorter);
 	}
 
+	public static void scrollToTableCell(JTable table, int rowIndex, int colIndex) {
+		if (!(table.getParent() instanceof JViewport))
+			return;
+		JViewport viewport = (JViewport) table.getParent();
+		Rectangle rect = table.getCellRect(rowIndex, colIndex, true);
+		Point p = viewport.getViewPosition();
+		rect.setLocation(rect.x - p.x, rect.y - p.y);
+		table.scrollRectToVisible(rect);
+	}
+	
 }
