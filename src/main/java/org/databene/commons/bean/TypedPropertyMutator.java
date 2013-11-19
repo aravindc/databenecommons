@@ -58,7 +58,7 @@ public class TypedPropertyMutator extends AbstractNamedMutator {
         } else {
             writeMethod = propertyDescriptor.getWriteMethod();
             if (writeMethod == null)
-                throw new ConfigurationError("No write method found for property '" + propertyName + "'");
+                throw new ConfigurationError("No write method found for property '" + propertyName + "' in class " + beanClass.getName());
         }
     }
 
@@ -87,4 +87,5 @@ public class TypedPropertyMutator extends AbstractNamedMutator {
         }
         BeanUtil.invoke(target, writeMethod, new Object[] { propertyValue });
     }
+    
 }
