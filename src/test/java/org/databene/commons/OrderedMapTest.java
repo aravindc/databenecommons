@@ -160,7 +160,7 @@ public class OrderedMapTest {
 
     // private helpers -------------------------------------------------------------------------------------------------
 
-    private <T> void check(OrderedMap<T, T> map, T ... expectedKeyValuePairs) {
+    private static <T> void check(OrderedMap<T, T> map, T ... expectedKeyValuePairs) {
         if (expectedKeyValuePairs.length == 0)
             assertTrue("Map is expected to be empty", map.isEmpty());
         assertEquals("Unexpected size", expectedKeyValuePairs.length / 2, map.size());
@@ -186,7 +186,7 @@ public class OrderedMapTest {
             assertTrue(valueIterator.hasNext());
             assertEquals(expectedValues[i], valueIterator.next());
             assertEquals(expectedValues[i], values.get(i));
-            assertEquals(expectedValues[i], map.elementAt(i));
+            assertEquals(expectedValues[i], map.valueAt(i));
             assertTrue(entryIterator.hasNext());
             Map.Entry<T, T> entry = entryIterator.next();
             assertEquals(expectedKeys[i], entry.getKey());
@@ -194,7 +194,7 @@ public class OrderedMapTest {
         }
     }
 
-    private OrderedMap<Integer, Integer> createMap123() {
+    private static OrderedMap<Integer, Integer> createMap123() {
         OrderedMap<Integer, Integer> map = new OrderedMap<Integer, Integer>();
         map.put(1, 11);
         map.put(2, 22);
