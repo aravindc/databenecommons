@@ -99,6 +99,9 @@ public class MapProxy<M extends Map<K, V>, K, V> implements Map<K, V> {
 		return realMap.values();
 	}
 	
+	
+	// java.lang.Object overrides --------------------------------------------------------------------------------------
+	
 	@Override
 	public int hashCode() {
 		return realMap.hashCode();
