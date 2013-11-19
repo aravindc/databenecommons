@@ -31,7 +31,7 @@ package org.databene.commons;
  * Created: 16.03.2008 13:35:52
  * @author Volker Bergmann
  */
-public class Person {
+public class Person implements Named {
 
     String name;
     int age;
@@ -40,13 +40,17 @@ public class Person {
         this(null, -1);
     }
     
+    public Person(String name) {
+        this(name, -1);
+    }
+
     public Person(String name, int age) {
-        super();
         this.name = name;
         this.age = age;
     }
 
-    public String getName() {
+    @Override
+	public String getName() {
         return name;
     }
 
