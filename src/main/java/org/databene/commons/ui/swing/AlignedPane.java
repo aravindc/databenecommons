@@ -63,22 +63,28 @@ public class AlignedPane extends JPanel implements SwingConstants {
     protected AlignedPane(int orientation, int columns) {
     	this.columns = columns;
         this.orientation = orientation;
-        if (orientation == VERTICAL) {
+        if (orientation == VERTICAL)
             setLayout(new GridBagLayout());
+        else if (orientation == HORIZONTAL)
+            setLayout(new FlowLayout());
+        else
+            throw new IllegalArgumentException();
+        removeAll();
+    }
+    
+    // interface -------------------------------------------------------------------------------------------------------
+    
+    @Override
+    public void removeAll() {
+    	super.removeAll();
+        if (orientation == VERTICAL) {
             gbc = new GridBagConstraints(
                 0, 0, 1, 1, 0, 0,
                 GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
                 new Insets(2, 2, 2, 2), 2, 2);
-
-        } else if (orientation == HORIZONTAL)
-            setLayout(new FlowLayout());
-        else
-            throw new IllegalArgumentException();
-
+        }
     }
     
-    // interface -------------------------------------------------------------------------------------------------------
-
     public void addRow(String title, Component component) {
         if (orientation == HORIZONTAL) {
             add(new JLabel(title));
@@ -132,6 +138,10 @@ public class AlignedPane extends JPanel implements SwingConstants {
             addElement(label, 1);
             addElement(component, gridwidth);
         }
+    }
+
+    public void addLabel(String labelText) {
+    	addElement(new JLabel(labelText), 1);
     }
 
     public void addElement(Component component) {
