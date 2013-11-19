@@ -53,6 +53,14 @@ public class URLEncodeConverter extends ThreadSafeConverter<String, String> {
 
     @Override
 	public String convert(String sourceValue) throws ConversionException {
+        return convert(sourceValue, encoding);
+    }
+
+	public static String convertUTF8(String sourceValue) throws ConversionException {
+        return convert(sourceValue, Encodings.UTF_8);
+    }
+	
+	public static String convert(String sourceValue, String encoding) throws ConversionException {
 	    try {
 	        return URLEncoder.encode(sourceValue, encoding);
         } catch (Exception e) {
@@ -60,5 +68,5 @@ public class URLEncodeConverter extends ThreadSafeConverter<String, String> {
         			+ "' failed for encoding '" + encoding + "'", e);
         }
     }
-
+	
 }
