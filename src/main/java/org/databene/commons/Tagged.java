@@ -21,6 +21,8 @@
 
 package org.databene.commons;
 
+import java.util.Set;
+
 /**
  * Common interface for any classes that can have tags.<br/><br/>
  * Created: 18.06.2012 10:17:25
@@ -28,5 +30,8 @@ package org.databene.commons;
  * @author Volker Bergmann
  */
 public interface Tagged {
-	String[] getTags();
+	Set<String> getTags();
+	boolean hasTag(String tag);
+	void addTag(String tag);
+	void removeTag(String tag);
 }
