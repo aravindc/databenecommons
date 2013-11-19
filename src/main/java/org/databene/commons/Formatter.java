@@ -21,6 +21,7 @@
 
 package org.databene.commons;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -58,8 +59,24 @@ public class Formatter {
 		return (date != null ? new SimpleDateFormat("yyyy-MM-dd").format(date) : "null");
 	}
 
+	public static String formatLocal(Date date) {
+		return (date != null ? DateFormat.getDateInstance().format(date) : "null");
+	}
+
 	public static String format(double value) {
-		return new DecimalFormat("0.00", DecimalFormatSymbols.getInstance()).format(value);
+		return new DecimalFormat("#,##0.00", DecimalFormatSymbols.getInstance()).format(value);
+	}
+
+	public static String formatDaysFromNow(Date date) { // TODO internationalize
+		int days = TimeUtil.daysBetween(TimeUtil.today(), date);
+		switch (days) {
+			case -2: return "vorgestern";
+			case -1: return "gestern";
+			case  0: return "heute";
+			case  1: return "morgen";
+			case  2: return "übermorgen";
+			default: return (days < 0 ? "vor " : "in ") + Math.abs(days) + " Tagen";
+		}
 	}
 
 }
