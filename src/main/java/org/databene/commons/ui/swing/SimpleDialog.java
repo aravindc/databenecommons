@@ -32,6 +32,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.KeyStroke;
+import javax.swing.border.EmptyBorder;
 
 /**
  * {@link JDialog} which applies useful standard behaviour.<br/><br/>
@@ -42,29 +43,29 @@ import javax.swing.KeyStroke;
 @SuppressWarnings("serial")
 public class SimpleDialog<E extends Component> extends JDialog {
 
-	private E mainComponent;
+	protected E mainComponent;
+	protected boolean cancellable;
+	private Component parentComponent;
 	
 	protected boolean cancelled;
+	
+	protected Box buttonBar;
+	protected boolean completed;
+	protected AbstractAction cancelAction;
+	protected AbstractAction okAction;
 
-	AbstractAction okAction;
-	AbstractAction cancelAction;
-
-	public SimpleDialog(Component parentComponent, String title, boolean modal, E mainComponent) {
-		super(SwingUtil.getWindowForComponent(parentComponent), title, ModalityType.APPLICATION_MODAL);
+	public SimpleDialog(Component parentComponent, String title, boolean modal, boolean cancellable, E mainComponent) {
+		super(SwingUtil.getWindowForComponent(parentComponent), title, (modal ? ModalityType.APPLICATION_MODAL : ModalityType.MODELESS));
+		this.parentComponent = parentComponent;
+		this.cancellable = cancellable;
+		this.completed = false;
 		this.cancelled = false;
 		
 		// Set up main component
 		this.mainComponent = mainComponent;
 		add(mainComponent, BorderLayout.CENTER);
 		
-		// setup buttons
-		this.okAction = new AbstractAction("OK") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cancelled = false;
-				setVisible(false);
-			}
-		};
+		// setup actions
 		this.cancelAction = new AbstractAction("Cancel") {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -72,21 +73,34 @@ public class SimpleDialog<E extends Component> extends JDialog {
 				setVisible(false);
 			}
 		};
-		add(createButtonBar(), BorderLayout.SOUTH);
+		this.okAction = new AbstractAction("OK") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (handleOkClick()) {
+					cancelled = false;
+					setVisible(false);
+				}
+			}
+
+		};
+		this.buttonBar = Box.createHorizontalBox();
+		add(this.buttonBar, BorderLayout.SOUTH);
 		
 		// assure that the dialog is closed if the user hits Escape
 	    getRootPane().registerKeyboardAction(cancelAction, 
 	    		KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
 	            JComponent.WHEN_IN_FOCUSED_WINDOW);
-	    
-	    // pack and position the dialog 
-		setResizable(false);
-		pack();
-		setLocationRelativeTo(parentComponent);
+	}
+	
+	@Override
+	public void setVisible(boolean visible) {
+		if (visible && !completed)
+			completeButtonBar();
+		super.setVisible(visible);
 	}
 
-	public static <T extends Component> T showModalDialog(T mainComponent, String title, Component parentComponent) {
-		SimpleDialog<T> dialog = new SimpleDialog<T>(parentComponent, title, true, mainComponent);
+	public static <T extends Component> T showModalDialog(T mainComponent, String title, boolean cancellable, Component parentComponent) {
+		SimpleDialog<T> dialog = new SimpleDialog<T>(parentComponent, title, true, cancellable, mainComponent);
 		dialog.setVisible(true);
 		dialog.dispose();
 		return (dialog.wasCancelled() ? null : dialog.getMainComponent());
@@ -100,15 +114,32 @@ public class SimpleDialog<E extends Component> extends JDialog {
 		return cancelled;
 	}
 
-	private Component createButtonBar() {
-		Box box = Box.createHorizontalBox();
-		box.add(Box.createHorizontalGlue());
+	public void addButton(AbstractAction action) {
+		buttonBar.add(new JButton(action));
+	}
+	
+	protected boolean handleOkClick() {
+		return true;
+	}
+	
+	
+	// private helpers -------------------------------------------------------------------------------------------------
+	
+	private void completeButtonBar() {
+		buttonBar.setBorder(new EmptyBorder(8, 8, 8, 8));
+		buttonBar.add(Box.createHorizontalGlue());
+		if (cancellable) {
+			addButton(cancelAction);
+			buttonBar.add(Box.createHorizontalStrut(8));
+		}
 		JButton okButton = new JButton(okAction);
-		box.add(okButton);
+		buttonBar.add(okButton);
 		getRootPane().setDefaultButton(okButton);
-		box.add(new JButton(cancelAction));
-		box.add(Box.createHorizontalGlue());
-		return box;
+	    // pack and position the dialog 
+		setResizable(false);
+		pack();
+		setLocationRelativeTo(parentComponent);
+		this.completed = true;
 	}
 
 }
