@@ -81,10 +81,9 @@ public class ParseException extends RuntimeException {
 	public String toString() {
 		StringBuilder builder = new StringBuilder(getMessage());
 		if (line >= 0 && column >= 0)
-			builder.append(" at line ").append(line).append(", column ").append(column).append(" of ");
-		else
-			builder.append(" in ");
-		builder.append(parsedText);
+			builder.append(" at line ").append(line).append(", column ").append(column);
+		if (parsedText != null)
+			builder.append(" in ").append(parsedText);
 	    return builder.toString();
 	}
 	
