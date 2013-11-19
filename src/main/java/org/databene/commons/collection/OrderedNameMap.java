@@ -87,8 +87,12 @@ public class OrderedNameMap<E> extends MapProxy<OrderedMap<String, E>, String, E
     	return new OrderedNameMap<T>(CASE_IGNORANT);
     }
     
-	public E elementAt(int index) {
-		return realMap.elementAt(index);
+	public E valueAt(int index) {
+		return realMap.valueAt(index);
+    }
+
+	public int indexOfValue(E value) {
+		return realMap.indexOfValue(value);
     }
 
 	public Map.Entry<String, E> getEntry(String key) {
