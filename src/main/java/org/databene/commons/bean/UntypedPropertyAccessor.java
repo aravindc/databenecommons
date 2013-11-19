@@ -30,6 +30,7 @@ import org.databene.commons.BeanUtil;
 import org.databene.commons.ConfigurationError;
 
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 
 /**
  * Retrieves values of a JavaBean property without knowing the bean type.<br/>
@@ -38,7 +39,7 @@ import java.beans.PropertyDescriptor;
  * @author Volker Bergmann
  */
 @SuppressWarnings("rawtypes")
-class UntypedPropertyAccessor implements PropertyAccessor {
+public class UntypedPropertyAccessor implements PropertyAccessor {
 
     private String propertyName;
     private Class<?> propertyType;
@@ -52,19 +53,14 @@ class UntypedPropertyAccessor implements PropertyAccessor {
 
     @Override
 	public Object getValue(Object bean) {
-        if (bean == null)
-            if (strict)
-                throw new IllegalArgumentException("Trying to get property value '" + propertyName + "' from null");
-            else
-                return null;
-        PropertyDescriptor descriptor = BeanUtil.getPropertyDescriptor(bean.getClass(), propertyName);
-        if (descriptor == null)
-            if (strict)
-                throw new ConfigurationError("No property '" + propertyName + "' found in class " + bean.getClass());
-            else
-                return null;
+		PropertyDescriptor descriptor = getPropertyDescriptor(bean, propertyName, strict);
+		if (descriptor == null)
+			return null;
         this.propertyType = descriptor.getPropertyType();
-        return BeanUtil.invoke(bean, descriptor.getReadMethod(), null);
+        Method readMethod = getReadMethod(descriptor, bean, strict);
+        if (readMethod == null)
+        	return null;
+		return BeanUtil.invoke(bean, readMethod, null);
     }
 
     @Override
@@ -77,4 +73,45 @@ class UntypedPropertyAccessor implements PropertyAccessor {
         return propertyName;
     }
     
+    
+    // static implementation -------------------------------------------------------------------------------------------
+    
+    public static Object getValue(Object bean, String propertyName, boolean strict) {
+		PropertyDescriptor descriptor = getPropertyDescriptor(bean, propertyName, strict);
+		if (descriptor == null)
+			return null;
+        Method readMethod = getReadMethod(descriptor, bean, strict);
+        if (readMethod == null)
+        	return null;
+		return BeanUtil.invoke(bean, readMethod, null);
+	}
+    
+    
+    // private helper methods ------------------------------------------------------------------------------------------
+
+	private static PropertyDescriptor getPropertyDescriptor(Object bean, String propertyName, boolean strict) {
+		if (bean == null)
+            if (strict)
+                throw new IllegalArgumentException("Trying to get property value '" + propertyName + "' from null");
+            else
+                return null;
+        PropertyDescriptor descriptor = BeanUtil.getPropertyDescriptor(bean.getClass(), propertyName);
+        if (descriptor == null)
+            if (strict)
+                throw new ConfigurationError("No property '" + propertyName + "' found in class " + bean.getClass());
+            else
+                return null;
+		return descriptor;
+	}
+
+	private static Method getReadMethod(PropertyDescriptor descriptor, Object bean, boolean strict) {
+		Method readMethod = descriptor.getReadMethod();
+        if (readMethod == null)
+            if (strict)
+                throw new ConfigurationError("No reader for property '" + descriptor.getName() + "' found in class " + bean.getClass());
+            else
+                return null;
+		return readMethod;
+	}
+
 }
