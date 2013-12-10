@@ -190,7 +190,7 @@ public class ConverterManager implements ContextAware, Resettable {
     }
 
 	@SuppressWarnings("cast")
-    private Converter tryToCreateStringConverter(Class targetType) {
+    private static Converter tryToCreateStringConverter(Class targetType) {
         if (targetType.getEnumConstants() != null)
             return new String2EnumConverter(targetType);
         else if (targetType == Boolean.class)
@@ -210,7 +210,7 @@ public class ConverterManager implements ContextAware, Resettable {
         return null;
     }
 
-	private <T> Converter<?, T> tryToCreateBooleanConverter(Class targetType) {
+	private static <T> Converter<?, T> tryToCreateBooleanConverter(Class targetType) {
         if (Number.class.isAssignableFrom(targetType))
             return new Boolean2NumberConverter(targetType);
     	Class<?> wrapperClass = BeanUtil.getWrapper(targetType.getName());
@@ -236,6 +236,8 @@ public class ConverterManager implements ContextAware, Resettable {
             return new FormatFormatConverter<Time>(Time.class, new SimpleDateFormat(Patterns.DEFAULT_DATETIME_PATTERN), false);
         } else if (sourceType == Class.class) {
             return new Class2StringConverter();
+        } else if (Enum.class.isAssignableFrom(sourceType)) {
+            return new Enum2StringConverter(sourceType);
         } else {
         	Converter<?, String> result = tryToCreateFactoryConverter(sourceType, String.class);
 	        if (result != null)

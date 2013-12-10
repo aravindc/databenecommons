@@ -51,7 +51,7 @@ public class String2EnumConverter<E extends Enum> extends ThreadSafeConverter<St
             return null;
         T[] enumConstants = enumClass.getEnumConstants();
         for (T enumConstant : enumConstants)
-            if (enumConstant.toString().equals(sourceValue))
+            if (enumConstant.name().equals(sourceValue))
                 return enumConstant;
         throw new ConversionException(enumClass + " does not have an instance of name " + sourceValue);
     }
