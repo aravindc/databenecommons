@@ -49,7 +49,7 @@ public class TagUtil {
 	public static int frequency(String tag, List<? extends Tagged> taggeds) {
 		int n = 0;
 		for (Tagged tagged : taggeds)
-			if (tagged.hasTag(tag))
+			if (tagged != null && tagged.hasTag(tag))
 				n++;
 		return n;
 	}
