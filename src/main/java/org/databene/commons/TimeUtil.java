@@ -62,7 +62,14 @@ public final class TimeUtil {
 	public static int currentYear() {
         return new GregorianCalendar().get(Calendar.YEAR);
     }
-
+	
+	public static Date mostRecentBusinessDay(Locale locale) {
+		Calendar day = TimeUtil.todayCalendar();
+		while (!isBusinessDay(day, locale))
+			day.add(Calendar.DATE, -1);
+		return day.getTime();
+	}
+	
 	public static boolean isBusinessDay(Calendar day, Locale locale) {
         int dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
         if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY)
