@@ -6,6 +6,7 @@ Enhancements
 - Created Tag support classes: TagUtil, TagSupport, AbstractTagged
 - Created LockFile
 - Created TimeUtil.mostRecentBusinessDay()
+- New method XMLUtil.saveDocument(Document document, String encoding, FileOutputStream out)
 
 
 Bug Fixes
