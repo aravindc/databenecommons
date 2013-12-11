@@ -33,6 +33,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -558,7 +559,7 @@ public class XMLUtil {
         saveDocument(document, encoding, stream);
 	}
 
-	public static void saveDocument(Document document, String encoding, FileOutputStream out)
+	public static void saveDocument(Document document, String encoding, OutputStream out)
 			throws TransformerFactoryConfigurationError {
 		try {
 			Transformer transformer = createTransformer(encoding);
