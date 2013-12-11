@@ -45,6 +45,7 @@ import org.databene.commons.ArrayUtil;
 import org.databene.commons.CollectionUtil;
 import org.databene.commons.Encodings;
 import org.databene.commons.IOUtil;
+import org.databene.commons.StringUtil;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -238,8 +239,8 @@ public class XMLUtilTest {
 		props.setProperty("root.group.groupProp", "groupValue");
 		props.setProperty("root.emptyProp", "");
 		XMLUtil.saveAsProperties(props, new File("target/testSaveAsProperties-actual.xml"), Encodings.UTF_8);
-		String actual = IOUtil.getContentOfURI("target/testSaveAsProperties-actual.xml");
-		String expected = IOUtil.getContentOfURI("org/databene/commons/xml/properties.xml");
+		String actual = StringUtil.normalizeLineSeparators(IOUtil.getContentOfURI("target/testSaveAsProperties-actual.xml"), "\n");
+		String expected = StringUtil.normalizeLineSeparators(IOUtil.getContentOfURI("org/databene/commons/xml/properties.xml"), "\n");
 		assertEquals(expected, actual);
 	}
 
