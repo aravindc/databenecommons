@@ -51,6 +51,7 @@ import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.stream.StreamResult;
@@ -553,23 +554,20 @@ public class XMLUtil {
 	}
 	
 	public static void saveDocument(Document document, File file, String encoding) throws FileNotFoundException {
-        try {
-			// create file and write header
-			SAXTransformerFactory tf = (SAXTransformerFactory) SAXTransformerFactory.newInstance();
-			Transformer transformer = tf.newTransformer();
-			transformer.setOutputProperty(OutputKeys.ENCODING, encoding);
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			transformer.setOutputProperty("{http://xml.apache.org/xslt}" + "indent-amount", "2");
-			StreamResult out = new StreamResult(new FileOutputStream(file));
-			transformer.transform(new DOMSource(document), out);
-		} catch (TransformerConfigurationException e) {
-			throw new ConfigurationError(e);
+		FileOutputStream stream = new FileOutputStream(file);
+        saveDocument(document, encoding, stream);
+	}
+
+	public static void saveDocument(Document document, String encoding, FileOutputStream out)
+			throws TransformerFactoryConfigurationError {
+		try {
+			Transformer transformer = createTransformer(encoding);
+			transformer.transform(new DOMSource(document), new StreamResult(out));
 		} catch (TransformerException e) {
 			throw new ConfigurationError(e);
 		}
-
 	}
-	
+
 	public static Document createDocument(String rootElementName) {
 		Document document = createDocument();
 		Element rootElement = document.createElement(rootElementName);
@@ -621,6 +619,21 @@ public class XMLUtil {
 		} else {
 			String text = StringUtil.nullToEmpty(getText(element));
 			props.put(path, text);
+		}
+	}
+
+	private static Transformer createTransformer(String encoding) {
+		try {
+			SAXTransformerFactory tf = (SAXTransformerFactory) SAXTransformerFactory.newInstance();
+			Transformer transformer = tf.newTransformer();
+			transformer.setOutputProperty(OutputKeys.ENCODING, encoding);
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}" + "indent-amount", "2");
+			return transformer;
+		} catch (TransformerConfigurationException e) {
+			throw new ConfigurationError("Error creating Transformer", e);
+		} catch (TransformerFactoryConfigurationError e) {
+			throw new ConfigurationError("Error creating Transformer", e);
 		}
 	}
 
