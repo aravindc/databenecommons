@@ -566,6 +566,8 @@ public class XMLUtil {
 			transformer.transform(new DOMSource(document), new StreamResult(out));
 		} catch (TransformerException e) {
 			throw new ConfigurationError(e);
+		} finally {
+			IOUtil.close(out);
 		}
 	}
 
