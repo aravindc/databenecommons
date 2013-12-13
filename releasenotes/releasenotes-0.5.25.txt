@@ -7,8 +7,10 @@ Enhancements
 - Created LockFile
 - Created TimeUtil.mostRecentBusinessDay()
 - New method XMLUtil.saveDocument(Document document, String encoding, FileOutputStream out)
+- Created TextIcon class
 
 
 Bug Fixes
 ---------
 - String2EnumConverter used Enum.toString() instead of Enum.name()
+- Avoiding NPEs in FileChooser classes
