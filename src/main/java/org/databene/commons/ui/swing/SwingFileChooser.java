@@ -31,6 +31,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
+import org.databene.commons.Assert;
 import org.databene.commons.ui.FileChooser;
 import org.databene.commons.ui.FileOperation;
 import org.databene.commons.ui.FileTypeSupport;
@@ -50,6 +51,8 @@ public class SwingFileChooser extends JFileChooser implements FileChooser {
 	private FileOperation operation;
 
 	public SwingFileChooser(FileTypeSupport supportedTypes, FileOperation operation) {
+		Assert.notNull(supportedTypes, "supportedTypes");
+		Assert.notNull(operation, "operation");
 		this.operation = operation;
 		super.setFileSelectionMode(fileSelectionMode(supportedTypes));
 		super.setDialogType(dialogType(operation));
@@ -68,7 +71,7 @@ public class SwingFileChooser extends JFileChooser implements FileChooser {
 	
 	// private helpers -------------------------------------------------------------------------------------------------
 
-	private int dialogType(FileOperation operation) {
+	private static int dialogType(FileOperation operation) {
 		switch (operation) {
 			case OPEN: return JFileChooser.OPEN_DIALOG;
 			case SAVE: return JFileChooser.SAVE_DIALOG;
@@ -76,7 +79,7 @@ public class SwingFileChooser extends JFileChooser implements FileChooser {
 		}
 	}
 
-	private int fileSelectionMode(FileTypeSupport supportedTypes) {
+	private static int fileSelectionMode(FileTypeSupport supportedTypes) {
 		switch (supportedTypes) {
 			case directoriesOnly: return JFileChooser.DIRECTORIES_ONLY;
 			case filesOnly: return JFileChooser.FILES_ONLY;

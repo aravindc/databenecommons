@@ -31,6 +31,7 @@ import java.awt.FileDialog;
 import java.awt.Frame;
 import java.io.File;
 
+import org.databene.commons.Assert;
 import org.databene.commons.SystemInfo;
 import org.databene.commons.ui.FileOperation;
 import org.databene.commons.ui.FileTypeSupport;
@@ -52,6 +53,8 @@ public class AwtFileChooser extends FileDialog implements FileChooser {
 	
 	public AwtFileChooser(String prompt, FileOperation operation, FileTypeSupport supportedTypes) {
 		super((Frame) null, prompt, (operation == FileOperation.OPEN ? FileDialog.LOAD : FileDialog.SAVE));
+		Assert.notNull(supportedTypes, "supportedTypes");
+		Assert.notNull(operation, "operation");
 		this.supportedTypes = supportedTypes;
 	}
 
