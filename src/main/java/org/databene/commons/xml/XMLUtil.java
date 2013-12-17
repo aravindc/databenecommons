@@ -352,7 +352,7 @@ public class XMLUtil {
 	public static Boolean getBooleanAttribute(Element element, String attributeName, boolean required) {
 		String stringValue = element.getAttribute(attributeName);
 		if (StringUtil.isEmpty(stringValue) && required)
-			throw new SyntaxError("Missing attribute '" + attributeName + "'", XMLUtil.format(element));
+			throw new SyntaxError("Missing attribute '" + attributeName + "'", format(element));
 		return ParseUtil.parseBoolean(stringValue);
 	}
 
@@ -453,8 +453,17 @@ public class XMLUtil {
 		Map<String, String> attributes = XMLUtil.getAttributes(element);
 		try {
 			out.startElement(name, attributes);
-			for (Element child : XMLUtil.getChildElements(element))
-				format(child, out);
+			NodeList childNodes = element.getChildNodes();
+			for (int i = 0; i < childNodes.getLength(); i++) {
+				Node child = childNodes.item(i);
+				if (child instanceof Element)
+					format((Element) child, out);
+				else if (child instanceof Text) {
+					String text = element.getTextContent();
+					if (!StringUtil.isEmpty(text))
+						out.characters(text.toCharArray(), 0, text.length());
+				}
+			}
 			out.endElement(name);
 		} catch (SAXException e) {
 			throw new RuntimeException(e);
