@@ -54,11 +54,11 @@ public class TextIcon implements Icon {
 	// constructors ----------------------------------------------------------------------------------------------------
 	
 	public TextIcon(String text) {
-		this(text, Color.BLACK, Color.WHITE);
+		this(text, Color.BLACK, null);
 	}
 
 	public TextIcon(String text, Color foreground, Color background) {
-		this(text, UIManager.getDefaults().getFont("Tree.font"), foreground, background);
+		this(text, UIManager.getDefaults().getFont("TextField.font"), foreground, background);
 	}
 
 	public TextIcon(String text, Font font, Color foreground, Color background) {
@@ -103,7 +103,7 @@ public class TextIcon implements Icon {
 		g.fillRect(x, y, iconWidth, iconHeight);
 		g.setColor(foreground);
 		g.setFont(font);
-		g.drawString(text, x + (iconWidth - textWidth) / 2, y + ascent - 1);
+		g.drawString(text, x + (iconWidth - textWidth) / 2, y + ascent - 2);
 	}
 
 }
