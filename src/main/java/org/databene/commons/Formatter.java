@@ -24,9 +24,13 @@ package org.databene.commons;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 import org.databene.commons.converter.PercentageFormatter;
 
@@ -67,16 +71,22 @@ public class Formatter {
 		return new DecimalFormat("#,##0.00", DecimalFormatSymbols.getInstance()).format(value);
 	}
 
-	public static String formatDaysFromNow(Date date) { // TODO internationalize
+	public static String formatDaysFromNow(Date date) {
 		int days = TimeUtil.daysBetween(TimeUtil.today(), date);
 		switch (days) {
-			case -2: return "vorgestern";
-			case -1: return "gestern";
-			case  0: return "heute";
-			case  1: return "morgen";
-			case  2: return "übermorgen";
-			default: return (days < 0 ? "vor " : "in ") + Math.abs(days) + " Tagen";
+			case -2: return getBundle().getString("days_from_now.two_ago");
+			case -1: return getBundle().getString("days_from_now.yesterday");
+			case  0: return getBundle().getString("days_from_now.today");
+			case  1: return getBundle().getString("days_from_now.tomorrow");
+			case  2: return getBundle().getString("days_from_now.two_later");
+			default: String key = (days < 0 ? "days_from_now.n_ago" : "days_from_now.n_later");
+					 String format = getBundle().getString(key);
+					 return MessageFormat.format(format, Math.abs(days));
 		}
 	}
 
+	private static ResourceBundle getBundle() {
+		return PropertyResourceBundle.getBundle("org/databene/commons/formatter", Locale.getDefault());
+	}
+	
 }
