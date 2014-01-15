@@ -45,6 +45,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.xml.XMLConstants;
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -58,6 +59,10 @@ import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import org.databene.commons.ArrayBuilder;
 import org.databene.commons.BeanUtil;
@@ -459,7 +464,7 @@ public class XMLUtil {
 				if (child instanceof Element)
 					format((Element) child, out);
 				else if (child instanceof Text) {
-					String text = element.getTextContent();
+					String text = child.getTextContent();
 					if (!StringUtil.isEmpty(text))
 						out.characters(text.toCharArray(), 0, text.length());
 				}
@@ -621,6 +626,19 @@ public class XMLUtil {
 			element.setTextContent(value);
 		}
 	}
+	
+	public static NodeList queryNodes(Document document, String expression) throws XPathExpressionException {
+		return (NodeList) query(document, expression, XPathConstants.NODESET);
+	}
+
+	public static Object query(Document document, String expression, QName returnType) throws XPathExpressionException {
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		return xpath.evaluate(expression, document, returnType);
+	}
+	
+	
+	
+	// private helpers -------------------------------------------------------------------------------------------------
 
 	private static void parsePropertyElement(Element element, Properties props, String parentPath) {
 		String path = (parentPath.length() > 0 ? parentPath + '.' : "") + element.getNodeName();
