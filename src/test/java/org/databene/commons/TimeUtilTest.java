@@ -294,6 +294,24 @@ public class TimeUtilTest {
 		assertEquals(1, TimeUtil.daysBetween(TimeUtil.date(1975, 6, 31), TimeUtil.date(1975, 7, 1)));
 	}
 	
+	@Test
+	public void testJulianDay() {
+		// simple test
+		assertEquals(TimeUtil.julianDay(2014, 1, 1) + 1, TimeUtil.julianDay(2014, 1, 2));
+		// year end
+		assertEquals(TimeUtil.julianDay(2013, 12, 31) + 1, TimeUtil.julianDay(2014, 1, 1));
+		// Feb 29 in a non-leap year
+		assertEquals(TimeUtil.julianDay(2014, 2, 28) + 1, TimeUtil.julianDay(2014, 3, 1));
+		// Feb 29 in a leap year
+		assertEquals(TimeUtil.julianDay(2012, 2, 28) + 1, TimeUtil.julianDay(2012, 2, 29));
+		assertEquals(TimeUtil.julianDay(2012, 2, 28) + 2, TimeUtil.julianDay(2012, 3, 1));
+		// Feb 29 in 100-rule-non-leap year
+		assertEquals(TimeUtil.julianDay(1900, 2, 28) + 1, TimeUtil.julianDay(1900, 3,  1));
+		// Feb 29 in 400-rule-leap year
+		assertEquals(TimeUtil.julianDay(2000, 2, 28) + 1, TimeUtil.julianDay(2000, 2, 29));
+		assertEquals(TimeUtil.julianDay(2000, 2, 28) + 2, TimeUtil.julianDay(2000, 3,  1));
+	}
+	
 	// helpers ---------------------------------------------------------------------------------------------------------
 	
 	private static Calendar calendar(int year, int month, int day) {
