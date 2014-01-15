@@ -392,7 +392,22 @@ public final class TimeUtil {
 				julianDay(fromCalendar.get(Calendar.YEAR), fromCalendar.get(Calendar.MONTH) + 1, fromCalendar.get(Calendar.DAY_OF_MONTH));
 	}
 
+	/** Calculates the julian day of a {@link Date}. 
+     *  See http://en.wikipedia.org/wiki/Julian_day */
+	public static int julianDay(Date date) {
+		return julianDay(calendar(date));
+	}
+    
 	/** Calculates the julian day of a {@link Calendar}. 
+     *  See http://en.wikipedia.org/wiki/Julian_day */
+	public static int julianDay(Calendar calendar) {
+		int year = calendar.get(Calendar.YEAR);
+		int month = calendar.get(Calendar.MONTH);
+		int day = calendar.get(Calendar.DAY_OF_MONTH);
+		return julianDay(year, month + 1, day);
+	}
+    
+	/** Calculates the julian day of a date. 
      *  See http://en.wikipedia.org/wiki/Julian_day */
 	public static int julianDay(int year, int month, int day) {
 		int a = (14 - month) / 12;
