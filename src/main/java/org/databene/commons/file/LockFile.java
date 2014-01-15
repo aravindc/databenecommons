@@ -54,6 +54,8 @@ public class LockFile {
 			throw new LockAlreadyAcquiredException(fileName);
 		} else {
 			try {
+				File parent = lockFile.getParentFile();
+				parent.mkdirs();
 				lockFile.createNewFile();
 			} catch (IOException e) {
 				throw new RuntimeException(e);
