@@ -877,7 +877,17 @@ public final class BeanUtil {
             setProperty(bean, propertyName, propertyValue);
         }
     }
-*/
+*/	
+    public static void copyPropertyValues(Object sourceBean, Object targetBean) {
+        PropertyDescriptor[] propertyDescriptors = getPropertyDescriptors(sourceBean.getClass());
+	    for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+	        String name = propertyDescriptor.getName();
+	        if (propertyDescriptor.getReadMethod() != null) {
+		        Object value = getPropertyValue(sourceBean, propertyDescriptor);
+		        setPropertyValue(targetBean, name, value, false, true);
+	        }
+	    }
+    }
     
     public static void setPropertyValues(Object bean, Map<String, ?> properties) {
         Class<?> beanClass = bean.getClass();
@@ -979,19 +989,23 @@ public final class BeanUtil {
                 else
                     return;
             writeMethod = propertyDescriptor.getWriteMethod();
-            if (writeMethod == null)
+            if (writeMethod != null) {
+                Class<?> propertyType = propertyDescriptor.getPropertyType();
+    			if (propertyValue != null) {
+    	            Class<?> argType = propertyValue.getClass();
+    	            if (!propertyType.isAssignableFrom(argType) && !isWrapperTypeOf(propertyType, propertyValue) && !autoConvert)
+                        throw new IllegalArgumentException("ArgumentType mismatch: expected " 
+                                + propertyType.getName() + ", found " + propertyValue.getClass().getName());
+                    else
+                    	propertyValue = AnyConverter.convert(propertyValue, propertyType);
+    			}
+                writeMethod.invoke(bean, propertyValue);
+            } else if (required) {
             	throw new UnsupportedOperationException("Cannot write read-only property '" 
             			+ propertyDescriptor.getName() + "' of " + beanClass);
-            Class<?> propertyType = propertyDescriptor.getPropertyType();
-			if (propertyValue != null) {
-	            Class<?> argType = propertyValue.getClass();
-	            if (!propertyType.isAssignableFrom(argType) && !isWrapperTypeOf(propertyType, propertyValue) && !autoConvert)
-                    throw new IllegalArgumentException("ArgumentType mismatch: expected " 
-                            + propertyType.getName() + ", found " + propertyValue.getClass().getName());
-                else
-                	propertyValue = AnyConverter.convert(propertyValue, propertyType);
-			}
-            writeMethod.invoke(bean, propertyValue);
+            } else {
+            	// no write method but property is not required, so ignore it silently
+            }
         } catch (IllegalAccessException e) {
             throw ExceptionMapper.configurationException(e, writeMethod);
         } catch (InvocationTargetException e) {
