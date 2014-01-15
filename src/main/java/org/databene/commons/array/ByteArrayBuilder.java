@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2013 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -19,7 +19,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.databene.commons;
+package org.databene.commons.array;
 
 import org.databene.commons.converter.ToStringConverter;
 
@@ -85,9 +85,12 @@ public class ByteArrayBuilder {
     	}
     	return builder.toString();
     }
+    
+    
+    // private helper method -------------------------------------------------------------------------------------------
 
-    private byte[] createBuffer(int initialCapacity) {
-        return new byte[initialCapacity];
+    private static byte[] createBuffer(int capacity) {
+        return new byte[capacity];
     }
 
 }
