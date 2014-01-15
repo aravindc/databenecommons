@@ -1,0 +1,12 @@
+release notes databene commons 0.5.26
+-------------------------------------
+
+Enhancements
+------------
+- new method TimeUtil.julianDay(Date date)
+- new methods XMLUtil.queryNodes() and XMLUtil.query()
+
+Bug Fixes
+---------
+- XMLUtil.format()
+- LockFile: Assuring that parent directory of lock file exists
