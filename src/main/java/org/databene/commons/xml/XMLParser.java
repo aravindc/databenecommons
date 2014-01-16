@@ -49,7 +49,7 @@ public class XMLParser {
 	}
 	
 	public Document parse(String uri) throws IOException {
-		return XMLUtil.parse(uri, null, null, jaxpClassLoader);
+		return XMLUtil.parse(uri, true, null, null, jaxpClassLoader);
 	}
 	
 	public Document parseString(String text) {
