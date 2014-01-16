@@ -248,15 +248,15 @@ public class XMLUtil {
     // XML operations --------------------------------------------------------------------------------------------------
 
     public static Document parse(String uri) throws IOException {
-        return parse(uri, null, null, null);
+        return parse(uri, true, null, null, null);
     }
 
-    public static Document parse(String uri, EntityResolver resolver, String schemaUri, ClassLoader classLoader) 
+    public static Document parse(String uri, boolean namespaceAware, EntityResolver resolver, String schemaUri, ClassLoader classLoader) 
     		throws IOException {
         InputStream stream = null;
         try {
             stream = IOUtil.getInputStreamForURI(uri);
-            return parse(stream, resolver, schemaUri, classLoader, DEFAULT_ERROR_HANDLER);
+            return parse(stream, namespaceAware, resolver, schemaUri, classLoader, DEFAULT_ERROR_HANDLER);
         } catch (ConfigurationError e) {
         	throw new ConfigurationError("Error parsing " + uri, e);
         } finally {
@@ -277,7 +277,7 @@ public class XMLUtil {
             LOGGER.debug(text);
         try {
         	String encoding = getEncoding(text);
-	        return parse(new ByteArrayInputStream(text.getBytes(encoding)), resolver, null, classLoader, DEFAULT_ERROR_HANDLER);
+	        return parse(new ByteArrayInputStream(text.getBytes(encoding)), true, resolver, null, classLoader, DEFAULT_ERROR_HANDLER);
         } catch (IOException e) {
         	throw new RuntimeException("Unexpected error", e);
         }
@@ -291,21 +291,20 @@ public class XMLUtil {
      * @param resolver an {@link EntityResolver} implementation or null, in the latter case, no validation is applied
      */
     public static Document parse(InputStream stream, EntityResolver resolver, String schemaUri, ErrorHandler errorHandler) throws IOException {
-        return parse(stream, resolver, schemaUri, null, errorHandler);
+        return parse(stream, true, resolver, schemaUri, null, errorHandler);
     }
 
-	public static Document parse(InputStream stream, EntityResolver resolver,
+	public static Document parse(InputStream stream, boolean namespaceAware, EntityResolver resolver,
 			String schemaUri, ClassLoader classLoader, ErrorHandler errorHandler)
 				throws IOException {
 		try {
-			if (classLoader == null)
-				classLoader = Thread.currentThread().getContextClassLoader();
 			DocumentBuilderFactory factory = createDocumentBuilderFactory(classLoader);
-            factory.setNamespaceAware(true);
+            factory.setNamespaceAware(namespaceAware);
             if (schemaUri != null)
             	activateXmlSchemaValidation(factory, schemaUri);
             DocumentBuilder builder = factory.newDocumentBuilder();
-            builder.setEntityResolver(resolver);
+            if (resolver != null)
+            	builder.setEntityResolver(resolver);
             if (errorHandler == null)
             	errorHandler = new ErrorHandler("XMLUtil");
             builder.setErrorHandler(createSaxErrorHandler(errorHandler));
@@ -320,8 +319,9 @@ public class XMLUtil {
 	}
 
 	public static DocumentBuilderFactory createDocumentBuilderFactory(ClassLoader classLoader) {
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(DOCUMENT_BUILDER_FACTORY_IMPL, classLoader);
-		return factory;
+		if (classLoader == null)
+			classLoader = Thread.currentThread().getContextClassLoader();
+		return DocumentBuilderFactory.newInstance(DOCUMENT_BUILDER_FACTORY_IMPL, classLoader);
 	}
 
     public static NamespaceAlias namespaceAlias(Document document, String namespaceUri) {
