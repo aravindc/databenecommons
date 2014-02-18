@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2013 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -537,17 +537,6 @@ public class XMLUtil {
 		};
 	}
 
-	public static Properties parseAsProperties(InputStream in) throws IOException {
-		try {
-			Element root = parse(in).getDocumentElement();
-			Properties props = new Properties();
-			parsePropertyElement(root, props, "");
-			return props;
-		} finally {
-			in.close();
-		}
-	}
-
 	@SuppressWarnings("null")
 	public static void saveAsProperties(Properties properties, File file, String encoding) throws FileNotFoundException {
 		if (properties.size() == 0)
@@ -639,18 +628,6 @@ public class XMLUtil {
 	
 	
 	// private helpers -------------------------------------------------------------------------------------------------
-
-	private static void parsePropertyElement(Element element, Properties props, String parentPath) {
-		String path = (parentPath.length() > 0 ? parentPath + '.' : "") + element.getNodeName();
-		Element[] childElements = getChildElements(element);
-		if (childElements.length > 0) {
-			for (Element childElement : childElements)
-				parsePropertyElement(childElement, props, path);
-		} else {
-			String text = StringUtil.nullToEmpty(getText(element));
-			props.put(path, text);
-		}
-	}
 
 	private static Transformer createTransformer(String encoding) {
 		try {
