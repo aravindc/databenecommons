@@ -31,6 +31,7 @@ import java.util.*;
 
 import org.databene.commons.collection.ListBasedSet;
 import org.databene.commons.collection.MapEntry;
+import org.databene.commons.collection.MapProxy;
 
 /**
  * Map implementation that tracks the order in which elements where added
@@ -274,8 +275,10 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (o == null || getClass() != o.getClass())
+        if (o == null || !(o instanceof Map))
             return false;
+        while (o instanceof MapProxy)
+        	o = ((MapProxy) o).getRealMap();
         final OrderedMap that = (OrderedMap) o;
         return (this.values.equals(that.values) && this.keyIndices.equals(that.keyIndices));
     }
