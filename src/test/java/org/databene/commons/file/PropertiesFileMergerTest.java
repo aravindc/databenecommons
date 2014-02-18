@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2013 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2013-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -28,9 +28,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Properties;
+import java.util.List;
+import java.util.Map;
 
-import org.databene.commons.xml.XMLUtil;
+import org.databene.commons.collection.TreeBuilder;
 import org.junit.Test;
 
 /**
@@ -47,11 +48,12 @@ public class PropertiesFileMergerTest {
 	private static final String FILE_PROPERTIES_FILENAME = "src/test/resources/org/databene/commons/file/propsInFile.properties";
 	private static final String MERGED_PROPERTIES_FILENAME = "target/merged.properties";
 	private static final String FILE_XML_FILENAME = "src/test/resources/org/databene/commons/xml/properties.xml";
-	private static final String MERGED_XML_FILENAME = "target/merged.xml";
+	private static final String MERGED_SIMPLE_XML_FILENAME = "target/mergedSimple.xml";
 	private static final URL JAR_URL;
-	private static final String COMMON_PROPERTY_NAME = "common.property";
-	private static final String FILE_PROPERTY_NAME = "file.property";
-	private static final Object JAR_PROPERTY_NAME = "jar.property";
+	
+	private static final String COMPLEX_XML_FILE1 = "src/test/resources/org/databene/commons/xml/complexProps1.xml";
+	private static final String COMPLEX_XML_FILE2 = "src/test/resources/org/databene/commons/xml/complexProps2.xml";
+	private static final String MERGED_COMPLEX_XML_FILE = "target/mergedComplex.xml";
 	
 	static {
 		try {
@@ -63,104 +65,113 @@ public class PropertiesFileMergerTest {
 
 	@Test
 	public void testOverwritePropertiesWithVMParams() {
-		// GIVEN a property xyz=1
-		Properties props = new Properties();
-		props.setProperty("xyz", "1");
+		// GIVEN a property x.y.z=1
+		TreeBuilder tree = new TreeBuilder(true);
+		tree.addLeafAtAbsolutePath("x/y/z", "1");
 		
 		// WHEN no VM setting is defined
-		System.setProperty("xyz", "");
+		System.setProperty("x.y.z", "");
 		// THEN the property shall not be overwritten
-		PropertiesFileMerger.overwritePropertiesWithVMParams(props);
-		assertEquals("1", props.get("xyz"));
+		PropertiesFileMerger.overwritePropertiesWithVMParams(tree);
+		assertEquals("1", tree.getNodeValue("x/y/z"));
 		
 		// AND WHEN a VM setting is defined 
-		System.setProperty("xyz", "2");
+		System.setProperty("x.y.z", "2");
 		// THEN it shall overwrite the property
-		PropertiesFileMerger.overwritePropertiesWithVMParams(props);
-		assertEquals("2", props.get("xyz"));
+		PropertiesFileMerger.overwritePropertiesWithVMParams(tree);
+		assertEquals("2", tree.getNodeValue("x/y/z"));
 	}
 
 	@Test
 	public void testLoadFileIfPresent() throws IOException {
 		// GIVEN a property 'common.property' of value 'none'
-		Properties props = new Properties();
-		props.put(COMMON_PROPERTY_NAME, "none");
+		TreeBuilder tree = new TreeBuilder(false);
+		tree.addLeafAtAbsolutePath("common/property", "none");
 		
 		// WHEN trying to load a non-existing file
-		PropertiesFileMerger.loadFileIfPresent(NON_EXISTING_PROPERTIES_FILENAME, props);
+		PropertiesFileMerger.loadFileIfPresent(NON_EXISTING_PROPERTIES_FILENAME, tree);
 		// THEN the property shall not be changed
-		assertEquals("none", props.get(COMMON_PROPERTY_NAME));
+		assertEquals("none", tree.getNodeValue("common/property"));
 		
 		// AND WHEN loading an existing file with that property
-		PropertiesFileMerger.loadFileIfPresent(FILE_PROPERTIES_FILENAME, props);
+		PropertiesFileMerger.loadFileIfPresent(FILE_PROPERTIES_FILENAME, tree);
 		// THEN the setting is supposed to be changed
-		assertEquals("loaded_from_file", props.get(COMMON_PROPERTY_NAME));
+		assertEquals("loaded_from_file", tree.getNodeValue("common/property"));
 	}
 
 	@Test
 	public void testLoadClasspathResourceIfPresent() throws IOException {
 		// GIVEN a property 'common.property' of value 'none'
-		Properties props = new Properties();
-		props.put(COMMON_PROPERTY_NAME, "none");
+		TreeBuilder tree = new TreeBuilder(false);
+		tree.addLeafAtAbsolutePath("common/property", "none");
 		
 		// WHEN trying to load a non-existing classpath resource
-		PropertiesFileMerger.loadClasspathResourceIfPresent(NON_EXISTING_PROPERTIES_FILENAME, props);
+		PropertiesFileMerger.loadClasspathResourceIfPresent(NON_EXISTING_PROPERTIES_FILENAME, tree);
 		// THEN the property shall not be changed
-		assertEquals("none", props.get(COMMON_PROPERTY_NAME));
+		assertEquals("none", tree.getNodeValue("common/property"));
 		
 		// AND WHEN loading an existing classpath resource with that property
 		Thread.currentThread().setContextClassLoader(new URLClassLoader(new URL[] { JAR_URL }));
-		PropertiesFileMerger.loadClasspathResourceIfPresent(JAR_PROPERTIES_FILENAME, props);
+		PropertiesFileMerger.loadClasspathResourceIfPresent(JAR_PROPERTIES_FILENAME, tree);
 		// THEN the setting is supposed to be changed
-		assertEquals("loaded_from_jar", props.get(COMMON_PROPERTY_NAME));
+		assertEquals("loaded_from_jar", tree.getNodeValue("common/property"));
 	}
 
 	@Test
 	public void testClasspathAccess() throws IOException {
 		// GIVEN a property 'common.property' of value 'none'
-		Properties props = new Properties();
-		props.put(COMMON_PROPERTY_NAME, "none");
+		TreeBuilder tree = new TreeBuilder(false);
+		tree.addLeafAtAbsolutePath("common/property", "none");
 		
 		// WHEN trying to load a non-existing classpath resource
-		PropertiesFileMerger.loadClasspathResourceIfPresent(NON_EXISTING_PROPERTIES_FILENAME, props);
+		PropertiesFileMerger.loadClasspathResourceIfPresent(NON_EXISTING_PROPERTIES_FILENAME, tree);
 		// THEN the property shall not be changed
-		assertEquals("none", props.get(COMMON_PROPERTY_NAME));
+		assertEquals("none", tree.getNodeValue("common/property"));
 		
 		// AND WHEN loading an existing classpath resource with that property
 		Thread.currentThread().setContextClassLoader(new URLClassLoader(new URL[] { JAR_URL }));
-		PropertiesFileMerger.loadClasspathResourceIfPresent(JAR_PROPERTIES_FILENAME, props);
+		PropertiesFileMerger.loadClasspathResourceIfPresent(JAR_PROPERTIES_FILENAME, tree);
 		// THEN the setting is supposed to be changed
-		assertEquals("loaded_from_jar", props.get(COMMON_PROPERTY_NAME));
+		assertEquals("loaded_from_jar", tree.getNodeValue("common/property"));
 	}
 	
 	@Test
 	public void testMergeWithVMOverride() throws IOException {
-		System.setProperty(COMMON_PROPERTY_NAME, "loaded_from_vm");
+		System.setProperty("common.property", "loaded_from_vm");
 		PropertiesFileMerger.merge(MERGED_PROPERTIES_FILENAME, true, FILE_PROPERTIES_FILENAME, JAR_PROPERTIES_FILENAME);
-		Properties props = new Properties();
-		props.load(new FileInputStream(MERGED_PROPERTIES_FILENAME));
-		assertEquals("loaded_from_vm", props.get(COMMON_PROPERTY_NAME));
-		assertEquals("loaded_from_file", props.get(FILE_PROPERTY_NAME));
-		assertEquals("loaded_from_jar", props.get(JAR_PROPERTY_NAME));
+		TreeBuilder tree = TreeBuilder.parseProperties(new FileInputStream(MERGED_PROPERTIES_FILENAME));
+		assertEquals("loaded_from_vm", tree.getNodeValue("common/property"));
+		assertEquals("loaded_from_file", tree.getNodeValue("file/property"));
+		assertEquals("loaded_from_jar", tree.getNodeValue("jar/property"));
 	}
 	
 	@Test
 	public void testMergeWithoutVMOverride() throws IOException {
-		System.setProperty(COMMON_PROPERTY_NAME, "loaded_from_vm");
+		System.setProperty("common.property", "loaded_from_vm");
 		PropertiesFileMerger.merge(MERGED_PROPERTIES_FILENAME, false, FILE_PROPERTIES_FILENAME, JAR_PROPERTIES_FILENAME);
-		Properties props = new Properties();
-		props.load(new FileInputStream(MERGED_PROPERTIES_FILENAME));
-		assertEquals("loaded_from_jar", props.get(COMMON_PROPERTY_NAME));
-		assertEquals("loaded_from_file", props.get(FILE_PROPERTY_NAME));
-		assertEquals("loaded_from_jar", props.get(JAR_PROPERTY_NAME));
+		TreeBuilder tree = TreeBuilder.parseProperties(new FileInputStream(MERGED_PROPERTIES_FILENAME));
+		assertEquals("loaded_from_jar", tree.getNodeValue("common/property"));
+		assertEquals("loaded_from_file", tree.getNodeValue("file/property"));
+		assertEquals("loaded_from_jar", tree.getNodeValue("jar/property"));
 	}
 	
 	@Test
-	public void testXMLFile() throws IOException {
-		PropertiesFileMerger.merge(MERGED_XML_FILENAME, true, FILE_XML_FILENAME);
-		Properties props = XMLUtil.parseAsProperties(new FileInputStream(MERGED_XML_FILENAME));
-		assertEquals("groupValue", props.get("root.group.groupProp"));
-		assertEquals("", props.get("root.emptyProp"));
+	public void testSimpleXMLFile() throws IOException {
+		PropertiesFileMerger.merge(MERGED_SIMPLE_XML_FILENAME, true, FILE_XML_FILENAME);
+		TreeBuilder tree = TreeBuilder.parseXML(new FileInputStream(MERGED_SIMPLE_XML_FILENAME));
+		assertEquals("groupValue", tree.getNodeValue("root/group/groupProp"));
+		assertEquals("", tree.getNodeValue("root/emptyProp"));
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testComplexXMLFile() throws IOException {
+		PropertiesFileMerger.merge(MERGED_COMPLEX_XML_FILE, COMPLEX_XML_FILE1, COMPLEX_XML_FILE2);
+		TreeBuilder tree = TreeBuilder.parseXML(new FileInputStream(MERGED_COMPLEX_XML_FILE));
+		List<?> items = (List<?>) tree.getNodeValue("root/list/item");
+		assertEquals(2, items.size());
+		assertEquals("my.Class1", ((Map<String, Object>) items.get(0)).get("class"));
+		assertEquals("my.Class3", ((Map<String, Object>) items.get(1)).get("class"));
 	}
 	
 }

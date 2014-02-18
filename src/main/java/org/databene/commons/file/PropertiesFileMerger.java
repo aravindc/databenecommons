@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2013 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2013-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -28,13 +28,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
-import java.util.InvalidPropertiesFormatException;
 import java.util.Map;
-import java.util.Properties;
 
 import org.databene.commons.Encodings;
 import org.databene.commons.IOUtil;
-import org.databene.commons.xml.XMLUtil;
+import org.databene.commons.StringUtil;
+import org.databene.commons.collection.TreeBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,90 +54,99 @@ public class PropertiesFileMerger {
 
 	public static void merge(String targetPath, boolean vmOverride, String... sourceFiles) throws FileNotFoundException, IOException {
 		LOGGER.debug("Merging the files {} into target file: {}", Arrays.toString(sourceFiles), targetPath);
-		Properties properties = new Properties();
+		TreeBuilder tree = null;
 		for (String sourceFile : sourceFiles) {
-			loadClasspathResourceIfPresent(sourceFile, properties); // find resource on class path
-			loadFileIfPresent(sourceFile, properties); // find resource on file system
+			tree = loadClasspathResourceIfPresent(sourceFile, tree); // find resource on class path
+			tree = loadFileIfPresent(sourceFile, tree); // find resource on file system
 		}
-		if (vmOverride)
-			overwritePropertiesWithVMParams(properties);
-		// write properties in UTF-8
-		if (targetPath.toLowerCase().endsWith(".xml"))
-			XMLUtil.saveAsProperties(properties, new File(targetPath), Encodings.UTF_8);
-		else {
-			FileOutputStream in = new FileOutputStream(targetPath);
-			try {
-				properties.store(in, "Merged properties file");
-			} finally {
-				IOUtil.close(in);
-			}
+		if (tree != null) {
+			if (vmOverride)
+				overwritePropertiesWithVMParams(tree);
+			// write properties in UTF-8
+			if (targetPath.toLowerCase().endsWith(".xml"))
+				tree.saveAsXML(new FileOutputStream(targetPath), Encodings.UTF_8);
+			else
+				tree.saveAsProperties(new FileOutputStream(targetPath));
 		}
 	}
 
-	static void loadClasspathResourceIfPresent(String resourceName, Properties properties) throws IOException {
+	static TreeBuilder loadClasspathResourceIfPresent(String resourceName, TreeBuilder base) throws IOException {
 		InputStream in = IOUtil.getResourceAsStream(resourceName, false);
 		if (in != null) {
-			LOGGER.debug("Merging properties of classpath resource '{}' ", resourceName);
+			LOGGER.debug("Loading and merging structure of classpath resource '{}' ", resourceName);
 			try {
-				Properties cpProperties = loadFromStream(in, resourceName);
-				overwriteProperties(properties, cpProperties);
-			} finally {
-				IOUtil.close(in);
-			}
-		}
-	}
-
-	static void loadFileIfPresent(String sourceFile, Properties properties) throws FileNotFoundException, IOException {
-		File file = new File(sourceFile);
-		if (file.exists()) {
-			LOGGER.debug("Merging properties of file '{}' ", sourceFile);
-			FileInputStream in = new FileInputStream(file);
-			try {
-				Properties fileProperties = loadFromStream(in, sourceFile);
-				overwriteProperties(properties, fileProperties);
-			} finally {
-				IOUtil.close(in);
-			}
-		}
-	}
-
-	public static Properties loadFromStream(InputStream in, String sourceFile) throws IOException,
-			InvalidPropertiesFormatException {
-		Properties fileProperties = new Properties();
-		if (sourceFile.toLowerCase().endsWith(".properties")) {
-			try {
-				fileProperties.load(in);
+				TreeBuilder newTree = TreeBuilder.loadFromStream(in, resourceName);
+				return overwriteProperties(base, newTree);
 			} finally {
 				IOUtil.close(in);
 			}
 		} else
-			fileProperties = XMLUtil.parseAsProperties(in);
-		return fileProperties;
+			return base;
 	}
-	
-	static void overwriteProperties(Properties properties, Properties overwrites) {
-		for (Map.Entry<Object, Object> entry : overwrites.entrySet()) {
-			String key = (String) entry.getKey();
-			String oldValue = properties.getProperty(key);
-			String newValue = (String) entry.getValue();
-			if (oldValue != null && !oldValue.equals(newValue))
-				LOGGER.debug("Overwriting '{}' property to '{}'", key, newValue);
-			else
-				LOGGER.debug("Adding '{}' property of value '{}'", key, newValue);
-			properties.setProperty(key, newValue);
+
+	static TreeBuilder loadFileIfPresent(String sourceFile, TreeBuilder base) throws FileNotFoundException, IOException {
+		File file = new File(sourceFile);
+		if (file.exists()) {
+			LOGGER.debug("Loading and merging properties of file '{}' ", sourceFile);
+			FileInputStream in = new FileInputStream(file);
+			try {
+				TreeBuilder newTree = TreeBuilder.loadFromStream(in, sourceFile);
+				return overwriteProperties(base, newTree);
+			} finally {
+				IOUtil.close(in);
+			}
+		} else 
+			return base;
+	}
+
+	static TreeBuilder overwriteProperties(TreeBuilder base, TreeBuilder overwrites) {
+		if (base == null)
+			return overwrites;
+		if (overwrites == null)
+			return base;
+		overwrite(base.getRootNode(), overwrites.getRootNode());
+		return base;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static void overwrite(Map<String, Object> baseNode, Map<String, Object> overwriteNode) {
+		for (Map.Entry<String, Object> overEntry : overwriteNode.entrySet()) {
+			String key = overEntry.getKey();
+			Object oldValue = baseNode.get(key);
+			if (oldValue == null) {
+				baseNode.put(key, overEntry.getValue());
+			} else if (oldValue instanceof Map) {
+				overwrite((Map<String, Object>) oldValue, (Map<String, Object>) overEntry.getValue());
+			} else {
+				baseNode.put(key, overEntry.getValue());
+			}
 		}
 	}
 
-	static void overwritePropertiesWithVMParams(Properties properties) {
+	static void overwritePropertiesWithVMParams(TreeBuilder tree) {
 		LOGGER.debug("Checking properties against VM settings override");
-		for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-			String key = (String) entry.getKey();
-			String vmSetting = System.getProperty(key);
-			if (vmSetting != null && vmSetting.length() > 0) {
-				LOGGER.debug("Overwriting '{}' property to '{}'", key, vmSetting);
-				entry.setValue(vmSetting);
+		overwritePropertiesWithVMParams(tree.getRootNode(), tree.getRootName());
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static void overwritePropertiesWithVMParams(Map<String, Object> node, String path) {
+		for (Map.Entry<String, Object> entry : node.entrySet()) {
+			String subPath = subPath(path, entry.getKey(), '.');
+			Object child = entry.getValue();
+			if (child instanceof Map) {
+				overwritePropertiesWithVMParams((Map<String, Object>) child, subPath);
+			} else if (child instanceof String) {
+				String vmSetting = System.getProperty(subPath);
+				if (vmSetting != null && vmSetting.length() > 0) {
+					LOGGER.debug("Overwriting '{}' property with '{}'", subPath, vmSetting);
+					entry.setValue(vmSetting);
+				}
 			}
 		}
+	}
+	
+	private static String subPath(String parentPath, String childName, char separator) {
+		return (StringUtil.isEmpty(parentPath) ? "" : parentPath + separator)  + childName;
 	}
 	
 }
