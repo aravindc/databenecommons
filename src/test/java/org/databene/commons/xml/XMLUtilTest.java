@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2013 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -28,7 +28,6 @@ package org.databene.commons.xml;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -220,16 +219,6 @@ public class XMLUtilTest {
 		Node firstChild = rootChildren.item(0);
 		assertEquals("aGroup", firstChild.getNodeName());
 		assertEquals("groupValue", firstChild.getTextContent());
-	}
-
-	@Test
-	public void testParseAsProperties() throws FileNotFoundException, IOException {
-		Properties expected = new Properties();
-		expected.setProperty("root.topProp", "topValue");
-		expected.setProperty("root.group.groupProp", "groupValue");
-		expected.setProperty("root.emptyProp", "");
-		Properties props = XMLUtil.parseAsProperties(new FileInputStream("src/test/resources/org/databene/commons/xml/properties.xml"));
-		assertEquals(expected, props);
 	}
 
 	@Test
