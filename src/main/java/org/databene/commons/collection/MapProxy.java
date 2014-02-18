@@ -39,6 +39,10 @@ public class MapProxy<M extends Map<K, V>, K, V> implements Map<K, V> {
 		this.realMap = realMap;
 	}
 
+	public Object getRealMap() {
+		return realMap;
+	}
+	
 	@Override
 	public void clear() {
 		realMap.clear();
@@ -116,5 +120,5 @@ public class MapProxy<M extends Map<K, V>, K, V> implements Map<K, V> {
 	public String toString() {
 		return realMap.toString();
 	}
-	
+
 }
