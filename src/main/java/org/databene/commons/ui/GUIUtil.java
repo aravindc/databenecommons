@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2010-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2010-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -21,7 +21,15 @@
 
 package org.databene.commons.ui;
 
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import org.databene.commons.SystemInfo;
 import org.databene.commons.ui.FileChooser;
@@ -48,6 +56,12 @@ public class GUIUtil {
         if (selectedFile != null && selectedFile.exists())
             chooser.setSelectedFile(selectedFile);
         return chooser;
+	}
+	
+	public static void takeScreenshot(String fileName, String formatName) throws IOException, AWTException {
+		Rectangle screenBounds = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+		BufferedImage image = new Robot().createScreenCapture(screenBounds);
+		ImageIO.write(image, formatName, new File(fileName));
 	}
 	
 }
