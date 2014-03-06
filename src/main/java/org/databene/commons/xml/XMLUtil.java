@@ -616,6 +616,10 @@ public class XMLUtil {
 		}
 	}
 	
+	public static String queryString(Document document, String expression) throws XPathExpressionException {
+		return (String) query(document, expression, XPathConstants.STRING);
+	}
+
 	public static NodeList queryNodes(Document document, String expression) throws XPathExpressionException {
 		return (NodeList) query(document, expression, XPathConstants.NODESET);
 	}
