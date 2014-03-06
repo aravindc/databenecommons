@@ -38,7 +38,7 @@ public class ExceptionUtil {
 
 	public static Throwable getRootCause(Throwable t) {
 		Throwable result = t;
-		while (result.getCause() != null)
+		while (result.getCause() != null && result.getCause() != result) // Note: UnsupportedOperationException recurses to itself as cause
 			result = result.getCause();
 		return result;
 	}
