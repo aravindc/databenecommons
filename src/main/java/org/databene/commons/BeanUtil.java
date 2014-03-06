@@ -798,7 +798,10 @@ public final class BeanUtil {
         if (separatorIndex >= 0) {
             String localProperty = propertyName.substring(0, separatorIndex);
             String remoteProperty = propertyName.substring(separatorIndex + 1);
-            Class<?> localPropertyType = getPropertyDescriptor(beanClass, localProperty).getPropertyType();
+            PropertyDescriptor localPropertyDescriptor = getPropertyDescriptor(beanClass, localProperty);
+            if (localPropertyDescriptor == null)
+            	return null;
+			Class<?> localPropertyType = localPropertyDescriptor.getPropertyType();
             result = getPropertyDescriptor(localPropertyType, remoteProperty);
         } else {
             try {
