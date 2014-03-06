@@ -245,6 +245,10 @@ public final class TimeUtil {
 		}
 	}
     
+	public static String formatCurrentDateTime(String pattern) {
+		return new SimpleDateFormat(pattern).format(new Date());
+	}
+    
     public static Date max(Date date1, Date date2) {
         return (date1.before(date2) ? date2 : date1);
     }
