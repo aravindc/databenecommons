@@ -43,38 +43,40 @@ import java.lang.reflect.Method;
  */
 public class UntypedPropertyMutator extends AbstractNamedMutator {
 
-    private boolean strict;
+    private boolean required;
+    private boolean autoConvert;
 
-    public UntypedPropertyMutator(String propertyName, boolean strict) {
+    public UntypedPropertyMutator(String propertyName, boolean required, boolean autoConvert) {
         super(propertyName);
-        this.strict = strict;
+        this.required = required;
+        this.autoConvert = autoConvert;
     }
 
     @Override
 	public void setValue(Object target, Object value) throws UpdateFailedException {
-        setValue(target, value, this.strict);
+        setValue(target, value, this.required, this.autoConvert);
     }
 
-    public void setValue(Object bean, Object propertyValue, boolean strict) throws UpdateFailedException {
+    public void setValue(Object bean, Object propertyValue, boolean required, boolean autoConvert) throws UpdateFailedException {
         if (bean == null)
-            if (strict)
+            if (required)
                 throw new UpdateFailedException("Cannot set a property on a null pointer");
             else
                 return;
         PropertyDescriptor propertyDescriptor = BeanUtil.getPropertyDescriptor(bean.getClass(), name);
         if (propertyDescriptor == null)
-            if (strict)
+            if (required)
                 throw new UpdateFailedException("property '" + name + "' not found in class " + bean.getClass());
             else
                 return;
 		Method writeMethod = propertyDescriptor.getWriteMethod();
         if (writeMethod == null) {
-            if (strict)
+            if (required)
                 throw new UpdateFailedException("No write method found for property '" + name + "' in class " + bean.getClass());
             else
                 return;
         }
-        if (!strict && propertyValue != null) {
+        if (autoConvert && propertyValue != null) {
             Class<?> sourceType = propertyValue.getClass();
             Class<?> targetType = writeMethod.getParameterTypes()[0];
             try {

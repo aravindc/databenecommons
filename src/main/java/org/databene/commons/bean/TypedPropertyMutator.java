@@ -43,15 +43,17 @@ import java.beans.PropertyDescriptor;
  */
 public class TypedPropertyMutator extends AbstractNamedMutator {
 
-    private boolean strict;
+    private boolean required;
+    private boolean autoConvert;
     private Method writeMethod;
 
-    public TypedPropertyMutator(Class<?> beanClass, String propertyName, boolean strict) {
+    public TypedPropertyMutator(Class<?> beanClass, String propertyName, boolean required, boolean autoConvert) {
         super(propertyName);
-        this.strict = strict;
+        this.required = required;
+        this.autoConvert = autoConvert;
         PropertyDescriptor propertyDescriptor = BeanUtil.getPropertyDescriptor(beanClass, propertyName);
         if (propertyDescriptor == null) {
-            if (strict)
+            if (required)
                 throw new ConfigurationError("No property '" + propertyName + "' found in " + beanClass);
             else
                 writeMethod = null;
@@ -65,27 +67,23 @@ public class TypedPropertyMutator extends AbstractNamedMutator {
     @Override
 	public void setValue(Object bean, Object value) throws UpdateFailedException {
         if (bean == null)
-            if (strict)
+            if (required)
                 throw new IllegalArgumentException("Cannot set a property on null");
             else
                 return;
-        setValue(bean, value, this.strict);
-    }
-
-    public void setValue(Object target, Object propertyValue, boolean strict) {
         if (writeMethod == null)
             return;
-        if (!strict && propertyValue != null) {
-            Class<?> sourceType = propertyValue.getClass();
+        if (autoConvert && value != null) {
+            Class<?> sourceType = value.getClass();
             Class<?> targetType = writeMethod.getParameterTypes()[0];
             try {
                 if (!targetType.isAssignableFrom(sourceType))
-                    propertyValue = AnyConverter.convert(propertyValue, targetType);
+                    value = AnyConverter.convert(value, targetType);
             } catch (ConversionException e) {
                 throw new ConfigurationError(e);
             }
         }
-        BeanUtil.invoke(target, writeMethod, new Object[] { propertyValue });
+        BeanUtil.invoke(bean, writeMethod, new Object[] { value });
     }
     
 }

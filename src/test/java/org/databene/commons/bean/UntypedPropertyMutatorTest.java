@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -42,7 +42,7 @@ public class UntypedPropertyMutatorTest {
 
 	@Test
     public void testLocalProperty() throws UpdateFailedException {
-        UntypedPropertyMutator aNameMutator = new UntypedPropertyMutator("name", true);
+        UntypedPropertyMutator aNameMutator = new UntypedPropertyMutator("name", true, false);
         ABean a = new ABean();
         aNameMutator.setValue(a, "aName");
         assertEquals("aName", a.name);
@@ -52,17 +52,17 @@ public class UntypedPropertyMutatorTest {
     
 	@Test
     public void testNonStrict() {
-	    UntypedPropertyMutator mutator = new UntypedPropertyMutator("bla", false);
+	    UntypedPropertyMutator mutator = new UntypedPropertyMutator("bla", false, true);
 		mutator.setValue(null, null);
 		mutator.setValue(new ABean(), null);
-	    UntypedPropertyMutator readOnly = new UntypedPropertyMutator("readOnly", false);
+	    UntypedPropertyMutator readOnly = new UntypedPropertyMutator("readOnly", false, true);
 	    readOnly.setValue(new ABean(), "bla");
     }
 
 	@Test
     public void testStrictSetOnNull() {
     	try {
-	    	UntypedPropertyMutator mutator = new UntypedPropertyMutator("bla", true);
+	    	UntypedPropertyMutator mutator = new UntypedPropertyMutator("bla", true, false);
 	    	mutator.setValue(null, null);
 	    	fail(UpdateFailedException.class.getSimpleName() + " expected");
     	} catch (UpdateFailedException e) {
@@ -73,7 +73,7 @@ public class UntypedPropertyMutatorTest {
 	@Test
     public void testStrictMissingProperty() {
     	try {
-	    	UntypedPropertyMutator mutator = new UntypedPropertyMutator("bla", true);
+	    	UntypedPropertyMutator mutator = new UntypedPropertyMutator("bla", true, false);
 	    	mutator.setValue(new ABean(), null);
 	    	fail(UpdateFailedException.class.getSimpleName() + " expected");
     	} catch (UpdateFailedException e) {
@@ -84,7 +84,7 @@ public class UntypedPropertyMutatorTest {
 	@Test
     public void testStrictReadOnlyProperty() {
     	try {
-	    	UntypedPropertyMutator mutator = new UntypedPropertyMutator("readOnly", true);
+	    	UntypedPropertyMutator mutator = new UntypedPropertyMutator("readOnly", true, false);
 	    	mutator.setValue(new ABean(), null);
 	    	fail(UpdateFailedException.class.getSimpleName() + " expected");
     	} catch (UpdateFailedException e) {

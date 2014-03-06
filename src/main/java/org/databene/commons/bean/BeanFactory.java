@@ -56,7 +56,7 @@ public class BeanFactory {
     	Object bean = BeanUtil.newInstance(factory.forName(beanClassName));
         for (Map.Entry<String, Object> entry : properties.entrySet()) {
             String propertyName = entry.getKey();
-            NamedMutator mutator = PropertyMutatorFactory.getPropertyMutator(bean.getClass(), propertyName, false);
+            NamedMutator mutator = PropertyMutatorFactory.getPropertyMutator(bean.getClass(), propertyName, false, true);
             try {
                 mutator.setValue(bean, entry.getValue());
             } catch (UpdateFailedException e) {

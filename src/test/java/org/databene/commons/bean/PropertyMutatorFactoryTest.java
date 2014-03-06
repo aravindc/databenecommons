@@ -44,8 +44,8 @@ public class PropertyMutatorFactoryTest {
 
 	@Test
     public void testSimpleProperty() {
-        assertEquals(TypedPropertyMutator.class, PropertyMutatorFactory.getPropertyMutator(ABean.class, "name", true).getClass());
-        assertEquals(TypedPropertyMutator.class, PropertyMutatorFactory.getPropertyMutator(ABean.class, "doesntExsist", false).getClass());
+        assertEquals(TypedPropertyMutator.class, PropertyMutatorFactory.getPropertyMutator(ABean.class, "name", true, false).getClass());
+        assertEquals(TypedPropertyMutator.class, PropertyMutatorFactory.getPropertyMutator(ABean.class, "doesntExsist", false, true).getClass());
         try {
             PropertyMutatorFactory.getPropertyMutator(ABean.class, "doesntExsist");
             fail("ConfigurationError expected");
@@ -59,9 +59,9 @@ public class PropertyMutatorFactoryTest {
     public void testNavigatedProperty() throws UpdateFailedException {
         assertEquals(PropertyGraphMutator.class, PropertyMutatorFactory.getPropertyMutator(ABean.class, "b.name").getClass());
         assertEquals(PropertyGraphMutator.class, PropertyMutatorFactory.getPropertyMutator("b.name").getClass());
-        assertEquals(PropertyGraphMutator.class, PropertyMutatorFactory.getPropertyMutator(ABean.class, "doesnt.exist", false).getClass());
+        assertEquals(PropertyGraphMutator.class, PropertyMutatorFactory.getPropertyMutator(ABean.class, "doesnt.exist", false, true).getClass());
         try {
-            PropertyMutatorFactory.getPropertyMutator(ABean.class, "doesnt.exist", true);
+            PropertyMutatorFactory.getPropertyMutator(ABean.class, "doesnt.exist", true, false);
             fail("ConfigurationError expected");
         } catch(ConfigurationError e) {
             // this is the desired behaviour

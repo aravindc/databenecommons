@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -39,11 +39,12 @@ import org.slf4j.LoggerFactory;
  * Created: 08.05.2005 06:24:41
  * @author Volker Bergmann
  */
-class PropertyGraphMutator implements NamedMutator {
+public class PropertyGraphMutator implements NamedMutator {
 
     private static Logger logger = LoggerFactory.getLogger(PropertyGraphMutator.class);
 
-    private boolean strict;
+    private boolean required;
+    private boolean autoConvert;
     private PropertyAccessor<Object, ?>[] subAccessors;
     private NamedMutator lastMutator;
     private String propertyName;
@@ -51,39 +52,48 @@ class PropertyGraphMutator implements NamedMutator {
     // constructors ----------------------------------------------------------------------------------------------------
 
     public PropertyGraphMutator(String propertyName) {
-        this(propertyName, true);
+        this(propertyName, true, false);
     }
 
-    public PropertyGraphMutator(String propertyName, boolean strict) {
-        this(null, propertyName, strict);
+    public PropertyGraphMutator(String propertyName, boolean required, boolean autoConvert) {
+        this(null, propertyName, required, autoConvert);
     }
 
     public PropertyGraphMutator(Class<?> beanClass, String propertyName) {
-        this(beanClass, propertyName, true);
+        this(beanClass, propertyName, true, false);
     }
 
     @SuppressWarnings("unchecked")
-    public PropertyGraphMutator(Class<?> beanClass, String propertyName, boolean strict) {
+    public PropertyGraphMutator(Class<?> beanClass, String propertyName, boolean required, boolean autoConvert) {
         this.propertyName = propertyName;
-        this.strict = strict;
+        this.required = required;
+        this.autoConvert = autoConvert;
         int separatorIndex = propertyName.indexOf('.');
         if (separatorIndex >= 0) {
             String[] nodeNames = StringUtil.tokenize(propertyName, '.');
             Class<?> nodeClass = beanClass;
             subAccessors = new PropertyAccessor[nodeNames.length - 1];
             for (int i = 0; i < nodeNames.length - 1; i++) {
-                subAccessors[i] = PropertyAccessorFactory.getAccessor(nodeClass, nodeNames[i], strict);
+                subAccessors[i] = PropertyAccessorFactory.getAccessor(nodeClass, nodeNames[i], required);
                 nodeClass = subAccessors[i].getValueType();
             }
             String lastNodeName = nodeNames[nodeNames.length - 1];
             if (beanClass != null)
                 lastMutator = PropertyMutatorFactory.getPropertyMutator(
-                    subAccessors[subAccessors.length - 1].getValueType(), lastNodeName, strict);
+                    subAccessors[subAccessors.length - 1].getValueType(), lastNodeName, required, autoConvert);
             else
-                lastMutator = new UntypedPropertyMutator(lastNodeName, strict);
+                lastMutator = new UntypedPropertyMutator(lastNodeName, required, autoConvert);
         } else
-            lastMutator = new TypedPropertyMutator(beanClass, propertyName, strict);
+            lastMutator = new TypedPropertyMutator(beanClass, propertyName, required, autoConvert);
     }
+    
+	public boolean isRequired() {
+		return required;
+	}
+	
+	public boolean isAutoConvert() {
+		return autoConvert;
+	}
 
     // PropertyMutator interface ---------------------------------------------------------------------------------------
 
@@ -95,7 +105,7 @@ class PropertyGraphMutator implements NamedMutator {
     @Override
 	public void setValue(Object bean, Object propertyValue) throws UpdateFailedException {
         if (bean == null)
-            if (strict)
+            if (required)
                 throw new IllegalArgumentException("Cannot set a property on null");
             else
                 return;
@@ -115,5 +125,9 @@ class PropertyGraphMutator implements NamedMutator {
         }
         lastMutator.setValue(superBean, propertyValue);
     }
-
+    
+	public static void setPropertyGraph(Object bean, String propertyGraph, Object propertyValue, boolean required, boolean autoConvert) {
+		new PropertyGraphMutator(bean.getClass(), propertyGraph, required, autoConvert).setValue(bean, propertyValue);
+	}
+	
 }

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -41,7 +41,7 @@ public class TypedPropertyMutatorTest {
 
 	@Test
     public void testLocalProperty() throws UpdateFailedException {
-        TypedPropertyMutator aNameMutator = new TypedPropertyMutator(ABean.class, "name", true);
+        TypedPropertyMutator aNameMutator = new TypedPropertyMutator(ABean.class, "name", true, false);
         ABean a = new ABean();
         aNameMutator.setValue(a, "aName");
         assertEquals("aName", a.name);

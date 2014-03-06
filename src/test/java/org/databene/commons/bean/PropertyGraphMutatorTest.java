@@ -41,7 +41,7 @@ public class PropertyGraphMutatorTest {
 
 	@Test
     public void testLocalProperty() throws UpdateFailedException {
-        PropertyGraphMutator aNameMutator = new PropertyGraphMutator(ABean.class, "name", true);
+        PropertyGraphMutator aNameMutator = new PropertyGraphMutator(ABean.class, "name", true, false);
         ABean a = new ABean();
         aNameMutator.setValue(a, "aName");
         assertEquals("aName", a.name);
@@ -51,7 +51,7 @@ public class PropertyGraphMutatorTest {
 
 	@Test
     public void testNavigatedProperty() throws UpdateFailedException {
-        PropertyGraphMutator bNameMutator = new PropertyGraphMutator(ABean.class, "b.name", true);
+        PropertyGraphMutator bNameMutator = new PropertyGraphMutator(ABean.class, "b.name", true, false);
         ABean a = new ABean();
         bNameMutator.setValue(a, "bName");
         assertEquals("bName", a.b.name);
@@ -61,7 +61,7 @@ public class PropertyGraphMutatorTest {
 
 	@Test
     public void testNavigatedGraph() throws UpdateFailedException {
-        PropertyGraphMutator bNameMutator = new PropertyGraphMutator(ABean.class, "b.c.name", true);
+        PropertyGraphMutator bNameMutator = new PropertyGraphMutator(ABean.class, "b.c.name", true, false);
         ABean a = new ABean();
         bNameMutator.setValue(a, "cName");
         assertEquals("cName", a.b.c.name);

@@ -39,20 +39,20 @@ import org.databene.commons.mutator.NamedMutator;
 public class PropertyMutatorFactory {
 
     public static NamedMutator getPropertyMutator(String propertyName) {
-        return getPropertyMutator(null, propertyName, true);
+        return getPropertyMutator(null, propertyName, true, false);
     }
 
     public static NamedMutator getPropertyMutator(Class<?> beanClass, String propertyName) {
-        return getPropertyMutator(beanClass, propertyName, true);
+        return getPropertyMutator(beanClass, propertyName, true, false);
     }
 
-    public static NamedMutator getPropertyMutator(Class<?> beanClass, String propertyName, boolean strict) {
+    public static NamedMutator getPropertyMutator(Class<?> beanClass, String propertyName, boolean required, boolean autoConvert) {
         if (propertyName.contains("."))
-            return new PropertyGraphMutator(beanClass, propertyName, strict);
+            return new PropertyGraphMutator(beanClass, propertyName, required, autoConvert);
         else if (beanClass != null)
-            return new TypedPropertyMutator(beanClass, propertyName, strict);
+            return new TypedPropertyMutator(beanClass, propertyName, required, autoConvert);
         else
-            return new UntypedPropertyMutator(propertyName, strict);
+            return new UntypedPropertyMutator(propertyName, required, autoConvert);
     }
 
 }
