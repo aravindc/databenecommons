@@ -50,11 +50,10 @@ public class PadFormat extends Format {
     }
 
     public PadFormat(Format format, int length, Alignment alignment, char padChar) {
-    	assert length >= 1;
     	assert alignment != null;
     	assert padChar != 0;
         this.format = format;
-        this.padder = new StringPadder(length, alignment, padChar);
+        this.padder = (length > 0 ? new StringPadder(length, alignment, padChar) : null);
     }
     
     // properties ------------------------------------------------------------------------------------------------------
@@ -77,7 +76,9 @@ public class PadFormat extends Format {
     @Override
     public StringBuffer format(Object object, StringBuffer toAppendTo, FieldPosition pos) {
         String text = (format != null ? format.format(object) : ToStringConverter.convert(object, ""));
-        return toAppendTo.append(padder.convert(text));
+        if (padder != null)
+        	text = padder.convert(text);
+        return toAppendTo.append(text);
     }
 
     @Override
@@ -116,7 +117,8 @@ public class PadFormat extends Format {
 		if (obj == null || getClass() != obj.getClass())
 			return false;
 		final PadFormat that = (PadFormat) obj;
-		return (this.padder.equals(that.padder) && NullSafeComparator.equals(this.format, that.format));
+		return (NullSafeComparator.equals(this.padder, that.padder) && 
+				NullSafeComparator.equals(this.format, that.format));
 	}
 	
 	@Override
