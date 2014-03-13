@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -26,8 +26,8 @@
 
 package org.databene.commons.format;
 
+import org.databene.commons.NullSafeComparator;
 import org.databene.commons.StringUtil;
-import org.databene.commons.converter.Number2StringConverter;
 import org.databene.commons.converter.ToStringConverter;
 
 import java.text.*;
@@ -40,55 +40,44 @@ import java.text.*;
  */
 public class PadFormat extends Format {
 
-    private static final long serialVersionUID = 609871662377339019L;
+    private static final long serialVersionUID = -8263536650454913565L;
     
-	private int length;
-    private int minimumFractionDigits;
-    private int maximumFractionDigits;
-    private Alignment alignment;
-    private char padChar;
+	private Format format;
+    private StringPadder padder;
 
     public PadFormat(int length, Alignment alignment, char padChar) {
-        this(length, 0, 2, alignment, padChar);
+        this(null, length, alignment, padChar);
     }
 
-    public PadFormat(int length, int fractionDigits, Alignment alignment, char padChar) {
-        this(length, fractionDigits, fractionDigits, alignment, padChar);
-    }
-
-    public PadFormat(int length, int minimumFractionDigits, int maximumFractionDigits, Alignment alignment, char padChar) {
+    public PadFormat(Format format, int length, Alignment alignment, char padChar) {
     	assert length >= 1;
-    	assert minimumFractionDigits >= 0;
-    	assert maximumFractionDigits >= 0;
     	assert alignment != null;
     	assert padChar != 0;
-        this.length = length;
-        this.minimumFractionDigits = minimumFractionDigits;
-        this.maximumFractionDigits = maximumFractionDigits;
-        this.alignment = alignment;
-        this.padChar = padChar;
+        this.format = format;
+        this.padder = new StringPadder(length, alignment, padChar);
+    }
+    
+    // properties ------------------------------------------------------------------------------------------------------
+
+    public int getLength() {
+        return padder.getLength();
     }
 
+    public Alignment getAlignment() {
+        return padder.getAlignment();
+    }
+
+    public char getPadChar() {
+        return padder.getPadChar();
+    }
+    
+	
+	// Format interface implementation ---------------------------------------------------------------------------------
+	
     @Override
-    public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
-        String text;
-        if (obj instanceof Number)
-            text = Number2StringConverter.convert((Number) obj, minimumFractionDigits, maximumFractionDigits, false);
-        else
-            text = ToStringConverter.convert(obj, "");
-        int padLength = length - text.length();
-        if (padLength < 0)
-        	throw new IllegalArgumentException("Text is longer that the required pad length of " + length + ": " + text);
-        switch (alignment) {
-            case LEFT   : return toAppendTo.append(text).append(StringUtil.padString(padChar, padLength));
-            case RIGHT  : boolean neg = (padChar == '0' && text.length() > 0 && text.charAt(0) == '-');
-                          if (neg)
-                              return toAppendTo.append('-').append(StringUtil.padString(padChar, padLength)).append(text.substring(1));
-                          else
-                                return toAppendTo.append(StringUtil.padString(padChar, padLength)).append(text);
-            case CENTER : return toAppendTo.append(StringUtil.padString(padChar, padLength / 2)).append(text).append(StringUtil.padString(padChar, padLength - padLength / 2));
-            default     : throw new IllegalArgumentException("Illegal Alignement: " + alignment);
-        }
+    public StringBuffer format(Object object, StringBuffer toAppendTo, FieldPosition pos) {
+        String text = (format != null ? format.format(object) : ToStringConverter.convert(object, ""));
+        return toAppendTo.append(padder.convert(text));
     }
 
     @Override
@@ -99,7 +88,8 @@ public class PadFormat extends Format {
             pos.setIndex(source.length());
         if (source == null)
             return null;
-        switch (alignment) {
+        char padChar = getPadChar();
+        switch (getAlignment()) {
             case LEFT   : return StringUtil.trimRight(source, padChar);
             case RIGHT  : boolean neg = (padChar == '0' && source.length() > 0 && source.charAt(0) == '-');
                           if (neg)
@@ -107,59 +97,31 @@ public class PadFormat extends Format {
                           else
                             return StringUtil.trimLeft(source, padChar);
             case CENTER : return StringUtil.trim(source, padChar);
-            default     : throw new IllegalArgumentException("Illegal Alignement: " + alignment);
+            default     : throw new IllegalArgumentException("Illegal Alignement: " + getAlignment());
         }
     }
-
-    // properties ------------------------------------------------------------------------------------------------------
-
-    public int getLength() {
-        return length;
-    }
-
-    public Alignment getAlignment() {
-        return alignment;
-    }
-
-    public char getPadChar() {
-        return padChar;
-    }
     
-	public int getMinimumFractionDigits() {
-		return minimumFractionDigits;
-	}
-
-	public int getMaximumFractionDigits() {
-		return maximumFractionDigits;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+    
+	// java.lang.Object overrides --------------------------------------------------------------------------------------
+    
 	@Override
 	public int hashCode() {
-		return ((((alignment.hashCode() * 31) +  length) * 31 
-				+ minimumFractionDigits) * 31 + maximumFractionDigits) * 31 
-				+ padChar;
+		return padder.hashCode() * 31 +  format.hashCode();
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if (obj == null || getClass() != obj.getClass())
 			return false;
 		final PadFormat that = (PadFormat) obj;
-		return (this.alignment.equals(that.alignment) 
-				&& this.length == that.length 
-				&& this.minimumFractionDigits == that.minimumFractionDigits
-				&& this.maximumFractionDigits == that.maximumFractionDigits
-				&& padChar == that.padChar);
+		return (this.padder.equals(that.padder) && NullSafeComparator.equals(this.format, that.format));
 	}
-
+	
+	@Override
+	public String toString() {
+		return padder.toString();
+	}
+	
 }

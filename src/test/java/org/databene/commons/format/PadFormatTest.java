@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -29,8 +29,11 @@ package org.databene.commons.format;
 import org.junit.Test;
 import static junit.framework.Assert.*;
 
+import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Locale;
 
+import org.databene.commons.NumberUtil;
 import org.databene.commons.format.Alignment;
 import org.databene.commons.format.PadFormat;
 
@@ -69,18 +72,14 @@ public class PadFormatTest {
 
 	@Test
     public void testFormatNumber() {
-        PadFormat format = new PadFormat(5, 2, Alignment.RIGHT, '0');
+		
+        PadFormat format = new PadFormat(NumberUtil.numberFormat(2, Locale.US), 5, Alignment.RIGHT, '0');
         assertEquals("00.01", format.format(0.01));
         assertEquals("00.10", format.format(0.1));
         assertEquals("01.00", format.format(1));
         assertEquals("01.00", format.format(1.));
         assertEquals("01.00", format.format(1));
         assertEquals("01.00", format.format(1L));
-        format = new PadFormat(5, 0, 2, Alignment.RIGHT, '0');
-        assertEquals("00.01", format.format(0.01));
-        assertEquals("000.1", format.format(0.1));
-        assertEquals("00001", format.format(1));
-        assertEquals("00001", format.format(1.));
     }
 
 	@Test
@@ -114,15 +113,17 @@ public class PadFormatTest {
 
 	@Test
     public void testEquals() {
-    	PadFormat p10ls = new PadFormat(1, 0, Alignment.LEFT, ' ');
-       	PadFormat p20ls = new PadFormat(2, 0, Alignment.LEFT, ' ');
-    	PadFormat p11ls = new PadFormat(1, 1, Alignment.LEFT, ' ');
-    	PadFormat p10rs = new PadFormat(1, 0, Alignment.RIGHT, ' ');
-        PadFormat p10l0 = new PadFormat(1, 0, Alignment.LEFT, '0');
+		NumberFormat intFormat = NumberUtil.numberFormat(0, Locale.US);
+		NumberFormat decFormat = NumberUtil.numberFormat(1, Locale.US);
+    	PadFormat p10ls = new PadFormat(intFormat, 1, Alignment.LEFT, ' ');
+       	PadFormat p20ls = new PadFormat(intFormat, 2, Alignment.LEFT, ' ');
+    	PadFormat p11ls = new PadFormat(decFormat, 1, Alignment.LEFT, ' ');
+    	PadFormat p10rs = new PadFormat(intFormat, 1, Alignment.RIGHT, ' ');
+        PadFormat p10l0 = new PadFormat(intFormat, 1, Alignment.LEFT, '0');
         assertFalse(p10ls.equals(null));
         assertFalse(p10ls.equals("Test"));
         assertTrue(p10ls.equals(p10ls));
-        assertTrue(p10ls.equals(new PadFormat(1, 0, Alignment.LEFT, ' ')));
+        assertTrue(p10ls.equals(new PadFormat(intFormat, 1, Alignment.LEFT, ' ')));
         assertFalse(p10ls.equals(p20ls));
         assertFalse(p10ls.equals(p11ls));
         assertFalse(p10ls.equals(p10rs));
