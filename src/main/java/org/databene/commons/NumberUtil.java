@@ -130,13 +130,16 @@ public class NumberUtil {
         return result;
     }
 
-    public static String format(double number, int digits) {
-        NumberFormat nf;
-        nf = NumberFormat.getInstance(Locale.US);
-        nf.setMinimumFractionDigits(digits);
-        nf.setMaximumFractionDigits(digits);
-        return nf.format(number);
+    public static String format(double number, int fractionDigits) {
+        return numberFormat(fractionDigits, Locale.US).format(number);
     }
+
+	public static NumberFormat numberFormat(int fractionDigits, Locale locale) {
+		NumberFormat nf = NumberFormat.getInstance(locale);
+        nf.setMinimumFractionDigits(fractionDigits);
+        nf.setMaximumFractionDigits(fractionDigits);
+		return nf;
+	}
     
     public static boolean isLimited(Class<? extends Number> numberType) {
     	return (numberType != BigDecimal.class && numberType != BigInteger.class);
