@@ -26,6 +26,7 @@
 
 package org.databene.commons.bean;
 
+import org.databene.commons.BeanUtil;
 import org.databene.commons.StringUtil;
 import org.databene.commons.accessor.TypedAccessor;
 import org.databene.commons.accessor.TypedAccessorChain;
@@ -37,13 +38,22 @@ import org.databene.commons.accessor.TypedAccessorChain;
  * @author Volker Bergmann
  */
 @SuppressWarnings("rawtypes")
-class PropertyGraphAccessor extends TypedAccessorChain implements PropertyAccessor {
+public class PropertyGraphAccessor extends TypedAccessorChain implements PropertyAccessor {
 
     private String propertyName;
 
     public PropertyGraphAccessor(Class<?> beanClass, String propertyName, boolean strict) {
         super(createSubAccessors(beanClass, propertyName, strict));
         this.propertyName = propertyName;
+    }
+    
+    public static Object getPropertyGraph(Object bean, String graph) {
+    	String[] tokens = StringUtil.splitOnFirstSeparator(graph, '.');
+    	Object tmp = BeanUtil.getPropertyValue(bean, tokens[0]);
+    	if (tokens[1] != null)
+    		return getPropertyGraph(tmp, tokens[1]);
+    	else
+    		return tmp;
     }
 
     @Override
