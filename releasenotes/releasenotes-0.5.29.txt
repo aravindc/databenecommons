@@ -1,0 +1,15 @@
+release notes databene commons 0.5.29
+-------------------------------------
+
+Enhancements
+------------
+- AnyMutator: Added direct access to public attributes
+- XMLUtil: Added xpath query methods applicable to XML elements
+
+
+Changes
+-------
+
+
+Bug Fixes
+---------
