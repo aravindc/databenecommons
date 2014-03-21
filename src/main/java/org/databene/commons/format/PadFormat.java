@@ -83,23 +83,34 @@ public class PadFormat extends Format {
 
     @Override
     public Object parseObject(String source, ParsePosition pos) {
-        if (StringUtil.isEmpty(source))
+        if (source == null) {
             pos.setIndex(1);
-        else
-            pos.setIndex(source.length());
-        if (source == null)
             return null;
+        }
+        String trimmed = source;
         char padChar = getPadChar();
-        switch (getAlignment()) {
-            case LEFT   : return StringUtil.trimRight(source, padChar);
-            case RIGHT  : boolean neg = (padChar == '0' && source.length() > 0 && source.charAt(0) == '-');
+        switch (getAlignment()) { // TODO the following code ignores the pos
+            case LEFT   : trimmed =  StringUtil.trimRight(trimmed, padChar); break;
+            case RIGHT  : boolean neg = (padChar == '0' && trimmed.length() > 0 && trimmed.charAt(0) == '-');
                           if (neg)
-                              return '-' + StringUtil.trimLeft(source.substring(1), padChar);
+                        	  trimmed =  '-' + StringUtil.trimLeft(trimmed.substring(1), padChar);
                           else
-                            return StringUtil.trimLeft(source, padChar);
-            case CENTER : return StringUtil.trim(source, padChar);
+                        	  trimmed = StringUtil.trimLeft(trimmed, padChar);
+                          break;
+            case CENTER : trimmed = StringUtil.trim(trimmed, padChar); break;
             default     : throw new IllegalArgumentException("Illegal Alignement: " + getAlignment());
         }
+        Object result;
+        if (format != null) {
+        	result = format.parseObject(trimmed, pos);
+        } else {
+        	result = trimmed;
+            if (StringUtil.isEmpty(source))
+                pos.setIndex(1);
+            else
+            	pos.setIndex(source.length());
+        }
+        return result;
     }
     
     
