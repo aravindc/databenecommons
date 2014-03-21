@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -47,18 +47,21 @@ public class PropertyGraphAccessor extends TypedAccessorChain implements Propert
         this.propertyName = propertyName;
     }
     
-    public static Object getPropertyGraph(Object bean, String graph) {
-    	String[] tokens = StringUtil.splitOnFirstSeparator(graph, '.');
-    	Object tmp = BeanUtil.getPropertyValue(bean, tokens[0]);
-    	if (tokens[1] != null)
-    		return getPropertyGraph(tmp, tokens[1]);
-    	else
-    		return tmp;
-    }
-
     @Override
 	public String getPropertyName() {
         return propertyName;
+    }
+
+    
+    // static utility methods ------------------------------------------------------------------------------------------
+    
+    public static Object getPropertyGraph(String path, Object bean) {
+    	String[] tokens = StringUtil.splitOnFirstSeparator(path, '.');
+    	Object tmp = BeanUtil.getPropertyValue(bean, tokens[0]);
+    	if (tokens[1] != null)
+    		return getPropertyGraph(tokens[1], tmp);
+    	else
+    		return tmp;
     }
 
     private static TypedAccessor[] createSubAccessors(Class<?> beanClass, String propertyName, boolean strict) {
@@ -73,5 +76,5 @@ public class PropertyGraphAccessor extends TypedAccessorChain implements Propert
         }
         return nodes;
     }
-
+    
 }
