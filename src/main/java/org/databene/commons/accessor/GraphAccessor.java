@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -50,14 +50,28 @@ public class GraphAccessor implements Accessor {
             );
         }
     }
+    
+    
+    // Accessor interface implementation -------------------------------------------------------------------------------
 
     @Override
 	public Object getValue(Object o) {
         return realAccessor.getValue(o);
     }
-
+    
+    
+    // java.lang.Object overrides --------------------------------------------------------------------------------------
+    
     @Override
     public String toString() {
         return getClass().getSimpleName() + '[' + realAccessor + ']';
     }
+    
+    
+    // static utility methods ------------------------------------------------------------------------------------------
+    
+    public static Object getValue(String path, Object o) {
+    	return new GraphAccessor(path).getValue(o);
+    }
+    
 }
