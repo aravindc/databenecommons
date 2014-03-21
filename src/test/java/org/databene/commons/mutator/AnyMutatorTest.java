@@ -52,6 +52,14 @@ public class AnyMutatorTest {
     }
     
 	@Test
+    public void testAttribute() {
+        C c = new C();
+        assertEquals(1, c.x);
+        AnyMutator.setValue(c, "x", 2);
+        assertEquals(2, c.x);
+    }
+    
+	@Test
     public void testBeanPropertyGraph() {
         A a = new A();
         a.setB(new B());
@@ -117,6 +125,10 @@ public class AnyMutatorTest {
         public void setY(String y) {
             this.y = y;
         }
+    }
+    
+    public static class C {
+        public int x = 1;
     }
     
 }
