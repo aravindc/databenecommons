@@ -629,6 +629,15 @@ public class XMLUtil {
 		return xpath.evaluate(expression, document, returnType);
 	}
 	
+	public static String queryString(Element element, String expression) throws XPathExpressionException {
+		return (String) query(element, expression, XPathConstants.STRING);
+	}
+
+	public static Object query(Element element, String expression, QName returnType) throws XPathExpressionException {
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		return xpath.evaluate(expression, element, returnType);
+	}
+	
 	
 	
 	// private helpers -------------------------------------------------------------------------------------------------
