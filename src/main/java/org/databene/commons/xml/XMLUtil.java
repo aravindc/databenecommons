@@ -146,17 +146,34 @@ public class XMLUtil {
 
     public static Element[] getChildElements(Element parent) {
         NodeList childNodes = parent.getChildNodes();
-        if (childNodes == null)
+        return toElementArray(childNodes);
+    }
+
+	public static Element[] toElementArray(NodeList nodeList) {
+		if (nodeList == null)
         	return new Element[0];
-        int n = childNodes.getLength();
+        int n = nodeList.getLength();
         ArrayBuilder<Element> builder = new ArrayBuilder<Element>(Element.class, n);
         for (int i = 0; i < n; i++) {
-            Node item = childNodes.item(i);
+            Node item = nodeList.item(i);
             if (item instanceof Element)
                 builder.add((Element) item);
         }
         return builder.toArray();
-    }
+	}
+    
+	public static List<Element> toElementList(NodeList nodeList) {
+		List<Element> list = new ArrayList<Element>(nodeList != null ? nodeList.getLength() : 0);
+		if (nodeList == null)
+        	return list;
+        int n = nodeList.getLength();
+        for (int i = 0; i < n; i++) {
+            Node item = nodeList.item(i);
+            if (item instanceof Element)
+                list.add((Element) item);
+        }
+        return list;
+	}
     
     public static Element[] getChildElements(Element parent, boolean namespaceAware, String name) {
         ArrayBuilder<Element> builder = new ArrayBuilder<Element>(Element.class);
