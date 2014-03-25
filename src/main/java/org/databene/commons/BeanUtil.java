@@ -834,6 +834,11 @@ public final class BeanUtil {
         return (getPropertyDescriptor(beanClass, propertyName) != null);
     }
 
+    public static boolean hasWriteableProperty(Class<?> beanClass, String propertyName) {
+        PropertyDescriptor descriptor = getPropertyDescriptor(beanClass, propertyName);
+		return (descriptor != null ? descriptor.getWriteMethod() != null : false);
+    }
+
     /**
      * returns the name of a property read method.
      * @param propertyName the name of the property
