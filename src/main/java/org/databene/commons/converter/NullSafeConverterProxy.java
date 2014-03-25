@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -37,7 +37,6 @@ import org.databene.commons.Converter;
  */
 public class NullSafeConverterProxy<S, T> extends ConverterProxy<S, T> {
 
-    protected Converter<S, T> realConverter;
     protected T nullResult;
 
     public NullSafeConverterProxy(Converter<S, T> realConverter, T nullResult) {
