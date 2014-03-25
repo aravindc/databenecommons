@@ -115,7 +115,17 @@ public class Assert {
 			throw new AssertionError("Unexpected string length: Expected string of length " + length + ", found: " 
 					+ (string != null ? string.length() : "null"));
 	}
-
+	
+	public static void startsWith(String prefix, String string) {
+		if (string == null || !string.startsWith(prefix))
+			throw new AssertionError("Expected prefix '" + prefix + "' is missing in: " + string);
+	}
+	
+	public static void endsWith(String suffix, String string) {
+		if (string == null || !string.endsWith(suffix))
+			throw new AssertionError("Expected suffix '" + suffix + "' is missing in: " + string);
+	}
+	
 	public static void instanceOf(Object object, Class<?> type, String name) {
 		 if (object == null)
 			 throw new AssertionError(name + " is not supposed to be null");
