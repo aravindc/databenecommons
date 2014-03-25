@@ -42,17 +42,19 @@ public class PadFormat extends Format {
 
     private static final long serialVersionUID = -8263536650454913565L;
     
+    private String nullString;
 	private Format format;
     private StringPadder padder;
 
-    public PadFormat(int length, Alignment alignment, char padChar) {
-        this(null, length, alignment, padChar);
+    public PadFormat(String nullString, int length, Alignment alignment, char padChar) {
+        this(null, nullString, length, alignment, padChar);
     }
 
-    public PadFormat(Format format, int length, Alignment alignment, char padChar) {
+    public PadFormat(Format format, String nullString, int length, Alignment alignment, char padChar) {
     	assert alignment != null;
     	assert padChar != 0;
         this.format = format;
+        this.nullString = nullString;
         this.padder = (length > 0 ? new StringPadder(length, alignment, padChar) : null);
     }
     
@@ -75,7 +77,13 @@ public class PadFormat extends Format {
 	
     @Override
     public StringBuffer format(Object object, StringBuffer toAppendTo, FieldPosition pos) {
-        String text = (format != null ? format.format(object) : ToStringConverter.convert(object, ""));
+    	String text;
+    	if (object == null)
+    		text = nullString;
+    	else if (format != null)
+    		text = format.format(object);
+    	else
+    		text = ToStringConverter.convert(object, nullString);
         if (padder != null)
         	text = padder.convert(text);
         return toAppendTo.append(text);

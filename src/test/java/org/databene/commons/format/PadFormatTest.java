@@ -29,11 +29,15 @@ package org.databene.commons.format;
 import org.junit.Test;
 import static junit.framework.Assert.*;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import org.databene.commons.NumberUtil;
+import org.databene.commons.TimeUtil;
 import org.databene.commons.format.Alignment;
 import org.databene.commons.format.PadFormat;
 
@@ -47,7 +51,7 @@ public class PadFormatTest {
 
 	@Test
     public void testFormatLeftAligned() {
-        PadFormat format = new PadFormat(3, Alignment.LEFT, '0');
+        PadFormat format = new PadFormat("", 3, Alignment.LEFT, '0');
         assertEquals("100", format.format("1"));
         assertEquals("000", format.format("0"));
         assertEquals("000", format.format(null));
@@ -55,7 +59,7 @@ public class PadFormatTest {
 
 	@Test
     public void testFormatRightAligned() {
-        PadFormat format = new PadFormat(3, Alignment.RIGHT, '0');
+        PadFormat format = new PadFormat("", 3, Alignment.RIGHT, '0');
         assertEquals("001", format.format("1"));
         assertEquals("000", format.format("0"));
         assertEquals("000", format.format(null));
@@ -64,7 +68,7 @@ public class PadFormatTest {
 
 	@Test
     public void testFormatCentered() {
-        PadFormat format = new PadFormat(3, Alignment.CENTER, '0');
+        PadFormat format = new PadFormat("", 3, Alignment.CENTER, '0');
         assertEquals("010", format.format("1"));
         assertEquals("000", format.format("0"));
         assertEquals("000", format.format(null));
@@ -72,19 +76,27 @@ public class PadFormatTest {
 
 	@Test
     public void testFormatNumber() {
-		
-        PadFormat format = new PadFormat(NumberUtil.numberFormat(2, Locale.US), 5, Alignment.RIGHT, '0');
+        DecimalFormat numberFormat = new DecimalFormat("00.00", DecimalFormatSymbols.getInstance(Locale.US));
+		PadFormat format = new PadFormat(numberFormat, "", 5, Alignment.RIGHT, ' ');
         assertEquals("00.01", format.format(0.01));
         assertEquals("00.10", format.format(0.1));
         assertEquals("01.00", format.format(1));
         assertEquals("01.00", format.format(1.));
         assertEquals("01.00", format.format(1));
         assertEquals("01.00", format.format(1L));
+        assertEquals("     ", format.format(null));
+    }
+
+	@Test
+    public void testFormatDate() {
+        PadFormat format = new PadFormat(new SimpleDateFormat("yyyyMMdd", Locale.US), "", 8, Alignment.LEFT, ' ');
+        assertEquals("20140325", format.format(TimeUtil.date(2014, 2, 25)));
+        assertEquals("        ", format.format(null));
     }
 
 	@Test
     public void testParseLeftAligned() throws ParseException {
-        PadFormat format = new PadFormat(3, Alignment.LEFT, '0');
+        PadFormat format = new PadFormat("", 3, Alignment.LEFT, '0');
         assertEquals(null, format.parseObject(null));
         assertEquals("", format.parseObject(""));
         assertEquals("1", format.parseObject("1"));
@@ -94,7 +106,7 @@ public class PadFormatTest {
 
 	@Test
     public void testParseRightAligned() throws ParseException {
-        PadFormat format = new PadFormat(3, Alignment.RIGHT, '0');
+        PadFormat format = new PadFormat("", 3, Alignment.RIGHT, '0');
         assertEquals(null, format.parseObject(null));
         assertEquals("", format.parseObject(""));
         assertEquals("1", format.parseObject("1"));
@@ -104,7 +116,7 @@ public class PadFormatTest {
     }
 
     public void testParseCentered() throws ParseException {
-        PadFormat format = new PadFormat(3, Alignment.CENTER, '0');
+        PadFormat format = new PadFormat("", 3, Alignment.CENTER, '0');
         assertEquals(null, format.parseObject(null));
         assertEquals("", format.parseObject(""));
         assertEquals("1", format.parseObject("1"));
@@ -115,15 +127,15 @@ public class PadFormatTest {
     public void testEquals() {
 		NumberFormat intFormat = NumberUtil.numberFormat(0, Locale.US);
 		NumberFormat decFormat = NumberUtil.numberFormat(1, Locale.US);
-    	PadFormat p10ls = new PadFormat(intFormat, 1, Alignment.LEFT, ' ');
-       	PadFormat p20ls = new PadFormat(intFormat, 2, Alignment.LEFT, ' ');
-    	PadFormat p11ls = new PadFormat(decFormat, 1, Alignment.LEFT, ' ');
-    	PadFormat p10rs = new PadFormat(intFormat, 1, Alignment.RIGHT, ' ');
-        PadFormat p10l0 = new PadFormat(intFormat, 1, Alignment.LEFT, '0');
+    	PadFormat p10ls = new PadFormat(intFormat, "", 1, Alignment.LEFT, ' ');
+       	PadFormat p20ls = new PadFormat(intFormat, "", 2, Alignment.LEFT, ' ');
+    	PadFormat p11ls = new PadFormat(decFormat, "", 1, Alignment.LEFT, ' ');
+    	PadFormat p10rs = new PadFormat(intFormat, "", 1, Alignment.RIGHT, ' ');
+        PadFormat p10l0 = new PadFormat(intFormat, "", 1, Alignment.LEFT, '0');
         assertFalse(p10ls.equals(null));
         assertFalse(p10ls.equals("Test"));
         assertTrue(p10ls.equals(p10ls));
-        assertTrue(p10ls.equals(new PadFormat(intFormat, 1, Alignment.LEFT, ' ')));
+        assertTrue(p10ls.equals(new PadFormat(intFormat, "", 1, Alignment.LEFT, ' ')));
         assertFalse(p10ls.equals(p20ls));
         assertFalse(p10ls.equals(p11ls));
         assertFalse(p10ls.equals(p10rs));
