@@ -5,6 +5,10 @@ Enhancements
 ------------
 - AnyMutator: Added direct access to public attributes
 - XMLUtil: Added xpath query methods applicable to XML elements
+- new methods Assert.startsWith() and Assert.endsWith()
+- new method BeanUtil.hasWriteableProperty()
+- New methods XMLUtil.toElementArray(NodeList) and XMLUtil.toElementList(NodeList)
+- Handling null values in PadFormat
 
 
 Changes
@@ -13,3 +17,5 @@ Changes
 
 Bug Fixes
 ---------
+- Bug fix: handling of read-only bean property with public attribute in AnyMutator
+- Bug fix: NPE in NullSafeConverterProxy
