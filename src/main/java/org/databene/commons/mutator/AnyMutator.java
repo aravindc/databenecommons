@@ -90,8 +90,8 @@ public class AnyMutator implements Mutator {
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private static <C, V> void setLocal(C target, String featureName, V value, boolean required, boolean autoConvert) {
-    	if (BeanUtil.hasProperty(target.getClass(), featureName))
-            BeanUtil.setPropertyValue(target, featureName, value, false);
+    	if (BeanUtil.hasWriteableProperty(target.getClass(), featureName))
+            BeanUtil.setPropertyValue(target, featureName, value, required, autoConvert);
     	else if (target instanceof Context)
             ((Context) target).set(featureName, value);
         else if (target instanceof Map)
