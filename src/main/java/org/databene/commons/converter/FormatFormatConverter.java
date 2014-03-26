@@ -53,8 +53,6 @@ public class FormatFormatConverter<S> extends FormatBasedConverter<S, String> {
      */
 	@Override
 	public synchronized String convert(S source) {
-        if (source == null)
-            return null;
         try {
         	return format.format(source);
         } catch (Exception e) {
