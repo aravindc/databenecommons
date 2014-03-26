@@ -60,9 +60,13 @@ public class Formatter {
 	}
 
 	public static String format(Date date) {
-		return (date != null ? new SimpleDateFormat("yyyy-MM-dd").format(date) : "null");
+		return format(date, "yyyy-MM-dd");
 	}
 
+	public static String format(Date date, String pattern) {
+		return (date != null ? new SimpleDateFormat(pattern).format(date) : "null");
+	}
+	
 	public static String formatLocal(Date date) {
 		return (date != null ? DateFormat.getDateInstance().format(date) : "null");
 	}
@@ -88,5 +92,5 @@ public class Formatter {
 	private static ResourceBundle getBundle() {
 		return PropertyResourceBundle.getBundle("org/databene/commons/formatter", Locale.getDefault());
 	}
-	
+
 }
