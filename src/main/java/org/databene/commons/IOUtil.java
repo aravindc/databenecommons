@@ -177,7 +177,7 @@ public final class IOUtil {
         String line;
         while ((line = reader.readLine()) != null)
         	if (line.length() > 0 || includeEmptyLines)
-        		builder.add(line.trim());
+        		builder.add(line);
         return builder.toArray();
     }
 
