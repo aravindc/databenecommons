@@ -302,7 +302,10 @@ public final class TimeUtil {
     }
 
     public static Date lastDayOfMonth(Date date) {
-    	Calendar cal = calendar(date);
+    	return lastDayOfMonth(calendar(date)).getTime();
+    }
+    
+    public static Calendar lastDayOfMonth(Calendar cal) {
     	cal.add(Calendar.MONTH, 1);
     	cal.set(Calendar.DAY_OF_MONTH, 1);
     	cal.add(Calendar.DATE, -1);
@@ -310,7 +313,7 @@ public final class TimeUtil {
     	cal.set(Calendar.MINUTE, 0);
     	cal.set(Calendar.SECOND, 0);
     	cal.set(Calendar.MILLISECOND, 0);
-    	return cal.getTime();
+    	return cal;
     }
     
     public static Date firstDayOfWeek(Date date) {
