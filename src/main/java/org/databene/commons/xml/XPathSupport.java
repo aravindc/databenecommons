@@ -63,6 +63,10 @@ public class XPathSupport {
 		this.context = scanNamespaces(document, (prefixes != null ? CollectionUtil.toSet(prefixes) : null));
 	}
 	
+	public String queryString(String expression) throws XPathExpressionException {
+		return (String) query(expression, XPathConstants.STRING);
+	}
+
 	public List<Element> queryElements(String expression) throws XPathExpressionException {
 		return XMLUtil.toElementList((NodeList) query(expression, XPathConstants.NODESET));
 	}
