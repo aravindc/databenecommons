@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -146,6 +146,7 @@ public class IOUtilTest {
     	assertEquals("/Users/user2/text.txt", IOUtil.resolveRelativeUri("/Users/user2/text.txt", "/Users/user1/"));
     	assertEquals(SEP + "Users" + SEP + "temp" + SEP + "my.dtd", IOUtil.resolveRelativeUri("file:my.dtd", "/Users/temp/")); // SEP for Windows build
     	assertEquals("~/temp/my.dtd", IOUtil.resolveRelativeUri("~/temp/my.dtd", "/Users/temp/"));
+    	assertEquals("c:\\temp\\test.txt", IOUtil.resolveRelativeUri("c:\\temp\\test.txt", "c:\\test\\base.txt"));
     }
     
 	@Test    
@@ -295,7 +296,7 @@ public class IOUtilTest {
 
 	// private helpers -------------------------------------------------------------------------------------------------
     
-    private void checkFileOutputStream(String filename, OutputStream out) throws IOException {
+    private static void checkFileOutputStream(String filename, OutputStream out) throws IOException {
 	    try {
     		out.write("test".getBytes());
     		IOUtil.close(out);
