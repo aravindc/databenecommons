@@ -264,9 +264,9 @@ public final class StringUtil {
         StringBuilder result = new StringBuilder().append(lastChar);
         for (int i = 1; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (!Character.isWhitespace(c))
+            if (!isWhitespace(c))
                 result.append(c);
-            else if (!(Character.isWhitespace(lastChar)))
+            else if (!(isWhitespace(lastChar)))
                 result.append(' ');
             lastChar = c;
         }
