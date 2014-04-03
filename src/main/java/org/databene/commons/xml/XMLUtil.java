@@ -45,7 +45,6 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.xml.XMLConstants;
-import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -59,10 +58,6 @@ import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.databene.commons.ArrayBuilder;
 import org.databene.commons.BeanUtil;
@@ -632,38 +627,7 @@ public class XMLUtil {
 			element.setTextContent(value);
 		}
 	}
-	
-	public static String queryString(Document document, String expression) throws XPathExpressionException {
-		return (String) query(document, expression, XPathConstants.STRING);
-	}
-
-	public static List<Element> queryElements(Document document, String expression) throws XPathExpressionException {
-		return toElementList(queryNodes(document, expression));
-	}
-
-	public static Element queryElement(Document document, String expression) throws XPathExpressionException {
-		return (Element) query(document, expression, XPathConstants.NODE);
-	}
-
-	public static NodeList queryNodes(Document document, String expression) throws XPathExpressionException {
-		return (NodeList) query(document, expression, XPathConstants.NODESET);
-	}
-
-	public static Object query(Document document, String expression, QName returnType) throws XPathExpressionException {
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		return xpath.evaluate(expression, document, returnType);
-	}
-	
-	public static String queryString(Element element, String expression) throws XPathExpressionException {
-		return (String) query(element, expression, XPathConstants.STRING);
-	}
-
-	public static Object query(Element element, String expression, QName returnType) throws XPathExpressionException {
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		return xpath.evaluate(expression, element, returnType);
-	}
-	
-	
+		
 	
 	// private helpers -------------------------------------------------------------------------------------------------
 
