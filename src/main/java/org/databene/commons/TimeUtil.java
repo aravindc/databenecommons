@@ -464,12 +464,15 @@ public final class TimeUtil {
 	}
 
 	public static Date midnightOf(Date date) {
-        Calendar cal = calendar(date);
+        return midnightOf(calendar(date)).getTime();
+	}
+
+	public static Calendar midnightOf(Calendar cal) {
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0); 
         cal.set(Calendar.MILLISECOND, 0);
-        return cal.getTime();
+        return cal;
 	}
 
     public static Time currentTime() {
