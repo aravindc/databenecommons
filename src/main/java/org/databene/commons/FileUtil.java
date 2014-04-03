@@ -296,7 +296,11 @@ public final class FileUtil {
 		return filePath.toLowerCase().endsWith(".xml");
 	}
 	
-	
+	public static String prependFilePrefix(String prefix, String path) {
+		int sep = Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\'));
+		String fileName = prefix + path.substring(sep + 1);
+		return path.substring(0, sep + 1) + fileName;
+	}
 	
 	// private helpers -------------------------------------------------------------------------------------------------
 
