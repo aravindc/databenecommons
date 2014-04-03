@@ -146,6 +146,15 @@ public class FileUtilTest {
 		}
 	}
 	
+	@Test
+	public void testPrependFilePrefix() {
+		assertEquals("p_test.txt", FileUtil.prependFilePrefix("p_", "test.txt"));
+		assertEquals("localdir/p_test.txt", FileUtil.prependFilePrefix("p_", "localdir/test.txt"));
+		assertEquals("/root/localdir/p_test.txt", FileUtil.prependFilePrefix("p_", "/root/localdir/test.txt"));
+		assertEquals("localdir\\p_test.txt", FileUtil.prependFilePrefix("p_", "localdir\\test.txt"));
+		assertEquals("C:\\root\\localdir\\p_test.txt", FileUtil.prependFilePrefix("p_", "C:\\root\\localdir\\test.txt"));
+	}
+	
 	// test helpers ----------------------------------------------------------------------------------------------------
 
 	private void check(String regex, boolean acceptingFiles, boolean acceptingFolders, boolean recursive, 
