@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -303,10 +303,9 @@ public final class IOUtil {
 	public static boolean isAbsoluteRef(String uri, String contextUri) {
 		if (StringUtil.isEmpty(contextUri)) // if there is no context, the URI must be absolute
 			return true;
-		if (SystemInfo.isWindows()) { // recognize Windows drive letter formats like C:\
-			if (uri.length() >= 2 && Character.isLetter(uri.charAt(0)) && uri.charAt(1) == ':' && uri.charAt(1) == '\\')
-				return true;
-		}
+		// recognize Windows drive letter formats like C:\
+		if (uri.length() >= 3 && Character.isLetter(uri.charAt(0)) && uri.charAt(1) == ':' && uri.charAt(2) == '\\')
+			return true;
     	String refProtocol = getProtocol(uri);
     	String ctxProtocol = getProtocol(contextUri);
     	if (ctxProtocol == null) // if no context protocol is given, assume 'file'
