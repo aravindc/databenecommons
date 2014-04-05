@@ -1,0 +1,14 @@
+release notes databene commons 0.5.30
+-------------------------------------
+
+Enhancements
+------------
+StringPadder: Improved error messaging
+
+
+Changes
+-------
+
+
+Bug Fixes
+---------
