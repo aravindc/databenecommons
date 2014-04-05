@@ -78,7 +78,7 @@ public class StringPadder extends ThreadSafeConverter<String, String> {
 	public String convert(String text) throws ConversionException {
         int padLength = length - text.length();
         if (padLength < 0)
-        	throw new IllegalArgumentException("Text is longer that the pad length of " + length + " characters: " + text);
+        	throw new IllegalArgumentException("Text is longer that the pad length of " + length + " characters: '" + text + "'");
         switch (alignment) {
             case LEFT   : return text + StringUtil.padString(padChar, padLength);
             case RIGHT  : boolean neg = (padChar == '0' && text.length() > 0 && text.charAt(0) == '-');
