@@ -34,12 +34,10 @@ import org.junit.Test;
  */
 public class VersionInfoTest {
 
-	private static final String LIBRARY = "commons";
-
 	@SuppressWarnings("null")
 	@Test
-	public void testSelf() {
-		VersionInfo version = VersionInfo.getInfo(LIBRARY);
+	public void testCommonsVersionInfo() {
+		VersionInfo version = VersionInfo.getInfo("commons");
 		String versionNumber = version.getVersion();
 		assertFalse(versionNumber == null || versionNumber.length() == 0);
 		assertFalse(versionNumber.startsWith("${"));
@@ -47,9 +45,16 @@ public class VersionInfoTest {
 	}
 	
 	@Test
-	public void testDependencies() {
-		VersionInfo version = VersionInfo.getInfo(LIBRARY);
+	public void testCommonsDependencies() {
+		VersionInfo version = VersionInfo.getInfo("commons");
 		version.verifyDependencies();
+	}
+	
+	@Test
+	public void testCustomInfo() {
+		VersionInfo version = VersionInfo.getInfo("com.my");
+		String versionNumber = version.getVersion();
+		assertEquals("1.2.3", versionNumber);
 	}
 	
 }

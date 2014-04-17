@@ -29,6 +29,7 @@ import java.util.Map.Entry;
 import javax.validation.constraints.NotNull;
 
 import org.databene.commons.Assert;
+import org.databene.commons.ConfigurationError;
 import org.databene.commons.DeploymentError;
 import org.databene.commons.IOUtil;
 import org.databene.commons.ProgrammerError;
@@ -58,14 +59,13 @@ public class VersionInfo {
 	private static boolean development;
 	
 	private final String name;
+	private final String filePath;
 	private String version;
 	private Map<String, String> dependencies;
 
 	private String buildNumber;
 
 	public static VersionInfo getInfo(@NotNull String name) {
-		Assert.notNull(name, "name");
-		name = normalizeName(name);
 		VersionInfo result = INSTANCES.get(name);
 		if (result == null) {
 			result = new VersionInfo(name);
@@ -76,7 +76,8 @@ public class VersionInfo {
 
 	private VersionInfo(String name) {
 		Assert.notNull(name, "name");
-		this.name = normalizeName(name);
+		this.name = name;
+		this.filePath = normalizedPath(name);
 		this.dependencies = new HashMap<String, String>();
 		readVersionInfo(this);
 	}
@@ -116,7 +117,7 @@ public class VersionInfo {
 	
 	// private helper methods ------------------------------------------------------------------------------------------
 
-	private static String normalizeName(String name) {
+	private static String normalizedPath(String name) {
 		if (name.contains("."))
 			name = name.replace('.', '/');
 		return name;
@@ -126,8 +127,8 @@ public class VersionInfo {
 		versionInfo.version = "<unknown version>";
 	    try {
 			String versionFileName;
-	    	if (versionInfo.name.contains("/"))
-	    		versionFileName = versionInfo.name + "/version.properties";
+	    	if (versionInfo.filePath.contains("/"))
+	    		versionFileName = versionInfo.filePath + "/version.properties";
 	    	else
 	    		versionFileName = VERSION_FILE_PATTERN.replace("{0}", versionInfo.name);
 	    	boolean ok = readVersionInfo(versionInfo, versionFileName);
@@ -167,7 +168,12 @@ public class VersionInfo {
     			else
     				addDependency(dependencyName, dependencyVersion, versionInfo);
     		}
-    		versionInfo.version = props.get(versionInfo.name + VERSION_SUFFIX);
+    		String versionKey = versionInfo.name.replace('.', '_') + VERSION_SUFFIX;
+			versionInfo.version = props.get(versionKey);
+	        if (versionInfo.version == null) // TODO remove this convenience fallback after transition period
+	        	versionInfo.version = props.get(versionInfo.name.replace('.', '/') + VERSION_SUFFIX);
+	        if (versionInfo.version == null)
+	        	throw new ConfigurationError("No version number (" + versionKey + ") defined in file " + versionFileName);
     		return true;
         } else
         	return false;
@@ -187,5 +193,5 @@ public class VersionInfo {
 	public String toString() {
 		return name + ' ' + version + (buildNumber == null || ("${buildNumber}".equals(buildNumber)) ? "" : " build " + buildNumber);
 	}
-
+	
 }

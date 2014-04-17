@@ -1,13 +1,16 @@
 release notes databene commons 0.5.30
 -------------------------------------
 
+
 Enhancements
 ------------
-StringPadder: Improved error messaging
+- StringPadder: Improved error messaging
+- PropertyMutatorFactory: Improved untyped getPropertyMutator()
 
 
 Changes
 -------
+- VersionInfo: separated and improved handling of name, file path and version key
 
 
 Bug Fixes
