@@ -135,18 +135,18 @@ public class ParseUtilTest {
     
 	// implementation --------------------------------------------------------------------------------------------------
 
-    private <T> void assertEqualArrays(T[] found, T ... expected) {
+    private static <T> void assertEqualArrays(T[] found, T ... expected) {
         if (!Arrays.deepEquals(expected, found))
             throw new AssertionFailedError();
     }
 
-    private void checkParseEmptyLineSeparatedFile(String[][] expectedOutput, String ... input) throws IOException {
+    private static void checkParseEmptyLineSeparatedFile(String[][] expectedOutput, String ... input) throws IOException {
         String[][] output = ParseUtil.parseEmptyLineSeparatedFile(createReader(input));
         logger.debug(Arrays.deepToString(expectedOutput) + " <-> " + Arrays.deepToString(output));
         assertTrue(Arrays.deepEquals(expectedOutput, output));
     }
 
-    private PushbackReader createReader(String ... lines) {
+    private static PushbackReader createReader(String ... lines) {
         StringBuffer buffer = new StringBuffer();
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
@@ -158,12 +158,12 @@ public class ParseUtilTest {
         return new PushbackReader(reader);
     }
 
-    private void checkHexChars(String chars) {
+    private static void checkHexChars(String chars) {
     	for (int i = 0; i < chars.length(); i++)
     		assertTrue(ParseUtil.isHex(chars.charAt(i)));	
     }
 
-    private void checkNonHexChars(String chars) {
+    private static void checkNonHexChars(String chars) {
     	for (int i = 0; i < chars.length(); i++)
     		assertFalse(ParseUtil.isHex(chars.charAt(i)));	
     }

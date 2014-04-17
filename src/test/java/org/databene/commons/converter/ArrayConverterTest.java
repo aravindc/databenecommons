@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -62,7 +62,7 @@ public class ArrayConverterTest {
 		assertEqualArrays(INT_2_4, converter.convert(STRING_1_3));
 	}
 	
-	private void assertEqualArrays(Object[] array1, Object[] array2) {
+	private static void assertEqualArrays(Object[] array1, Object[] array2) {
 		assertTrue("Expected [" + ArrayFormat.format(array1) + "] but was [" + ArrayFormat.format(array2) + "]", 
 				Arrays.equals(array1, array2));
 	}

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -73,7 +73,7 @@ public class String2DateConverterTest extends AbstractConverterTest {
         assertEquals(TimeUtil.date(-10000, 3, 1), convert("-10000-4-1"));
     }
 
-	private Date convert(String stringValue) {
+	private static Date convert(String stringValue) {
 		return new String2DateConverter<Date>().convert(stringValue);
 	}
 

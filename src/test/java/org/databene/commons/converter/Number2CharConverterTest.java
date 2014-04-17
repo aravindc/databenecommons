@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -55,7 +55,7 @@ public class Number2CharConverterTest extends AbstractConverterTest {
 		checkNumberTypes(converter);
 	}
 
-	private void checkNumberTypes(Converter<Number, Character> converter) {
+	private static void checkNumberTypes(Converter<Number, Character> converter) {
 		assertEquals('A', (char) converter.convert((byte) 65));
 		assertEquals('A', (char) converter.convert(65));
 		assertEquals('A', (char) converter.convert((short) 65));

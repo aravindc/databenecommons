@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -78,11 +78,11 @@ public class ToArrayConverterTest extends AbstractConverterTest {
 	// helpers ---------------------------------------------------------------------------------------------------------
 	
 	@SuppressWarnings("unchecked")
-    private <T> void check(T[] expected, Object source, Class<T> componentType) {
+    private static <T> void check(T[] expected, Object source, Class<T> componentType) {
 		Assert.equals(expected, (T[]) ToArrayConverter.convert(source, componentType));
 	}
 
-	private <T> void check(byte[] expected, Object source) {
+	private static <T> void check(byte[] expected, Object source) {
 		Assert.equals(expected, (byte[]) ToArrayConverter.convert(source, byte.class));
 	}
 	

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -61,7 +61,7 @@ public class AssertTest {
 	
 	// private helpers -------------------------------------------------------------------------------------------------
 
-	private void expectNotEquals(String[] a1, String[] a2) {
+	private static void expectNotEquals(String[] a1, String[] a2) {
 		try {
 			Assert.equals(a1, a2);
 			fail("AssertionError expected");
@@ -70,7 +70,7 @@ public class AssertTest {
 		}
 	}
 
-	private void expectNotEquals(byte[] a1, byte[] a2) {
+	private static void expectNotEquals(byte[] a1, byte[] a2) {
 		try {
 			Assert.equals(a1, a2);
 			fail("AssertionError expected");

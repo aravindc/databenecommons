@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -162,7 +162,7 @@ class Node<E extends Dependent<E>> {
             }
     }
 
-    private boolean allowsClientInitialization(NodeState providerState) {
+    private static boolean allowsClientInitialization(NodeState providerState) {
         return providerState == INITIALIZED || providerState == FORCED || providerState == PARTIALLY_INITIALIZED;
     }
 /*

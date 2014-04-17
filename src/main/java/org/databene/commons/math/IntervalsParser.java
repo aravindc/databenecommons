@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -130,7 +130,7 @@ public class IntervalsParser<E> extends Parser<Intervals<E>> {
 		return new Interval<E>(endpoint, true, endpoint, true, endpointComparator);
 	}
 
-	private void advance(ParsePosition pos) {
+	private static void advance(ParsePosition pos) {
 		pos.setIndex(pos.getIndex() + 1);
 	}
 

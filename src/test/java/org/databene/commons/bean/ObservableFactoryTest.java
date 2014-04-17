@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -67,7 +67,7 @@ public class ObservableFactoryTest {
 
 	// private helpers -------------------------------------------------------------------------------------------------
 	
-	private IPerson createAlice() {
+	private static IPerson createAlice() {
 		IPerson person = ObservableFactory.create(IPerson.class);
 		person.setName("Alice");
 		person.setAge(23);

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -86,7 +86,7 @@ public class String2TimeConverterTest extends AbstractConverterTest {
     
     // test helpers ----------------------------------------------------------------------------------------------------
 
-    private void checkTimeZones(Runnable action) {
+    private static void checkTimeZones(Runnable action) {
 	    TimeUtil.runInTimeZone(TimeUtil.GMT,					action);
     	TimeUtil.runInTimeZone(TimeUtil.CENTRAL_EUROPEAN_TIME,	action);
     	TimeUtil.runInTimeZone(TimeUtil.SNGAPORE_TIME,			action);

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -152,21 +152,21 @@ public class LiteralParserTest extends AbstractConverterTest {
 
     // private helper methods ------------------------------------------------------------------------------------------
     
-    private void checkText(String text) {
+    private static void checkText(String text) {
         assertEquals(text, LiteralParser.parse(text));
     }
 
-	private void checkLong(long value) {
+	private static void checkLong(long value) {
         assertEquals(value, LiteralParser.parse(String.valueOf(value)));
     }
 
-    private void checkDate(String dateString, String pattern) throws ParseException {
+    private static void checkDate(String dateString, String pattern) throws ParseException {
         SimpleDateFormat f = new SimpleDateFormat(pattern);
         Date date = f.parse(dateString);
         assertEquals(date, LiteralParser.parse(dateString));
     }
 
-    private void checkTime(String dateString, String pattern) throws ParseException {
+    private static void checkTime(String dateString, String pattern) throws ParseException {
         SimpleDateFormat f = new SimpleDateFormat(pattern);
         Date date = f.parse(dateString);
         assertEquals(date, LiteralParser.parse(dateString));

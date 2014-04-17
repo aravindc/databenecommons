@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -117,11 +117,11 @@ public class IntervalsParserTest {
 
 	// helpers ---------------------------------------------------------------------------------------------------------
 	
-	private Interval<Integer> createIntInterval(Integer min, boolean minInclusive, Integer max, boolean maxInclusive) {
+	private static Interval<Integer> createIntInterval(Integer min, boolean minInclusive, Integer max, boolean maxInclusive) {
 		return new Interval<Integer>(min, minInclusive, max, maxInclusive, new IntComparator());
 	}
 
-	private Intervals<Integer> parse(String spec) {
+	private static Intervals<Integer> parse(String spec) {
 		return IntervalsParser.parse(spec, new IntParser(), new IntComparator());
 	}
 	

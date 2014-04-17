@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -57,7 +57,7 @@ public class IntervalParserTest {
 
 	// helpers ---------------------------------------------------------------------------------------------------------
 	
-	private Interval<Integer> parseInterval(String text) {
+	private static Interval<Integer> parseInterval(String text) {
 		IntervalParser<Integer> parser = new IntervalParser<Integer>(new IntParser(), new IntComparator());
 		return parser.parseObject(text, new ParsePosition(0));
 	}

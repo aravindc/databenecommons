@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -44,7 +44,7 @@ public class ArrayBuilderTest {
         check(new String[] { "0", "1" }, "0", "1");
     }
     
-    private void check(String[] expected, String ... items) {
+    private static void check(String[] expected, String ... items) {
         ArrayBuilder<String> builder = new ArrayBuilder<String>(String.class);
         for (String item : items)
             builder.add(item);

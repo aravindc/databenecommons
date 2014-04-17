@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -57,7 +57,7 @@ public class ReaderLineIteratorTest {
         checkIteration(iterator);
     }
 
-    private void checkIteration(ReaderLineIterator iterator) {
+    private static void checkIteration(ReaderLineIterator iterator) {
 	    assertTrue(iterator.hasNext());
         assertEquals("alpha ", iterator.next());
         assertTrue(iterator.hasNext());

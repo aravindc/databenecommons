@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -101,15 +101,15 @@ public class LocaleUtilTest {
 
     // private helpers -------------------------------------------------------------------------------------------------
 
-    private void check(String language) {
+    private static void check(String language) {
         check(new Locale(language));
     }
 
-    private void check(String language, String country) {
+    private static void check(String language, String country) {
         check(new Locale(language, country));
     }
 
-    private void check(Locale locale) {
+    private static void check(Locale locale) {
         Set<Character> set = LocaleUtil.letters(locale);
         assertTrue(set.contains('A'));
         assertTrue(set.contains('a'));

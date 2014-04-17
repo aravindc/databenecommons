@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -86,11 +86,11 @@ public class Base64CodecTest {
     
     // private helpers -------------------------------------------------------------------------------------------------
 
-    private void checkRecodeString(String code) {
+    private static void checkRecodeString(String code) {
         assertEquals(code, Base64Codec.encode(Base64Codec.decode(code)));
     }
 
-    private void checkRecodeBytes(byte[] bytes) {
+    private static void checkRecodeBytes(byte[] bytes) {
         assertTrue(Arrays.equals(bytes, Base64Codec.decode(Base64Codec.encode(bytes))));
     }
     

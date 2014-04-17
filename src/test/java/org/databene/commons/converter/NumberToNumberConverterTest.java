@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2012-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -72,14 +72,14 @@ public class NumberToNumberConverterTest {
 		checkInstanceConversion(new BigDecimal("5.0"), BigDecimal.class);
 	}
 
-	private void checkStaticConversion(Number expectedResult, Class<? extends Number> targetType) {
+	private static void checkStaticConversion(Number expectedResult, Class<? extends Number> targetType) {
 		Number[] sourceValues = new Number[] { (long) 5, 5, (short) 5, (byte) 5, (double) 5, (float) 5, new BigInteger("5"), new BigDecimal("5")};
 		for (Number sourceValue : sourceValues)
 			assertEquals(expectedResult, NumberToNumberConverter.convert(sourceValue, targetType));
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void checkInstanceConversion(Number expectedResult, Class<? extends Number> targetType) {
+	private static void checkInstanceConversion(Number expectedResult, Class<? extends Number> targetType) {
 		Number[] sourceValues = new Number[] { (long) 5, 5, (short) 5, (byte) 5, (double) 5, (float) 5, new BigInteger("5"), new BigDecimal("5")};
 		for (Number sourceValue : sourceValues)
 			assertEquals(expectedResult, new NumberToNumberConverter(sourceValue.getClass(), targetType).convert(sourceValue));

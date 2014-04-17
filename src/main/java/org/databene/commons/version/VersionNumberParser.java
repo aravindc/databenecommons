@@ -55,7 +55,7 @@ public class VersionNumberParser extends Parser<VersionNumber>{
 		return new VersionNumber(components, delimiters);
 	}
 
-	private String parseDelimiter(String number, ParsePosition pos) {
+	private static String parseDelimiter(String number, ParsePosition pos) {
 		int index = pos.getIndex();
 		if (index >= number.length())
 			return null;
@@ -67,7 +67,7 @@ public class VersionNumberParser extends Parser<VersionNumber>{
 			return (Character.isLetterOrDigit(c) ? "" : null);
 	}
 
-	private VersionNumberComponent parseComponent(String number, ParsePosition pos) {
+	private static VersionNumberComponent parseComponent(String number, ParsePosition pos) {
 		char c = number.charAt(pos.getIndex());
 		if (Character.isDigit(c))
 			return parseNumberOrDateComponent(number, pos);
@@ -75,7 +75,7 @@ public class VersionNumberParser extends Parser<VersionNumber>{
 			return new StringVersionNumberComponent(parseLetters(number, pos));
 	}
 
-	private VersionNumberComponent parseNumberOrDateComponent(String text, ParsePosition pos) {
+	private static VersionNumberComponent parseNumberOrDateComponent(String text, ParsePosition pos) {
 	    String number = parseNonNegativeInteger(text, pos);
 	    if (number.length() == 8) {
 	    	try {
@@ -87,7 +87,7 @@ public class VersionNumberParser extends Parser<VersionNumber>{
     	return new NumberVersionNumberComponent(number);
     }
 
-	private String parseNonNegativeInteger(String number, ParsePosition pos) {
+	private static String parseNonNegativeInteger(String number, ParsePosition pos) {
 		int index = pos.getIndex();
 		StringBuffer result = new StringBuffer(2);
 		char c;
@@ -99,7 +99,7 @@ public class VersionNumberParser extends Parser<VersionNumber>{
 		return result.toString();
 	}
 	
-	private String parseLetters(String number, ParsePosition pos) {
+	private static String parseLetters(String number, ParsePosition pos) {
 		int index = pos.getIndex();
 		StringBuffer result = new StringBuffer(10);
 		char c;

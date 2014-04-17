@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -114,7 +114,7 @@ public class VersionNumber implements Comparable<VersionNumber>, Serializable {
 			return checkAdditionalComponents(this.components, that.components.length);
 	}
 	
-	private int checkAdditionalComponents(VersionNumberComponent[] components, int from) {
+	private static int checkAdditionalComponents(VersionNumberComponent[] components, int from) {
 		for (int i = from; i < components.length; i++) {
 			int comparation = components[i].compareTo(ZERO_COMPONENT);
 			if (comparation != 0)

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2010 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -69,7 +69,7 @@ public class NodeTest {
     }
 
     @SuppressWarnings("unchecked")
-    private Node<Dep>[] createDeps() {
+    private static Node<Dep>[] createDeps() {
         Dep da1 = new Dep("a1");
         Dep da2 = new Dep("a2");
         Dep db  = new Dep("b", da1, da2);

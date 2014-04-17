@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2007-2009 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2007-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -75,7 +75,7 @@ public class StringCharacterIteratorTest {
     	assertPosition(1, 1, iterator);
     }
 
-	private void assertPosition(int expectedLine, int expectedColumn, StringCharacterIterator iterator) {
+	private static void assertPosition(int expectedLine, int expectedColumn, StringCharacterIterator iterator) {
 		assertEquals("Unexpected line,", expectedLine, iterator.line());
 		assertEquals("Unexpected column,", expectedColumn, iterator.column());
 	}

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -63,7 +63,7 @@ public class String2EnumConverterTest extends AbstractConverterTest {
 
     // private helpers -------------------------------------------------------------------------------------------------
 
-    private void check(SomeEnum instance) throws ConversionException {
+    private static void check(SomeEnum instance) throws ConversionException {
         String2EnumConverter<SomeEnum> converter = new String2EnumConverter<SomeEnum>(SomeEnum.class);
         String name = instance.name();
         assertEquals(instance, converter.convert(name));

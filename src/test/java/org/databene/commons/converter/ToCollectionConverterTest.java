@@ -116,19 +116,19 @@ public class ToCollectionConverterTest extends AbstractConverterTest {
 
     // private helpers -------------------------------------------------------------------------------------------------
 
-    private Integer[] createArray() {
+    private static Integer[] createArray() {
         return ArrayUtil.toArray(1, 2, 3);
     }
 
-    private List<Integer> createList() {
+    private static List<Integer> createList() {
         return CollectionUtil.toList(1, 2, 3);
     }
 
-    private Set<Integer> createSet() {
+    private static Set<Integer> createSet() {
         return CollectionUtil.toSet(1, 2, 3);
     }
 
-    private Set<Integer> createSortedSet() {
+    private static Set<Integer> createSortedSet() {
         SortedSet<Integer> set = new TreeSet<Integer>();
         set.add(1);
         set.add(2);

@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -127,7 +127,7 @@ public class ConditionalMutatorTest {
 		
 	}
 	
-	private ConditionalMutator createMutator(ConnectorMock connector, int mode) {
+	private static ConditionalMutator createMutator(ConnectorMock connector, int mode) {
 		return new ConditionalMutator(connector, connector, mode);
 	}
 

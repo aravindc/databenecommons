@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2011-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -40,7 +40,7 @@ public class MonitoredResource {
 		this.registrationTrace = registrationTrace;
 	}
 
-	private String toString(StackTraceElement[] trace) {
+	private static String toString(StackTraceElement[] trace) {
 		StringBuilder builder = new StringBuilder();
 		boolean first = true;
 		for (StackTraceElement element : trace) {
@@ -50,7 +50,7 @@ public class MonitoredResource {
 		return builder.toString();
 	}
 	
-	private void appendTraceElement(StackTraceElement element, boolean first, StringBuilder builder) {
+	private static void appendTraceElement(StackTraceElement element, boolean first, StringBuilder builder) {
 		builder.append(SystemInfo.getLineSeparator());
 		builder.append("\t");
 		if (!first)

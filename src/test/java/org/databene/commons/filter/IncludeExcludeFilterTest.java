@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2012-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -152,7 +152,7 @@ public class IncludeExcludeFilterTest {
 	
 	// check helper ----------------------------------------------------------------------------------------------------
 	
-	private void check(IncludeExcludeFilter<Integer> filter, Integer... expected) {
+	private static void check(IncludeExcludeFilter<Integer> filter, Integer... expected) {
 		List<Integer> actual = new ArrayList<Integer>();
 		for (int i = 0; i < 20; i++)
 			if (filter.accept(i))

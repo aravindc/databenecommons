@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2009-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2009-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -72,7 +72,7 @@ public class Date2DurationConverterTest extends AbstractConverterTest {
 		check(TimeUtil.PACIFIC_STANDARD_TIME);
 	}
 	
-	private void check(TimeZone timeZone) throws Exception {
+	private static void check(TimeZone timeZone) throws Exception {
 		TimeUtil.callInTimeZone(timeZone, new Callable<Object>() {
 			@Override
 			public Object call() throws Exception {

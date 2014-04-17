@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2011 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -176,21 +176,21 @@ public class VersionNumberTest {
 	
 	// private helpers -------------------------------------------------------------------------------------------------
 	
-	private void checkCreation(String versionString, Object... components) {
+	private static void checkCreation(String versionString, Object... components) {
 		VersionNumber result = createVersionNumber(versionString);
 		VersionNumber expected = new VersionNumber(CollectionUtil.toList(components));
 		assertEquals(expected, result);
 		checkToString(versionString);
 	}
 	
-	private void checkToString(String version) {
+	private static void checkToString(String version) {
 		if (!StringUtil.isEmpty(version))
 			assertEquals(version, createVersionNumber(version).toString());
 		else
 			assertEquals("1", createVersionNumber(version).toString());
 	}
 
-	private VersionNumber createVersionNumber(String text) {
+	private static VersionNumber createVersionNumber(String text) {
 		return VersionNumber.valueOf(text);
 	}
 	
