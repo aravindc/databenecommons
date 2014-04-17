@@ -34,7 +34,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 /**
- * TODO Document class.<br/><br/>
+ * Provides XPath query functionality on XML documents and elements.<br/><br/>
  * Created: 28.03.2014 16:55:12
  * @since 0.5.29
  * @author Volker Bergmann

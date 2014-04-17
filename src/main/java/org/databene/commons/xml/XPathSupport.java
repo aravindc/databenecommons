@@ -43,7 +43,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * TODO Document class.<br/><br/>
+ * Provides XPath queries on XML documents that make use of namespaces.<br/><br/>
  * Created: 23.03.2014 17:07:01
  * @since 0.5.29
  * @author Volker Bergmann
