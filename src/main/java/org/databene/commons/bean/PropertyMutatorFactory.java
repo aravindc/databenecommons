@@ -39,7 +39,7 @@ import org.databene.commons.mutator.NamedMutator;
 public class PropertyMutatorFactory {
 
     public static NamedMutator getPropertyMutator(String propertyName) {
-        return getPropertyMutator(null, propertyName, true, false);
+        return getPropertyMutator(null, propertyName, true, true);
     }
 
     public static NamedMutator getPropertyMutator(Class<?> beanClass, String propertyName) {
