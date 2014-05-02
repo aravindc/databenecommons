@@ -20,10 +20,6 @@ Enhancements
   - midnightOf(Calendar)
 - FileUtil: new method prependFilePrefix()
 - New class XPathSupport for supporting namespaces in XPath queries
-- StringUtil: new methods
-  - limitLength(String text, int maxLength)
-  - limitLengthWithEllipsis(String text, int maxLength)
-- FileChooser: new method setTitle(String)
 
 
 Changes
