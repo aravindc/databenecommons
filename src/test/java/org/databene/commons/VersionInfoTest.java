@@ -57,4 +57,11 @@ public class VersionInfoTest {
 		assertEquals("1.2.3", versionNumber);
 	}
 	
+	@Test
+	public void testVersionInfoOnIDE() {
+		VersionInfo version = VersionInfo.getInfo("com.ide");
+		String versionNumber = version.getVersion();
+		assertEquals("path.resolved.externally", versionNumber);
+	}
+	
 }
