@@ -38,7 +38,8 @@ import java.io.File;
  */
 
 public interface FileChooser {
-
+	
+	void setTitle(String title);
 	void setCurrentDirectory(File parentFile);
 
 	File getSelectedFile();

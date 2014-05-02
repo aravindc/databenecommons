@@ -57,7 +57,12 @@ public class SwingFileChooser extends JFileChooser implements FileChooser {
 		super.setFileSelectionMode(fileSelectionMode(supportedTypes));
 		super.setDialogType(dialogType(operation));
 	}
-
+	
+	@Override
+	public void setTitle(String title) {
+		setDialogTitle(title);
+	}
+	
 	@Override
 	public File chooseFile(Component component) {
 		int approval;
