@@ -834,5 +834,29 @@ public final class StringUtil {
 		}
 		return line.substring(0, i);
 	}
-
+	
+	public static String limitLength(String text, int maxLength) {
+		if (text == null)
+			return null;
+		else if (text.length() <= maxLength)
+			return text;
+		else
+			return text.substring(0, maxLength);
+	}
+	
+	public static String limitLengthWithEllipsis(String text, int maxLength) {
+		if (text == null)
+			return null;
+		else if (text.length() <= maxLength)
+			return text;
+		else if (maxLength > 3)
+			return text.substring(0, maxLength - 3) + "...";
+		else if (maxLength == 3)
+			return text.substring(0, 1) + "..";
+		else if (maxLength > 0)
+			return text.substring(0, maxLength - 1) + ".";
+		else
+			return "";
+	}
+	
 }

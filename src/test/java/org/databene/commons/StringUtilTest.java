@@ -421,6 +421,36 @@ public class StringUtilTest {
 		assertEquals("\t \t", StringUtil.getLeadingWhitespace("\t \t"));
 		assertEquals("\t \t", StringUtil.getLeadingWhitespace("\t \t_"));
 	}
+	
+	@Test
+	public void testLimitLength() {
+		// normal cases
+		assertEquals("123456789ABC", StringUtil.limitLength("123456789ABC", 100));
+		assertEquals("123456789", StringUtil.limitLength("123456789ABC", 9));
+		assertEquals("12", StringUtil.limitLength("123456789ABC", 2));
+		assertEquals("1", StringUtil.limitLength("123456789ABC", 1));
+		// special cases
+		assertEquals("", StringUtil.limitLength("123456789ABC", 0));
+		assertEquals("", StringUtil.limitLength("", 100));
+		assertEquals("", StringUtil.limitLength("", 0));
+		assertEquals(null, StringUtil.limitLength(null, 100));
+	}
+
+	@Test
+	public void testLimitLengthWithEllipsis() {
+		// normal cases
+		assertEquals("123456789ABC", StringUtil.limitLengthWithEllipsis("123456789ABC", 100));
+		assertEquals("123456...", StringUtil.limitLengthWithEllipsis("123456789ABC", 9));
+		assertEquals("1...", StringUtil.limitLengthWithEllipsis("123456789ABC", 4));
+		assertEquals("1..", StringUtil.limitLengthWithEllipsis("123456789ABC", 3));
+		assertEquals("1.", StringUtil.limitLengthWithEllipsis("123456789ABC", 2));
+		// special cases
+		assertEquals(".", StringUtil.limitLengthWithEllipsis("123456789ABC", 1));
+		assertEquals("", StringUtil.limitLengthWithEllipsis("123456789ABC", 0));
+		assertEquals("", StringUtil.limitLengthWithEllipsis("", 100));
+		assertEquals("", StringUtil.limitLengthWithEllipsis("", 0));
+		assertEquals(null, StringUtil.limitLengthWithEllipsis(null, 100));
+	}
 
 	// helpers ---------------------------------------------------------------------------------------------------------
 
