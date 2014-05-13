@@ -66,20 +66,24 @@ public class VersionInfo {
 	private String buildNumber;
 
 	public static VersionInfo getInfo(@NotNull String name) {
+		return getInfo(name, true);
+	}
+
+	public static VersionInfo getInfo(@NotNull String name, boolean parsingDependencies) {
 		VersionInfo result = INSTANCES.get(name);
 		if (result == null) {
-			result = new VersionInfo(name);
+			result = new VersionInfo(name, parsingDependencies);
 			INSTANCES.put(name, result);
 		}
 		return result;
 	}
 
-	private VersionInfo(String name) {
+	private VersionInfo(String name, boolean parsingDependencies) {
 		Assert.notNull(name, "name");
 		this.name = name;
 		this.filePath = normalizedPath(name);
 		this.dependencies = new HashMap<String, String>();
-		readVersionInfo(this);
+		readVersionInfo(this, parsingDependencies);
 	}
 
 	public String getName() {
@@ -123,7 +127,7 @@ public class VersionInfo {
 		return name;
 	}
 
-	private static void readVersionInfo(VersionInfo versionInfo) {
+	private static void readVersionInfo(VersionInfo versionInfo, boolean parsingDependencies) {
 		versionInfo.version = "<unknown version>";
 	    try {
 			String versionFileName;
@@ -141,21 +145,26 @@ public class VersionInfo {
 	    		Document doc = XMLUtil.parse("pom.xml");
 	    		Element versionElement = XMLUtil.getChildElement(doc.getDocumentElement(), false, true, "version");
 	    		versionInfo.version = versionElement.getTextContent();
-	    		Element propsElement = XMLUtil.getChildElement(doc.getDocumentElement(), false, false, "properties");
-	    		if (propsElement != null)
-		    		for (Element childElement : XMLUtil.getChildElements(propsElement)) {
-		    			String dependencyName = childElement.getNodeName();
-		    			String dependencyVersion = childElement.getTextContent();
-		    			if ("build_number".equals(dependencyName))
-		    				versionInfo.buildNumber = dependencyVersion;
-		    			else
-		    				addDependency(dependencyName, dependencyVersion, versionInfo);
-		    		}
+	    		if (parsingDependencies)
+	    			parseDependencies(versionInfo, doc);
 	        }
         } catch (IOException e) {
 	        LOGGER.error("Error reading version info file", e);
         }
     }
+
+	private static void parseDependencies(VersionInfo versionInfo, Document doc) {
+		Element propsElement = XMLUtil.getChildElement(doc.getDocumentElement(), false, false, "properties");
+		if (propsElement != null)
+    		for (Element childElement : XMLUtil.getChildElements(propsElement)) {
+    			String dependencyName = childElement.getNodeName();
+    			String dependencyVersion = childElement.getTextContent();
+    			if ("build_number".equals(dependencyName))
+    				versionInfo.buildNumber = dependencyVersion;
+    			else
+    				addDependency(dependencyName, dependencyVersion, versionInfo);
+    		}
+	}
 
 	private static boolean readVersionInfo(VersionInfo versionInfo, String versionFileName) throws IOException {
         if (IOUtil.isURIAvailable(versionFileName)) {
