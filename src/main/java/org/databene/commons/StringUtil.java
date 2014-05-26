@@ -858,5 +858,12 @@ public final class StringUtil {
 		else
 			return "";
 	}
+
+	public static String replaceOptionalSuffix(String text, String suffix, String replacement) {
+		if (text.endsWith(suffix))
+			return text.substring(0, text.length() - suffix.length()) + replacement;
+		else
+			return text;
+	}
 	
 }
