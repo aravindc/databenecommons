@@ -178,27 +178,59 @@ public class XMLUtil {
         int n = childNodes.getLength();
         for (int i = 0; i < n; i++) {
             Node item = childNodes.item(i);
-            if (!(item instanceof Element))
-                continue;
-            String fqName = item.getNodeName();
-            if (namespaceAware) {
-                if (fqName.equals(name))
-                    builder.add((Element) item);
-            } else {
-                String[] tokens = StringUtil.tokenize(fqName, ':');
-                if (tokens[tokens.length - 1].equals(name))
-                    builder.add((Element) item);
-            }
+            if (item instanceof Element && hasName(name, namespaceAware, item))
+            	builder.add((Element) item);
         }
         return builder.toArray();
     }
 
+    public static Element getChildElementAtPath(Element parent, String path, boolean namespaceAware, boolean required) {
+        Element[] elements = getChildElementsAtPath(parent, path, namespaceAware);
+		return assertSingleSearchResult(elements, required, path);
+    }
+
+    public static Element[] getChildElementsAtPath(Element parent, String path, boolean namespaceAware) {
+        ArrayBuilder<Element> builder = new ArrayBuilder<Element>(Element.class);
+        getChildElementsAtPath(parent, namespaceAware, path.split("/"), 0, builder);
+        return builder.toArray();
+    }
+
+    private static void getChildElementsAtPath(Element parent, boolean namespaceAware, String[] pathComponents, int pathIndex, ArrayBuilder<Element> result) {
+        NodeList childNodes = parent.getChildNodes();
+        if (childNodes != null) {
+        	String pathComponentName = pathComponents[pathIndex];
+	        int n = childNodes.getLength();
+	        for (int i = 0; i < n; i++) {
+	            Node item = childNodes.item(i);
+	            if (item instanceof Element) {
+	            	Element element = (Element) item;
+		            if (pathIndex < pathComponents.length - 1)
+		            	getChildElementsAtPath(element, namespaceAware, pathComponents, pathIndex + 1, result);
+		            else if (hasName(pathComponentName, namespaceAware, item))
+	            		result.add(element);
+	            }
+	        }
+        }
+    }
+
+	public static boolean hasName(String name, boolean namespaceAware, Node item) {
+		String fqName = item.getNodeName();
+		if (namespaceAware)
+		    return fqName.equals(name);
+		else
+		    return name.equals(StringUtil.lastToken(fqName, ':'));
+	}
+
     public static Element getChildElement(Element parent, boolean namespaceAware, boolean required, String name) {
         Element[] elements = getChildElements(parent, namespaceAware, name);
+        return assertSingleSearchResult(elements, required, name);
+    }
+
+    private static Element assertSingleSearchResult(Element[] elements, boolean required, String searchTerm) {
         if (required && elements.length == 0)
-            throw new IllegalArgumentException("No element found with name: " + name);
+            throw new IllegalArgumentException("No element found in search: " + searchTerm);
         if (elements.length > 1)
-            throw new IllegalArgumentException("More that one element found with name: " + name);
+            throw new IllegalArgumentException("More that one element found in search: " + searchTerm);
         return (elements.length > 0 ? elements[0] : null);
     }
 
@@ -627,7 +659,22 @@ public class XMLUtil {
 			element.setTextContent(value);
 		}
 	}
-		
+	
+	public static String resolveEntities(String xmlText) {
+		while (xmlText.contains("&#")) {
+			int st = xmlText.indexOf("&#");
+			int en = xmlText.indexOf(";", st + 1);
+			if (st >= 0 && en > 0) {
+				int c = Integer.parseInt(xmlText.substring(st + 2, en));
+				xmlText = xmlText.substring(0, st) + (char) c + xmlText.substring(en + 1);
+			} else {
+				break;
+			}
+		}
+		return xmlText;
+	}
+	
+
 	
 	// private helpers -------------------------------------------------------------------------------------------------
 

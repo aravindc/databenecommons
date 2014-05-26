@@ -122,6 +122,41 @@ public class XMLUtilTest {
     }
 
 	@Test
+    public void testGetChildElementsAtPath() {
+    	Document document = createDocument();
+    	Element child2 = createElementWithChildren(document, "c2");
+        Element child1 = createElementWithChildren(document, "c1", child2);
+        Element parent = createElementWithChildren(document, "p", child1);
+        Element[] foundChildren = XMLUtil.getChildElementsAtPath(parent, "c1/c2", true);
+        assertEquals(1, foundChildren.length);
+        assertEquals(child2, foundChildren[0]);
+    }
+
+	@Test
+    public void testGetChildElementAtPath_positive() {
+    	Document document = createDocument();
+    	Element child2 = createElementWithChildren(document, "c2");
+        Element child1 = createElementWithChildren(document, "c1", child2);
+        Element parent = createElementWithChildren(document, "p", child1);
+        Element foundChild = XMLUtil.getChildElementAtPath(parent, "c1/c2", false, true);
+        assertEquals(child2, foundChild);
+    }
+
+	@Test
+    public void testGetChildElementAtPath_negative_optional() {
+    	Document document = createDocument();
+        Element parent = createElementWithChildren(document, "p");
+        XMLUtil.getChildElementAtPath(parent, "nonexist", false, false);
+    }
+
+	@Test(expected = IllegalArgumentException.class)
+    public void testGetChildElementAtPath_negative_required() {
+    	Document document = createDocument();
+        Element parent = createElementWithChildren(document, "p");
+        XMLUtil.getChildElementAtPath(parent, "nonexist", false, true);
+    }
+
+	@Test
     public void testGetIntegerAttribute() {
     	Document document = createDocument();
         Element element = createElement(document, "test", CollectionUtil.buildMap("value", "1"));
