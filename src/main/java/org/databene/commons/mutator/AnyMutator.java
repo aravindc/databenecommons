@@ -101,7 +101,7 @@ public class AnyMutator implements Mutator {
             ((Composite) target).setComponent(featureName, value);
         else {
         	// try generic set(String, Object) method
-        	Method genericSetMethod = BeanUtil.getMethod(target.getClass(), "set", String.class, Object.class);
+        	Method genericSetMethod = BeanUtil.findMethod(target.getClass(), "set", String.class, Object.class);
         	if (genericSetMethod != null) {
         		BeanUtil.invoke(target, genericSetMethod, true, new Object[] { featureName, value });
         		return;
