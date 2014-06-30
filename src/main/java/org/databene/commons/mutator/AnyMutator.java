@@ -27,6 +27,7 @@
 package org.databene.commons.mutator;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 import org.databene.commons.BeanUtil;
@@ -98,9 +99,14 @@ public class AnyMutator implements Mutator {
             ((Map) target).put(featureName, value);
         else if (target instanceof Composite)
             ((Composite) target).setComponent(featureName, value);
-        else if (target instanceof Composite)
-            ((Composite) target).setComponent(featureName, value);
         else {
+        	// try generic set(String, Object) method
+        	Method genericSetMethod = BeanUtil.getMethod(target.getClass(), "set", String.class, Object.class);
+        	if (genericSetMethod != null) {
+        		BeanUtil.invoke(target, genericSetMethod, true, new Object[] { featureName, value });
+        		return;
+        	}
+        	// try JavaBean property
         	try {
 				Field field = target.getClass().getField(featureName);
 		        if (autoConvert && value != null) {
