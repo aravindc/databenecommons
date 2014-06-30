@@ -38,6 +38,7 @@ import org.slf4j.LoggerFactory;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
@@ -89,7 +90,7 @@ public class FeatureAccessor<C, V> implements Accessor<C, V> {
     }
 
     @SuppressWarnings("unchecked")
-    public static Object getValue(Object target, String featureName, boolean strict) {
+    public static Object getValue(Object target, String featureName, boolean required) {
         if (target == null)
             return null;
         else if (target instanceof Map)
@@ -99,6 +100,11 @@ public class FeatureAccessor<C, V> implements Accessor<C, V> {
         else if (target instanceof Composite)
             return ((Composite) target).getComponent(featureName);
         else {
+        	// try generic get(String) method
+        	Method genericGetMethod = BeanUtil.getMethod(target.getClass(), "get", String.class);
+        	if (genericGetMethod != null)
+        		return BeanUtil.invoke(target, genericGetMethod, new Object[] { featureName });
+        	// try JavaBean property
             PropertyDescriptor propertyDescriptor = BeanUtil.getPropertyDescriptor(target.getClass(), featureName);
             if (propertyDescriptor != null) {
                 try {
@@ -114,7 +120,7 @@ public class FeatureAccessor<C, V> implements Accessor<C, V> {
             }
         }
         // the feature has not been identified, yet - escalate or raise an exception
-        if (strict)
+        if (required)
             throw new UnsupportedOperationException(
                     target.getClass() + " does not support a feature '" + featureName + "'");
         else
