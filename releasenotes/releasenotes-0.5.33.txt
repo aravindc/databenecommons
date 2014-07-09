@@ -9,3 +9,8 @@ Enhancements
   - new method getChildElementAtPath()
   - new method resolveEntities()
   - improved namespace support
+
+
+Bug Fixes
+---------
+- FeatureAccessor: Tolerating absence of generic get(String) method
