@@ -101,7 +101,7 @@ public class FeatureAccessor<C, V> implements Accessor<C, V> {
             return ((Composite) target).getComponent(featureName);
         else {
         	// try generic get(String) method
-        	Method genericGetMethod = BeanUtil.getMethod(target.getClass(), "get", String.class);
+        	Method genericGetMethod = BeanUtil.findMethod(target.getClass(), "get", String.class);
         	if (genericGetMethod != null)
         		return BeanUtil.invoke(target, genericGetMethod, new Object[] { featureName });
         	// try JavaBean property
