@@ -771,23 +771,30 @@ public final class StringUtil {
 		if (text == null)
 			return null;
 	    List<String> lines = new ArrayList<String>();
-	    int TEXT_MODE = 0;
-	    int LF_MODE = 1;
-	    int mode = TEXT_MODE;
+	    int TEXT = 0;
+	    int CR = 1;
+	    int LF = 2;
+	    int mode = TEXT;
 	    StringBuilder builder = new StringBuilder();
 	    for (int i = 0; i < text.length(); i++) {
 	    	char c = text.charAt(i);
-	    	if (isLineSeparatorChar(c)) {
+	    	if (c == '\r') {
     			lines.add(builder.toString());
     			builder.delete(0, builder.length());
-    			mode = LF_MODE;
+    			mode = CR;
+	    	} else if (c == '\n') {
+	    		if (mode != CR) {
+	    			// only add a line if it is a standalone LF (no CRLF) 
+	    			lines.add(builder.toString());
+	    			builder.delete(0, builder.length());
+	    		}
+    			mode = LF;
 	    	} else {
-	    		if (mode == LF_MODE)
-	    			mode = TEXT_MODE;
+	    		mode = TEXT;
 	    		builder.append(c);
 	    	}
 	    }
-	    if (text.length() == 0 || mode == LF_MODE || builder.length() > 0)
+	    if (text.length() == 0 || mode != TEXT || builder.length() > 0)
 	    	lines.add(builder.toString());
 	    return lines;
     }

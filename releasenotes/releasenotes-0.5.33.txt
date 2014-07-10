@@ -15,3 +15,4 @@ Enhancements
 Bug Fixes
 ---------
 - FeatureAccessor: Tolerating absence of generic get(String) method
+- StringUtil.splitLines() inserts empty lines when using Windows line separator (CRLF)

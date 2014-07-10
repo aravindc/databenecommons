@@ -396,13 +396,26 @@ public class StringUtilTest {
 	}
 	
 	@Test
-	public void testSplitLines() {
+	public void testSplitLines_withoutLinefeed() {
 		assertEquals(null, StringUtil.splitLines(null));
 		assertEquals(CollectionUtil.toList(""), StringUtil.splitLines(""));
+		assertEquals(CollectionUtil.toList("alpha"), StringUtil.splitLines("alpha"));
+    }
+
+	@Test
+	public void testSplitLinesMac() {
 		assertEquals(CollectionUtil.toList("alpha", "beta"), StringUtil.splitLines("alpha\nbeta"));
 		assertEquals(CollectionUtil.toList("", "alpha", "beta", ""), StringUtil.splitLines("\nalpha\nbeta\n"));
 		assertEquals(CollectionUtil.toList("", "alpha", "beta", ""), StringUtil.splitLines("\nalpha\nbeta\n"));
 		assertEquals(CollectionUtil.toList("", "alpha", "", "beta", ""), StringUtil.splitLines("\nalpha\n\nbeta\n"));
+    }
+
+	@Test
+	public void testSplitLinesWin() {
+		assertEquals(CollectionUtil.toList("alpha", "beta"), StringUtil.splitLines("alpha\r\nbeta"));
+		assertEquals(CollectionUtil.toList("", "alpha", "beta", ""), StringUtil.splitLines("\r\nalpha\r\nbeta\r\n"));
+		assertEquals(CollectionUtil.toList("", "alpha", "beta", ""), StringUtil.splitLines("\r\nalpha\r\nbeta\r\n"));
+		assertEquals(CollectionUtil.toList("", "alpha", "", "beta", ""), StringUtil.splitLines("\r\nalpha\r\n\r\nbeta\r\n"));
     }
 
 	@Test
