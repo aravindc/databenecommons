@@ -9,6 +9,7 @@ Enhancements
   - new method getChildElementAtPath()
   - new method resolveEntities()
   - improved namespace support
+- New Class CloseWindowAction for closing a window, dialog or frame
 
 
 Bug Fixes
