@@ -4,7 +4,7 @@
 
     <groupId>org.databene</groupId>
     <artifactId>databene-commons</artifactId>
-    <version>0.5.33-EA1</version>
+    <version>0.5.33-EA2</version>
 
     <packaging>jar</packaging>
     <name>databene commons</name>
