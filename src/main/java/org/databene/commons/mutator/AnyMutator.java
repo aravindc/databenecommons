@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2008-2012 by Volker Bergmann. All rights reserved.
+ * (c) Copyright 2008-2014 by Volker Bergmann. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, is permitted under the terms of the
@@ -37,7 +37,6 @@ import org.databene.commons.Context;
 import org.databene.commons.ConversionException;
 import org.databene.commons.Escalator;
 import org.databene.commons.LoggerEscalator;
-import org.databene.commons.Mutator;
 import org.databene.commons.UpdateFailedException;
 import org.databene.commons.accessor.FeatureAccessor;
 import org.databene.commons.converter.AnyConverter;
@@ -48,7 +47,7 @@ import org.databene.commons.converter.AnyConverter;
  * @since 0.3.0
  * @author Volker Bergmann
  */
-public class AnyMutator implements Mutator {
+public class AnyMutator implements NamedMutator {
     
     private static Escalator escalator = new LoggerEscalator();
     
@@ -66,6 +65,11 @@ public class AnyMutator implements Mutator {
         this.autoConvert = autoConvert;
     }
 
+	@Override
+	public String getName() {
+		return path;
+	}
+    
     @Override
 	public void setValue(Object target, Object value) throws UpdateFailedException {
         setValue(target, path, value, required, autoConvert);
@@ -133,5 +137,5 @@ public class AnyMutator implements Mutator {
 			}
         }
     }
-    
+
 }
