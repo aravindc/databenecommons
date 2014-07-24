@@ -58,7 +58,7 @@ public class TextIcon implements Icon {
 	}
 
 	public TextIcon(String text, Color foreground, Color background) {
-		this(text, UIManager.getDefaults().getFont("TextField.font"), foreground, background);
+		this(text, UIManager.getDefaults().getFont("Table.font"), foreground, background);
 	}
 
 	public TextIcon(String text, Font font, Color foreground, Color background) {
@@ -67,7 +67,7 @@ public class TextIcon implements Icon {
 		FontMetrics metrics = new Canvas().getFontMetrics(font);
 		this.textWidth = metrics.stringWidth(text);
 		this.iconWidth = textWidth;
-		this.iconHeight = font.getSize();
+		this.iconHeight = font.getSize() + 2;
 		this.ascent = metrics.getAscent();
 		this.background = background;
 		this.foreground = foreground;
@@ -102,8 +102,10 @@ public class TextIcon implements Icon {
 		g.setColor(background);
 		g.fillRect(x, y, iconWidth, iconHeight);
 		g.setColor(foreground);
+		Font origFont = g.getFont();
 		g.setFont(font);
-		g.drawString(text, x + (iconWidth - textWidth) / 2, y + ascent - 2);
+		g.drawString(text, x + (iconWidth - textWidth) / 2, y + ascent - 1);
+		g.setFont(origFont);
 	}
 
 }
