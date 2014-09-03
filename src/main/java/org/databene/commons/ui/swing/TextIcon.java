@@ -69,8 +69,8 @@ public class TextIcon implements Icon {
 		this.iconWidth = textWidth;
 		this.iconHeight = font.getSize() + 2;
 		this.ascent = metrics.getAscent();
-		this.background = background;
 		this.foreground = foreground;
+		this.background = background;
 	}
 	
 	
@@ -99,8 +99,10 @@ public class TextIcon implements Icon {
 	
 	@Override
 	public void paintIcon(Component c, Graphics g, int x, int y) {
-		g.setColor(background);
-		g.fillRect(x, y, iconWidth, iconHeight);
+		if (background != null) {
+			g.setColor(background);
+			g.fillRect(x, y, iconWidth, iconHeight);
+		}
 		g.setColor(foreground);
 		Font origFont = g.getFont();
 		g.setFont(font);
