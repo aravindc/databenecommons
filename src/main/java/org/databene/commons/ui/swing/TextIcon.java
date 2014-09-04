@@ -39,64 +39,72 @@ import javax.swing.UIManager;
  */
 
 public class TextIcon implements Icon {
-	
+
 	private String text;
-	private Font font;
 	private Color background;
 	private Color foreground;
-	
+	private Font font;
+
 	private int iconWidth;
 	private int iconHeight;
 	private int textWidth;
 	private int ascent;
-	
-	
+
+
 	// constructors ----------------------------------------------------------------------------------------------------
-	
+
 	public TextIcon(String text) {
 		this(text, Color.BLACK, null);
 	}
 
 	public TextIcon(String text, Color foreground, Color background) {
-		this(text, UIManager.getDefaults().getFont("Table.font"), foreground, background);
+		this(text, foreground, background, false, false);
 	}
 
-	public TextIcon(String text, Font font, Color foreground, Color background) {
+	public TextIcon(String text, Color foreground, Color background, boolean square, boolean bold) {
+		this(text, foreground, background, square, defaultFont(bold));
+	}
+
+	public TextIcon(String text, Color foreground, Color background, boolean square, Font font) {
 		this.text = text;
 		this.font = font;
 		FontMetrics metrics = new Canvas().getFontMetrics(font);
 		this.textWidth = metrics.stringWidth(text);
 		this.iconWidth = textWidth;
 		this.iconHeight = font.getSize() + 2;
+		if (square) {
+			this.iconWidth = Math.max(this.iconWidth, this.iconHeight);
+			this.iconHeight = this.iconWidth;
+		}
 		this.ascent = metrics.getAscent();
 		this.foreground = foreground;
 		this.background = background;
 	}
-	
-	
+
+
 	// properties ------------------------------------------------------------------------------------------------------
-	
+
 	@Override
 	public int getIconHeight() {
 		return iconHeight;
 	}
-	
+
 	public void setIconHeight(int iconHeight) {
 		this.iconHeight = iconHeight;
 	}
-	
+
 	@Override
 	public int getIconWidth() {
 		return iconWidth;
 	}
-	
+
 	public void setIconWidth(int iconWidth) {
 		this.iconWidth = iconWidth;
 	}
-	
-	
+
+
 	// rendering methods -----------------------------------------------------------------------------------------------
-	
+
 	@Override
 	public void paintIcon(Component c, Graphics g, int x, int y) {
 		if (background != null) {
@@ -108,6 +116,17 @@ public class TextIcon implements Icon {
 		g.setFont(font);
 		g.drawString(text, x + (iconWidth - textWidth) / 2, y + ascent - 1);
 		g.setFont(origFont);
+	}
+
+
+	// private helpers -------------------------------------------------------------------------------------------------
+
+	private static Font defaultFont(boolean bold) {
+		Font tableFont = UIManager.getDefaults().getFont("Table.font");
+		if (tableFont.isBold() != bold)
+			return new Font(tableFont.getFamily(), (bold ? Font.BOLD : Font.PLAIN), tableFont.getSize());
+		else
+			return tableFont;
 	}
 
 }
