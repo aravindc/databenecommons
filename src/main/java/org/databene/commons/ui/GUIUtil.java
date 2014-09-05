@@ -53,8 +53,12 @@ public class GUIUtil {
         	chooser = new AwtFileChooser(null, operation, supportedTypes);
         else
 	        chooser = new SwingFileChooser(supportedTypes, operation);
-        if (selectedFile != null && selectedFile.exists())
-            chooser.setSelectedFile(selectedFile);
+        if (selectedFile != null && selectedFile.exists()) {
+        	if (selectedFile.isDirectory())
+        		chooser.setCurrentDirectory(selectedFile);
+        	else
+        		chooser.setSelectedFile(selectedFile);
+        }
         return chooser;
 	}
 	
