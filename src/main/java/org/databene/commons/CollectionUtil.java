@@ -48,7 +48,7 @@ public final class CollectionUtil {
      * @param array the array to convert into a list.
      * @return a list containing all elements of the given array.
      */
-    public static <T, U extends T> List<T> toList(U ... array) {
+    public static <T> List<T> toList(T ... array) {
         List<T> result = new ArrayList<T>(array.length);
         for (T item : array)
             result.add(item);
@@ -83,7 +83,7 @@ public final class CollectionUtil {
     }
     
     public static <T extends Comparable<T>, U extends T> SortedList<T> toSortedList(U ... elements) {
-    	return new SortedList<T>(CollectionUtil.<T,U>toList(elements), new ComparableComparator<T>());
+    	return new SortedList<T>(CollectionUtil.<T>toList(elements), new ComparableComparator<T>());
     }
     
 	public static Set<Character> toCharSet(char[] chars) {
