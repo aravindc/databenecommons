@@ -72,6 +72,11 @@ public class Assert {
 			throw new AssertionError(message);
 	}
 
+	public static void notEmpty(Object[] array, String message) {
+		if (array == null || array.length == 0)
+			throw new AssertionError(message);
+	}
+
     @SuppressWarnings("null")
     public static void equals(Object a1, Object a2, String message) {
 		if (a1 == null && a2 == null)
