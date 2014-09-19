@@ -287,7 +287,7 @@ public final class ArrayUtil {
     }
     
     @SuppressWarnings("rawtypes")
-	public static Class arrayType(Class componentType) {
+	public static Class arrayType(Class componentType) { // this cannot be made generic since it needs to support simple types too
     	if (componentType == byte.class)
     		return byte[].class;
     	else if (componentType == char.class)
