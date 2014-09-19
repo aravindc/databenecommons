@@ -326,7 +326,7 @@ public final class BeanUtil {
      * @param field the attribute to set
      * @param value the value to assign to the field
      */
-    private static void setAttributeValue(Object obj, Field field, Object value) {
+    public static void setAttributeValue(Object obj, Field field, Object value) {
         try {
             field.set(obj, value);
         } catch (IllegalAccessException e) {
