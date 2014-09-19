@@ -26,6 +26,7 @@
 
 package org.databene.commons.mutator;
 
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -82,17 +83,47 @@ public class AnyMutator implements NamedMutator {
     public static <C, V> void setValue(C target, String path, V value, boolean required, boolean autoConvert) {
         int sep = path.indexOf('.');
         if (sep < 0)
+        	// it is a local property
             setLocal(target, path, value, required, autoConvert);
         else {
+        	// a recursive feature path needs to be resolved
             String localName = path.substring(0, sep);
-            Object subTarget = FeatureAccessor.getValue(target, localName);
-            if (subTarget == null)
-                throw new IllegalStateException("No feature '" + localName + "' found in " + target);
+            Object subTarget = FeatureAccessor.getValue(target, localName, true);
+            if (subTarget == null) {
+                // feature exists but is null, so create an object and assign it to the feature
+            	subTarget = setFeatureDefault(target, localName);
+            }
             String remainingName = path.substring(sep + 1);
             setValue(subTarget, remainingName, value, required, autoConvert);
         }
     }
-    
+
+    public static Object setFeatureDefault(Object target, String featureName) {
+    	// try JavaBean property
+        PropertyDescriptor propertyDescriptor = BeanUtil.getPropertyDescriptor(target.getClass(), featureName);
+        if (propertyDescriptor != null) {
+            try {
+            	Object value = BeanUtil.newInstance(propertyDescriptor.getPropertyType());
+                Method writeMethod = propertyDescriptor.getWriteMethod();
+                writeMethod.invoke(target, value);
+				return value;
+            } catch (Exception e) {
+                throw new ConfigurationError("Unable to write feature '" + featureName + "'", e);
+            }
+        } else {
+        	// try attribute
+        	Class<?> type = ((target instanceof Class) ? (Class<?>) target : target.getClass());
+        	Field field = BeanUtil.getField(type, featureName);
+        	if (field != null) {
+            	Object value = BeanUtil.newInstance(field.getType());
+        		BeanUtil.setAttributeValue(target, field, value);
+        		return value;
+        	} else {
+                throw new ConfigurationError("Feature '" + featureName + "' not found in class " + type.getName());
+        	}
+        }
+    }
+
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private static <C, V> void setLocal(C target, String featureName, V value, boolean required, boolean autoConvert) {
     	if (BeanUtil.hasWriteableProperty(target.getClass(), featureName))
