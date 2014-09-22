@@ -179,8 +179,6 @@ public class VersionInfo {
     		}
     		String versionKey = versionInfo.name.replace('.', '_') + VERSION_SUFFIX;
 			versionInfo.version = props.get(versionKey);
-	        if (versionInfo.version == null) // TODO remove this convenience fallback after transition period
-	        	versionInfo.version = props.get(versionInfo.name.replace('.', '/') + VERSION_SUFFIX);
 	        if (versionInfo.version == null)
 	        	throw new ConfigurationError("No version number (" + versionKey + ") defined in file " + versionFileName);
     		return true;
