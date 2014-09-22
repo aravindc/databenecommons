@@ -44,7 +44,7 @@ import java.text.SimpleDateFormat;
  */
 public class String2DateConverter<E extends Date> extends ThreadSafeConverter<String, E> implements Patterns {
 	
-    // TODO v0.6.0 support time zones (like 'Z', '+01:00' or '-01:30')
+    // TODO support time zones (like 'Z', '+01:00' or '-01:30')
 
 	private String pattern;
 	private Locale locale;
