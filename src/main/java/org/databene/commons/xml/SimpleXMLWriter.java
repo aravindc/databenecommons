@@ -60,6 +60,7 @@ public class SimpleXMLWriter implements Closeable {
 			SAXTransformerFactory tf = (SAXTransformerFactory) SAXTransformerFactory.newInstance();
 			handler = tf.newTransformerHandler();
 			Transformer transformer = handler.getTransformer();
+			transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
 			transformer.setOutputProperty(OutputKeys.ENCODING, encoding);
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}" + "indent-amount", "2");
