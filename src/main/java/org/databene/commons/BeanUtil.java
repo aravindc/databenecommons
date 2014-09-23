@@ -670,7 +670,7 @@ public final class BeanUtil {
         return invoke(target, method, true, args);
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" }) // TODO test for 1. args=null, 2. args.length < paramTypes.length
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Object invoke(Object target, Method method, boolean strict, Object[] args) {
         try {
             Object[] params;

@@ -235,8 +235,15 @@ public class BeanUtilTest {
     public void testInvoke() {
         P p = new P();
         assertEquals(1, BeanUtil.invoke(p, "getVal"));
+        assertEquals(1, BeanUtil.invoke(p, "getVal", (Object[]) null));
         BeanUtil.invoke(p, "setVal", 2);
         assertEquals(2, p.val);
+    }
+
+	@Test(expected = ConfigurationError.class)
+    public void testInvokeToFewParams() {
+        P p = new P();
+        BeanUtil.invoke(p, "setVal");
     }
 
 	@Test
@@ -250,12 +257,19 @@ public class BeanUtilTest {
 	@Test
     public void testInvokeVarargs() {
         V v = new V();
+        // varargs1
         assertEquals(0, BeanUtil.invoke(v, "varargs1"));
         assertEquals(1, BeanUtil.invoke(false, v, "varargs1", 1));
         assertEquals(2, BeanUtil.invoke(false, v, "varargs1", 1, 2));
+        // varargs2
         assertEquals(-1, BeanUtil.invoke(false, v, "varargs2", 1));
         assertEquals(1, BeanUtil.invoke(false, v, "varargs2", 1, 1));
         assertEquals(2, BeanUtil.invoke(false, v, "varargs2", 1, 1, 2));
+        assertEquals(2, BeanUtil.invoke(false, v, "varargs2", 1, 1, 2));
+        // varargs3
+        assertEquals("x", BeanUtil.invoke(false, v, "varargs3", "x"));
+        assertEquals(1, BeanUtil.invoke(false, v, "varargs3", "x", 1));
+        assertEquals(2, BeanUtil.invoke(false, v, "varargs3", "x", 1, 2));
     }
 
 	@Test
@@ -427,7 +441,7 @@ public class BeanUtilTest {
             this.val = val;
         }
     }
-    
+
     public static class V {
     	public int varargs1(int... args) {
     		return (args.length > 0 ? ArrayUtil.lastElementOf(args) : 0);
@@ -440,5 +454,10 @@ public class BeanUtilTest {
     	public int varargs2(int x, int... args) {
     		return (args.length > 0 ? ArrayUtil.lastElementOf(args) : 0);
     	}
+
+    	public Object varargs3(String s, int... args) {
+    		return (args.length > 0 ? ArrayUtil.lastElementOf(args) : s);
+    	}
     }
+
 }
