@@ -95,24 +95,24 @@ public class PadFormat extends Format {
             pos.setIndex(1);
             return null;
         }
-        String trimmed = source;
+        String tmp = source.substring(pos.getIndex());
         char padChar = getPadChar();
-        switch (getAlignment()) { // TODO the following code ignores the pos
-            case LEFT   : trimmed =  StringUtil.trimRight(trimmed, padChar); break;
-            case RIGHT  : boolean neg = (padChar == '0' && trimmed.length() > 0 && trimmed.charAt(0) == '-');
+        switch (getAlignment()) {
+            case LEFT   : tmp =  StringUtil.trimRight(tmp, padChar); break;
+            case RIGHT  : boolean neg = (padChar == '0' && tmp.length() > 0 && tmp.charAt(0) == '-');
                           if (neg)
-                        	  trimmed =  '-' + StringUtil.trimLeft(trimmed.substring(1), padChar);
+                        	  tmp =  '-' + StringUtil.trimLeft(tmp.substring(1), padChar);
                           else
-                        	  trimmed = StringUtil.trimLeft(trimmed, padChar);
+                        	  tmp = StringUtil.trimLeft(tmp, padChar);
                           break;
-            case CENTER : trimmed = StringUtil.trim(trimmed, padChar); break;
+            case CENTER : tmp = StringUtil.trim(tmp, padChar); break;
             default     : throw new IllegalArgumentException("Illegal Alignement: " + getAlignment());
         }
         Object result;
         if (format != null) {
-        	result = format.parseObject(trimmed, pos);
+        	result = format.parseObject(tmp, pos);
         } else {
-        	result = trimmed;
+        	result = tmp;
             if (StringUtil.isEmpty(source))
                 pos.setIndex(1);
             else
