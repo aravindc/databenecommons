@@ -88,15 +88,17 @@ public final class TimeUtil {
         int dayOfMonth = day.get(Calendar.DAY_OF_MONTH);
         if (month == Calendar.JANUARY && dayOfMonth == 1)
         	return true; // New Year's day
-        else if (dayOfWeek == Calendar.MONDAY && month == Calendar.MAY && isLastWeekdayOfTypeInMonth(Calendar.MONDAY, day))
+        else if (month == Calendar.MAY && dayOfWeek == Calendar.MONDAY && isLastWeekdayOfTypeInMonth(Calendar.MONDAY, day))
 			return true; // Memorial Day is the last Monday in May
+		else if (month == Calendar.JULY && dayOfMonth == 4)
+			return true; // independence day
         else if (month == Calendar.NOVEMBER && dayOfMonth == 11)
         	return true; // Veterans Day
         else if (month == Calendar.DECEMBER && dayOfMonth == 25)
         	return true; // Christmas
 		else 
 			return false;
-        // TODO other federal holidays
+        // TODO further federal holidays
 	}
 
     private static boolean isHolidayInGermany(Calendar day) {
@@ -111,7 +113,7 @@ public final class TimeUtil {
         else if (month == Calendar.DECEMBER && (dayOfMonth == 25 || dayOfMonth == 26))
         	return true; // Christmas
         return false;
-        // TODO other German holidays: Karfreitag, Ostermontag, Christi Himmelfahrt, Pfingstmontag
+        // TODO further German holidays: Karfreitag, Ostermontag, Christi Himmelfahrt, Pfingstmontag
 	}
 
 	public static boolean isLastWeekdayOfTypeInMonth(int dayOfWeek, Calendar day) {
