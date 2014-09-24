@@ -8,11 +8,11 @@
 
 	<packaging>jar</packaging>
 	<name>databene commons</name>
+	<url>http://databene.org/databene-commons</url>
+	<inceptionYear>2004</inceptionYear>
 	<description>'databene commons' is an open source Java library by Volker Bergmann.
         It provides extensions to the Java core library by utility classes, abstract concepts
         and concrete implementations.</description>
-	<url>http://databene.org/databene-commons</url>
-	<inceptionYear>2004</inceptionYear>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,12 +34,14 @@
 		<developer>
 			<name>Volker Bergmann</name>
 			<id>vbergmann</id>
-			<email>volker@databene.org</email>
+			<email>volker.bergmann@bergmann-it.de</email>
+			<organization>Volker Bergmann IT Consulting</organization>
+			<organizationUrl>http://www.bergmann-it.de</organizationUrl>
 			<timezone>+1</timezone>
 			<roles>
-				<role>Project Founder</role>
-				<role>Architect</role>
-				<role>Developer</role>
+				<role>project founder</role>
+				<role>architect</role>
+				<role>developer</role>
 			</roles>
 		</developer>
 	</developers>
@@ -159,7 +161,7 @@
 				<executions>
 					<execution>
 						<goals>
-  							<goal>check</goal>
+							<goal>check</goal>
 						</goals>
 						<phase>verify</phase>
 					</execution>
@@ -186,6 +188,12 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.4.1</version>
 				<configuration>
@@ -193,39 +201,6 @@
 						<descriptor>src/main/assembly/dist-assembly.xml</descriptor>
 					</descriptors>
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.3</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>jar</goal>
-							<goal>javadoc</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
@@ -239,12 +214,32 @@
 	</build>
 
 	<reporting>
+
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.17</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<linkXref>true</linkXref>
+					<minimumTokens>100</minimumTokens>
+					<targetJdk>1.6</targetJdk>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>2.0</version>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -259,25 +254,60 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.2</version>
-				<configuration>
-					<linkXref>true</linkXref>
-					<minimumTokens>100</minimumTokens>
-					<targetJdk>1.6</targetJdk>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>2.17</version>
-			</plugin>
 
 		</plugins>
+
 	</reporting>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.3</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 	<distributionManagement>
 		<repository>
@@ -288,7 +318,8 @@
 	</distributionManagement>
 
 	<scm>
-		<connection>scm:svn:https://svn.code.sf.net/p/databenecommons/code</connection>
+		<connection>scm:svn:http://svn.code.sf.net/p/databenecommons/code</connection>
+		<developerConnection>scm:svn:https://svn.code.sf.net/p/databenecommons/code</developerConnection>
 		<url>https://sourceforge.net/p/databenecommons/code/HEAD/tree/</url>
 	</scm>
 
