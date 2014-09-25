@@ -8,7 +8,7 @@
     <fileSets>
         <!-- license files and release notes -->
         <fileSet>
-            <directory>/</directory>
+            <directory></directory>
             <outputDirectory>/</outputDirectory>
             <includes>
                 <include>LICENSE.TXT</include>
