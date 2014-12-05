@@ -19,6 +19,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import org.databene.commons.Assert;
 import org.databene.commons.BeanUtil;
 import org.databene.commons.Composite;
 import org.databene.commons.ConfigurationError;
@@ -49,7 +50,7 @@ public class AnyMutator implements NamedMutator {
     }
 
     public AnyMutator(String path, boolean required, boolean autoConvert) {
-        this.path = path;
+        this.path = Assert.notNull(path, "path");
         this.required = required;
         this.autoConvert = autoConvert;
     }
