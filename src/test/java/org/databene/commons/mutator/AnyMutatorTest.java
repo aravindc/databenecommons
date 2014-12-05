@@ -51,8 +51,15 @@ public class AnyMutatorTest {
     public void testBeanPropertyGraph() {
         A a = new A();
         a.setB(new B());
+        // check preconditions
         assertEquals("alpha", a.b.y);
+        assertEquals(-1, a.b.z);
+        // set b.y and check it
         AnyMutator.setValue(a, "b.y", "bravo");
+        assertEquals("bravo", a.b.y);
+        // set b.z and check the whole result object
+        AnyMutator.setValue(a, "b.z", 2);
+        assertEquals(2, a.b.z);
         assertEquals("bravo", a.b.y);
     }
     
@@ -109,10 +116,15 @@ public class AnyMutatorTest {
     public static class B {
         
         public String y = "alpha";
+        public int z = -1;
         
         public void setY(String y) {
             this.y = y;
         }
+
+		public void setZ(int z) {
+			this.z = z;
+		}
     }
     
     public static class C {
