@@ -94,11 +94,11 @@ public class FeatureAccessor<C, V> implements Accessor<C, V> {
         		return BeanUtil.invoke(target, genericGetMethod, new Object[] { featureName });
         	// try JavaBean property
             PropertyDescriptor propertyDescriptor = BeanUtil.getPropertyDescriptor(target.getClass(), featureName);
-            if (propertyDescriptor != null) {
+            if (propertyDescriptor != null && propertyDescriptor.getReadMethod() != null) {
                 try {
                     return propertyDescriptor.getReadMethod().invoke(target);
                 } catch (Exception e) {
-                    throw new ConfigurationError("Unable to access feature '" + featureName + "'", e);
+                    throw new ConfigurationError("Unable to read property '" + featureName + "'", e);
                 }
             } else {
             	Class<?> type = ((target instanceof Class) ? (Class<?>) target : target.getClass());
