@@ -12,12 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.databene.commons.converter;
 
+import org.databene.commons.Assert;
 import org.databene.commons.BeanUtil;
 import org.databene.commons.ConversionException;
 import org.databene.commons.Mutator;
 import org.databene.commons.StringUtil;
+import org.databene.commons.accessor.FeatureAccessor;
 import org.databene.commons.converter.util.ClassProvider;
 import org.databene.commons.converter.util.ReferenceResolver;
 import org.databene.commons.mutator.AnyMutator;
@@ -32,16 +35,16 @@ import org.databene.commons.mutator.EmptyMutator;
 
 public class PropertyArray2JavaBeanConverter extends UnsafeConverter<Object[], Object> {
 
-	private ClassProvider<Object[]> beanClassProvider;
+	private ClassProvider<Object> beanClassProvider;
 	private String[] attributePaths;
 	private Mutator[] mutators;
 	private ReferenceResolver referenceResolver;
 	
-	public PropertyArray2JavaBeanConverter(ClassProvider<Object[]> beanClassProvider, String[] attributePaths, ReferenceResolver referenceResolver) {
+	public PropertyArray2JavaBeanConverter(ClassProvider<Object> beanClassProvider, String[] attributePaths, ReferenceResolver referenceResolver) {
 		super(Object[].class, Object.class);
-		this.beanClassProvider = beanClassProvider;
-		this.attributePaths = attributePaths;
-		this.referenceResolver = referenceResolver;
+		this.beanClassProvider = Assert.notNull(beanClassProvider, "beanClassProvider");
+		this.attributePaths = Assert.notNull(attributePaths, "attributePaths");
+		this.referenceResolver = Assert.notNull(referenceResolver, "referenceResolver");
 		createMutators(attributePaths);
 	}
 
@@ -82,9 +85,12 @@ public class PropertyArray2JavaBeanConverter extends UnsafeConverter<Object[], O
 			String[] pathParts = StringUtil.splitOnFirstSeparator(featurePath, '.');
 			Object child = haveTargetObject(bean, pathParts[0]);
 			return haveTargetObject(child, pathParts[1]);
-		} else {
+		} 
+		Object value = FeatureAccessor.getValue(bean, featurePath, false);
+		if (value != null)
+			return value;
+		else
 			return AnyMutator.setFeatureDefault(bean, featurePath);
-		}
 	}
 
 }
