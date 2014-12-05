@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.databene.commons.converter;
 
 import org.databene.commons.ConversionException;
@@ -63,8 +64,9 @@ public class String2DateConverter<E extends Date> extends ThreadSafeConverter<St
     }
 
     public static <T extends Date> Date convert(String sourceValue, String pattern, Locale locale, Class<T> targetType) {
-        if (StringUtil.isEmpty(sourceValue))
-            return null;
+    	sourceValue = StringUtil.trimmedEmptyToNull(sourceValue);
+    	if (sourceValue == null)
+    		return null;
         try {
             DateFormat format;
             sourceValue = sourceValue.replace(' ', 'T');
