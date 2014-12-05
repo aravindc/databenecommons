@@ -688,6 +688,13 @@ public final class StringUtil {
 		return (trimmed.length() != 0 ? s : null);
 	}
 
+	public static String trimmedEmptyToNull(String s) {
+		if (s == null || s.length() == 0)
+			return null;
+		String trimmed = trim(s);
+		return (trimmed.length() != 0 ? trimmed : null);
+	}
+
     public static String removeSection(String text, String beginMark, String endMark) {
     	if (StringUtil.isEmpty(text))
     		return text;
@@ -860,5 +867,5 @@ public final class StringUtil {
 		else
 			return text;
 	}
-	
+
 }
