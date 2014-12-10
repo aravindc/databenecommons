@@ -54,7 +54,8 @@ public class PropertyArray2JavaBeanConverter extends UnsafeConverter<Object[], O
 			return null;
 		Class<?> beanClass = beanClassProvider.classFor(propertyArray);
 		Object bean = BeanUtil.newInstance(beanClass);
-		for (int i = 0; i < propertyArray.length; i++) {
+		int elementsToUse = Math.min(propertyArray.length, attributePaths.length);
+		for (int i = 0; i < elementsToUse; i++) {
 			String attributePath = attributePaths[i];
 			String[] pathParts = StringUtil.splitOnLastSeparator(attributePath, '.');
 			Object target = haveTargetObject(bean, pathParts[0]);
