@@ -124,22 +124,6 @@ public class DependencyModelTest {
                 zero, a, b, c);
     }
     
-	@Test
-    public void testIssue() {
-        Dep actReProcDef = new Dep("act_re_procdef");
-        Dep actRuExecution = new Dep("act_ru_execution");
-        actRuExecution.addRequiredProvider(actRuExecution);
-        Dep actRuTask = new Dep("act_ru_task");
-        actRuTask.addRequiredProvider(actReProcDef);
-        actRuTask.addRequiredProvider(actRuExecution);
-        actRuTask.addRequiredProvider(actRuExecution);
-        Dep actRuIdentityLink = new Dep("act_ru_identitylink");
-        actRuIdentityLink.addRequiredProvider(actReProcDef);
-        actRuIdentityLink.addRequiredProvider(actRuTask);
-        expectOrder(true, actRuIdentityLink, actRuTask, actRuExecution, actReProcDef,
-                actReProcDef, actRuExecution, actRuTask, actRuIdentityLink);
-    }
-    
     // private helper -------------------------------------------------------------------------------
     
     private static void expectOrder(Dep... nodes) {
