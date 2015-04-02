@@ -35,7 +35,7 @@ public class SpeechUtil {
 	public static void say(String text, ErrorHandler errorHandler) {
 		if (!speechSupported())
 			errorHandler.handleError("Speech is not supported on this system");
-		ShellUtil.runShellCommand("say \"" + text + "\"", new OutputStreamWriter(System.out), errorHandler);
+		ShellUtil.runShellCommand("say -v Alex \"" + text + "\"", new OutputStreamWriter(System.out), errorHandler);
 	}
 	
 }
