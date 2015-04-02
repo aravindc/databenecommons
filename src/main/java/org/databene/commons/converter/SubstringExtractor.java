@@ -53,10 +53,19 @@ public class SubstringExtractor extends ThreadSafeConverter<String, String> {
 	public String convert(String sourceValue) throws ConversionException {
 		if (sourceValue == null)
 			return null;
-		if (to == null)
-			return sourceValue.substring(relativeIndex(from, sourceValue));
-		else
-			return sourceValue.substring(relativeIndex(from, sourceValue), relativeIndex(to, sourceValue));
+		int startIndex = relativeIndex(from, sourceValue);
+		if (startIndex >= sourceValue.length())
+			return "";
+		if (to == null) {
+			return sourceValue.substring(startIndex);
+		} else {
+			int endIndex = relativeIndex(to, sourceValue);
+			if (endIndex < startIndex)
+				return "";
+			if (endIndex > sourceValue.length())
+				endIndex = sourceValue.length();
+			return sourceValue.substring(startIndex, endIndex);
+		}
     }
 
 	private static int relativeIndex(int index, String sourceValue) {

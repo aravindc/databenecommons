@@ -55,4 +55,12 @@ public class SubstringExtractorTest extends AbstractConverterTest {
 		assertEquals("AB", new SubstringExtractor(-3, -1).convert("ABC"));
 	}
 	
+	@Test
+	public void testTooShortArgument() {
+		assertEquals("", new SubstringExtractor(0, 3).convert(""));
+		assertEquals("AB", new SubstringExtractor(0, 3).convert("AB"));
+		assertEquals("", new SubstringExtractor(4, 11).convert(""));
+		assertEquals("ICE", new SubstringExtractor(2, 8).convert("ALICE"));
+	}
+	
 }
