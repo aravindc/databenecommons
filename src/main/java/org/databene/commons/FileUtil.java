@@ -141,11 +141,13 @@ public final class FileUtil {
 
     public static void deleteDirectory(File folder) {
     	File[] files = folder.listFiles();
-    	for (File file : files) {
-    		if (file.isDirectory())
-    			deleteDirectory(file);
-    		else
-    			file.delete();
+    	if (files != null) {
+	    	for (File file : files) {
+	    		if (file.isDirectory())
+	    			deleteDirectory(file);
+	    		else
+	    			file.delete();
+	    	}
     	}
     	folder.delete();
     }
