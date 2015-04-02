@@ -31,7 +31,11 @@ public class ObservableFactoryTest {
 	
 	@Test
 	public void testToString() {
-		assertEquals("org.databene.commons.bean.IPerson{age=23, name=Alice}", createAlice().toString());
+		String actualString = createAlice().toString();
+		String expectedString = "org.databene.commons.bean.IPerson{age=23, name=Alice}";
+		String validAlternative = "org.databene.commons.bean.IPerson{name=Alice, age=23}";
+		if (!expectedString.equals(actualString) && !validAlternative.equals(actualString))
+			fail("Expected a string like \"" + expectedString + "\" but found \"" + actualString + "\"");
 	}
 
 	@Test
