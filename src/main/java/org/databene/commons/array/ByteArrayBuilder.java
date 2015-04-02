@@ -22,48 +22,34 @@ import org.databene.commons.converter.ToStringConverter;
  * @since 0.5.5
  * @author Volker Bergmann
  */
-public class ByteArrayBuilder {
+public class ByteArrayBuilder extends AbstractByteArray {
 
-    private static final int DEFAULT_INITIAL_CAPACITY = 10;
-    
-    private byte[] buffer;
-    private int itemCount;
-
+	// constructors ------------------------------------------------------------
+	
     public ByteArrayBuilder() {
-        this(DEFAULT_INITIAL_CAPACITY);
+        super();
     }
     
     public ByteArrayBuilder(int initialCapacity) {
-        this.buffer = createBuffer(initialCapacity);
+        super(initialCapacity);
     }
 
-    public ByteArrayBuilder add(byte item) {
-        if (buffer == null)
+    // interface ---------------------------------------------------------------
+    
+    @Override
+	public ByteArrayBuilder add(byte item) {
+        if (this.buffer == null)
             throw new UnsupportedOperationException("ArrayBuilder cannot be reused after invoking toArray()");
-        if (itemCount >= buffer.length - 1) {
-            byte[] newBuffer = createBuffer(buffer.length * 2);
-            System.arraycopy(buffer, 0, newBuffer, 0, buffer.length);
-            buffer = newBuffer;
-        }
-        buffer[itemCount++] = item;
+        super.add(item);
         return this;
     }
     
-    public void addAll(byte[] elements) {
-	    addAll(elements, 0, elements.length);
-    }
-    
-    public void addAll(byte[] elements, int fromIndex, int toIndex) {
-	    for (int i = fromIndex; i < toIndex; i++)
-	    	add(elements[i]);
-    }
-    
     public byte[] toArray() {
-        if (buffer == null)
+        if (this.buffer == null)
             throw new UnsupportedOperationException("ArrayBuilder cannot be reused after invoking toArray()");
-        byte[] result = new byte[itemCount];
-        System.arraycopy(buffer, 0, result, 0, itemCount);
-        itemCount = 0;
+        byte[] result = new byte[this.itemCount];
+        System.arraycopy(buffer, 0, result, 0, this.itemCount);
+        this.itemCount = 0;
         buffer = null;
         return result;
     }
@@ -79,11 +65,4 @@ public class ByteArrayBuilder {
     	return builder.toString();
     }
     
-    
-    // private helper method -------------------------------------------------------------------------------------------
-
-    private static byte[] createBuffer(int capacity) {
-        return new byte[capacity];
-    }
-
 }
