@@ -19,7 +19,7 @@ import org.databene.commons.SystemInfo;
 import org.databene.commons.ui.osx.OSXUtil;
 
 /**
- * Provides utility methods for Java applications.<br/><br/>
+ * Provides utility methods for Java applications.
  * Created: 03.09.2010 16:16:12
  * @since 0.5.13
  * @author Volker Bergmann

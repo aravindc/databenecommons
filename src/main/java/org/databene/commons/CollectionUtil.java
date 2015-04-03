@@ -21,8 +21,7 @@ import java.lang.reflect.Modifier;
 import org.databene.commons.collection.SortedList;
 
 /**
- * Provides Collection-related utility methods.<br/>
- * <br/>
+ * Provides Collection-related utility methods.
  * Created: 18.12.2006 06:46:24
  */
 public final class CollectionUtil {

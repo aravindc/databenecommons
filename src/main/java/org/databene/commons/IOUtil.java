@@ -38,8 +38,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
- * Provides stream operations.<br/>
- * <br/>
+ * Provides stream operations.
  * Created: 17.07.2006 22:17:42
  * @since 0.1
  * @author Volker Bergmann

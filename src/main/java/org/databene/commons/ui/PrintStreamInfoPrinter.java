@@ -17,7 +17,7 @@ package org.databene.commons.ui;
 import java.io.PrintStream;
 
 /**
- * {@link InfoPrinter} implementation which writes output to a {@link PrintStream}.<br/><br/>
+ * {@link InfoPrinter} implementation which writes output to a {@link PrintStream}.
  * Created: 05.06.2012 10:06:42
  * @since 0.5.16
  * @author Volker Bergmann

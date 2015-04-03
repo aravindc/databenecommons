@@ -24,8 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * File Utility class.<br/>
- * <br/>
+ * File Utility class.
  * Created: 04.02.2007 08:22:52
  * @since 0.1
  * @author Volker Bergmann

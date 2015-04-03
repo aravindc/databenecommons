@@ -17,7 +17,7 @@ package org.databene.commons;
 import java.util.Set;
 
 /**
- * Common interface for any classes that can have tags.<br/><br/>
+ * Common interface for any classes that can have tags.
  * Created: 18.06.2012 10:17:25
  * @since 0.5.16
  * @author Volker Bergmann

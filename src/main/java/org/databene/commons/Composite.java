@@ -17,8 +17,7 @@ package org.databene.commons;
 import org.databene.commons.collection.OrderedNameMap;
 
 /**
- * Models an Object that is composed of other objects.<br/>
- * <br/>
+ * Models an Object that is composed of other objects.
  * Created: 26.08.2007 08:08:02
  * @author Volker Bergmann
  */

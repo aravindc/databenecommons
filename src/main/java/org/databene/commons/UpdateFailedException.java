@@ -15,9 +15,9 @@
 package org.databene.commons;
 
 /**
- * Indicates that the update of some data failed.<br/>
- * <br/>
+ * Indicates that the update of some data failed.
  * Created: 18.01.2007 20:35:12
+ * @author Volker Bergmann
  */
 public class UpdateFailedException extends RuntimeException {
 

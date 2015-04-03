@@ -21,8 +21,7 @@ import java.util.List;
 import javax.swing.AbstractListModel;
 
 /**
- * Component that allows for defining an ordered list of files.<br/>
- * <br/>
+ * Component that allows for defining an ordered list of files.
  * Created at 30.11.2008 15:11:05
  * @since 0.5.13
  * @author Volker Bergmann

@@ -77,7 +77,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 /**
- * Provides XML Utility methods.<br/><br/>
+ * Provides XML Utility methods.
  * Created: 25.08.2007 22:09:26
  * @author Volker Bergmann
  */

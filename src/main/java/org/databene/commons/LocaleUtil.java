@@ -22,7 +22,7 @@ import java.io.IOException;
 /**
  * Provides locale operations like determining the parent of a locale,
  * finding a locale by code, providing the characters of a locale
- * and a so-called 'fallback locale'.<br/><br/>
+ * and a so-called 'fallback locale'.
  * Created: 26.09.2006 23:34:41
  * @author Volker Bergmann
  */

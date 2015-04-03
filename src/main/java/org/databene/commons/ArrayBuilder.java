@@ -20,7 +20,7 @@ import org.databene.commons.converter.ToStringConverter;
 
 /**
  * Helper class for building arrays.
- * @param <E>
+ * @param <E> the component type of the array
  * @author Volker Bergmann
  * @since 0.2.04
  */
@@ -43,7 +43,9 @@ public class ArrayBuilder<E> {
         this.buffer = createBuffer(initialCapacity);
     }
 
-    /** @deprecated replaced with add(Element) */
+    /** @deprecated replaced with add(Element)
+     * @param element the element to append
+     * @return this */
     @Deprecated
     public ArrayBuilder<E> append(E element) {
     	escalator.escalate(getClass().getName() + ".append() is deprecated, please use the add() method", 

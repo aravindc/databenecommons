@@ -20,8 +20,7 @@ import java.util.Map;
 import org.databene.commons.comparator.IntComparator;
 
 /**
- * {@link VersionNumberComponent} implementation for String-type number components.<br/>
- * <br/>
+ * {@link VersionNumberComponent} implementation for String-type number components.
  * Created at 07.01.2009 19:07:55
  * @since 0.5.7
  * @author Volker Bergmann

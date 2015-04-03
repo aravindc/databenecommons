@@ -17,8 +17,7 @@ package org.databene.commons.validator;
 import org.databene.commons.Validator;
 
 /**
- * Validator implementation that checks if a value is not null.<br/>
- * <br/>
+ * Validator implementation that checks if a value is not null.
  * Created: 01.09.2007 08:53:07
  * @author Volker Bergmann
  */

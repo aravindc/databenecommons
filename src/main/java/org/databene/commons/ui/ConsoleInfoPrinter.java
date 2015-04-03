@@ -20,8 +20,7 @@ import org.databene.commons.IOUtil;
 import org.databene.commons.ReaderLineIterator;
 
 /**
- * {@link InfoPrinter} implementation that prints info to the console.<br/>
- * <br/>
+ * {@link InfoPrinter} implementation that prints info to the console.
  * Created at 21.12.2008 11:34:25
  * @since 0.4.7
  * @author Volker Bergmann

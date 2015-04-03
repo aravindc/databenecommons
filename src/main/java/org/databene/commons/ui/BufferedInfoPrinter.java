@@ -18,7 +18,7 @@ import org.databene.commons.SystemInfo;
 
 /**
  * {@link InfoPrinter} implementation that prints into a buffer 
- * and provides the received input as String in {@link #toString()}.<br/><br/>
+ * and provides the received input as String in {@link #toString()}.
  * Created: 17.03.2013 18:06:28
  * @since 0.5.23
  * @author Volker Bergmann

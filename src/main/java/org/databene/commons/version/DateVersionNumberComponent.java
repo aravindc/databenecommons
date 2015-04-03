@@ -20,7 +20,7 @@ import java.util.Date;
 
 /**
  * Date-related implementation of the {@link VersionNumberComponent} interface,
- * which exhibits the same ordinal behavior as a snapshot version.<br/><br/>
+ * which exhibits the same ordinal behavior as a snapshot version.
  * Created: 12.02.2010 09:50:06
  * @since 0.6.0
  * @author Volker Bergmann

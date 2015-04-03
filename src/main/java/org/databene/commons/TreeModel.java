@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Models a typed tree logic.<br/>
- * <br/>
+ * Models a typed tree logic.
  * Created: 08.05.2007 18:30:55
  */
 public interface TreeModel<E> {

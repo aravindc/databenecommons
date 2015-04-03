@@ -22,8 +22,7 @@ import java.util.HashSet;
 
 /**
  * Validator implementation that requires each argument 
- * of consecutive calls to the valid() method to be unique.<br/>
- * <br/>
+ * of consecutive calls to the valid() method to be unique.
  * Created: 20.11.2007 09:55:16
  * @author Volker Bergmann
  */

@@ -25,8 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Executes shell commands and shell files.<br/>
- * <br/>
+ * Executes shell commands and shell files.
  * Created at 05.08.2008 07:40:00
  * @since 0.4.5
  * @author Volker Bergmann

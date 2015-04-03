@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Abstraction of a class that iterates over characters.<br/>
- * <br/>
+ * Abstraction of a class that iterates over characters.
  * Created at 28.12.2008 08:23:17
  * @since 0.4.7
  * @author Volker Bergmann

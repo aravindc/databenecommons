@@ -17,7 +17,7 @@ package org.databene.commons;
 import java.io.OutputStreamWriter;
 
 /**
- * Provides speech support on Mac systems.<br/><br/>
+ * Provides speech support on Mac systems.
  * Created: 14.09.2010 12:46:10
  * @since 0.5.4
  * @author Volker Bergmann

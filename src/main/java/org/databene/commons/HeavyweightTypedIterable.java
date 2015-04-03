@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * TypedIterable which is a Heavyweight.<br/>
- * <br/>
+ * TypedIterable which is a Heavyweight.
  * Created at 24.07.2009 10:53:46
  * @since 0.5.0
  * @author Volker Bergmann

@@ -15,7 +15,7 @@
 package org.databene.commons.ui;
 
 /**
- * Platform-neutral abstraction of a Java application.<br/><br/>
+ * Platform-neutral abstraction of a Java application.
  * Created: 31.07.2010 07:35:35
  * @since 0.5.13
  * @author Volker Bergmann

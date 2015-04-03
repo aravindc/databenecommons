@@ -19,7 +19,7 @@ import org.databene.commons.ValidationDomainDescriptor;
 /**
  * Abstract implementation of the {@link ValidationDomainDescriptor}. 
  * Whenever possible inherit from this class for implementing future-safe 
- * {@link ValidationDomainDescriptor}s<br/><br/>
+ * {@link ValidationDomainDescriptor}s
  * Created: 20.12.2011 17:25:47
  * @since 0.5.14
  * @author Volker Bergmann

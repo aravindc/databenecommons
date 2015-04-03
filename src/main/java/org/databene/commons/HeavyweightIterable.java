@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * {@link Iterable} that creates {@link HeavyweightIterator}s.<br/>
- * <br/>
+ * {@link Iterable} that creates {@link HeavyweightIterator}s.
  * Created at 17.10.2008 00:58:30
  * @since 0.4.6
  * @author Volker Bergmann

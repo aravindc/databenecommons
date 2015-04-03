@@ -20,11 +20,10 @@ import java.util.Set;
 
 /**
  * {@link Set} implementation that tracks the order in which elements where added
- * and returns them in that order by the <i>iterator()</i> method. <br/>
- * <br/>
+ * and returns them in that order by the <i>iterator()</i> method. 
  * This is useful for all cases in which elements need to be unique
- * but processed in the original order.<br/>
- * <br/> * Created at 28.02.2009 12:26:35
+ * but processed in the original order.
+ * Created at 28.02.2009 12:26:35
  * @since 0.4.8
  * @author Volker Bergmann
  */

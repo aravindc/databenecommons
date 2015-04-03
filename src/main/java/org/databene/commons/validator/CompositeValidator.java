@@ -19,8 +19,7 @@ import org.databene.commons.ArrayUtil;
 import org.databene.commons.Validator;
 
 /**
- * Abstract {@link Validator} implementation that combines the evaluation results of other Validators.<br/>
- * <br/>
+ * Abstract {@link Validator} implementation that combines the evaluation results of other Validators.
  * Created: 20.11.2007 09:50:13
  * @author Volker Bergmann
  */

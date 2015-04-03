@@ -17,8 +17,7 @@ package org.databene.commons.validator;
 import org.databene.commons.Validator;
 
 /**
- * Requires that each validated object is equal to a reference object.<br/>
- * <br/>
+ * Requires that each validated object is equal to a reference object.
  * Created at 04.07.2009 06:59:57
  * @since 0.5.0
  * @author Volker Bergmann

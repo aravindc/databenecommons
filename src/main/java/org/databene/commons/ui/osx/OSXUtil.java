@@ -24,7 +24,7 @@ import org.databene.commons.BeanUtil;
 import org.databene.commons.ui.JavaApplication;
 
 /**
- * Provides utility methods for Mac OS X.<br/><br/>
+ * Provides utility methods for Mac OS X.
  * Created: 10.09.2010 09:30:01
  * @since 0.5.13
  * @author Volker Bergmann

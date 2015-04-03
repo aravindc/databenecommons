@@ -17,8 +17,7 @@ package org.databene.commons.validator;
 import org.databene.commons.Validator;
 
 /**
- * Validates if a character is in a certain range.<br/>
- * <br/>
+ * Validates if a character is in a certain range.
  * Created at 14.08.2008 09:34:59
  * @since 0.4.5
  * @author Volker Bergmann

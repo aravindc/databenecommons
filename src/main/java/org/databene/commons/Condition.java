@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Evaluates an argument of type E if it matches some internal condition.<br/>
- * <br/>
+ * Evaluates an argument of type E if it matches some internal condition.
  * Created: 16.06.2007 12:31:22
  */
 public interface Condition<E> {

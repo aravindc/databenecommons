@@ -29,7 +29,7 @@ import org.databene.commons.bean.ObservableBean;
 import org.databene.commons.converter.ToStringConverter;
 
 /**
- * {@link JPasswordField} implementation that serves as delegate of a property of a JavaBean object.<br/><br/>
+ * {@link JPasswordField} implementation that serves as delegate of a property of a JavaBean object.
  * Created: 05.04.2010 11:14:19
  * @since 0.5.13
  * @author Volker Bergmann

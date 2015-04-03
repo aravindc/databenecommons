@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Child class of {@link java.lang.AssertionError} that indicates the failure of an assertion.<br/>
- * <br/>
+ * Child class of {@link java.lang.AssertionError} that indicates the failure of an assertion.
  * Created: 19.05.2011 16:25:34
  * @since 0.5.8
  * @author Volker Bergmann

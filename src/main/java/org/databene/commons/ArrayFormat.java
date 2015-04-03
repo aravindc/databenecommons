@@ -24,8 +24,7 @@ import org.databene.commons.converter.AnyConverter;
 import org.databene.commons.converter.ToStringConverter;
 
 /**
- * java.lang.text.Format implementation for formatting and parsing arrays.<br/>
- * <br/>
+ * java.lang.text.Format implementation for formatting and parsing arrays.
  * Created: 20.06.2007 07:04:37
  * @author Volker Bergmann
  */
@@ -78,11 +77,6 @@ public class ArrayFormat extends Format {
 
     // publicly available utility methods ------------------------------------------------------------------------------
 
-    /**
-     * formats an array's content as comma separated list
-     * @param items the objects to format
-     * @return a String with the comma-separated-list representation of the array
-     */
     public static <T> String format(T ... items) {
         return format(", ", items);
     }

@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Interface for all classes with a life cycle that can be reset.<br/><br/>
+ * Interface for all classes with a life cycle that can be reset.
  * Created: 05.02.2010 10:05:06
  * @since 0.5.0
  * @author Volker Bergmann

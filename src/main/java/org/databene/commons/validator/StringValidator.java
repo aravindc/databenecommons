@@ -17,8 +17,7 @@ package org.databene.commons.validator;
 import org.databene.commons.Validator;
 
 /**
- * Validates a String by length and characters.<br/>
- * <br/>
+ * Validates a String by length and characters.
  * Created at 14.08.2008 09:19:51
  * @since 0.4.5
  * @author Volker Bergmann

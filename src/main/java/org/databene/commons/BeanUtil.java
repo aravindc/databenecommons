@@ -41,7 +41,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Bundles reflection and introspection related operations.<br/><br/>
+ * Bundles reflection and introspection related operations.
  * Created: 01.07.2006 08:44:33
  * @since 0.1
  * @author Volker Bergmann
@@ -340,11 +340,6 @@ public final class BeanUtil {
 
     // instantiation ---------------------------------------------------------------------------------------------------
 
-    /**
-     * Instantiates the specified class.
-     * @param name the name of the class to instantiate
-     * @return the Class instance
-     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static <T> Class<T> forName(String name) {
     	Assert.notNull(name, "class name");
@@ -864,16 +859,9 @@ public final class BeanUtil {
     /**
      * Copies a Map's values to the properties of a JavaBean,
      * using the Map entries' key values as bean property names.
+     * @param sourceBean 
+     * @param targetBean 
      */
-/*
-    public static void mapProperties(Map properties, Object bean) {
-        for (Map.Entry entry : properties.entrySet()) {
-            String propertyName = (String) entry.getKey();
-            Object propertyValue = entry.getValue();
-            setProperty(bean, propertyName, propertyValue);
-        }
-    }
-*/	
     public static void copyPropertyValues(Object sourceBean, Object targetBean) {
         PropertyDescriptor[] propertyDescriptors = getPropertyDescriptors(sourceBean.getClass());
 	    for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
@@ -1159,6 +1147,8 @@ public final class BeanUtil {
 
     /**
      * Creates an instance of the class using the default constructor.
+     * @param type 
+     * @return a new instance of the type
      * @since 0.2.06
      */
     @SuppressWarnings("cast")
@@ -1290,7 +1280,10 @@ public final class BeanUtil {
 		return (o instanceof Class ? ((Class<?>) o).getName() : o.getClass().getSimpleName());
 	}
 	
-	/** Tries to convert both arguments to the same type and then compares them */
+	/** Tries to convert both arguments to the same type and then compares them 
+	 * @param o1 the first object to compare
+	 * @param o2 the second object to compare
+	 * @return true if they are equal, otherwise false */
     public static boolean equalsIgnoreType(Object o1, Object o2) {
     	if (NullSafeComparator.equals(o1, o2))
     		return true;

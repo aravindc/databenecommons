@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Designates the capitalization of a string.<br/><br/>
+ * Designates the capitalization of a string.
  * Created: 22.02.2011 12:07:46
  * @since 0.5.6
  * @author Volker Bergmann

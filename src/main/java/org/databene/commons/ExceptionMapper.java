@@ -21,8 +21,7 @@ import java.lang.reflect.Constructor;
 import java.beans.IntrospectionException;
 
 /**
- * Wraps checked exceptions as unchecked exceptions of type ConfigurationError.<br/>
- * <br/>
+ * Wraps checked exceptions as unchecked exceptions of type ConfigurationError.
  * Created: 02.07.2006 07:44:23
  * @author Volker Bergmann
  */

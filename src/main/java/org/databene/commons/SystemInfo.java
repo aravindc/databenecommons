@@ -17,8 +17,7 @@ package org.databene.commons;
 import java.nio.charset.Charset;
 
 /**
- * Provides the user with the Java system properties related to the Runtime System.<br/>
- * <br/>
+ * Provides the user with the Java system properties related to the Runtime System.
  * Created: 06.01.2007 19:10:02
  * @author Volker Bergmann
  */

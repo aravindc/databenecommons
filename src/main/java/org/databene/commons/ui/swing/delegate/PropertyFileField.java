@@ -28,8 +28,7 @@ import org.databene.commons.ui.FileTypeSupport;
 import org.databene.commons.ui.swing.FileField;
 
 /**
- * {@link FileField} implementation that serves as delegate of a property of a JavaBean object.<br/>
- * <br/>
+ * {@link FileField} implementation that serves as delegate of a property of a JavaBean object.
  * Created at 30.11.2008 00:22:14
  * @since 0.5.13
  * @author Volker Bergmann

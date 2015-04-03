@@ -19,7 +19,7 @@ import javax.swing.tree.TreePath;
 import org.databene.commons.TreeModel;
 
 /**
- * Adaptor that maps Databene {@link TreeModel}s to Swing {@link javax.swing.tree.TreeModel}.<br/><br/>
+ * Adaptor that maps Databene {@link TreeModel}s to Swing {@link javax.swing.tree.TreeModel}.
  * Created: 02.12.2010 06:46:55
  * @since 0.5.13
  * @author Volker Bergmann

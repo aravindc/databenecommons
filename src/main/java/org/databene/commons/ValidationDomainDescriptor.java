@@ -17,7 +17,7 @@ package org.databene.commons;
 import java.util.List;
 
 /**
- * Interface for validation domain descriptors.<br/><br/>
+ * Interface for validation domain descriptors.
  * Created: 20.12.2011 16:50:08
  * @since 0.5.14
  * @author Volker Bergmann

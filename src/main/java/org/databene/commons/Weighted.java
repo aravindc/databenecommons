@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Common interface for object which can be attached with a weight.<br/><br/>
+ * Common interface for object which can be attached with a weight.
  * Created: 29.08.2011 21:30:12
  * @since 0.5.9
  * @author Volker Bergmann

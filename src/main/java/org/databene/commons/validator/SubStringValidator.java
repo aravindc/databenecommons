@@ -19,7 +19,7 @@ import org.databene.commons.Validator;
 import org.databene.commons.converter.SubstringExtractor;
 
 /**
- * Uses another validator to validate sub strings.<br/><br/>
+ * Uses another validator to validate sub strings.
  * Created: 02.08.2011 07:19:04
  * @since 0.5.9
  * @author Volker Bergmann

@@ -22,8 +22,7 @@ import java.util.List;
 import org.databene.commons.iterator.ArrayIterator;
 
 /**
- * Provides array-related operations.<br/>
- * <br/>
+ * Provides array-related operations.
  * Created: 09.06.2006 21:31:49
  * @since 0.1
  * @author Volker Bergmann
@@ -114,12 +113,6 @@ public final class ArrayUtil {
         return -1;
     }
 
-    /**
-     * Tells if an array ends with a specified sub array
-     * @param candidates the array to scan
-     * @param searched the sub array that is searched
-     * @return true if the array ands with or equals the searched sub array
-     */
     public static <T> boolean endsWithSequence(T[] candidates, T[] searched) {
         if (searched.length > candidates.length)
             return false;
@@ -161,12 +154,6 @@ public final class ArrayUtil {
 
     // identity checks -------------------------------------------------------------------------------------------------
 
-    /**
-     * Tells if two arrays have the same content, independent of the ordering
-     * @param a1 the first array to compare
-     * @param a2 the first array to compare
-     * @return true if the array have the same content, independent of the ordering
-     */
     public static <T> boolean equalsIgnoreOrder(T[] a1, T[] a2) {
         if (a1 == a2)
             return true;
@@ -205,12 +192,6 @@ public final class ArrayUtil {
         return l1.size() == 0;
     }
 
-    /**
-     * Tells the first index under which an item is found in an array.
-     * @param searchedItem
-     * @param array
-     * @return the index of the searched item
-     */
     public static <T> int indexOf(T searchedItem, T[] array) {
         for (int i = 0; i < array.length; i++) {
             T candidate = array[i];

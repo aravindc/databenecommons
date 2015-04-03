@@ -17,8 +17,7 @@ package org.databene.commons.validator;
 import org.databene.commons.Validator;
 
 /**
- * Simple helper class that provides methods for testing validators.<br/>
- * <br/>
+ * Simple helper class that provides methods for testing validators.
  * Created at 24.07.2009 17:52:21
  * @since 0.5.0
  * @author Volker Bergmann

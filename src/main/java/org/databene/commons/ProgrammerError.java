@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * {@link RuntimeException} child class that indicates a fault made by the programmer.<br/><br/>
+ * {@link RuntimeException} child class that indicates a fault made by the programmer.
  * Created: 23.03.2011 12:18:46
  * @since 0.5.8
  * @author Volker Bergmann

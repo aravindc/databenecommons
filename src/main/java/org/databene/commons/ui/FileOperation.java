@@ -15,8 +15,7 @@
 package org.databene.commons.ui;
 
 /**
- * Abstraction of file operation types.<br/>
- * <br/>
+ * Abstraction of file operation types.
  * Created at 14.12.2008 15:19:56
  * @since 0.4.7
  * @author Volker Bergmann

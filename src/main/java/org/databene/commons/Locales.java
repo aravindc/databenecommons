@@ -17,7 +17,7 @@ package org.databene.commons;
 import java.util.Locale;
 
 /**
- * Provides Java constants for common {@link Locale}s.<br/><br/>
+ * Provides Java constants for common {@link Locale}s.
  * Created: 26.03.2010 18:52:58
  * @since 0.5.0
  * @author Volker Bergmann

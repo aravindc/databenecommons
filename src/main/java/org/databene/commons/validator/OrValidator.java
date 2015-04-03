@@ -18,8 +18,7 @@ import org.databene.commons.Validator;
 
 /**
  * Composite validator that requires at least one component to return true. 
- * If no components exists, false is returned.<br/>
- * <br/>
+ * If no components exists, false is returned.
  * Created: 20.11.2007 09:50:13
  * @author Volker Bergmann
  */

@@ -25,8 +25,7 @@ import org.databene.commons.Escalator;
 import org.databene.commons.LoggerEscalator;
 
 /**
- * Internationalization utilities.<br/>
- * <br/>
+ * Internationalization utilities.
  * Created at 21.07.2008 07:32:56
  * @since 0.4.5
  * @author Volker Bergmann

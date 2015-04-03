@@ -15,8 +15,7 @@
 package org.databene.commons.ui;
 
 /**
- * Error with localizable message.<br/>
- * <br/>
+ * Error with localizable message.
  * Created at 14.12.2008 13:23:51
  * @since 0.4.7
  * @author Volker Bergmann

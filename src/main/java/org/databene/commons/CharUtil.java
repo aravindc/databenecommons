@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Provides character related utility methods.<br/><br/>
+ * Provides character related utility methods.
  * Created: 04.08.2011 13:20:52
  * @since 0.5.9
  * @author Volker Bergmann

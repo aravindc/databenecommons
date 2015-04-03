@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Defines log categories common for all databene components.<br/>
- * <br/>
+ * Defines log categories common for all databene components.
  * Created at 02.08.2008 16:21:40
  * @since 0.4.5
  * @author Volker Bergmann

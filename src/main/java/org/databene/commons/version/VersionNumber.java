@@ -23,8 +23,7 @@ import org.databene.commons.CollectionUtil;
 
 /**
  * Represents a software version number.
- * Attention: equals() may return false for instances which are equivalent concerning compareTo(), e.g. 1.0 and 1.0.0.<br/>
- * <br/>
+ * Attention: equals() may return false for instances which are equivalent concerning compareTo(), e.g. 1.0 and 1.0.0.
  * Created at 22.12.2008 16:46:24
  * @since 0.5.7
  * @author Volker Bergmann

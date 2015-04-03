@@ -18,8 +18,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * A panel that allows for easy component aligning by an underlying {@link GridBagLayout}.<br/>
- * <br/>
+ * A panel that allows for easy component aligning by an underlying {@link GridBagLayout}.
  * Created: 20.03.2005 11:19:06
  * @since 0.5.13
  * @author Volker Bergmann

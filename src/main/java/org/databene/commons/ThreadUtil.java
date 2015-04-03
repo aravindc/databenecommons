@@ -17,7 +17,7 @@ package org.databene.commons;
 import java.util.Collection;
 
 /**
- * Provides utility methods for threading.<br/><br/>
+ * Provides utility methods for threading.
  * Created: 26.03.2010 19:26:07
  * @since 0.5.0
  * @author Volker Bergmann

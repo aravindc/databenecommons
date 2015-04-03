@@ -23,7 +23,7 @@ import org.databene.commons.math.Intervals;
 import org.databene.commons.math.IntervalsParser;
 
 /**
- * {@link Intervals} implementation for {@link VersionNumber}s.<br/><br/>
+ * {@link Intervals} implementation for {@link VersionNumber}s.
  * Created: 11.03.2011 10:09:15
  * @since 0.5.8
  * @author Volker Bergmann

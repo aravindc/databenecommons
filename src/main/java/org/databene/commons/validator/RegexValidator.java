@@ -27,8 +27,7 @@ import org.databene.commons.validator.bean.AbstractConstraintValidator;
 
 /**
  * Databene {@link Validator} and JSR 303 {@link ConstraintValidator} implementation 
- * that validates a String by a regular expression.<br/>
- * <br/>
+ * that validates a String by a regular expression.
  * Created at 15.07.2009 15:22:21
  * @since 0.5.0
  * @author Volker Bergmann

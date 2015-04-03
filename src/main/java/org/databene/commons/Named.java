@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Super interface for all classes that have a 'name' property.<br/>
- * <br/>
+ * Super interface for all classes that have a 'name' property.
  * Created at 21.07.2008 08:06:54
  * @since 0.4.5
  * @author Volker Bergmann

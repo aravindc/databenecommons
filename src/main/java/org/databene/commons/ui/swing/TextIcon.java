@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import javax.swing.UIManager;
 
 /**
- * {@link Icon} implementation that renders a text.<br/><br/>
+ * {@link Icon} implementation that renders a text.
  * Created: 13.12.2013 08:28:56
  * @since 0.5.25
  * @author Volker Bergmann

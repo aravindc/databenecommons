@@ -17,7 +17,7 @@ package org.databene.commons.wrapper;
 import org.databene.commons.Named;
 
 /**
- * Wraps a {@link Named} object.<br/><br/>
+ * Wraps a {@link Named} object.
  * Created: 20.06.2013 06:48:24
  * @since 0.5.24
  * @author Volker Bergmann

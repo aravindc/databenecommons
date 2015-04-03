@@ -22,8 +22,7 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 
 /**
- * Renders the canonical path of a {@link File} in a {@link JList}.<br/>
- * <br/>
+ * Renders the canonical path of a {@link File} in a {@link JList}.
  * Created at 30.11.2008 17:11:26
  * @since 0.5.13
  * @author Volker Bergmann

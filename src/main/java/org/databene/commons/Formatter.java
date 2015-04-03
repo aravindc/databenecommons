@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 import org.databene.commons.converter.PercentageFormatter;
 
 /**
- * Provides text formatting features for different data types.<br/><br/>
+ * Provides text formatting features for different data types.
  * Created: 06.07.2013 10:21:19
  * @since 0.5.24
  * @author Volker Bergmann

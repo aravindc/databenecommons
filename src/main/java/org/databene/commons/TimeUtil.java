@@ -29,8 +29,7 @@ import java.text.SimpleDateFormat;
 import static org.databene.commons.Patterns.*;
 
 /**
- * Provides utility methods for creating and manipulating Dates and Calendars.<br/>
- * <br/>
+ * Provides utility methods for creating and manipulating Dates and Calendars.
  * Created: 06.06.2004 18:16:26
  * @since 0.1
  * @author Volker Bergmann

@@ -17,7 +17,7 @@ package org.databene.commons;
 import java.util.concurrent.Callable;
 
 /**
- * Provides system related utility methods.<br/><br/>
+ * Provides system related utility methods.
  * Created: 21.10.2009 19:26:24
  * @since 0.5.0
  * @author Volker Bergmann

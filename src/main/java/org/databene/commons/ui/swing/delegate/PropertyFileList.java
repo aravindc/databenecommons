@@ -29,8 +29,7 @@ import org.databene.commons.ui.I18NSupport;
 import org.databene.commons.ui.swing.FileList;
 
 /**
- * {@link FileList} implementation that serves as delegate of a property of a JavaBean object.<br/>
- * <br/>
+ * {@link FileList} implementation that serves as delegate of a property of a JavaBean object.
  * Created at 30.11.2008 15:06:20
  * @since 0.5.13
  * @author Volker Bergmann

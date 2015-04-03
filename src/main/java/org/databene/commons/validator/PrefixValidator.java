@@ -17,7 +17,7 @@ package org.databene.commons.validator;
 import org.databene.commons.Validator;
 
 /**
- * Validates that Strings have a given prefix.<br/><br/>
+ * Validates that Strings have a given prefix.
  * Created: 02.08.2011 07:26:39
  * @since 0.5.9
  * @author Volker Bergmann

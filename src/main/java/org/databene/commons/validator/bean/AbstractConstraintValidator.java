@@ -23,7 +23,6 @@ import org.databene.commons.Validator;
 
 /**
  * Abstract implementation of the {@link ConstraintValidator} interface. 
- * <br/>
  * Created at 08.11.2008 07:52:34
  * @since 0.5.0
  * @author Volker Bergmann

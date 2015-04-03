@@ -29,7 +29,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Provides ZIP-related convenience methods.<br/><br/>
+ * Provides ZIP-related convenience methods.
  * Created: 20.10.2011 15:19:07
  * @since 0.5.10
  * @author Volker Bergmann

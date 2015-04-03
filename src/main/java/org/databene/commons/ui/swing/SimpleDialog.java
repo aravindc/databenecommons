@@ -28,7 +28,7 @@ import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 
 /**
- * {@link JDialog} which applies useful standard behaviour.<br/><br/>
+ * {@link JDialog} which applies useful standard behaviour.
  * Created: 22.08.2012 07:31:08
  * @since 0.5.18
  * @author Volker Bergmann

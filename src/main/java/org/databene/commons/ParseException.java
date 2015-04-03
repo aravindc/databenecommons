@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Indicates a parsing error.<br/>
- * <br/>
+ * Indicates a parsing error.
  * Created at 30.12.2008 08:23:05
  * @since 0.5.7
  * @author Volker Bergmann

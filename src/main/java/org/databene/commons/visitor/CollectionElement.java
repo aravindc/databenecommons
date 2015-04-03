@@ -20,8 +20,7 @@ import org.databene.commons.Visitor;
 import java.util.Collection;
 
 /**
- * Element implementation that wraps a Java collection.<br/>
- * <br/>
+ * Element implementation that wraps a Java collection.
  * Created: 04.02.2007 09:27:19
  * @author Volker Bergmann
  */

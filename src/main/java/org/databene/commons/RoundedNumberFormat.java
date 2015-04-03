@@ -18,8 +18,7 @@ import java.text.*;
 import java.util.Locale;
 
 /**
- * Rounds large numbers to the four most significant digits.<br/>
- * <br/>
+ * Rounds large numbers to the four most significant digits.
  * Created: 01.09.2007 16:19:14
  */
 public class RoundedNumberFormat extends Format {

@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Assembles default patterns for all databene formats and {@link Converter}s.<br/>
- * <br/>
+ * Assembles default patterns for all databene formats and {@link Converter}s.
  * Created at 01.10.2009 12:36:09
  * @since 0.5.0
  * @author Volker Bergmann

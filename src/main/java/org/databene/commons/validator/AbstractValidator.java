@@ -21,8 +21,7 @@ import org.databene.commons.Validator;
  * This serves as parent class for deriving custom {@link Validator}
  * implementations. If the {@link Validator} interface will change in 
  * future versions, the AbstractValidator class will try to compensate 
- * the change for its child classes.<br/>
- * <br/>
+ * the change for its child classes.
  * Created at 08.11.2008 07:52:34
  * @since 0.4.6
  * @author Volker Bergmann

@@ -26,8 +26,7 @@ import org.databene.commons.ui.FileTypeSupport;
 import org.databene.commons.ui.FileChooser;
 
 /**
- * AWT based implementation of the {@link FileChooser} interface.<br/>
- * <br/>
+ * AWT based implementation of the {@link FileChooser} interface.
  * Created at 14.12.2008 14:36:28
  * @since 0.5.13
  * @author Volker Bergmann

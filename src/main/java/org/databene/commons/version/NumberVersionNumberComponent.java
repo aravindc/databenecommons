@@ -17,8 +17,7 @@ package org.databene.commons.version;
 import org.databene.commons.comparator.IntComparator;
 
 /**
- * Number based {@link VersionNumberComponent}.<br/>
- * <br/>
+ * Number based {@link VersionNumberComponent}.
  * Created at 22.12.2008 16:33:56
  * @since 0.5.7
  * @author Volker Bergmann

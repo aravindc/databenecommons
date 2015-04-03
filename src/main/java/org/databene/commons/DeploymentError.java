@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * {@link ConfigurationError} sub class which indicates an incorrect deployment.<br/><br/>
+ * {@link ConfigurationError} sub class which indicates an incorrect deployment.
  * Created: 23.03.2011 11:50:42
  * @since 0.5.8
  * @author Volker Bergmann

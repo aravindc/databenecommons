@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * An assertion utility.<br/><br/>
+ * An assertion utility.
  * Created at 25.04.2008 17:59:43
  * @since 0.4.2
  * @author Volker Bergmann

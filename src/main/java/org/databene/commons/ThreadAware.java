@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Interface by which a class can declare its level of thread support.<br/><br/>
+ * Interface by which a class can declare its level of thread support.
  * Created: 12.11.2009 15:30:51
  * @since 0.5.0
  * @author Volker Bergmann

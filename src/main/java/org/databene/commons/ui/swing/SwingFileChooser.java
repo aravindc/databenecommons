@@ -25,8 +25,7 @@ import org.databene.commons.ui.FileOperation;
 import org.databene.commons.ui.FileTypeSupport;
 
 /**
- * Swing implementation of the {@link FileChooser} interface.<br/>
- * <br/>
+ * Swing implementation of the {@link FileChooser} interface.
  * Created at 14.12.2008 14:34:50
  * @since 0.5.13
  * @author Volker Bergmann

@@ -15,8 +15,7 @@
 package org.databene.commons.ui;
 
 /**
- * Common abstraction for all classes that can provide information output to a human user.<br/>
- * <br/>
+ * Common abstraction for all classes that can provide information output to a human user.
  * Created at 21.12.2008 11:33:26
  * @since 0.4.7
  * @author Volker Bergmann

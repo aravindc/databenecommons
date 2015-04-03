@@ -22,7 +22,7 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 
 /**
- * Provides handling for {@link TreeModelListener}s.<br/><br/>
+ * Provides handling for {@link TreeModelListener}s.
  * Created: 22.08.2012 17:13:08
  * @since 0.5.18
  * @author Volker Bergmann

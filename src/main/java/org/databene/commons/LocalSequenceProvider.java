@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Generates consecutive sequence values and persists sequence state in a properties file.<br/><br/>
+ * Generates consecutive sequence values and persists sequence state in a properties file.
  * Created: 09.11.2013 09:04:51
  * @since 0.5.25
  * @author Volker Bergmann

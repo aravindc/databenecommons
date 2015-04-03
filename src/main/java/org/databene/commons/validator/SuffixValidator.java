@@ -17,7 +17,7 @@ package org.databene.commons.validator;
 import org.databene.commons.Validator;
 
 /**
- * Validates the suffix of a String.<br/><br/>
+ * Validates the suffix of a String.
  * Created: 02.08.2011 07:29:25
  * @since 0.5.9
  * @author Volker Bergmann

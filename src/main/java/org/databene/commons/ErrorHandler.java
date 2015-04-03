@@ -18,8 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Provides for error handling by logging and eventually raising an exception.<br/>
- * <br/>
+ * Provides for error handling by logging and eventually raising an exception.
  * Created at 02.08.2008 13:39:11
  * @since 0.4.5
  * @author Volker Bergmann

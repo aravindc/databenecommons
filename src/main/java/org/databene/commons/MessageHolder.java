@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Common interface for classes that may provide an information or status message.<br/><br/>
+ * Common interface for classes that may provide an information or status message.
  * Created: 08.07.2010 17:22:05
  * @since 0.5.3
  * @author Volker Bergmann

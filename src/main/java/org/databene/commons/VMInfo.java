@@ -15,9 +15,9 @@
 package org.databene.commons;
 
 /**
- * Provides the Java system properties related to the virtual machine. <br/>
- * <br/>
+ * Provides the Java system properties related to the virtual machine. 
  * Created: 16.06.2007 13:23:56
+ * @author Volker Bergmann
  */
 public final class VMInfo {
 

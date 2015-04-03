@@ -24,8 +24,7 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Provides Swing utilities.<br/>
- * <br/>
+ * Provides Swing utilities.
  * Created: 23.04.2007 22:41:21
  * 
  * @since 0.5.13

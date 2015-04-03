@@ -18,8 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Abstraction of a context that provides named items which can be set and retrieved.<br/>
- * <br/>
+ * Abstraction of a context that provides named items which can be set and retrieved.
  * Created: 23.08.2007 08:32:53
  * @since 0.3
  * @author Volker Bergmann

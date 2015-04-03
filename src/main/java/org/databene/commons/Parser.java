@@ -18,7 +18,7 @@ import java.text.ParsePosition;
 
 /**
  * Parent for classes which parse {@link String}. 
- * It resembles the 'parse' part of the {@link java.text.Format} class.<br/><br/>
+ * It resembles the 'parse' part of the {@link java.text.Format} class.
  * Created: 10.03.2011 15:36:54
  * @since 0.5.8
  * @author Volker Bergmann

@@ -37,7 +37,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /**
  * Writes XML to a stream. The interface is similar to {@link Transformer}, 
  * but setup is easier, methods have been simplified and convenience methods 
- * have been added.<br/><br/>
+ * have been added.
  * Created: 28.11.2010 06:39:04
  * @since 0.5.4
  * @author Volker Bergmann

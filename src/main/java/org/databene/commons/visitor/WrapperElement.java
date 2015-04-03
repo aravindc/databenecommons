@@ -17,8 +17,7 @@ package org.databene.commons.visitor;
 import org.databene.commons.Visitor;
 
 /**
- * Element implementation that serves as proxy for another Element.<br/>
- * <br/>
+ * Element implementation that serves as proxy for another Element.
  * Created: 04.02.2007 08:17:20
  * @author Volker Bergmann
  */

@@ -29,7 +29,7 @@ import org.databene.commons.bean.ObservableBean;
 import org.databene.commons.converter.ToStringConverter;
 
 /**
- * {@link JTextArea} implementation that serves as delegate of a property of a JavaBean object.<br/><br/>
+ * {@link JTextArea} implementation that serves as delegate of a property of a JavaBean object.
  * Created: 22.08.2010 07:29:11
  * @since 0.5.13
  * @author Volker Bergmann

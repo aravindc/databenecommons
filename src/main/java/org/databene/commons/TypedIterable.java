@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Iterable that provides the type it returns.<br/>
- * <br/>
+ * Iterable that provides the type it returns.
  * Created: 02.09.2007 23:20:03
  * @author Volker Bergmann
  */

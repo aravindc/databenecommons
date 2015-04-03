@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Models an object that queries an object of type C for an object of type V.<br/>
- * <br/>
+ * Models an object that queries an object of type C for an object of type V.
  * Created: 07.01.2005 11:49:23
  * @since 0.1
  * @author Volker Bergmann

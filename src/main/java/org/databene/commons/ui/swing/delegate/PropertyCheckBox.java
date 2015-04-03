@@ -26,8 +26,7 @@ import org.databene.commons.NullSafeComparator;
 import org.databene.commons.bean.ObservableBean;
 
 /**
- * {@link JCheckBox} implementation that serves as delegate of a property of a JavaBean object.<br/>
- * <br/>
+ * {@link JCheckBox} implementation that serves as delegate of a property of a JavaBean object.
  * Created at 02.12.2008 15:03:32
  * @since 0.5.13
  * @author Volker Bergmann

@@ -17,8 +17,7 @@ package org.databene.commons.ui.swing;
 import java.awt.Component;
 
 /**
- * Adds convenience methods to the {@link javax.swing.ProgressMonitor}.<br/>
- * <br/>
+ * Adds convenience methods to the {@link javax.swing.ProgressMonitor}.
  * Created at 01.12.2008 09:46:04
  * @since 0.5.13
  * @author Volker Bergmann

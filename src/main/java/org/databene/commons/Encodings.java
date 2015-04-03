@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Provides names for frequently used encodings.<br/><br/>
+ * Provides names for frequently used encodings.
  * Created: 16.12.2009 08:38:45
  * @since 0.5.0
  * @author Volker Bergmann

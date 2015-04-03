@@ -25,7 +25,7 @@ import javax.swing.tree.TreePath;
 import org.databene.commons.ArrayUtil;
 
 /**
- * {@link Action} class which expands or collapses nodes of a {@link JTree}.<br/><br/>
+ * {@link Action} class which expands or collapses nodes of a {@link JTree}.
  * Created: 23.08.2012 07:47:04
  * @since 0.5.18
  * @author Volker Bergmann

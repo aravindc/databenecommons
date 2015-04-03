@@ -21,7 +21,7 @@ import org.databene.commons.BeanUtil;
 import org.databene.commons.ui.JavaApplication;
 
 /**
- * InvocationHandler interface for Mac OS X.<br/><br/>
+ * InvocationHandler interface for Mac OS X.
  * Created: 10.09.2010 09:18:57
  * @since 0.5.13
  * @author Volker Bergmann

@@ -17,8 +17,7 @@ package org.databene.commons;
 /**
  * Supports iterating the characters of a String.
  * This is especially useful for writing parsers that iterate over Strings,
- * since it encapsulates the cursor index.<br/>
- * <br/>
+ * since it encapsulates the cursor index.
  * Created: 18.08.2006 19:21:45
  * @author Volker Bergmann
  */

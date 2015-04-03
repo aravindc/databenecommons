@@ -15,9 +15,9 @@
 package org.databene.commons;
 
 /**
- * Models a Visitor as defined in the Visitor Design Patterns.<br/>
- * <br/>
+ * Models a Visitor as defined in the Visitor Design Patterns.
  * Created: 04.02.2007 07:52:37
+ * @author Volker Bergmann
  */
 public interface Visitor<E> {
     public <C extends E> void visit(C element);

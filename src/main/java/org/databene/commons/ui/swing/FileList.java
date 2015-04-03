@@ -36,8 +36,7 @@ import org.databene.commons.CollectionUtil;
 import org.databene.commons.ui.I18NSupport;
 
 /**
- * Component that allows for defining an ordered list of files.<br/>
- * <br/>
+ * Component that allows for defining an ordered list of files.
  * Created at 30.11.2008 14:46:48
  * @since 0.5.13
  * @author Volker Bergmann

@@ -21,8 +21,7 @@ import javax.validation.ConstraintValidator;
 import org.databene.commons.Validator;
 
 /**
- * Wraps a JSR 303 {@link ConstraintValidator} with a databene commons {@link Validator}.<br/>
- * <br/>
+ * Wraps a JSR 303 {@link ConstraintValidator} with a databene commons {@link Validator}.
  * Created at 04.07.2009 08:30:13
  * @since 0.5.0
  * @author Volker Bergmann

@@ -23,8 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Provides test settings from a file <code>${user.home}/databene.test.properties</code>.<br/>
- * <br/>
+ * Provides test settings from a file <code>${user.home}/databene.test.properties</code>.
  * Created at 01.10.2009 15:30:51
  * @since 0.5.0
  * @author Volker Bergmann

@@ -22,7 +22,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 
 /**
- * {@link Action} that closes a Window.<br/><br/>
+ * {@link Action} that closes a Window.
  * Created: 10.07.2014 15:23:20
  * @since 0.5.33
  * @author Volker Bergmann

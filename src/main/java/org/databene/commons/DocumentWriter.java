@@ -18,9 +18,9 @@ import java.io.Closeable;
 import java.io.IOException;
 
 /**
- * Abstraction of a document writer.<br/>
- * <br/>
+ * Abstraction of a document writer.
  * Created: 06.06.2007 19:25:43
+ * @author Volker Bergmann
  */
 public interface DocumentWriter<E> extends Closeable {
     void setVariable(String name, Object value);

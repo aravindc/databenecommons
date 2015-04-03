@@ -33,8 +33,7 @@ import org.databene.commons.converter.ToStringConverter;
 import org.databene.commons.ui.I18NSupport;
 
 /**
- * {@link JComboBox} implementation that serves as delegate of a property of a JavaBean object.<br/>
- * <br/>
+ * {@link JComboBox} implementation that serves as delegate of a property of a JavaBean object.
  * Created at 01.12.2008 07:44:32
  * @since 0.5.13
  * @author Volker Bergmann

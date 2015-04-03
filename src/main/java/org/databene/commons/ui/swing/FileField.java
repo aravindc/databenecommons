@@ -34,8 +34,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Lets the user choose a {@link File} with {@link TextField} and {@link JFileChooser}.<br/>
- * <br/>
+ * Lets the user choose a {@link File} with {@link TextField} and {@link JFileChooser}.
  * Created: 05.05.2007 00:10:38
  * @since 0.5.13
  * @author Volker Bergmann

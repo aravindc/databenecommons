@@ -17,7 +17,7 @@ package org.databene.commons;
 import java.io.File;
 
 /**
- * Provides utility methods related to overall Databene functionality.<br/><br/>
+ * Provides utility methods related to overall Databene functionality.
  * Created: 27.10.2012 08:53:22
  * @since 0.5.20
  * @author Volker Bergmann

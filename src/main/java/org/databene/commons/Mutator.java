@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Models an object that mutates a target object of type C by specification of a value of type V.<br/>
- * <br/>
+ * Models an object that mutates a target object of type C by specification of a value of type V.
  * Created: 08.05.2005 06:24:04
  * @since 0.1
  * @author Volker Bergmann

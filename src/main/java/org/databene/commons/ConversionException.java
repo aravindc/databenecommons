@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Indicates failure of a conversion operation.<br/>
- * <br/>
+ * Indicates failure of a conversion operation.
  * Created: 08.03.2006 14:56:58
  */
 public class ConversionException extends RuntimeException {

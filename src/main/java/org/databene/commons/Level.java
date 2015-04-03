@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Represents a log or failure level.<br/>
- * <br/>
+ * Represents a log or failure level.
  * Created at 18.09.2009 13:46:48
  * @since 0.5.0
  * @author Volker Bergmann

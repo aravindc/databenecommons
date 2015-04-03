@@ -16,8 +16,7 @@ package org.databene.commons;
 
 /**
  * Base interface for all classes that convert
- * a source object of type S to an object of type T.<br/>
- * <br/>
+ * a source object of type S to an object of type T.
  * Created: 30.08.2006 19:41:08
  * @since 0.1
  * @author Volker Bergmann

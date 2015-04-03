@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * A basic validator interface.<br/>
- * <br/>
+ * A basic validator interface.
  * Created: 29.08.2006 08:31:19
  * @since 0.1
  * @author Volker Bergmann

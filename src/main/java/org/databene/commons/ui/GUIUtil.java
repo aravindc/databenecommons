@@ -32,7 +32,7 @@ import org.databene.commons.ui.awt.AwtFileChooser;
 import org.databene.commons.ui.swing.SwingFileChooser;
 
 /**
- * Provides GUI utility methods.<br/><br/>
+ * Provides GUI utility methods.
  * Created: 01.12.2010 13:55:23
  * @since 0.2.4
  * @author Volker Bergmann

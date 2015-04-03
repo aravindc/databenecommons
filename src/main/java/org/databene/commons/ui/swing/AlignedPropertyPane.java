@@ -32,7 +32,7 @@ import org.databene.commons.ui.swing.delegate.PropertyTextArea;
 import org.databene.commons.ui.swing.delegate.PropertyTextField;
 
 /**
- * {@link AlignedPane} implementation that supports property-based input elements.<br/><br/>
+ * {@link AlignedPane} implementation that supports property-based input elements.
  * Created: 22.08.2010 07:09:34
  * @since 0.5.13
  * @author Volker Bergmann

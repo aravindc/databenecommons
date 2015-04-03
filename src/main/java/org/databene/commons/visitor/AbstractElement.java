@@ -20,8 +20,7 @@ import org.databene.commons.Visitor;
 import java.util.Collection;
 
 /**
- * Implementation of the Element interface that supports navigating through sub elements.<br/>
- * <br/>
+ * Implementation of the Element interface that supports navigating through sub elements.
  * Created: 04.02.2007 07:53:23
  * @author Volker Bergmann
  */

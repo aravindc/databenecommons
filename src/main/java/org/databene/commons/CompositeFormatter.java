@@ -23,7 +23,7 @@ import org.databene.commons.converter.FormatHolder;
 import org.databene.commons.converter.ToStringConverter;
 
 /**
- * Formats a Composite as a String.<br/><br/>
+ * Formats a Composite as a String.
  * Created: 14.03.2008 22:47:57
  * @author Volker Bergmann
  */

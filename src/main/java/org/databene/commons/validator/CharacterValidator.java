@@ -18,7 +18,7 @@ import org.databene.commons.CharSet;
 import org.databene.commons.Validator;
 
 /**
- * Accepts all characters that are contained in the internal {@link CharSet}.<br/><br/>
+ * Accepts all characters that are contained in the internal {@link CharSet}.
  * Created: 17.12.2009 19:00:41
  * @since 0.5.0
  * @author Volker Bergmann

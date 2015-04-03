@@ -19,8 +19,7 @@ import java.util.Iterator;
 
 /**
  * Models a heavyweight Iterator, that means an Iterator that needs to be closed,
- * e.g. for freeing allocated resources.<br/>
- * <br/>
+ * e.g. for freeing allocated resources.
  * Created: 16.06.2007 10:21:25
  * @author Volker Bergmann
  */

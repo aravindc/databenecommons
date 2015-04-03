@@ -20,7 +20,7 @@ import org.databene.commons.CollectionUtil;
 import org.databene.commons.Visitor;
 
 /**
- * Groups multiple visitors into the interface of a single one.<br/><br/>
+ * Groups multiple visitors into the interface of a single one.
  * Created: 06.03.2011 14:39:23
  * @since 0.5.8
  * @author Volker Bergmann

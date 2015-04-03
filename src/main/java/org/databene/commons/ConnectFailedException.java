@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Indicates a failure in establishing a connection.<br/><br/>
+ * Indicates a failure in establishing a connection.
  * Created at 03.05.2008 09:27:34
  * @since 0.4.3
  * @author Volker Bergmann

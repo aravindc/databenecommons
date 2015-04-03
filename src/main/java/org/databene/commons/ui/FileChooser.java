@@ -18,8 +18,7 @@ import java.awt.Component;
 import java.io.File;
 
 /**
- * Platform-independent abstraction of a file chooser facility.<br/>
- * <br/>
+ * Platform-independent abstraction of a file chooser facility.
  * Created at 14.12.2008 14:32:22
  * @since 0.4.7
  * @author Volker Bergmann

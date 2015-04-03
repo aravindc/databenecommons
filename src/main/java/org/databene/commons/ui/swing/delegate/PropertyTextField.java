@@ -29,8 +29,7 @@ import org.databene.commons.bean.ObservableBean;
 import org.databene.commons.converter.ToStringConverter;
 
 /**
- * {@link JTextField} implementation that serves as delegate of a property of a JavaBean object.<br/>
- * <br/>
+ * {@link JTextField} implementation that serves as delegate of a property of a JavaBean object.
  * Created at 17.07.2008 14:38:14
  * @since 0.5.13
  * @author Volker Bergmann

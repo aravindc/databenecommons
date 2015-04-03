@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Unchecked exception that indicates failure that results from inappropriate configuration.<br/>
- * <br/>
+ * Unchecked exception that indicates failure that results from inappropriate configuration.
  * Created: 02.07.2006 07:30:11
  */
 public class ConfigurationError extends RuntimeException {

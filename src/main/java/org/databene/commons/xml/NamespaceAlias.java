@@ -15,8 +15,7 @@
 package org.databene.commons.xml;
 
 /**
- * Reperesents an alias for an XML namespace like xmlns:xs="http://www.w3.org/2001/XMLSchema".<br/>
- * <br/>
+ * Represents an alias for an XML namespace like xmlns:xs="http://www.w3.org/2001/XMLSchema".
  * Created: 23.03.2008 08:49:44
  * @since 0.5.0
  * @author Volker Bergmann

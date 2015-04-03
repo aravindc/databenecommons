@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * {@link ParseException} child class that represents a syntax error.<br/><br/>
+ * {@link ParseException} child class that represents a syntax error.
  * Created: 24.03.2011 11:49:34
  * @since 0.5.8
  * @author Volker Bergmann

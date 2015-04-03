@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Provides file download and caches files in the file system.<br/><br/>
+ * Provides file download and caches files in the file system.
  * Created: 15.08.2010 10:07:24
  * @since 0.5.4
  * @author Volker Bergmann

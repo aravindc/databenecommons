@@ -34,7 +34,7 @@ import org.w3c.dom.Element;
 
 /**
  * Provides a mechanism to access an application's version number and 
- * check its dependencies programmatically.<br/><br/>
+ * check its dependencies programmatically.
  * Created: 23.03.2011 10:38:31
  * @since 0.5.8
  * @author Volker Bergmann

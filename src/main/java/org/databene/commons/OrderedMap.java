@@ -23,11 +23,9 @@ import org.databene.commons.collection.MapProxy;
 
 /**
  * Map implementation that tracks the order in which elements where added
- * and returns them in that order by the <i>values()</i> method. <br/>
- * <br/>
+ * and returns them in that order by the <i>values()</i> method. 
  * This is useful for all cases in which elements will be queried by a key
- * and processed but need to be stored in the original order.<br/>
- * <br/>
+ * and processed but need to be stored in the original order.
  * Created: 06.01.2007 09:04:17
  * @author Volker Bergmann
  */

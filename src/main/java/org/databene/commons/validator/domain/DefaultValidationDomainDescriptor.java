@@ -24,7 +24,7 @@ import org.databene.commons.Validator;
 import org.databene.commons.filter.FilterUtil;
 
 /**
- * Default implementation of the {@link ValidationDomainDescriptor} interface.<br/><br/>
+ * Default implementation of the {@link ValidationDomainDescriptor} interface.
  * Created: 20.12.2011 16:53:55
  * @since 0.5.14
  * @author Volker Bergmann

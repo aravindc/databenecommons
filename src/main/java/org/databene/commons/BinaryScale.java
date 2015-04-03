@@ -15,7 +15,7 @@
 package org.databene.commons;
 
 /**
- * Enumeration which provides constants for Binary scales.<br/><br/>
+ * Enumeration which provides constants for Binary scales.
  * Created: 06.03.2011 15:29:47
  * @since 0.5.8
  * @author Volker Bergmann

@@ -27,7 +27,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 /**
- * Provides XPath query functionality on XML documents and elements.<br/><br/>
+ * Provides XPath query functionality on XML documents and elements.
  * Created: 28.03.2014 16:55:12
  * @since 0.5.29
  * @author Volker Bergmann

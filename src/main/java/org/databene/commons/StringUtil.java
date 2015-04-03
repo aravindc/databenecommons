@@ -17,8 +17,7 @@ package org.databene.commons;
 import java.util.*;
 
 /**
- * Provides String related utility operations.<br/>
- * <br/>
+ * Provides String related utility operations.
  * Created: 05.07.2006 22:45:12
  * @author Volker Bergmann
  */

@@ -17,8 +17,7 @@ package org.databene.commons.validator;
 import org.databene.commons.Validator;
 
 /**
- * Validates a String for a minimum and a maximum length.<br/>
- * <br/>
+ * Validates a String for a minimum and a maximum length.
  * Created: 20.09.2006 21:38:20
  * @author Volker Bergmann
  */

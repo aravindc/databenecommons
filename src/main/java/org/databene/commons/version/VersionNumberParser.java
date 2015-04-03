@@ -23,7 +23,7 @@ import org.databene.commons.Parser;
 import org.databene.commons.StringUtil;
 
 /**
- * Parses a {@link VersionNumber}.<br/><br/>
+ * Parses a {@link VersionNumber}.
  * Created: 10.03.2011 16:28:06
  * @since 0.5.8
  * @author Volker Bergmann

@@ -19,7 +19,7 @@ import java.io.Reader;
 import java.io.IOException;
 
 /**
- * Iterator implementation that returns text lines provided by a reader.<br/><br/>
+ * Iterator implementation that returns text lines provided by a reader.
  * Created: 01.05.2007 08:06:46
  * @since 0.1
  * @author Volker Bergmann

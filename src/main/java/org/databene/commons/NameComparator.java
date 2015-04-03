@@ -18,7 +18,7 @@ import java.text.Collator;
 import java.util.Comparator;
 
 /**
- * Compares to {@link Named} objects by their name.<br/><br/>
+ * Compares to {@link Named} objects by their name.
  * Created: 12.08.2010 09:26:04
  * @since 0.5.4
  * @author Volker Bergmann

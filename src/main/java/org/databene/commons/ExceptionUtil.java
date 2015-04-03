@@ -15,8 +15,7 @@
 package org.databene.commons;
 
 /**
- * Provides Exception related utilities.<br/>
- * <br/>
+ * Provides Exception related utilities.
  * Created at 23.02.2009 13:13:19
  * @since 0.4.8
  * @author Volker Bergmann

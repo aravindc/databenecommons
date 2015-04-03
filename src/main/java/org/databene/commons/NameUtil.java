@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Provides convenience methods for {@link Named} objects.<br/><br/>
+ * Provides convenience methods for {@link Named} objects.
  * Created: 12.08.2010 09:21:46
  * @since 0.5.4
  * @author Volker Bergmann
