@@ -22,8 +22,7 @@ import org.databene.commons.ShellUtil;
 import org.databene.commons.SystemInfo;
 
 /**
- * Provides utility methods for Maven invocation and repository access.<br/>
- * <br/>
+ * Provides utility methods for Maven invocation and repository access.
  * Created at 17.12.2008 10:32:32
  * @since 0.4.7
  * @author Volker Bergmann

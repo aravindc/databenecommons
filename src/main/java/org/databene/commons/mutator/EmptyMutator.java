@@ -17,8 +17,7 @@ package org.databene.commons.mutator;
 import org.databene.commons.Mutator;
 
 /**
- * Empty implementation of the Mutator interface.<br/>
- * <br/>
+ * Empty implementation of the Mutator interface.
  * Created: 11.05.2005 20:14:02
  * @since 0.1
  * @author Volker Bergmann

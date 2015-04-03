@@ -15,8 +15,7 @@
 package org.databene.commons.tree;
 
 /**
- * Represents an identifiable Object that knows the identifier of its parent.<br/>
- * <br/>
+ * Represents an identifiable Object that knows the identifier of its parent.
  * Created: 31.07.2007 06:54:28
  * @author Volker Bergmann
  */

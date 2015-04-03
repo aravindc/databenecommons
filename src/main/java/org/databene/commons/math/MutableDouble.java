@@ -15,8 +15,7 @@
 package org.databene.commons.math;
 
 /**
- * Simple non-thread-save implementation of a mutable double object.<br/>
- * <br/>
+ * Simple non-thread-save implementation of a mutable double object.
  * Created at 17.07.2009 06:13:53
  * @since 0.5.0
  * @author Volker Bergmann

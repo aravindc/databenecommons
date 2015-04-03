@@ -19,7 +19,7 @@ import org.databene.commons.Operation;
 
 /**
  * Combines boolean arguments with an 'and' condition ignoring null arguments. 
- * If the number of arguments is zero, true is returned.<br/><br/>
+ * If the number of arguments is zero, true is returned.
  * Created: 05.03.2008 07:56:59
  * @since 0.4.0
  * @author Volker Bergmann

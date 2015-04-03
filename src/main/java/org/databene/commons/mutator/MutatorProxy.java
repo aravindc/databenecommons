@@ -18,8 +18,7 @@ import org.databene.commons.Mutator;
 import org.databene.commons.UpdateFailedException;
 
 /**
- * Proxy for a Mutator.<br/>
- * <br/>
+ * Proxy for a Mutator.
  * Created: 12.05.2005 18:54:36
  */
 public abstract class MutatorProxy extends MutatorWrapper {

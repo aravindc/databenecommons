@@ -20,7 +20,7 @@ import java.util.Set;
 import org.databene.commons.Tagged;
 
 /**
- * Provides tag management, to be used as delegate object.<br/><br/>
+ * Provides tag management, to be used as delegate object.
  * Created: 14.11.2013 07:00:00
  * @since 0.5.25
  * @author Volker Bergmann

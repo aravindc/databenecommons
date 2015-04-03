@@ -18,8 +18,7 @@ import org.databene.commons.ArrayUtil;
 import org.databene.commons.Operation;
 
 /**
- * Determines the elements common to all array arguments.<br/>
- * <br/>
+ * Determines the elements common to all array arguments.
  * @since 0.4.0
  * @author Volker Bergmann
  */

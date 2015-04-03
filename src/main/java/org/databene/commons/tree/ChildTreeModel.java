@@ -20,8 +20,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * Adapts a ChildModel to a TreeModel.<br/>
- * <br/>
+ * Adapts a ChildModel to a TreeModel.
  * Created: 31.07.2007 06:32:41
  * @author Volker Bergmann
  */

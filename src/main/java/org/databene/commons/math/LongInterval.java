@@ -17,7 +17,7 @@ package org.databene.commons.math;
 import org.databene.commons.comparator.LongComparator;
 
 /**
- * {@link Interval} implementation using {@link Long} as generic type.<br/><br/>
+ * {@link Interval} implementation using {@link Long} as generic type.
  * Created: 30.12.2011 22:08:21
  * @since 0.5.14
  * @author Volker Bergmann

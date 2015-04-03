@@ -19,8 +19,7 @@ import org.databene.commons.TreeModel;
 import org.databene.commons.iterator.BidirectionalIterator;
 
 /**
- * Iterates a tree forward and backward.<br/>
- * <br/>
+ * Iterates a tree forward and backward.
  * Created: 08.05.2007 18:05:24
  * @author Volker Bergmann
  */

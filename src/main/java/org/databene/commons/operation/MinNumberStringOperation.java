@@ -19,7 +19,7 @@ import org.databene.commons.Operation;
 import org.databene.commons.converter.NumberParser;
 
 /**
- * Returns the maximum value of several number literals.<br/><br/>
+ * Returns the maximum value of several number literals.
  * Created: 08.03.2008 07:18:09
  * @since 0.4.0
  * @author Volker Bergmann

@@ -15,8 +15,7 @@
 package org.databene.commons.math;
 
 /**
- * Simple non-thread-save implementation of a mutable integer object.<br/>
- * <br/>
+ * Simple non-thread-save implementation of a mutable integer object.
  * Created at 12.07.2009 00:34:24
  * @since 0.5.0
  * @author Volker Bergmann

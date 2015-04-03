@@ -18,8 +18,7 @@ import org.databene.commons.Mutator;
 import org.databene.commons.Named;
 
 /**
- * Mutator class to which a name is assigned.<br/>
- * <br/>
+ * Mutator class to which a name is assigned.
  * Created at 04.11.2008 09:18:34
  * @since 0.4.6
  * @author Volker Bergmann

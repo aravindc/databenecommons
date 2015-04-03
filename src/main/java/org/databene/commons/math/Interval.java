@@ -24,8 +24,7 @@ import org.databene.commons.NullSafeComparator;
  * Represents an interval between to endpoints. 
  * The endpoints can be of any class for which a {@link Comparator} can be provided.
  * Using the parameters {@link #minInclusive} and {@link #maxInclusive}, one can 
- * specify whether the interval shall contain the endpoint values themselves.<br/>
- * <br/>
+ * specify whether the interval shall contain the endpoint values themselves.
  * Created: 10.03.2011 15:20:36
  * @since 0.5.8
  * @author Volker Bergmann

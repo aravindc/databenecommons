@@ -17,8 +17,7 @@ package org.databene.commons.operation;
 import org.databene.commons.Operation;
 
 /**
- * Returns the first argument as the operation result.<br/>
- * <br/>
+ * Returns the first argument as the operation result.
  * Created: 03.08.2007 07:17:31
  * @author Volker Bergmann
  */

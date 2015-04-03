@@ -15,8 +15,7 @@
 package org.databene.commons.tree;
 
 /**
- * Defines a contract of mapping arbitrary objects to a parent/child structure.<br/>
- * <br/>
+ * Defines a contract of mapping arbitrary objects to a parent/child structure.
  * Created: 31.07.2007 06:32:11
  * @author Volker Bergmann
  */

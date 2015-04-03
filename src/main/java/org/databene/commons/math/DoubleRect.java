@@ -15,7 +15,7 @@
 package org.databene.commons.math;
 
 /**
- * double-based rectangle.<br/><br/>
+ * double-based rectangle.
  * Created: 18.09.2010 08:37:58
  * @since 0.5.4
  * @author Volker Bergmann

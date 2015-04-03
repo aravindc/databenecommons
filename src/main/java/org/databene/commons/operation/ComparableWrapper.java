@@ -17,7 +17,7 @@ package org.databene.commons.operation;
 import org.databene.commons.Converter;
 
 /**
- * Wraps a data object with a helper object that can be compared independently of the data object.<br/><br/>
+ * Wraps a data object with a helper object that can be compared independently of the data object.
  * Created: 26.02.2010 09:17:05
  * @since 0.5.0
  * @author Volker Bergmann

@@ -19,7 +19,7 @@ import java.util.Set;
 import org.databene.commons.Tagged;
 
 /**
- * Parent class which provides tag support by inheritance.<br/><br/>
+ * Parent class which provides tag support by inheritance.
  * Created: 14.11.2013 07:04:54
  * @since 0.5.25
  * @author Volker Bergmann

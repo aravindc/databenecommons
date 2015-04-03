@@ -21,7 +21,7 @@ import java.util.List;
 import org.databene.commons.Tagged;
 
 /**
- * Provides tag-related utility methods.<br/><br/>
+ * Provides tag-related utility methods.
  * Created: 15.11.2013 06:58:15
  * @since 0.5.25
  * @author Volker Bergmann

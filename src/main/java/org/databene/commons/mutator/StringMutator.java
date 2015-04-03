@@ -18,8 +18,7 @@ import org.databene.commons.Mutator;
 import org.databene.commons.UpdateFailedException;
 
 /**
- * Mutator proxy that converts the 'value' argument to a String before calling the real proxy.<br/>
- * <br/>
+ * Mutator proxy that converts the 'value' argument to a String before calling the real proxy.
  * Created: 18.12.2005 21:05:59
  * @deprecated 
  */

@@ -17,8 +17,7 @@ package org.databene.commons.tree;
 import org.databene.commons.TreeModel;
 
 /**
- * Default implementation of a {@link TreeModel}. It uses DefaultTreeNodes.<br/>
- * <br/>
+ * Default implementation of a {@link TreeModel}. It uses DefaultTreeNodes.
  * Created: 08.05.2007 19:05:14
  * @author Volker Bergmann
  */

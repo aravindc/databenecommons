@@ -28,17 +28,17 @@ import org.databene.commons.Parser;
  * *                        Any version
  * 1.1	                    Version 1.1
  * 1.1, 1.2                 Versions 1.1 and 1.2
- * >=1.1                    Version 1.1 and all subsequent ones
- * > 1.0                    All versions after 1.0 
- * < 2.0                    All versions before 2.0
- * <= 2.1                   All versions until 2.1 (inclusive)
+ * &gt;=1.1                    Version 1.1 and all subsequent ones
+ * &gt; 1.0                    All versions after 1.0 
+ * &lt; 2.0                    All versions before 2.0
+ * &lt;= 2.1                   All versions until 2.1 (inclusive)
  * [1.1.2, 1.1.8]           All versions from 1.1.2 to 1.1.8
  * [1.1.2, 2.0[             All versions from 1.1.2 before 2.0
  * ]1.1.2, 2.0[             All versions after 1.1.2 and before 2.0
  * [1.1, 1.3], [1.5, 1.8]   Versions 1.1 through 1.3 and versions 1.5 to 1.8
  * [1.1, 1.4[,  ]1.4, 1.8]  Versions 1.1 through 1.8, excluding 1.4 
  * </pre>
- * <br/><br/>
+ * 
  * Created: 10.03.2011 17:37:08
  * @since 0.5.8
  * @author Volker Bergmann

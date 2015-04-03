@@ -32,7 +32,7 @@ import org.databene.commons.accessor.FeatureAccessor;
 import org.databene.commons.converter.AnyConverter;
 
 /**
- * Mutator implementation for graphs of any object types.<br/><br/>
+ * Mutator implementation for graphs of any object types.
  * Created: 31.01.2008 20:15:11
  * @since 0.3.0
  * @author Volker Bergmann

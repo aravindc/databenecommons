@@ -16,8 +16,7 @@ package org.databene.commons.tree;
 
 /**
  * The default implementation of the ChildModel interface
- * which expects its elements to implement the Child interface.<br/>
- * <br/>
+ * which expects its elements to implement the Child interface.
  * Created: 31.07.2007 06:55:23
  * @author Volker Bergmann
  */

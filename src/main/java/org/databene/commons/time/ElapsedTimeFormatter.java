@@ -22,7 +22,7 @@ import org.databene.commons.converter.PropertyResourceBundleConverter;
 import org.databene.commons.converter.ThreadSafeConverter;
 
 /**
- * Formats millisecond values in a rounded and for humans convenient form.<br/><br/>
+ * Formats millisecond values in a rounded and for humans convenient form.
  * Created: 14.12.2010 13:39:18
  * @since 0.5.5
  * @author Volker Bergmann

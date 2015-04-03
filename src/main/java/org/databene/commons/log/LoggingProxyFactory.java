@@ -25,8 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Creates a proxy to a class which logs all invocations of parent interface methods.<br/>
- * <br/>
+ * Creates a proxy to a class which logs all invocations of parent interface methods.
  * Created at 17.09.2009 10:54:08
  * @since 0.5.0
  * @author Volker Bergmann

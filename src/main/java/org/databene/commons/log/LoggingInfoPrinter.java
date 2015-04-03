@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * {@link InfoPrinter} implementation that writes text to a logger category.<br/><br/>
+ * {@link InfoPrinter} implementation that writes text to a logger category.
  * Created: 01.08.2010 17:13:04
  * @since 0.5.3
  * @author Volker Bergmann

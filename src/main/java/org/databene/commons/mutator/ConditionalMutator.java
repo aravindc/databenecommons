@@ -26,8 +26,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Comparator;
 
 /**
- * Mutator that is only applied if a condition is true.<br/>
- * <br/>
+ * Mutator that is only applied if a condition is true.
  * Created: 08.05.2005 06:47:17
  */
 @SuppressWarnings("unchecked")

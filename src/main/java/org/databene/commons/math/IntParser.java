@@ -22,7 +22,7 @@ import java.util.Locale;
 import org.databene.commons.Parser;
 
 /**
- * {@link Parser} implementation which parses {@link Integer}s.<br/><br/>
+ * {@link Parser} implementation which parses {@link Integer}s.
  * Created: 10.03.2011 19:41:30
  * @since 0.5.8
  * @author Volker Bergmann

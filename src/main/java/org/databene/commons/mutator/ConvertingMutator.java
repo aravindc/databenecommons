@@ -20,8 +20,7 @@ import org.databene.commons.Mutator;
 import org.databene.commons.UpdateFailedException;
 
 /**
- * Converts its input by a Converter object and forwards the result to another Mutator.<br/>
- * <br/>
+ * Converts its input by a Converter object and forwards the result to another Mutator.
  * Created: 12.05.2005 19:08:30
  */
 @SuppressWarnings("unchecked")

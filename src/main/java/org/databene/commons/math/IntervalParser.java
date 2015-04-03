@@ -23,7 +23,7 @@ import org.databene.commons.Parser;
 
 /**
  * Parses an {@link Interval} generically using an endpoint parser and an endpoint comparator.
- * The endpoint parser has to be able to parse the interval endpoint values.<br/><br/>
+ * The endpoint parser has to be able to parse the interval endpoint values.
  * Created: 10.03.2011 15:33:01
  * @since 0.5.8
  * @author Volker Bergmann

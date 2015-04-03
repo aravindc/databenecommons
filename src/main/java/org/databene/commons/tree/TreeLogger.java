@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Logs the structure represented by a {@link org.databene.commons.TreeModel} implementor.<br/><br/>
+ * Logs the structure represented by a {@link org.databene.commons.TreeModel} implementor.
  * Created: 10.11.2010 10:21:59
  * @since 0.5.4
  * @author Volker Bergmann
