@@ -19,7 +19,7 @@ import org.databene.commons.StringUtil;
 
 /**
  * Iterates through another {@link TabularIterator}, 
- * picking and possibly reordering a sub set of its columns.<br/><br/>
+ * picking and possibly reordering a sub set of its columns.
  * Created: 26.01.2012 18:33:10
  * @since 0.5.14
  * @author Volker Bergmann

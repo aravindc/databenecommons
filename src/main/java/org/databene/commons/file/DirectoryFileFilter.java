@@ -17,8 +17,7 @@ package org.databene.commons.file;
 import java.io.File;
 
 /**
- * FileFilter implementation that accepts only directories.<br/>
- * <br/>
+ * FileFilter implementation that accepts only directories.
  * Created: 07.05.2007 23:57:46
  * @author Volker Bergmann
  */

@@ -24,8 +24,7 @@ import java.util.List;
 import java.io.File;
 
 /**
- * Element implementation (of the Visitor Design Pattern) for a File.<br/>
- * <br/>
+ * Element implementation (of the Visitor Design Pattern) for a File.
  * Created: 04.02.2007 08:10:05
  * @author Volker Bergmann
  */

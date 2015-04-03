@@ -20,8 +20,7 @@ import java.util.Iterator;
 
 /**
  * Filters elements of another {@link Iterator} or {@link BidirectionalIterator} 
- * by a {@link Filter} element.<br/>
- * <br/>
+ * by a {@link Filter} element.
  * Created: 08.05.2007 19:37:33
  * @author Volker Bergmann
  */

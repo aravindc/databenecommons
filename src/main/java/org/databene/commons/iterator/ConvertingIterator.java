@@ -22,8 +22,7 @@ import java.io.Closeable;
 import java.util.Iterator;
 
 /**
- * Iterator proxy that converts iterated objects before providing them to the caller.<br/>
- * <br/>
+ * Iterator proxy that converts iterated objects before providing them to the caller.
  * Created: 16.08.2007 06:34:59
  * @author Volker Bergmann
  */

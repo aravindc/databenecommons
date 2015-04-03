@@ -15,8 +15,7 @@
 package org.databene.commons.format;
 
 /**
- * Provides constants for horizontal aligning.<br/>
- * <br/>
+ * Provides constants for horizontal aligning.
  * Created: 29.06.2007 18:20:45
  * @author Volker Bergmann
  */

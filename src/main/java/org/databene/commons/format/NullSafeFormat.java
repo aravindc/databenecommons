@@ -19,7 +19,7 @@ import java.text.Format;
 import java.text.ParsePosition;
 
 /**
- * Wraps another {@link Format} and overrides the mapping from a null value to a string and vice versa.<br/><br/>
+ * Wraps another {@link Format} and overrides the mapping from a null value to a string and vice versa.
  * Created: 28.02.2013 16:20:55
  * @since 0.5.21
  * @author Volker Bergmann

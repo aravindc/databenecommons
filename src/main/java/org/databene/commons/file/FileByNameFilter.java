@@ -20,7 +20,7 @@ import java.io.FilenameFilter;
 import org.databene.commons.Filter;
 
 /**
- * Wraps a {@link FilenameFilter} with a {@link FileFilter}.<br/><br/>
+ * Wraps a {@link FilenameFilter} with a {@link FileFilter}.
  * Created: 02.04.2010 15:09:23
  * @since 0.5.0
  * @author Volker Bergmann

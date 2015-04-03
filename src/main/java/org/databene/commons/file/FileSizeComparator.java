@@ -20,7 +20,7 @@ import java.util.Comparator;
 import org.databene.commons.comparator.LongComparator;
 
 /**
- * {@link Comparator} implementation which compares two {@link File}s by their size.<br/><br/>
+ * {@link Comparator} implementation which compares two {@link File}s by their size.
  * Created: 06.03.2011 15:11:11
  * @since 0.5.8
  * @author Volker Bergmann

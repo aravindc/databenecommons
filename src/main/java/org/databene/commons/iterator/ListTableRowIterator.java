@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@link TabularIterator} implementation that iterated through a list of object arrays.<br/><br/>
+ * {@link TabularIterator} implementation that iterated through a list of object arrays.
  * Created: 27.10.2011 08:43:17
  * @since 0.5.11
  * @author Volker Bergmann

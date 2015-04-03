@@ -21,7 +21,7 @@ import org.databene.commons.StringUtil;
 import org.databene.commons.converter.ThreadSafeConverter;
 
 /**
- * Pads a string with a pad character to a given length with left/center or right alignment.<br/><br/>
+ * Pads a string with a pad character to a given length with left/center or right alignment.
  * Created: 13.03.2014 11:40:07
  * @since 0.5.28
  * @author Volker Bergmann

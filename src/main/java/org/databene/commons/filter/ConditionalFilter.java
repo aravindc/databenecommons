@@ -18,8 +18,7 @@ import org.databene.commons.Condition;
 import org.databene.commons.Filter;
 
 /**
- * Filter that evaluates a Condition on each candidate.<br/>
- * <br/>
+ * Filter that evaluates a Condition on each candidate.
  * Created: 16.06.2007 12:30:26
  * @author Volker Bergmann
  */

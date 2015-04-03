@@ -17,8 +17,7 @@ package org.databene.commons.iterator;
 import java.util.Iterator;
 
 /**
- * Iterator that may iterate forward and backward.<br/>
- * <br/>
+ * Iterator that may iterate forward and backward.
  * Created: 08.05.2007 18:03:52
  * @author Volker Bergmann
  */

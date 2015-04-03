@@ -19,8 +19,7 @@ import org.databene.commons.FileUtil;
 import java.io.File;
 
 /**
- * Filters files matching their suffix with a required suffix.<br/>
- * <br/>
+ * Filters files matching their suffix with a required suffix.
  * Created: 10.04.2007 08:19:03
  * @author Volker Bergmann
  */

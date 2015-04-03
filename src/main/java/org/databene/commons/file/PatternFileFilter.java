@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 
 /**
  * {@link FileFilter} that can be configured to accepted files and/or folders 
- * based on a regular expression.<br/><br/>
+ * based on a regular expression.
  * Created: 24.02.2010 07:09:52
  * @since 0.5.0
  * @author Volker Bergmann

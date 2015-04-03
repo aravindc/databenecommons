@@ -20,7 +20,7 @@ import java.text.Format;
 import java.text.ParsePosition;
 
 /**
- * Thread-safe, concurrent wrapper of Java's {@link DecimalFormat} class.<br/><br/>
+ * Thread-safe, concurrent wrapper of Java's {@link DecimalFormat} class.
  * Created: 12.10.2010 17:47:35
  * @since 0.5.4
  * @author Volker Bergmann

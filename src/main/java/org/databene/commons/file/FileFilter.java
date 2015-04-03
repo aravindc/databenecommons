@@ -19,8 +19,7 @@ import org.databene.commons.Filter;
 import java.io.File;
 
 /**
- * Joins the databene Filter<E> interface with the java.io.FileFilter interface.<br/>
- * <br/>
+ * Joins the databene Filter interface with the java.io.FileFilter interface.
  * Created: 23.04.2007 08:31:51
  * @author Volker Bergmann
  */

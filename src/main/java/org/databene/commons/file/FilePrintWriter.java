@@ -21,8 +21,7 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * {@link PrintWriter} implementation which writes to a {@link File} 
- * and provides the file's identity.<br/>
- * <br/>
+ * and provides the file's identity.
  * Created: 14.06.2011 09:10:05
  * @since 0.5.8
  * @author Volker Bergmann

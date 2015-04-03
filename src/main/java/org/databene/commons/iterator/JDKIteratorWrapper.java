@@ -18,8 +18,7 @@ import java.util.Iterator;
 
 /**
  * Wraps a JDK {@link Iterator} into a {@link BidirectionalIterator}, 
- * making the unsupported operations throw an {@link UnsupportedOperationException}.<br/>
- * <br/>
+ * making the unsupported operations throw an {@link UnsupportedOperationException}.
  * Created: 12.06.2007 19:51:44
  * @author Volker Bergmann
  */

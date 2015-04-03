@@ -20,7 +20,7 @@ import org.databene.commons.converter.ArrayTypeConverter;
 
 /**
  * Forwards the output of another array {@link Iterator}, 
- * interpreting its first provided array as column names.<br/><br/>
+ * interpreting its first provided array as column names.
  * Created: 26.01.2012 17:24:53
  * @since 0.5.14
  * @author Volker Bergmann

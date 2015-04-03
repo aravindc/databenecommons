@@ -20,8 +20,7 @@ import java.text.ParsePosition;
 import java.io.File;
 
 /**
- * Formats file names as local names or absolute path.<br/>
- * <br/>
+ * Formats file names as local names or absolute path.
  * Created: 13.05.2007 07:41:51
  * @author Volker Bergmann
  */

@@ -19,8 +19,7 @@ import java.util.List;
 /**
  * The items of a splitted list: 
  * <code>matches</code> contains the List items that matched the filter, 
- * <code>mismatches</code> contains the other ones.<br/>
- * <br/>
+ * <code>mismatches</code> contains the other ones.
  * Created: 10.04.2007 08:09:06
  * @author Volker Bergmann
  */

@@ -18,7 +18,7 @@ import java.util.Iterator;
 
 /**
  * Special type of {@link Iterable} which proxies another {@link Iterable} and 
- * wraps its produced {@link Iterator}s into {@link TabularIterator}s.<br/><br/>
+ * wraps its produced {@link Iterator}s into {@link TabularIterator}s.
  * Created: 26.01.2012 18:28:06
  * @since 0.5.14
  * @author Volker Bergmann

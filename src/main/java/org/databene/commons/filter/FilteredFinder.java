@@ -23,8 +23,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Iterates through a tree for searching items that maz�tch a filter.<br/>
- * <br/>
+ * Iterates through a tree for searching items that match a filter.
  * Created: 04.02.2007 11:59:03
  * @author Volker Bergmann
  */

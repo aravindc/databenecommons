@@ -23,8 +23,7 @@ import org.databene.commons.IOUtil;
 /**
  * Wraps an {@link Iterator} with a {@link HeavyweightIterator}. 
  * If the wrapped iterator implements {@link Closeable}, calls to 
- * <code>close()</code> are forwarded, otherwise ignored<br/>.
- * <br/>
+ * <code>close()</code> are forwarded, otherwise ignored.
  * Created at 17.10.2008 01:27:08
  * @since 0.4.6
  * @author Volker Bergmann

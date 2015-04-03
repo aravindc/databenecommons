@@ -21,8 +21,7 @@ import org.databene.commons.converter.ToStringConverter;
 import java.text.*;
 
 /**
- * {@link Format} implementation that applies padding for formatting Strings with a fixed width.<br/>
- * <br/>
+ * {@link Format} implementation that applies padding for formatting Strings with a fixed width.
  * Created: 07.06.2007 13:23:37
  * @author Volker Bergmann
  */

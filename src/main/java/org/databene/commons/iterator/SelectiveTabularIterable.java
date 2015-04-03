@@ -15,7 +15,7 @@
 package org.databene.commons.iterator;
 
 /**
- * Special sub type of {@link Iterable} which creates {@link SelectiveTabularIterator}s.<br/><br/>
+ * Special sub type of {@link Iterable} which creates {@link SelectiveTabularIterator}s.
  * Created: 26.01.2012 18:31:04
  * @since 0.5.14
  * @author Volker Bergmann

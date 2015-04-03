@@ -15,8 +15,7 @@
 package org.databene.commons.iterator;
 
 /**
- * Proxy for a {@link BidirectionalIterator}.<br/>
- * <br/>
+ * Proxy for a {@link BidirectionalIterator}.
  * Created: 12.05.2007 23:18:31
  * @author Volker Bergmann
  */

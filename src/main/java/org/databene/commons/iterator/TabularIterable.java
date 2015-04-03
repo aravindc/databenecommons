@@ -17,7 +17,7 @@ package org.databene.commons.iterator;
 import org.databene.commons.HeavyweightIterable;
 
 /**
- * Special sub type of {@link Iterable} which creates {@link TabularIterator}s.<br/><br/>
+ * Special sub type of {@link Iterable} which creates {@link TabularIterator}s.
  * Created: 26.01.2012 17:59:58
  * @since 0.5.14
  * @author Volker Bergmann

@@ -21,8 +21,7 @@ import java.util.Comparator;
 
 /**
  * Compares (local) files by their names,
- * supporting different comparation strategies by a user-definable Comparator.<br/>
- * <br/>
+ * supporting different comparation strategies by a user-definable Comparator.
  * Created: 11.05.2007 18:24:45
  * @author Volker Bergmann
  */

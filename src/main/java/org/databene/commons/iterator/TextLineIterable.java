@@ -22,8 +22,7 @@ import org.databene.commons.ReaderLineIterator;
 import java.io.IOException;
 
 /**
- * Creates Iterator object that iterate through the lines of a text file from the specified uri.<br/>
- * <br/>
+ * Creates Iterator object that iterate through the lines of a text file from the specified uri.
  * Created: 27.08.2007 19:13:40
  * @author Volker Bergmann
  */

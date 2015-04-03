@@ -22,7 +22,7 @@ import org.databene.commons.HeavyweightIterator;
 
 /**
  * Proxy for an {@link Iterator} with additional support for 
- * iterators that implement the {@link Closeable} interface.<br/><br/>
+ * iterators that implement the {@link Closeable} interface.
  * Created: 13.10.2010 13:22:46
  * @since 0.5.4
  * @author Volker Bergmann

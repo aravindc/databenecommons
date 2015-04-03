@@ -19,7 +19,7 @@ import java.text.DecimalFormat;
 import org.databene.commons.BinaryScale;
 
 /**
- * Formats a number in a human-friendly manner, e.g. a file size in megabytes.<br/><br/>
+ * Formats a number in a human-friendly manner, e.g. a file size in megabytes.
  * Created: 06.03.2011 15:12:55
  * @since 0.5.8
  * @author Volker Bergmann

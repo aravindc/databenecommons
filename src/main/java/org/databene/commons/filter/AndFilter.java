@@ -18,7 +18,7 @@ import org.databene.commons.Filter;
 
 /**
  * Combines {@link Filter} components in an AND manner: A candidate value is only accepted if each of the 
- * components accepts it.<br/><br/>
+ * components accepts it.
  * Created: 08.06.2012 20:36:23
  * @since 0.5.16
  * @author Volker Bergmann

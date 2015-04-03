@@ -19,7 +19,7 @@ import org.databene.commons.iterator.BidirectionalIterator;
 import java.util.List;
 
 /**
- * A {@link BidirectionalIterator} for {@link List}s.<br/><br/>
+ * A {@link BidirectionalIterator} for {@link List}s.
  * Created: 08.05.2007 19:50:20
  * @author Volker Bergmann
  */

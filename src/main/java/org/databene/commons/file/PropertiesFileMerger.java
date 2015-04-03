@@ -31,7 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Merges properties files with priority and allows for override by VM parameters.<br/><br/>
+ * Merges properties files with priority and allows for override by VM parameters.
  * Created: 01.08.2013 10:37:30
  * @since 0.5.24
  * @author Volker Bergmann

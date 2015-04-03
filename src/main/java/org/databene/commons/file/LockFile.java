@@ -33,7 +33,7 @@ import java.io.IOException;
  *			System.exit(-1);
  *		}
  * </pre>
- * <br/><br/>
+ * 
  * Created: 29.11.2013 08:16:23
  * @since 0.5.25
  * @author Volker Bergmann

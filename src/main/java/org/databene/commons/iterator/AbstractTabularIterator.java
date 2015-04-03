@@ -17,7 +17,7 @@ package org.databene.commons.iterator;
 import java.io.IOException;
 
 /**
- * Abstract implementation of the {@link TabularIterator} interface.<br/><br/>
+ * Abstract implementation of the {@link TabularIterator} interface.
  * Created: 27.10.2011 08:46:11
  * @since 0.5.11
  * @author Volker Bergmann

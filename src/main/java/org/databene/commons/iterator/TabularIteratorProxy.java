@@ -15,7 +15,7 @@
 package org.databene.commons.iterator;
 
 /**
- * Proxy implementation for the {@link TabularIterator} interface.<br/><br/>
+ * Proxy implementation for the {@link TabularIterator} interface.
  * Created: 26.10.2011 21:58:20
  * @since 0.5.11
  * @author Volker Bergmann

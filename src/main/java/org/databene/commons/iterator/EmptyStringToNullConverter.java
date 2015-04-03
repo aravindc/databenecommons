@@ -19,7 +19,7 @@ import org.databene.commons.Converter;
 import org.databene.commons.converter.ThreadSafeConverter;
 
 /**
- * {@link Converter} implementation which converts empty {@link String}s to null values.<br/><br/>
+ * {@link Converter} implementation which converts empty {@link String}s to null values.
  * Created: 08.03.2011 14:50:50
  * @since 0.5.8
  * @author Volker Bergmann

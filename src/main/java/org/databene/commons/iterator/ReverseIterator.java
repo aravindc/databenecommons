@@ -15,8 +15,7 @@
 package org.databene.commons.iterator;
 
 /**
- * Iterates through a {@link BidirectionalIterator} in reverse order.<br/>
- * <br/>
+ * Iterates through a {@link BidirectionalIterator} in reverse order.
  * Created: 12.05.2007 23:18:08
  * @author Volker Bergmann
  */

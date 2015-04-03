@@ -18,7 +18,7 @@ import org.databene.commons.SystemInfo;
 
 /**
  * Wrapper class for resources that are monitored.
- * It stores the monitored object itself and its allocation stack trace.<br/><br/>
+ * It stores the monitored object itself and its allocation stack trace.
  * Created: 14.04.2011 17:22:56
  * @since 0.5.8
  * @author Volker Bergmann

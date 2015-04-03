@@ -20,8 +20,7 @@ import org.databene.commons.HeavyweightIterator;
 import org.databene.commons.HeavyweightTypedIterable;
 
 /**
- * {@link Iterable} proxy that wraps an untyped Iterable and adds type information.<br/>
- * <br/>
+ * {@link Iterable} proxy that wraps an untyped Iterable and adds type information.
  * Created: 02.09.2007 23:29:10
  * @author Volker Bergmann
  */

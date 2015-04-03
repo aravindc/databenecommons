@@ -20,7 +20,6 @@ import org.databene.commons.Assert;
 
 /**
  * {@link Iterator} implementation that iterates the elements of an array.
- * <br/>
  * Created at 30.06.2009 09:26:55
  * @since 0.5.0
  * @author Volker Bergmann

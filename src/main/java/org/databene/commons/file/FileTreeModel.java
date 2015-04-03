@@ -24,8 +24,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * databene TreeModel implementation for files.<br/>
- * <br/>
+ * databene TreeModel implementation for files.
  * Created: 08.05.2007 17:55:54
  * @author Volker Bergmann
  */

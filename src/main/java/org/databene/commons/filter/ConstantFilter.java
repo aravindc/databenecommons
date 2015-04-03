@@ -17,7 +17,7 @@ package org.databene.commons.filter;
 import org.databene.commons.Filter;
 
 /**
- * Yields the same result for any argument.<br/><br/>
+ * Yields the same result for any argument.
  * Created: 08.06.2012 20:56:15
  * @since 0.5.16
  * @author Volker Bergmann

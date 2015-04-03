@@ -15,7 +15,7 @@
 package org.databene.commons.debug;
 
 /**
- * Gives access to environment settings related to debugging.<br/><br/>
+ * Gives access to environment settings related to debugging.
  * Created: 14.04.2011 18:22:23
  * @since 0.5.8
  * @author Volker Bergmann

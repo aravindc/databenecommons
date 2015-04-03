@@ -22,7 +22,7 @@ import org.databene.commons.ConfigurationError;
 import org.databene.commons.Filter;
 
 /**
- * Utility class which provides convenience methods related to {@link Filter}s.<br/><br/>
+ * Utility class which provides convenience methods related to {@link Filter}s.
  * Created: 05.06.2011 22:58:00
  * @since 0.5.8
  * @author Volker Bergmann

@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 import org.databene.commons.Filter;
 
 /**
- * {@link Filter} implementation which filters strings by regular expressions for inclusion and exclusion.<br/><br/>
+ * {@link Filter} implementation which filters strings by regular expressions for inclusion and exclusion.
  * Created: 11.06.2011 15:48:30
  * @since 0.5.8
  * @author Volker Bergmann

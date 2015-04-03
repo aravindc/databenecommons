@@ -16,8 +16,7 @@ package org.databene.commons.iterator;
 
 /**
  * Iterates through another BidirectionalIterator repeatedly. 
- * This is supported forward as well as backward.<br/>
- * <br/>
+ * This is supported forward as well as backward.
  * Created: 12.05.2007 23:21:48
  * @author Volker Bergmann
  */

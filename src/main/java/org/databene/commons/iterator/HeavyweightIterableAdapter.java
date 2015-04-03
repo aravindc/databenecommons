@@ -20,8 +20,7 @@ import org.databene.commons.HeavyweightIterator;
 /**
  * Wraps an {@link Iterable} with a {@link HeavyweightIterable}.
  * On calls to <code>iterator()</code>, Iterators of the wrapped 
- * Iterable will be wrapped to be {@link HeavyweightIterator}s.<br/>
- * <br/>
+ * Iterable will be wrapped to be {@link HeavyweightIterator}s.
  * Created at 17.10.2008 01:29:37
  * @since 0.4.6
  * @author Volker Bergmann

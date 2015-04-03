@@ -20,7 +20,7 @@ import java.io.PrintStream;
 
 /**
  * {@link PrintStream} implementation that writes to a file 
- * and exhibits the file name to client code.<br/><br/>
+ * and exhibits the file name to client code.
  * Created: 15.11.2010 07:38:28
  * @since 0.5.4
  * @author Volker Bergmann

@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Concurrent implementation of the {@link SimpleDateFormat} features.<br/><br/>
+ * Concurrent implementation of the {@link SimpleDateFormat} features.
  * Created: 26.02.2010 15:27:23
  * @since 0.5.0
  * @author Volker Bergmann

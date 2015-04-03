@@ -20,7 +20,7 @@ import java.io.Reader;
 import java.nio.CharBuffer;
 
 /**
- * Special {@link PushbackReader} implementation which provides the current cursor offset.<br/><br/>
+ * Special {@link PushbackReader} implementation which provides the current cursor offset.
  * Created: 19.03.2013 21:13:02
  * @since 0.5.23
  * @author Volker Bergmann
