@@ -20,8 +20,7 @@ import java.util.List;
 import org.databene.commons.Accessor;
 
 /**
- * Proxy of an accessor.<br/>
- * <br/>
+ * Proxy of an accessor.
  * Created: 08.03.2006 15:44:51
  * @author Volker Bergmann
  */

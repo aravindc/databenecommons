@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * DependentAccessor implementation that manages the dependencies in a List.<br/>
- * <br/>
+ * DependentAccessor implementation that manages the dependencies in a List.
  * Created: 11.03.2006 14:32:52
  * @author Volker Bergmann
  */

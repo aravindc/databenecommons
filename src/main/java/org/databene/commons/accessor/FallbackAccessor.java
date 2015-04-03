@@ -18,7 +18,7 @@ import org.databene.commons.Accessor;
 
 /**
  * Accessor that consecutively queries a chain of accessors 
- * until one provides the requested value.<br/>
+ * until one provides the requested value.
  * @since 0.3.0
  * @author Volker Bergmann
  */

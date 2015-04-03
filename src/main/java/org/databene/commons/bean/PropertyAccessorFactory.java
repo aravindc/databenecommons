@@ -24,8 +24,7 @@ import java.beans.PropertyDescriptor;
  * The fastest accessors are available when the bean class is provided with the property name.
  * property names may express navigation over refering JavaBean entities, e.g. 'category.name'.
  * A PropertyAccessor in a non-strict mode converts the invocation argument to the correct property type
- * and behaves quietly, if it doesn not find the specified property<br/>
- * <br/>
+ * and behaves quietly, if it doesn not find the specified property
  * Created: 06.01.2005 20:04:36
  * @author Volker Bergmann
  */

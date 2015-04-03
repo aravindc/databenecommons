@@ -20,7 +20,7 @@ import org.databene.commons.ArrayFormat;
 
 /**
  * Wrapper for an array which implements {@link #equals(Object)}, {@link #hashCode()} and {@link #toString()}
- * based on the array's element values.<br/><br/>
+ * based on the array's element values.
  * Created: 03.02.2012 16:34:14
  * @since 0.5.4
  * @author Volker Bergmann

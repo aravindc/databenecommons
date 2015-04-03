@@ -23,8 +23,7 @@ import java.io.ObjectInputStream;
 import org.databene.commons.NullSafeComparator;
 
 /**
- * Default implementation for {@link ObservableBean}.<br/>
- * <br/>
+ * Default implementation for {@link ObservableBean}.
  * Created at 17.07.2008 14:47:55
  * @since 0.4.5
  * @author Volker Bergmann

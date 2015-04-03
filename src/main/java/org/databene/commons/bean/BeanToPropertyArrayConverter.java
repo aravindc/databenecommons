@@ -18,8 +18,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.converter.ThreadSafeConverter;
 
 /**
- * Converter implementation that extracts all property values of a JavaBean to a Properties object.<br/>
- * <br/>
+ * Converter implementation that extracts all property values of a JavaBean to a Properties object.
  * Created: 07.06.2007 14:11:58
  * @author Volker Bergmann
  */

@@ -24,8 +24,7 @@ import java.lang.reflect.Method;
 import java.beans.PropertyDescriptor;
 
 /**
- * Mutates the value of a JavaBean property with knowledge of the property type.<br/>
- * <br/>
+ * Mutates the value of a JavaBean property with knowledge of the property type.
  * Created: 21.07.2007 08:58:49
  * @author Volker Bergmann
  */

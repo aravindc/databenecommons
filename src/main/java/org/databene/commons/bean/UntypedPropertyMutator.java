@@ -24,8 +24,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 
 /**
- * Mutates the value of a property on a JavaBean target object.<br/>
- * <br/>
+ * Mutates the value of a property on a JavaBean target object.
  * Created: 21.07.2007 09:01:19
  * @author Volker Bergmann
  */

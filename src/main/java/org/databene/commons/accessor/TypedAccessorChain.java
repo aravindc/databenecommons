@@ -16,8 +16,7 @@ package org.databene.commons.accessor;
 
 /**
  * Consecutively invokes a series of accessors 
- * using the result value of each invocation as input value for the next.<br/>
- * <br/>
+ * using the result value of each invocation as input value for the next.
  * Created: 21.07.2007 07:02:07
  * @author Volker Bergmann
  */

@@ -17,7 +17,7 @@ package org.databene.commons.accessor;
 import org.databene.commons.Accessor;
 
 /**
- * Evaluates a boolean 'condition' accessor and, depending on the result, calls one of two other accessors.<br/><br/>
+ * Evaluates a boolean 'condition' accessor and, depending on the result, calls one of two other accessors.
  * Created: 28.02.2013 16:17:04
  * @since 0.5.21
  * @author Volker Bergmann

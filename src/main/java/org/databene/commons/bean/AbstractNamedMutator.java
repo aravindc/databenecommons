@@ -17,8 +17,7 @@ package org.databene.commons.bean;
 import org.databene.commons.mutator.NamedMutator;
 
 /**
- * Abstraction of a Mutator to which a name is assigned.<br/>
- * <br/>
+ * Abstraction of a Mutator to which a name is assigned.
  * Created at 04.11.2008 09:20:51
  * @since 0.4.6
  * @author Volker Bergmann

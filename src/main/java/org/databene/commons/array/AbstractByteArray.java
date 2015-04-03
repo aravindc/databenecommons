@@ -17,7 +17,7 @@ package org.databene.commons.array;
 import org.databene.commons.converter.ToStringConverter;
 
 /**
- * Parent class for classes that manage a dynamically increasing byte array.<br/><br/>
+ * Parent class for classes that manage a dynamically increasing byte array.
  * Created: 02.04.2015 11:04:03
  * @since 1.0.5
  * @author Volker Bergmann

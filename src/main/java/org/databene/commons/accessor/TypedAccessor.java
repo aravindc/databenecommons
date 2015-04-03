@@ -17,8 +17,7 @@ package org.databene.commons.accessor;
 import org.databene.commons.Accessor;
 
 /**
- * Accessor that tells the type of Object it returns.<br/>
- * <br/>
+ * Accessor that tells the type of Object it returns.
  * Created: 22.02.2006 20:03:44
  * @author Volker Bergmann
  */

@@ -19,8 +19,7 @@ import org.databene.commons.Accessor;
 import java.util.List;
 
 /**
- * Accessor that depends on other Accessors.<br/>
- * <br/>
+ * Accessor that depends on other Accessors.
  * Created: 08.03.2006 15:50:10
  * @author Volker Bergmann
  */

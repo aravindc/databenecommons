@@ -17,8 +17,7 @@ package org.databene.commons.accessor;
 import org.databene.commons.Accessor;
 
 /**
- * Inverts the boolean result of another Accessor.<br/>
- * <br/>
+ * Inverts the boolean result of another Accessor.
  * Created: 07.03.2006 16:48:52
  * @author Volker Bergmann
  */

@@ -20,7 +20,7 @@ import org.databene.commons.accessor.FeatureAccessor;
 import org.databene.commons.converter.ThreadSafeConverter;
 
 /**
- * Maps a bean's feature (attributes, properties, Map contents) values to an array of values.<br/><br/>
+ * Maps a bean's feature (attributes, properties, Map contents) values to an array of values.
  * Created: 14.07.2014 15:24:31
  * @since 0.5.33
  * @author Volker Bergmann

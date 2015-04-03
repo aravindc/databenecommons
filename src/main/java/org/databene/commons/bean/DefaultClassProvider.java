@@ -18,8 +18,7 @@ import org.databene.commons.BeanUtil;
 
 /**
  * Default implementation of the {@link ClassProvider} interface.
- * It forwards the call to {@link BeanUtil}.<br/>
- * <br/>
+ * It forwards the call to {@link BeanUtil}.
  * Created at 16.11.2008 07:05:10
  * @since 0.4.6
  * @author Volker Bergmann

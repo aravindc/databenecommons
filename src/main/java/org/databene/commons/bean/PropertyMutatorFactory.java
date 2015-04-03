@@ -18,8 +18,7 @@ import org.databene.commons.mutator.NamedMutator;
 
 /**
  * Creates PropertyMutator objects by availability of 
- * bean class name and/or property name and/or property type.<br/>
- * <br/>
+ * bean class name and/or property name and/or property type.
  * Created: 13.05.2005 09:26:14
  * @since 0.1
  * @author Volker Bergmann

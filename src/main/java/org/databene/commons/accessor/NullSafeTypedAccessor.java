@@ -15,8 +15,7 @@
 package org.databene.commons.accessor;
 
 /**
- * Typed Accessor that returns a default value if invoked on argument null.<br/>
- * <br/>
+ * Typed Accessor that returns a default value if invoked on argument null.
  * Created: 22.02.2006 20:08:36
  * @author Volker Bergmann
  */

@@ -18,7 +18,7 @@ import org.databene.commons.Mutator;
 import org.databene.commons.UpdateFailedException;
 
 /**
- * Wraps a Mutator, forwards calls to {@link #setValue(Object, Object)} and adds a name property.<br/><br/>
+ * Wraps a Mutator, forwards calls to {@link #setValue(Object, Object)} and adds a name property.
  * Created: 28.02.2013 16:42:38
  * @since 0.5.21
  * @author Volker Bergmann

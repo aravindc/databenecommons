@@ -18,8 +18,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.converter.ThreadSafeConverter;
 
 /**
- * Wraps an Accessor with a Converter interface implementation.<br/>
- * <br/>
+ * Wraps an Accessor with a Converter interface implementation.
  * Created: 25.06.2007 08:04:22
  * @author Volker Bergmann
  */

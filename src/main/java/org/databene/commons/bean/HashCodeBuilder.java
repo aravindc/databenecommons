@@ -17,7 +17,7 @@ package org.databene.commons.bean;
 import java.util.Arrays;
 
 /**
- * Helper class for calculating hash codes.<br/><br/>
+ * Helper class for calculating hash codes.
  * Created: 24.11.2010 12:39:14
  * @since 0.5.4
  * @author Volker Bergmann

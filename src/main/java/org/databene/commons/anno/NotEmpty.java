@@ -20,8 +20,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Marks attributes or parameters that may not be null or empty.<br/>
- * <br/>
+ * Marks attributes or parameters that may not be null or empty.
  * Created at 31.01.2009 07:39:52
  * @since 0.4.8
  * @author Volker Bergmann

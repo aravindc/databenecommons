@@ -17,8 +17,7 @@ package org.databene.commons.accessor;
 import org.databene.commons.Accessor;
 
 /**
- * Accesses object graphs by splitting a path names into tokens by a dot separator('.').<br/>
- * <br/>
+ * Accesses object graphs by splitting a path names into tokens by a dot separator('.').
  * Created: 12.06.2007 18:29:19
  * @author Volker Bergmann
  */

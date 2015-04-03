@@ -20,8 +20,7 @@ import org.databene.commons.accessor.TypedAccessor;
 import org.databene.commons.accessor.TypedAccessorChain;
 
 /**
- * Accesses JavaBean object graphs.<br/>
- * <br/>
+ * Accesses JavaBean object graphs.
  * Created: 21.07.2007 10:18:17
  * @author Volker Bergmann
  */

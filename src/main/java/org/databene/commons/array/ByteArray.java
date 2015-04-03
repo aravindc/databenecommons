@@ -15,7 +15,7 @@
 package org.databene.commons.array;
 
 /**
- * Provides byte array features adding dynamic extension of buffer size.<br/><br/>
+ * Provides byte array features adding dynamic extension of buffer size.
  * Created: 02.04.2015 11:12:50
  * @since 1.0.5
  * @author Volker Bergmann

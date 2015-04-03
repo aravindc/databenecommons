@@ -18,8 +18,7 @@ import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 
 /**
- * Interface for all JavaBeans that serve as observable.<br/>
- * <br/>
+ * Interface for all JavaBeans that serve as observable.
  * Created at 17.07.2008 14:46:21
  * @since 0.4.5
  * @author Volker Bergmann

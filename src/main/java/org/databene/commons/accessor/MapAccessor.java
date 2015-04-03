@@ -20,8 +20,7 @@ import org.databene.commons.NullSafeComparator;
 import java.util.Map;
 
 /**
- * Accesses Values from a Map.<br/>
- * <br/>
+ * Accesses Values from a Map.
  * Created: 11.03.2006 12:39:07
  * @author Volker Bergmann
  */

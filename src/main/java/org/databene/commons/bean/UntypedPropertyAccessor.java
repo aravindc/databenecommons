@@ -21,8 +21,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 
 /**
- * Retrieves values of a JavaBean property without knowing the bean type.<br/>
- * <br/>
+ * Retrieves values of a JavaBean property without knowing the bean type.
  * Created: 21.07.2007 10:18:09
  * @author Volker Bergmann
  */

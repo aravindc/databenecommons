@@ -17,8 +17,7 @@ package org.databene.commons.bean;
 import org.databene.commons.accessor.TypedAccessor;
 
 /**
- * Accesses a named (e.g. JavaBean) property.<br/>
- * <br/>
+ * Accesses a named (e.g. JavaBean) property.
  * Created: 11.03.2006 22:17:33
  * @author Volker Bergmann
  */

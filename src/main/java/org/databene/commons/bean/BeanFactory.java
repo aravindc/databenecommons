@@ -22,8 +22,7 @@ import java.util.Map;
 
 /**
  * Instantiates JavaBeans from class name and a Properties object 
- * that contains the text representation of the bean property values.<br/>
- * <br/>
+ * that contains the text representation of the bean property values.
  * Created: 04.09.2007 21:13:06
  * @author Volker Bergmann
  */

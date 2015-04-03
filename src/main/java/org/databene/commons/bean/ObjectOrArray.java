@@ -20,7 +20,7 @@ import org.databene.commons.ArrayFormat;
 
 /**
  * Wraps a plain object or an array and provides equals() and hashCode() 
- * that works consistently for both.<br/><br/>
+ * that works consistently for both.
  * Created: 09.09.2010 09:53:11
  * @since 0.5.4
  * @author Volker Bergmann

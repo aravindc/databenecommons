@@ -30,8 +30,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- * Get values from Maps, Contexts, Composites and JavaBeans.<br/>
- * <br/>
+ * Get values from Maps, Contexts, Composites and JavaBeans.
  * Created: 12.06.2007 18:36:11
  * @author Volker Bergmann
  */

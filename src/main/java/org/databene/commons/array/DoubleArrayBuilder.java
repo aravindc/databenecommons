@@ -17,7 +17,7 @@ package org.databene.commons.array;
 import org.databene.commons.converter.ToStringConverter;
 
 /**
- * Helper class for constructing double arrays.<br/><br/>
+ * Helper class for constructing double arrays.
  * Created: 30.12.2013 21:53:43
  * @since 0.5.26
  * @author Volker Bergmann

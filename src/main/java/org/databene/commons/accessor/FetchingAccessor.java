@@ -17,8 +17,7 @@ package org.databene.commons.accessor;
 import org.databene.commons.Accessor;
 
 /**
- * Two step Accessor, that uses one Accessor to fetch an object and another one to read a value from it.<br/>
- * <br/>
+ * Two step Accessor, that uses one Accessor to fetch an object and another one to read a value from it.
  * Created: 12.06.2007 18:43:28
  * @author Volker Bergmann
  */

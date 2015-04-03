@@ -27,8 +27,7 @@ import org.databene.commons.ConfigurationError;
 import org.databene.commons.StringUtil;
 
 /**
- * Creates {@link ObservableBean} implementations from interfaces.<br/>
- * <br/>
+ * Creates {@link ObservableBean} implementations from interfaces.
  * Created at 17.07.2008 14:57:53
  * @since 0.4.5
  * @author Volker Bergmann

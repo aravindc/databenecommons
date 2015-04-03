@@ -17,8 +17,7 @@ package org.databene.commons.accessor;
 import org.databene.commons.Accessor;
 
 /**
- * Accessor wrapper that returns a predefined value if getValue() is invoked with a 'null' source.<br/>
- * <br/>
+ * Accessor wrapper that returns a predefined value if getValue() is invoked with a 'null' source.
  * Created: 26.06.2005 08:22:21
  * @author Volker Bergmann
  */

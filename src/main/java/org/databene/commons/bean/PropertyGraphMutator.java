@@ -22,8 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Mutates JavaBean object graphs.<br/>
- * <br/>
+ * Mutates JavaBean object graphs.
  * Created: 08.05.2005 06:24:41
  * @author Volker Bergmann
  */

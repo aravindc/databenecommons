@@ -28,8 +28,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Provides classes by name, supporting package import and local class names.<br/>
- * <br/>
+ * Provides classes by name, supporting package import and local class names.
  * Created at 15.11.2008 17:03:04
  * @since 0.4.6
  * @author Volker Bergmann

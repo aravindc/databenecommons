@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Uses an accessor which is stored in a Map for accessing the target object.<br/>
- * <br/>
+ * Uses an accessor which is stored in a Map for accessing the target object.
  * Created: 11.03.2006 12:45:26
  * @author Volker Bergmann
  */

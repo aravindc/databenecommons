@@ -17,8 +17,7 @@ package org.databene.commons.accessor;
 import org.databene.commons.Accessor;
 
 /**
- * Accessor that always returns the same value, independent of the object it is applied to.<br/>
- * <br/>
+ * Accessor that always returns the same value, independent of the object it is applied to.
  * Created: 06.03.2006 08:59:02
  * @author Volker Bergmann
  */

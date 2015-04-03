@@ -21,8 +21,7 @@ import org.databene.commons.converter.AnyConverter;
 
 /**
  * Extracts property values from an array of JavaBeans in a way that
- * processing n beans results in an array of n elements with the property values.<br/>
- * <br/>
+ * processing n beans results in an array of n elements with the property values.
  * Created: 02.08.2007 20:47:35
  * @author Volker Bergmann
  */
