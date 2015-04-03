@@ -21,7 +21,7 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * Tests the {@link LocaleUtil} class.<br/><br/>
+ * Tests the {@link LocaleUtil} class.
  * Created: 27.08.2006 21:13:29
  * @author Volker Bergmann
  */

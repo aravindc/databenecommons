@@ -23,7 +23,7 @@ import org.databene.commons.StringUtil;
 import org.databene.commons.ArrayUtil;
 
 /**
- * Tests the {@link StringUtil} class.<br/><br/>
+ * Tests the {@link StringUtil} class.
  * Created: 21.07.2006 17:31:42
  * @since 0.1
  * @author Volker Bergmann

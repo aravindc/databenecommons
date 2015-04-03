@@ -24,8 +24,7 @@ import java.text.Collator;
 import org.databene.commons.NullSafeComparator;
 
 /**
- * Tests the NullSafeComparator.<br/>
- * <br/>
+ * Tests the NullSafeComparator.
  * Created: 20.04.2006 18:01:28
  * @author Volker Bergmann
  */

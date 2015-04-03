@@ -21,8 +21,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Test the {@link OrderedSet}.<br/>
- * <br/>
+ * Test the {@link OrderedSet}.
  * Created at 28.02.2009 13:52:28
  * @since 0.4.8
  * @author Volker Bergmann

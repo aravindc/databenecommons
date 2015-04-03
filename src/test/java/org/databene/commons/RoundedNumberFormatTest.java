@@ -18,8 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the RoundedNumberFormat class.<br/>
- * <br/>
+ * Tests the RoundedNumberFormat class.
  * Created: 01.09.2007 16:30:06
  * @author Volker Bergmann
  */

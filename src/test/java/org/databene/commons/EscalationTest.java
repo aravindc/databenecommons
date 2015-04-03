@@ -18,7 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link Escalation} class.<br/><br/>
+ * Tests the {@link Escalation} class.
  * Created at 29.04.2008 18:51:28
  * @since 0.2.04
  * @author Volker Bergmann

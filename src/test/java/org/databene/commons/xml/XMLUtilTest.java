@@ -44,7 +44,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the XMLUtil class.<br/><br/>
+ * Tests the XMLUtil class.
  * Created: 19.03.2008 09:11:08
  * @author Volker Bergmann
  */

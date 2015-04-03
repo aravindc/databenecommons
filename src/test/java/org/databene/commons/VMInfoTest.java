@@ -18,7 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link VMInfo} class.<br/><br/>
+ * Tests the {@link VMInfo} class.
  * Created: 21.06.2007 08:35:45
  * @author Volker Bergmann
  */

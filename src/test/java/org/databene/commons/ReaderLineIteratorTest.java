@@ -22,8 +22,7 @@ import java.io.StringReader;
 import java.io.Reader;
 
 /**
- * Tests the {@link ReaderLineIterator}.<br/>
- * <br/>
+ * Tests the {@link ReaderLineIterator}.
  * Created: 01.05.2007 09:36:47
  * @author Volker Bergmann
  */

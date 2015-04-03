@@ -17,7 +17,7 @@ package org.databene.commons;
 import org.junit.Test;
 
 /**
- * Tests the {@link SpeechUtil}.<br/><br/>
+ * Tests the {@link SpeechUtil}.
  * Created: 14.09.2010 12:52:22
  * @since 0.5.4
  * @author Volker Bergmann

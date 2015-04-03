@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Tests the {@link CollectionUtil} class.<br/><br/>
+ * Tests the {@link CollectionUtil} class.
  * Created: 21.06.2007 08:29:32
  * @author Volker Bergmann
  */

@@ -30,7 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Tests the {@link IOUtil} class.<br/><br/>
+ * Tests the {@link IOUtil} class.
  * Created: 21.06.2007 08:31:28
  * @since 0.1
  * @author Volker Bergmann

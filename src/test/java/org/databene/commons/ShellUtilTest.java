@@ -21,7 +21,7 @@ import java.io.StringWriter;
 import org.junit.Test;
 
 /**
- * Tests the {@link ShellUtil}.<br/><br/>
+ * Tests the {@link ShellUtil}.
  * Created: 22.02.2010 17:09:02
  * @since 0.5.0
  * @author Volker Bergmann

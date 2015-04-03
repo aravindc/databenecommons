@@ -18,8 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link MathUtil} class.<br/>
- * <br/>
+ * Tests the {@link MathUtil} class.
  * @author Volker Bergmann
  */
 public class MathUtilTest {

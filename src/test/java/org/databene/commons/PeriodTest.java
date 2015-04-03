@@ -18,7 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the Period class.<br/><br/>
+ * Tests the Period class.
  * Created at 02.05.2008 15:39:31
  * @since 0.4.3
  * @author Volker Bergmann

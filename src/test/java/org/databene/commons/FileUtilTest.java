@@ -22,8 +22,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link FileUtil} class.<br/>
- * <br/>
+ * Tests the {@link FileUtil} class.
  * Created at 10.03.2009 18:21:54
  * @since 0.5.8
  * @author Volker Bergmann

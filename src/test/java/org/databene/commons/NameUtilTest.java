@@ -22,7 +22,7 @@ import java.util.List;
 import org.junit.Test;
 
 /**
- * Tests the {@link NameUtil} class.<br/><br/>
+ * Tests the {@link NameUtil} class.
  * Created: 12.08.2010 11:47:03
  * @since 0.5.4
  * @author Volker Bergmann

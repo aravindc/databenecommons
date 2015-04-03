@@ -22,7 +22,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link CompositeFormatter}.<br/><br/>
+ * Tests the {@link CompositeFormatter}.
  * Created at 02.05.2008 12:08:43
  * @since 0.4.3
  * @author Volker Bergmann

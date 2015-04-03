@@ -18,7 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link Assert} class.<br/><br/>
+ * Tests the {@link Assert} class.
  * Created at 06.05.2008 12:43:45
  * @since 0.5.3
  * @author Volker Bergmann

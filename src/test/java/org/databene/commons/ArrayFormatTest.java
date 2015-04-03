@@ -23,7 +23,7 @@ import java.util.Locale;
 import org.databene.commons.converter.ToStringConverter;
 
 /**
- * Tests the {@link ArrayFormat}.<br/><br/>
+ * Tests the {@link ArrayFormat}.
  * Created: 20.06.2007 08:52:26
  * @author Volker Bergmann
  */

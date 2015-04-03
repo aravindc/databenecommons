@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 import java.io.PrintWriter;
 
 /**
- * Tests the BeanUtil class.<br/><br/>
+ * Tests the BeanUtil class.
  * Created: 05.04.2007 07:51:00
  * @since 0.1
  * @author Volker Bergmann

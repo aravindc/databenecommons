@@ -17,7 +17,7 @@ package org.databene.commons;
 import org.databene.commons.validator.AbstractValidator;
 
 /**
- * Trivial validator class for testing.<br/><br/>
+ * Trivial validator class for testing.
  * Created: 02.01.2012 19:37:17
  * @since 0.5.14
  * @author Volker Bergmann

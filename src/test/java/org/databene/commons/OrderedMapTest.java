@@ -20,7 +20,7 @@ import static junit.framework.Assert.*;
 import java.util.*;
 
 /**
- * Tests the {@link OrderedMap}.<br/><br/>
+ * Tests the {@link OrderedMap}.
  * Created: 21.06.2007 08:32:53
  * @author Volker Bergmann
  */

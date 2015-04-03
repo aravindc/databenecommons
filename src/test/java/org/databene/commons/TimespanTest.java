@@ -23,7 +23,7 @@ import org.databene.commons.Timespan;
 import org.databene.commons.TimeUtil;
 
 /**
- * Tests the {@link Timespan} class.<br/><br/>
+ * Tests the {@link Timespan} class.
  * Created: 17.02.2005 21:29:24
  * @author Volker Bergmann
  */

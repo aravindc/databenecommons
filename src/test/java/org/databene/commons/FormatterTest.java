@@ -21,7 +21,7 @@ import java.util.Locale;
 import org.junit.Test;
 
 /**
- * Tests the Formatter.<br/><br/>
+ * Tests the Formatter.
  * Created: 23.12.2013 09:07:11
  * @since 0.5.25
  * @author Volker Bergmann

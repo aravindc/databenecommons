@@ -20,7 +20,7 @@ import static junit.framework.Assert.*;
 import java.util.Comparator;
 
 /**
- * Tests the {@link ComparableComparator}.<br/><br/>
+ * Tests the {@link ComparableComparator}.
  * Created: 21.06.2007 08:30:00
  * @author Volker Bergmann
  */

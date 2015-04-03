@@ -20,7 +20,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link CharSet}.<br/><br/>
+ * Tests the {@link CharSet}.
  * Created: 21.06.2007 08:28:50
  * @author Volker Bergmann
  */

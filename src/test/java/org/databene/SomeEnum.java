@@ -15,9 +15,9 @@
 package org.databene;
 
 /**
- * Enumeration used for testing.<br/>
- * <br/>
+ * Enumeration used for testing.
  * Created: 20.08.2007 07:16:39
+ * @author Volker Bergmann
  */
 public enum SomeEnum {
     ONE, TWO, THREE

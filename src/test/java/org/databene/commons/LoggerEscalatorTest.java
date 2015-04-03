@@ -17,7 +17,7 @@ package org.databene.commons;
 import org.junit.Test;
 
 /**
- * Tests the {@link LoggerEscalator}.<br/><br/>
+ * Tests the {@link LoggerEscalator}.
  * Created at 02.05.2008 15:16:22
  * @since 0.4.3
  * @author Volker Bergmann

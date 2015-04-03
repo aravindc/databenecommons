@@ -15,8 +15,7 @@
 package org.databene;
 
 /**
- * Simple JavaBean used for testing.<br/>
- * <br/>
+ * Simple JavaBean used for testing.
  * Created: 19.08.2007 15:27:37
  */
 public final class SomeBean {

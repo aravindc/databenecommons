@@ -24,7 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Tests the {@link SystemInfo} class.<br/><br/>
+ * Tests the {@link SystemInfo} class.
  * Created: 21.06.2007 08:35:00
  * @author Volker Bergmann
  */

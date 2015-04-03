@@ -20,7 +20,7 @@ import static junit.framework.Assert.*;
 import java.util.*;
 
 /**
- * Tests the {@link ArrayUtil} class.<br/><br/>
+ * Tests the {@link ArrayUtil} class.
  * Created: 20.06.2007 18:03:10
  * @author Volker Bergmann
  */
