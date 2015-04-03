@@ -23,7 +23,7 @@ import org.databene.commons.TimeUtil;
 
 /**
  * Parses the literal representation a simple type into an appropriate Java object of type 
- * Boolean, Integer, Long, Double, Date or String.<br/><br/>
+ * Boolean, Integer, Long, Double, Date or String.
  * Created: 19.03.2008 20:05:25
  * @author Volker Bergmann
  */

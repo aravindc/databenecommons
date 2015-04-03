@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts {@link Number}s to {@link Short}s.<br/><br/>
+ * Converts {@link Number}s to {@link Short}s.
  * Created: 15.11.2012 10:25:52
  * @since 0.5.20
  * @author Volker Bergmann

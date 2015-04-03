@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Combines several {@link List} components to be treated as a single list which contains all component lists' elements.<br/><br/>
+ * Combines several {@link List} components to be treated as a single list which contains all component lists' elements.
  * Created: 22.08.2012 17:53:31
  * @since 0.5.18
  * @author Volker Bergmann

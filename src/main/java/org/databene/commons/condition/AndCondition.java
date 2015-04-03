@@ -18,8 +18,7 @@ import org.databene.commons.Condition;
 
 /**
  * Composite condition that requires each sub condition to be true. 
- * If no sub conditions exist, true is returned by default.<br/>
- * <br/>
+ * If no sub conditions exist, true is returned by default.
  * Created: 04.02.2007 00:42:31
  * @author Volker Bergmann
  */

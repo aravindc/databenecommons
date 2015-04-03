@@ -20,8 +20,7 @@ import java.text.NumberFormat;
 import org.databene.commons.ConversionException;
 
 /**
- * Parses a {@link String} as {@link NumberFormat}.<br/>
- * <br/>
+ * Parses a {@link String} as {@link NumberFormat}.
  * Created at 13.07.2009 18:45:20
  * @since 0.5.0
  * @author Volker Bergmann

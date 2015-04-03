@@ -21,8 +21,7 @@ import java.util.Comparator;
 
 /**
  * Condition implementation that compares an arbitrary number of arguments 
- * with one of different available operators.<br/>
- * <br/>
+ * with one of different available operators.
  * Created: 06.03.2006 17:49:06
  * @since 0.1
  * @author Volker Bergmann

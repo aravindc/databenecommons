@@ -20,8 +20,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- * Converts {@link Date} to {@link Timestamp} Objects.<br/>
- * <br/>
+ * Converts {@link Date} to {@link Timestamp} Objects.
  * Created: 28.11.2007 20:07:16
  * @author Volker Bergmann
  * @since 0.2.04

@@ -19,7 +19,7 @@ import org.databene.commons.Converter;
 
 /**
  * Parent class for {@link Converter} implementations that 
- * holds references to several other converter objects.<br/><br/>
+ * holds references to several other converter objects.
  * Created: 26.02.2010 13:50:43
  * @since 0.5.0
  * @author Volker Bergmann

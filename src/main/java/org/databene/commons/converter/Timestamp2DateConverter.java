@@ -20,7 +20,7 @@ import java.util.Date;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts {@link Timestamp}s to {@link Date}s.<br/><br/>
+ * Converts {@link Timestamp}s to {@link Date}s.
  * Created: 25.02.2010 23:26:35
  * @since 0.5.0
  * @author Volker Bergmann

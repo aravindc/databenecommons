@@ -18,8 +18,7 @@ import org.databene.commons.Capitalization;
 import org.databene.commons.Patterns;
 
 /**
- * Holds format strings for date and number objects.<br/>
- * <br/>
+ * Holds format strings for date and number objects.
  * Created at 01.10.2009 12:18:59
  * @since 0.5.0
  * @author Volker Bergmann

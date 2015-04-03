@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts {@link String}s of length 1 to {@link Character}s, Strings of length 0 to <code>null</code>.<br/><br/>
+ * Converts {@link String}s of length 1 to {@link Character}s, Strings of length 0 to <code>null</code>.
  * Created: 27.02.2010 10:16:03
  * @since 0.5.0
  * @author Volker Bergmann

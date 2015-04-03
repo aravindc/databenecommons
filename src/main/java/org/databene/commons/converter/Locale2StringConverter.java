@@ -19,7 +19,7 @@ import java.util.Locale;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts a {@link Locale} to its {@link String} representation.<br/><br/>
+ * Converts a {@link Locale} to its {@link String} representation.
  * Created: 25.02.2010 23:42:23
  * @since 0.5.0
  * @author Volker Bergmann

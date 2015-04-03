@@ -20,7 +20,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.NumberUtil;
 
 /**
- * Converts arbitrary {@link Number}s to {@link BigInteger}s.<br/><br/>
+ * Converts arbitrary {@link Number}s to {@link BigInteger}s.
  * Created: 15.11.2012 08:27:19
  * @since 0.5.20
  * @author Volker Bergmann

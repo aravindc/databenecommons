@@ -18,8 +18,7 @@ import org.databene.commons.ArrayUtil;
 import org.databene.commons.ConversionException;
 
 /**
- * Retrieves the value at a given array index from an array.<br/>
- * <br/>
+ * Retrieves the value at a given array index from an array.
  * Created at 30.06.2009 18:02:10
  * @since 0.5.0
  * @author Volker Bergmann

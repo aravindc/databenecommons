@@ -18,7 +18,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
 
 /**
- * Parent class for {@link Converter}s that act as a proxy to another converter instance.<br/><br/>
+ * Parent class for {@link Converter}s that act as a proxy to another converter instance.
  * Created: 26.02.2010 17:30:25
  * @since 0.5.0
  * @author Volker Bergmann

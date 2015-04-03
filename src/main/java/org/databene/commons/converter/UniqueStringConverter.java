@@ -20,8 +20,7 @@ import java.util.Set;
 import org.databene.commons.ConversionException;
 
 /**
- * Assures uniqueness for all processed Strings by appending unique numbers to recurring instances.<br/>
- * <br/>
+ * Assures uniqueness for all processed Strings by appending unique numbers to recurring instances.
  * Created: 24.06.2008 19:41:08
  * @since 0.4.4
  * @author Volker Bergmann

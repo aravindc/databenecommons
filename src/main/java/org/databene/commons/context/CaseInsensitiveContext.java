@@ -23,8 +23,7 @@ import org.databene.commons.CollectionUtil;
 import org.databene.commons.Context;
 
 /**
- * {@link Context} implementation which is case insensitive regarding key Strings.<br/>
- * <br/>
+ * {@link Context} implementation which is case insensitive regarding key Strings.
  * Created at 19.11.2008 08:55:05
  * @since 0.4.6
  * @author Volker Bergmann

@@ -20,7 +20,7 @@ import java.util.Date;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts {@link Date} objects to {@link Time} objects.<br/><br/>
+ * Converts {@link Date} objects to {@link Time} objects.
  * Created: 24.01.2013 17:02:27
  * @since 0.5.21
  * @author Volker Bergmann

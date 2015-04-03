@@ -15,7 +15,7 @@
 package org.databene.commons.collection;
 
 /**
- * Represents a range of {@link Long} values.<br/><br/>
+ * Represents a range of {@link Long} values.
  * Created: 18.10.2010 08:28:48
  * @since 0.5.4
  * @author Volker Bergmann

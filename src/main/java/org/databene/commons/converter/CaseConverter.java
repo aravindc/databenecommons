@@ -19,8 +19,7 @@ import org.databene.commons.LocaleUtil;
 import java.util.Locale;
 
 /**
- * Converts a String's characters to upper or lower case.<br/>
- * <br/>
+ * Converts a String's characters to upper or lower case.
  * Created: 12.06.2006 19:05:09
  * @since 0.1
  * @author Volker Bergmann

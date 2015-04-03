@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Combines the characters of a character array to a {@link String}.<br/><br/>
+ * Combines the characters of a character array to a {@link String}.
  * Created: 27.02.2010 09:46:36
  * @since 0.5.0
  * @author Volker Bergmann

@@ -18,7 +18,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
 
 /**
- * {@link Converter} implementation that converts a null value to an empty {@link String}.<br/><br/>
+ * {@link Converter} implementation that converts a null value to an empty {@link String}.
  * Created: 08.03.2011 14:59:34
  * @since 0.5.8
  * @author Volker Bergmann

@@ -18,8 +18,7 @@ import org.databene.commons.ConversionException;
 
 /**
  * Converts an arbitrary object to a hash code using the method <code>hashCode()</code>. 
- * Null values are converted to zero.<br/>
- * <br/>
+ * Null values are converted to zero.
  * Created at 06.11.2008 07:37:17
  * @since 0.4.6
  * @author Volker Bergmann

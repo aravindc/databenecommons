@@ -17,8 +17,7 @@ package org.databene.commons.comparator;
 import java.util.Comparator;
 
 /**
- * Comparator that compares objects by its Java type with a predefined order.<br/>
- * <br/>
+ * Comparator that compares objects by its Java type with a predefined order.
  * Created: 22.05.2007 18:19:54
  * @author Volker Bergmann
  */

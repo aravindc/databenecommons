@@ -21,8 +21,7 @@ import java.util.Comparator;
  * They are evaluated consecutively and the first result that is not zero is returned. 
  * If all used Comparators return zero, zero is returned as the comparation result.
  * You can use this, e.g. for ordering objects by attributes of different priority, 
- * e.g. country, city.<br/>
- * <br/>
+ * e.g. country, city.
  * Created: 22.05.2007 18:16:15
  * @author Volker Bergmann
  */

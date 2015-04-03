@@ -23,8 +23,7 @@ import java.math.BigInteger;
 import java.math.BigDecimal;
 
 /**
- * Utility class for operations related to Java types, e.g. mapping number types and their wrappers.<br/>
- * <br/>
+ * Utility class for operations related to Java types, e.g. mapping number types and their wrappers.
  * Created: 29.09.2006 12:29:48
  */
 public class JavaType {

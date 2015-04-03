@@ -19,8 +19,7 @@ import java.util.Map;
 import org.databene.commons.NullSafeComparator;
 
 /**
- * Simple implementation of the Map.Entry interface.<br/>
- * <br/>
+ * Simple implementation of the Map.Entry interface.
  * @since 0.3.0
  * @author Volker Bergmann
  */

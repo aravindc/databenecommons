@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts a {@link Class} object to its fully qualified class name.<br/><br/>
+ * Converts a {@link Class} object to its fully qualified class name.
  * Created: 25.02.2010 23:37:15
  * @since 0.5.0
  * @author Volker Bergmann

@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts {@link Number} objects to {@link Integer}s.<br/><br/>
+ * Converts {@link Number} objects to {@link Integer}s.
  * Created at 14.04.2008 10:48:53
  * @since 0.4.2
  * @author Volker Bergmann

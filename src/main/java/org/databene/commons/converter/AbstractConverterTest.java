@@ -19,7 +19,7 @@ import org.databene.commons.BeanUtil;
 import org.databene.commons.Converter;
 
 /**
- * Parent class for {@link Converter} test classes.<br/><br/>
+ * Parent class for {@link Converter} test classes.
  * Created: 26.02.2010 16:29:48
  * @since 0.5.0
  * @author Volker Bergmann

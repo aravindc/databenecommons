@@ -27,7 +27,7 @@ import org.databene.commons.mutator.AnyMutator;
 import org.databene.commons.mutator.EmptyMutator;
 
 /**
- * Converts an array of property values to a JavaBean instance.<br/><br/>
+ * Converts an array of property values to a JavaBean instance.
  * Created: 19.09.2014 10:24:05
  * @since 1.0.0
  * @author Volker Bergmann

@@ -19,7 +19,7 @@ import java.util.Date;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts {@link java.sql.Date} objects to {@link java.util.Date} objects.<br/><br/>
+ * Converts {@link java.sql.Date} objects to {@link java.util.Date} objects.
  * Created: 25.02.2010 23:22:14
  * @since 0.5.0
  * @author Volker Bergmann

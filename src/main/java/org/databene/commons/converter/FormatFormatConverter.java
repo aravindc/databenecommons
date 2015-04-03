@@ -19,8 +19,7 @@ import java.text.Format;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts an object to a String by using a java.lang.Format object's format() method.<br/>
- * <br/>
+ * Converts an object to a String by using a java.lang.Format object's format() method.
  * Created: 30.08.2006 19:43:09
  * @since 0.1
  * @author Volker Bergmann

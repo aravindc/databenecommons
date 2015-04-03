@@ -17,8 +17,7 @@ package org.databene.commons.comparator;
 import java.util.Comparator;
 
 /**
- * Compares values of type Integer or int.<br/>
- * <br/>
+ * Compares values of type Integer or int.
  * Created: 05.04.2005 19:25:25
  * @author Volker Bergmann
  */

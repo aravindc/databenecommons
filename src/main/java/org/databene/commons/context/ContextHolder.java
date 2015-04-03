@@ -17,7 +17,7 @@ package org.databene.commons.context;
 import org.databene.commons.Context;
 
 /**
- * Simple implementation of the {@link ContextAware} interface.<br/><br/>
+ * Simple implementation of the {@link ContextAware} interface.
  * Created: 16.02.2010 11:59:53
  * @since 0.6.0
  * @author Volker Bergmann

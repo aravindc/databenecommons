@@ -47,8 +47,7 @@ import java.lang.reflect.Modifier;
  * <pre>
  *     com.my.MyString2ThingConverter
  *     com.my.MyString2ComplexConverter
- * </pre
- * <br/>
+ * </pre>
  * Created: 04.08.2007 19:43:17
  * @author Volker Bergmann
  */

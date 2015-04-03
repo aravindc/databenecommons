@@ -24,7 +24,7 @@ import org.databene.commons.LoggerEscalator;
 import org.databene.commons.StringUtil;
 
 /**
- * Converts Strings to Converters and vice versa.<br/><br/>
+ * Converts Strings to Converters and vice versa.
  * Created: 15.03.2008 12:49:10
  * @since 0.4.0
  * @author Volker Bergmann

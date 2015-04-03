@@ -21,8 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Converts any source type to any target type. It also makes use of the ConverterManager.<br/>
- * <br/>
+ * Converts any source type to any target type. It also makes use of the ConverterManager.
  * Created: 16.06.2007 11:34:42
  * @author Volker Bergmann
  */

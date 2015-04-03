@@ -27,8 +27,7 @@ import org.databene.commons.Converter;
 
 /**
  * Converts an object to a String by using its toString() method.
- * Null values can be mapped to an individual String.<br/>
- * <br/>
+ * Null values can be mapped to an individual String.
  * Created: 31.08.2006 18:44:59
  * @since 0.1
  * @author Volker Bergmann

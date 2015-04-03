@@ -19,7 +19,7 @@ import java.util.Map;
 import org.databene.commons.OrderedMap;
 
 /**
- * Maps name strings to objects ignoring the capitalization of the name.<br/><br/>
+ * Maps name strings to objects ignoring the capitalization of the name.
  * Created: 12.12.2012 11:08:44
  * @since 0.5.21
  * @author Volker Bergmann

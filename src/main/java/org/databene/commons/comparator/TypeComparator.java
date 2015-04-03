@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Compares classes based on a predefined order.<br/><br/>
+ * Compares classes based on a predefined order.
  * Created: 17.02.2010 13:07:38
  * @since 0.5.0
  * @author Volker Bergmann

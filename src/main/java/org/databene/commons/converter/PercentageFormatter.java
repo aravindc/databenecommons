@@ -19,7 +19,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * Formats percentage values.<br/><br/>
+ * Formats percentage values.
  * Created: 19.06.2013 07:30:33
  * @since 0.5.24
  * @author Volker Bergmann

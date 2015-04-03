@@ -17,8 +17,7 @@ package org.databene.commons.condition;
 import org.databene.commons.Condition;
 
 /**
- * Condition that is composed of Condition components.<br/>
- * <br/>
+ * Condition that is composed of Condition components.
  * Created: 04.02.2007 00:41:28
  * @author Volker Bergmann
  */

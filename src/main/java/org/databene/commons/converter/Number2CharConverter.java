@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts {@link Number}s to characters like a cast does, e.g. (char) 65.<br/><br/>
+ * Converts {@link Number}s to characters like a cast does, e.g. (char) 65.
  * Created: 19.01.2011 15:33:22
  * @since 0.5.5
  * @author Volker Bergmann

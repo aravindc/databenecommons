@@ -27,8 +27,7 @@ import org.databene.commons.IOUtil;
 import org.databene.commons.LocaleUtil;
 
 /**
- * Converts key strings to localized texts by using a ResourceBundle.<br/>
- * <br/>
+ * Converts key strings to localized texts by using a ResourceBundle.
  * Created: 07.06.2007 07:48:35
  * @author Volker Bergmann
  */

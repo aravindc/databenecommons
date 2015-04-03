@@ -20,8 +20,7 @@ import java.text.*;
 import java.util.Locale;
 
 /**
- * Formats a number as a String.<br/>
- * <br/>
+ * Formats a number as a String.
  * Created: 10.09.2007 07:35:18
  * @author Volker Bergmann
  */

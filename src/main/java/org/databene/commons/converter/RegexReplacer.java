@@ -21,7 +21,7 @@ import org.databene.commons.ConversionException;
 /**
  * Converts strings using a regular expression.
  * Each part of the 'input' string that matches the regular expression 'pattern' 
- * is replaced with the 'replacement' string.<br/><br/>
+ * is replaced with the 'replacement' string.
  * Created: 22.02.2010 07:12:12
  * @since 0.5.0
  * @author Volker Bergmann

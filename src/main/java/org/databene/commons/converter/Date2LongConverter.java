@@ -21,8 +21,7 @@ import java.util.TimeZone;
 
 /**
  * Converts a {@link Date} into the number of milliseconds since 1970-01-01 in a certain time zone and back.
- * By default it uses the system's default time zone.<br/>
- * <br/>
+ * By default it uses the system's default time zone.
  * Created: 05.08.2007 07:10:25
  * @author Volker Bergmann
  */

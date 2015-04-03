@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Proxy class for a {@link Map}.<br/><br/>
+ * Proxy class for a {@link Map}.
  * Created: 12.12.2012 11:49:35
  * @since 0.5.21
  * @author Volker Bergmann

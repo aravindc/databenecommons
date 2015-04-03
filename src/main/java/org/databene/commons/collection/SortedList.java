@@ -23,7 +23,7 @@ import java.util.ListIterator;
 
 /**
  * {@link List} implementation which takes wraps another given list 
- * and assures that the list is sorted before any read access.<br/><br/>
+ * and assures that the list is sorted before any read access.
  * Created: 19.06.2012 07:55:42
  * @since 0.5.16
  * @author Volker Bergmann

@@ -19,7 +19,7 @@ import java.util.Map;
 import org.databene.commons.OrderedMap;
 
 /**
- * {@link OrderedMap} implementation which assigns names to objects.<br/><br/>
+ * {@link OrderedMap} implementation which assigns names to objects.
  * Created: 12.12.2012 11:04:02
  * @since 0.5.21
  * @author Volker Bergmann

@@ -19,8 +19,7 @@ import org.databene.commons.ConversionException;
 
 /**
  * Wraps an Accessor into a Converter interface.
- * The object to be converted is used as the provider for the Accessor<br/>
- * <br/>
+ * The object to be converted is used as the provider for the Accessor
  * Created: 26.08.2007 07:25:26
  * @author Volker Bergmann
  */

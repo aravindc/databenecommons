@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.Converter;
 
 /**
- * Parent class for {@link Converter} implementations which support all modes of threaded usage.<br/><br/>
+ * Parent class for {@link Converter} implementations which support all modes of threaded usage.
  * Created: 26.02.2010 12:47:56
  * @since 0.5.0
  * @author Volker Bergmann

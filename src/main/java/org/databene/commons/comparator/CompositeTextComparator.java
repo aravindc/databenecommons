@@ -21,8 +21,7 @@ import java.util.Comparator;
 import java.math.BigInteger;
 
 /**
- * Splits texts into tokens of words and numbers and compares them element-wise.<br/>
- * <br/>
+ * Splits texts into tokens of words and numbers and compares them element-wise.
  * Created: 22.05.2007 07:04:10
  * @since 0.1
  * @author Volker Bergmann

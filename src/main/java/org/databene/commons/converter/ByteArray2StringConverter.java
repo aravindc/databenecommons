@@ -21,7 +21,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.SystemInfo;
 
 /**
- * Converts byte arrays to Strings based on a character encoding, e.g. UTF-8.<br/><br/>
+ * Converts byte arrays to Strings based on a character encoding, e.g. UTF-8.
  * Created: 26.02.2010 08:26:55
  * @since 0.5.0
  * @author Volker Bergmann

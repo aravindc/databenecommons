@@ -19,7 +19,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.StringUtil;
 
 /**
- * Converts {@link String}s to {@link Number}s.<br/><br/>
+ * Converts {@link String}s to {@link Number}s.
  * Created: 27.02.2010 11:22:10
  * @since 0.5.0
  * @author Volker Bergmann

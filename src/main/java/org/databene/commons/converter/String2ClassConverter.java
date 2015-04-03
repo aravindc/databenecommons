@@ -18,8 +18,7 @@ import org.databene.commons.BeanUtil;
 import org.databene.commons.ConversionException;
 
 /**
- * Interprets a String as class name and returns the corresponding class object.<br/>
- * <br/>
+ * Interprets a String as class name and returns the corresponding class object.
  * Created: 05.08.2007 06:38:38
  * @author Volker Bergmann
  */

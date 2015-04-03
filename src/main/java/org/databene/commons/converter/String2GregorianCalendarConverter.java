@@ -22,8 +22,7 @@ import org.databene.commons.Converter;
 import org.databene.commons.TimeUtil;
 
 /**
- * Parses a {@link String} as a {@link Calendar}.<br/>
- * <br/>
+ * Parses a {@link String} as a {@link Calendar}.
  * Created at 13.07.2009 18:49:00
  * @since 0.5.0
  * @author Volker Bergmann

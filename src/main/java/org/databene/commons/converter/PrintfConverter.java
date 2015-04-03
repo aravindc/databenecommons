@@ -23,8 +23,7 @@ import org.databene.commons.IOUtil;
 
 /**
  * {@link Converter} implementation that uses a {@link Formatter} 
- * to render argument objects in C-like printf format.<br/>
- * <br/>
+ * to render argument objects in C-like printf format.
  * Created at 20.07.2009 07:18:43
  * @since 0.5.0
  * @author Volker Bergmann

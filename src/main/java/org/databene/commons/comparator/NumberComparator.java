@@ -19,8 +19,7 @@ import java.math.BigInteger;
 import java.math.BigDecimal;
 
 /**
- * Generic comparator for Number objects of different type.<br/>
- * <br/>
+ * Generic comparator for Number objects of different type.
  * Created: 09.10.2006 19:46:22
  * @since 0.1
  * @author Volker Bergmann

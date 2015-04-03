@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts arbitrary {@link Number}s to {@link Float}s.<br/><br/>
+ * Converts arbitrary {@link Number}s to {@link Float}s.
  * Created: 15.11.2012 08:26:50
  * @since 0.5.20
  * @author Volker Bergmann

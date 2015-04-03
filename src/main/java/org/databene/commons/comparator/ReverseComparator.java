@@ -20,8 +20,7 @@ import org.databene.commons.ComparableComparator;
 
 /**
  * Reverts the result of another Comparator.
- * Use this for sorting in descending order.<br/>
- * <br/>
+ * Use this for sorting in descending order.
  * Created: 19.06.2005 18:26:47
  * @author Volker Bergmann
  */

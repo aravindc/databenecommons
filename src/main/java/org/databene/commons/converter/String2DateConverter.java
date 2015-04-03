@@ -26,8 +26,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
- * Converts Strings of standard date(time) format (yyyy-MM-dd[Thh:mm[:ss[.SSS]]]) to dates.<br/>
- * <br/>
+ * Converts Strings of standard date(time) format (yyyy-MM-dd[Thh:mm[:ss[.SSS]]]) to dates.
  * Created: 07.09.2007 09:07:12
  * @author Volker Bergmann
  */

@@ -23,8 +23,7 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * A thread-safe implementation of Context.<br/>
- * <br/>
+ * A thread-safe implementation of Context.
  * Created: 06.07.2007 06:30:43
  * @author Volker Bergmann
  */

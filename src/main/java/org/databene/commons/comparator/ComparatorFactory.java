@@ -32,8 +32,7 @@ import java.lang.reflect.Type;
 import java.text.Collator;
 
 /**
- * Creates comparators by the type of the objects to be compared.<br/>
- * <br/>
+ * Creates comparators by the type of the objects to be compared.
  * Created: 22.10.2005 21:29:08
  * @author Volker Bergmann
  */

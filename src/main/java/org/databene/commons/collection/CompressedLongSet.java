@@ -19,7 +19,7 @@ import java.util.TreeMap;
 import java.util.Map.Entry;
 
 /**
- * Set of {@link Long} values which stores subsequent values in a compressed format.<br/><br/>
+ * Set of {@link Long} values which stores subsequent values in a compressed format.
  * Created: 18.10.2010 08:32:15
  * @since 0.5.4
  * @author Volker Bergmann

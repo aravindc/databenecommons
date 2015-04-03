@@ -19,7 +19,7 @@ import org.databene.commons.Converter;
 import org.databene.commons.StringUtil;
 
 /**
- * {@link Converter} that escapes strings in C- and Java-style syntax, e.g. TAB -> '\t'.<br/><br/>
+ * {@link Converter} that escapes strings in C- and Java-style syntax, e.g. TAB -&gt; '\t'.
  * Created: 19.01.2011 15:49:24
  * @since 0.5.5
  * @author Volker Bergmann

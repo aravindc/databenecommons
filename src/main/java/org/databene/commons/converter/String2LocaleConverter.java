@@ -20,8 +20,7 @@ import org.databene.commons.LocaleUtil;
 import java.util.Locale;
 
 /**
- * Instantiates {@link Locale}s by their code, e.g. de_DE.<br/>
- * <br/>
+ * Instantiates {@link Locale}s by their code, e.g. de_DE.
  * Created: 05.08.2007 06:29:58
  * @author Volker Bergmann
  */

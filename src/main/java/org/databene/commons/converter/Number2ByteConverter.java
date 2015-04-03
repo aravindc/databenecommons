@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts arbitrary {@link Number}s to {@link Byte}s.<br/><br/>
+ * Converts arbitrary {@link Number}s to {@link Byte}s.
  * Created: 15.11.2012 08:25:45
  * @since 0.5.20
  * @author Volker Bergmann

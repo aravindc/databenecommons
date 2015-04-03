@@ -19,8 +19,7 @@ import org.databene.commons.ConversionException;
 import java.util.Date;
 
 /**
- * Converts a java.util.Date to a java.sql.Date.<br/>
- * <br/>
+ * Converts a java.util.Date to a java.sql.Date.
  * Created: 09.09.2007 12:51:17
  * @author Volker Bergmann
  */

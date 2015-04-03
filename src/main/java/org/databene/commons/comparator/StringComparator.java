@@ -20,8 +20,7 @@ import java.util.Comparator;
 
 /**
  * Compares two Strings with a Collator. If no Collator is specified, 
- * it uses the default Collator of the default Locale.<br/>
- * <br/>
+ * it uses the default Collator of the default Locale.
  * Created: 03.06.2005 16:13:15
  * @since 0.1
  * @author Volker Bergmann

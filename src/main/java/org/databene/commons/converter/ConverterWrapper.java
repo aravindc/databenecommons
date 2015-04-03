@@ -18,7 +18,7 @@ import org.databene.commons.Converter;
 import org.databene.commons.ThreadAware;
 
 /**
- * Parent class for {@link Converter}s that hold a reference to another converter instance.<br/><br/>
+ * Parent class for {@link Converter}s that hold a reference to another converter instance.
  * Created: 26.02.2010 17:55:21
  * @since 0.5.0
  * @param <S>

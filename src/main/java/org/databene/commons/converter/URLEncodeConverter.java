@@ -20,8 +20,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.Encodings;
 
 /**
- * Converts Strings to their URL-encoded representation.<br/>
- * <br/>
+ * Converts Strings to their URL-encoded representation.
  * Created at 04.07.2009 07:11:19
  * @since 0.5.0
  * @author Volker Bergmann

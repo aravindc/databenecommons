@@ -21,8 +21,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- * Converts Date into Calendar Objects and back.<br/>
- * <br/>
+ * Converts Date into Calendar Objects and back.
  * Created: 05.08.2007 06:42:16
  * @author Volker Bergmann
  */

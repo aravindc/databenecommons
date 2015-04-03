@@ -21,7 +21,7 @@ import org.databene.commons.ConversionException;
 
 /**
  * Interprets {@link Long} values as milliseconds since 1970-01-01 and 
- * converts them to {@link Date} objects.<br/><br/>
+ * converts them to {@link Date} objects.
  * Created: 26.02.2010 08:19:48
  * @since 0.5.0
  * @author Volker Bergmann

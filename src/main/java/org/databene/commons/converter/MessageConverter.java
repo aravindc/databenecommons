@@ -21,8 +21,7 @@ import java.text.MessageFormat;
 import java.util.Locale;
 
 /**
- * Renders a single object or an array of objects into a String, similar to the java.text.MessageFormat.<br/>
- * <br/>
+ * Renders a single object or an array of objects into a String, similar to the java.text.MessageFormat.
  * Created: 12.11.2007 20:46:31
  * @author Volker Bergmann
  */

@@ -33,7 +33,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Allows for recursive and absolute tree construction and navigation 
- * as well for loading from and writing to XML and properties files.<br/><br/>
+ * as well for loading from and writing to XML and properties files.
  * Created: 17.02.2014 12:05:14
  * @since 0.5.26
  * @author Volker Bergmann

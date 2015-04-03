@@ -24,7 +24,7 @@ import org.databene.commons.NullSafeComparator;
 /**
  * Implementation of the {@link List} interface which supports 
  * individual marking of each list element and retrieval of the 
- * marked or unmarked element sub lists.<br/><br/>
+ * marked or unmarked element sub lists.
  * Created: 25.01.2012 17:03:05
  * @since 0.5.14
  * @author Volker Bergmann

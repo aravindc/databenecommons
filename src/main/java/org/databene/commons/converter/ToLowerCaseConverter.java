@@ -17,8 +17,7 @@ package org.databene.commons.converter;
 import java.util.Locale;
 
 /**
- * Converts Strings to lowercase.<br/>
- * <br/>
+ * Converts Strings to lowercase.
  * Created at 26.05.2009 09:10:24
  * @since 0.5.0
  * @author Volker Bergmann

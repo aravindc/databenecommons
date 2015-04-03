@@ -19,7 +19,7 @@ import java.text.DecimalFormat;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts Strings to Numbers using a {@link DecimalFormat}.<br/><br/>
+ * Converts Strings to Numbers using a {@link DecimalFormat}.
  * Created: 23.06.2008 18:49:17
  * @since 0.4.4
  * @author Volker Bergmann

@@ -24,8 +24,7 @@ import org.databene.commons.Patterns;
 import org.databene.commons.StringUtil;
 
 /**
- * Parses a String as a time value.<br/>
- * <br/>
+ * Parses a String as a time value.
  * Created: 14.03.2008 22:15:58
  * @author Volker Bergmann
  */

@@ -22,7 +22,7 @@ import java.util.Set;
 import org.databene.commons.OrderedMap;
 
 /**
- * {@link Map} proxy which allow to attach a mark to each entry.<br/><br/>
+ * {@link Map} proxy which allow to attach a mark to each entry.
  * Created: 03.02.2012 16:40:07
  * @since 0.5.14
  * @author Volker Bergmann

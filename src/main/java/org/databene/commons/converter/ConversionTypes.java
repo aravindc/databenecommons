@@ -18,7 +18,7 @@ import org.databene.commons.Converter;
 import org.databene.commons.bean.HashCodeBuilder;
 
 /**
- * Converter id class for the ConverterManager.<br/><br/>
+ * Converter id class for the ConverterManager.
  * Created: 27.02.2010 05:45:43
  * @since 0.5.0
  * @author Volker Bergmann

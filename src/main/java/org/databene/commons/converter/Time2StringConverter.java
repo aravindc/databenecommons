@@ -22,7 +22,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.Patterns;
 
 /**
- * Converts {@link Time} objects to {@link String}s.<br/><br/>
+ * Converts {@link Time} objects to {@link String}s.
  * Created: 26.02.2010 07:59:11
  * @since 0.5.0
  * @author Volker Bergmann

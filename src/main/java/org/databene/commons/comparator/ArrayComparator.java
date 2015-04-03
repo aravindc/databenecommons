@@ -19,8 +19,7 @@ import org.databene.commons.ComparableComparator;
 import java.util.Comparator;
 
 /**
- * Compares two arrays by the first <min-length> array elements with a Comparator.<br/>
- * <br/>
+ * Compares two arrays by the first 'min-length' array elements with a Comparator.
  * Created: 22.05.2007 07:07:17
  * @since 0.1
  * @author Volker Bergmann

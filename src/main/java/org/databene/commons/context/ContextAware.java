@@ -17,8 +17,7 @@ package org.databene.commons.context;
 import org.databene.commons.Context;
 
 /**
- * Interface for all classes that can make use of a {@link Context}.<br/>
- * <br/>
+ * Interface for all classes that can make use of a {@link Context}.
  * Created at 20.07.2009 09:11:28
  * @since 0.5.0
  * @author Volker Bergmann

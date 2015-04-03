@@ -22,7 +22,7 @@ import org.databene.commons.Converter;
 
 /**
  * {@link Converter} implementation which invokes a static method of an arbitrary class 
- * with the object to be converted as argument.<br/><br/>
+ * with the object to be converted as argument.
  * Created: 27.02.2010 06:49:13
  * @since 0.5.0
  * @author Volker Bergmann

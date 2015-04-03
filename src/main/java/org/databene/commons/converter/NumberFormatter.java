@@ -19,7 +19,7 @@ import java.text.NumberFormat;
 import org.databene.commons.ConversionException;
 
 /**
- * Formats {@link Number} objects as {@link String} using {@link NumberFormat}.<br/><br/>
+ * Formats {@link Number} objects as {@link String} using {@link NumberFormat}.
  * Created: 26.02.2010 08:36:36
  * @since 0.5.0
  * @author Volker Bergmann

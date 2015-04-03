@@ -18,11 +18,12 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
 
 /**
- * Converting {@link Boolean} values to {@link Number}s: <code>false</code> to <code>0<code>, 
- * <code>true</code> to <code>1</code>.<br/><br/>
+ * Converting {@link Boolean} values to {@link Number}s: <code>false</code> to <code>0</code>, 
+ * <code>true</code> to <code>1</code>.
  * Created: 27.02.2010 09:57:17
  * @since 0.5.0
  * @author Volker Bergmann
+ * @param <T> the target type of the numbers to convert
  */
 public class Boolean2NumberConverter<T extends Number> extends ConverterWrapper<Integer, T> 
 	implements Converter<Boolean, T> {

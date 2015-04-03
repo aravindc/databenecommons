@@ -23,7 +23,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.NullSafeComparator;
 
 /**
- * Holds a {@link NumberFormat} and exhibits properties for its configuration.<br/><br/>
+ * Holds a {@link NumberFormat} and exhibits properties for its configuration.
  * Created: 26.02.2010 08:37:23
  * @since 0.5.0
  * @author Volker Bergmann

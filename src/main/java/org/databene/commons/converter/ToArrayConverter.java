@@ -23,8 +23,7 @@ import java.util.Collection;
 
 /**
  * Converts arrays and collections to arrays and other object to an array of size 1.
- * Note: The target type is not declared Object[], since we also want to create byte[].<br/>
- * <br/>
+ * Note: The target type is not declared Object[], since we also want to create byte[].
  * Created: 26.08.2007 16:01:38
  * @author Volker Bergmann
  */

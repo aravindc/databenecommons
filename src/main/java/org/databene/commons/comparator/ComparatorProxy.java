@@ -17,8 +17,7 @@ package org.databene.commons.comparator;
 import java.util.Comparator;
 
 /**
- * Abstract Comparator proxy.<br/>
- * <br/>
+ * Abstract Comparator proxy.
  * Created: 22.05.2007 07:53:56
  * @author Volker Bergmann
  */

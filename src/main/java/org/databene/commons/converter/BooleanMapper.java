@@ -18,8 +18,7 @@ import org.databene.commons.ConversionException;
 
 /**
  * Maps true, false and null to configured aliases, e.g. '1', '0' and '?'.
- * By default booleans are converted to the strings 'true', 'false' and null. <br/>
- * <br/>
+ * By default booleans are converted to the strings 'true', 'false' and null. 
  * Created at 11.03.2009 19:40:33
  * @since 0.5.8
  * @author Volker Bergmann

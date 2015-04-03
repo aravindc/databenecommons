@@ -20,7 +20,7 @@ import org.databene.commons.Converter;
 
 /**
  * {@link Converter} implementation which applies another converter only if a condition is fulfilled, 
- * otherwise returns the argument itself.<br/><br/>
+ * otherwise returns the argument itself.
  * Created: 20.07.2011 18:39:51
  * @since 0.5.9
  * @author Volker Bergmann

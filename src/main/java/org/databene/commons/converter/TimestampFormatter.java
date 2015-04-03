@@ -24,7 +24,7 @@ import org.databene.commons.format.ConcurrentDateFormat;
 import org.databene.commons.format.ConcurrentDecimalFormat;
 
 /**
- * Formats a {@link Timestamp} as {@link String}.<br/><br/>
+ * Formats a {@link Timestamp} as {@link String}.
  * Created: 18.02.2010 17:46:14
  * @since 0.5.0
  * @author Volker Bergmann

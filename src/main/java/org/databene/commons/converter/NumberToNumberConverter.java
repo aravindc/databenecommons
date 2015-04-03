@@ -20,8 +20,7 @@ import java.math.BigInteger;
 import java.math.BigDecimal;
 
 /**
- * Converts Number objects of one type to another Number type.<br/>
- * <br/>
+ * Converts Number objects of one type to another Number type.
  * Created: 16.06.2007 11:51:14
  * @author Volker Bergmann
  */

@@ -20,7 +20,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
 
 /**
- * Converts a {@link String} with a comma-separated list to an array.<br/><br/>
+ * Converts a {@link String} with a comma-separated list to an array.
  * Created: 27.02.2010 12:13:49
  * @since 0.5.0
  * @author Volker Bergmann

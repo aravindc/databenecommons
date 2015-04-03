@@ -20,7 +20,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.NumberUtil;
 
 /**
- * Converts arbitrary {@link Number}s to {@link BigDecimal}s.<br/><br/>
+ * Converts arbitrary {@link Number}s to {@link BigDecimal}s.
  * Created: 15.11.2012 08:28:48
  * @since 0.5.20
  * @author Volker Bergmann

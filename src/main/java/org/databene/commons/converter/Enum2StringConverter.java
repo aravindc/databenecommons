@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts an enum value to its {@link String} representation.<br/><br/>
+ * Converts an enum value to its {@link String} representation.
  * Created: 25.02.2010 23:50:06
  * @since 0.5.0
  * @author Volker Bergmann

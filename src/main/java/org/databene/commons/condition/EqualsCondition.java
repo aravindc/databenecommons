@@ -18,8 +18,7 @@ import org.databene.commons.Condition;
 import org.databene.commons.NullSafeComparator;
 
 /**
- * Condition that requires to be the checked argument to be equal to a prototype.<br/>
- * <br/>
+ * Condition that requires to be the checked argument to be equal to a prototype.
  * Created: 16.06.2007 12:46:03
  * @author Volker Bergmann
  */

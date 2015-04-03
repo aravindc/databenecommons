@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import java.util.Date;
 
 /**
- * Converts {@link Integer} values to {@link Date} objects.<br/><br/>
+ * Converts {@link Integer} values to {@link Date} objects.
  * Created: 10.01.2011 11:59:43
  * @since 0.6.4
  * @author Volker Bergmann

@@ -18,7 +18,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.StringUtil;
 
 /**
- * Parses a {@link String} as a {@link Boolean}.<br/><br/>
+ * Parses a {@link String} as a {@link Boolean}.
  * Created: 27.02.2010 11:44:57
  * @since 0.5.0
  * @author Volker Bergmann

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Abstract proxy class for a {@link List}.<br/><br/>
+ * Abstract proxy class for a {@link List}.
  * Created: 25.01.2012 17:03:57
  * @since 0.5.14
  * @author Volker Bergmann

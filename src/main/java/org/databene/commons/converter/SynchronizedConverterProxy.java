@@ -19,7 +19,7 @@ import org.databene.commons.Converter;
 
 /**
  * Proxy class for (unsafe) {@link Converter}s 
- * that synchronizes calls to the wrapped converter instance.<br/><br/>
+ * that synchronizes calls to the wrapped converter instance.
  * Created: 26.02.2010 18:22:36
  * @since 0.5.0
  * @author Volker Bergmann

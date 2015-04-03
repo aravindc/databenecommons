@@ -19,8 +19,7 @@ import java.util.regex.Pattern;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts a String to a {@link Pattern}.<br/>
- * <br/>
+ * Converts a String to a {@link Pattern}.
  * Created at 01.10.2009 10:09:38
  * @since 0.5.0
  * @author Volker Bergmann

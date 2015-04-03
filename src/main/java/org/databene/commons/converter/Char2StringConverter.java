@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts a character to a string with a length of one.<br/><br/>
+ * Converts a character to a string with a length of one.
  * Created: 19.01.2011 15:52:40
  * @since 0.5.5
  * @author Volker Bergmann

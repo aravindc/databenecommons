@@ -19,7 +19,7 @@ import java.util.TreeMap;
 import java.util.Map.Entry;
 
 /**
- * Collects int values in a compressed way.<br/><br/>
+ * Collects int values in a compressed way.
  * Created: 05.10.2010 19:17:30
  * @since 0.5.4
  * @author Volker Bergmann

@@ -23,7 +23,7 @@ import java.util.Map;
 import org.databene.commons.StringUtil;
 
 /**
- * Maintains a list of named objects supporting duplicate names and missing names.<br/><br/>
+ * Maintains a list of named objects supporting duplicate names and missing names.
  * Created at 09.05.2008 20:25:59
  * @since 0.5.4
  * @author Volker Bergmann

@@ -23,8 +23,7 @@ import org.databene.commons.IOUtil;
 import org.databene.commons.iterator.ConvertingIterator;
 
 /**
- * Iterable that provides {@link ConvertingIterator}s.<br/>
- * <br/>
+ * Iterable that provides {@link ConvertingIterator}s.
  * Created: 28.08.2007 08:57:16
  * @author Volker Bergmann
  */

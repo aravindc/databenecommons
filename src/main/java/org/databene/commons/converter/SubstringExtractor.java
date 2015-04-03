@@ -17,7 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.ConversionException;
 
 /**
- * Extracts a sub string from a string.<br/><br/>
+ * Extracts a sub string from a string.
  * Created: 26.02.2010 10:55:11
  * @since 0.5.0
  * @author Volker Bergmann

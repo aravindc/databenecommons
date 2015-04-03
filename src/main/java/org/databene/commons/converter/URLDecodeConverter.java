@@ -21,8 +21,7 @@ import org.databene.commons.Encodings;
 
 /**
  * Decodes a String from the <code>application/x-www-form-urlencoded</code>  MIME format.
- * @see java.net.URLDecoder <br/>
- * <br/>
+ * @see java.net.URLDecoder
  * Created at 04.07.2009 07:21:15
  * @since 0.5.0
  * @author Volker Bergmann

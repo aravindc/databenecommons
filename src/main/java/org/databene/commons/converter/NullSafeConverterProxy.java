@@ -18,8 +18,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
 
 /**
- * Wraps another Converter and adds the feature of converting null values to a predefined value.<br/>
- * <br/>
+ * Wraps another Converter and adds the feature of converting null values to a predefined value.
  * Created: 26.07.2007 06:59:35
  * @author Volker Bergmann
  */

@@ -21,8 +21,7 @@ import org.databene.commons.ConversionException;
 
 /**
  * Interprets a Date as duration specification, e.g. '0000-00-00T00:00:00.001' as one millisecond, 
- * '0001-00-00T00:00:00.000' as one year. Dates after 1970-01-01 will be interpreted relative to that date.<br/>
- * <br/>
+ * '0001-00-00T00:00:00.000' as one year. Dates after 1970-01-01 will be interpreted relative to that date.
  * Created at 11.01.2009 06:39:28
  * @since 0.5.7
  * @author Volker Bergmann

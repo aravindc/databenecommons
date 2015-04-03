@@ -17,8 +17,7 @@ package org.databene.commons.converter;
 import org.databene.commons.Converter;
 
 /**
- * Converts arrays from one component type to arrays of another component type.<br/>
- * <br/>
+ * Converts arrays from one component type to arrays of another component type.
  * Created: 07.06.2007 14:35:18
  * @author Volker Bergmann
  */

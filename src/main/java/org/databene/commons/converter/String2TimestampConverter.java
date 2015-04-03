@@ -22,8 +22,7 @@ import org.databene.commons.Converter;
 import org.databene.commons.StringUtil;
 
 /**
- * Parses Strings converting them to {@link Timestamp}s.<br/>
- * <br/>
+ * Parses Strings converting them to {@link Timestamp}s.
  * Created at 01.10.2009 10:53:20
  * @since 0.5.0
  * @author Volker Bergmann

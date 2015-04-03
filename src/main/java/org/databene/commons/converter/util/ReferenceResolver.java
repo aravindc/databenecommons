@@ -15,7 +15,7 @@
 package org.databene.commons.converter.util;
 
 /**
- * Resolves object references.<br/><br/>
+ * Resolves object references.
  * Created: 19.09.2014 16:10:42
  * @since 1.0.0
  * @author Volker Bergmann

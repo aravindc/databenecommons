@@ -16,7 +16,7 @@ package org.databene.commons.collection;
 
 /**
  * Represents a range of int values from a <code>min</code> to a <code>max</code> value 
- * (including min and max).<br/><br/>
+ * (including min and max).
  * Created: 05.10.2010 19:33:23
  * @since 0.5.4
  * @author Volker Bergmann

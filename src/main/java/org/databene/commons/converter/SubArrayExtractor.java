@@ -20,8 +20,7 @@ import org.databene.commons.ConversionException;
 import java.lang.reflect.Array;
 
 /**
- * Extracts a sub array from another array.<br/>
- * <br/>
+ * Extracts a sub array from another array.
  * Created: 30.07.2007 21:05:07
  * @author Volker Bergmann
  */

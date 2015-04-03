@@ -24,8 +24,6 @@ import org.databene.commons.Converter;
  * If there is a single converter, all elements are converted with the same converter.
  * If there are several converters, the number of converters and array elements are 
  * assumed to be equal and each element is converted with the converter of the same index.
-<br/>
- * <br/>
  * Created: 07.06.2007 14:35:18
  * @author Volker Bergmann
  */

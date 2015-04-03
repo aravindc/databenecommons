@@ -18,7 +18,7 @@ import org.databene.commons.Base64Codec;
 import org.databene.commons.ConversionException;
 
 /**
- * Converts base64-encoded Strings to <code>byte</code> arrays.<br/><br/>
+ * Converts base64-encoded Strings to <code>byte</code> arrays.
  * Created: 26.02.2010 08:23:49
  * @since 0.5.0
  * @author Volker Bergmann

@@ -18,7 +18,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Counts objects.<br/><br/>
+ * Counts objects.
  * Created: 14.12.2006 18:03:47
  * @author Volker Bergmann
  */
