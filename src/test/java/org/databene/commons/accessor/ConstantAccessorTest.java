@@ -19,7 +19,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the ConstantAccessor.<br/><br/>
+ * Tests the ConstantAccessor.
  * Created at 02.05.2008 14:13:01
  * @since 0.4.3
  * @author Volker Bergmann

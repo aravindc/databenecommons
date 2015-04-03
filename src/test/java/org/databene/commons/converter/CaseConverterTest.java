@@ -23,7 +23,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.converter.CaseConverter;
 
 /**
- * Tests the CaseConverter.<br/><br/>
+ * Tests the CaseConverter.
  * Created: 29.09.2006 15:50:03
  * @author Volker Bergmann
  */

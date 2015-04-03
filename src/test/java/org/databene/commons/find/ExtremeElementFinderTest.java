@@ -25,7 +25,7 @@ import org.databene.commons.visitor.CollectionElement;
 import org.databene.commons.visitor.ExtremeElementFinder;
 
 /**
- * Tests the {@link ExtremeElementFinder}.<br/><br/>
+ * Tests the {@link ExtremeElementFinder}.
  * Created: 04.02.2007 09:33:01
  * @author Volker Bergmann
  */

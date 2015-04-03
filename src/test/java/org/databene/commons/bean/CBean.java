@@ -15,7 +15,7 @@
 package org.databene.commons.bean;
 
 /**
- * Simple JavaBean for testing.<br/><br/>
+ * Simple JavaBean for testing.
  * Created: 21.07.2007 09:14:00
  * @author Volker Bergmann
  */

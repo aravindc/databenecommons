@@ -21,7 +21,7 @@ import org.databene.commons.bean.UntypedPropertyMutator;
 import org.junit.Test;
 
 /**
- * Tests the {@link UntypedPropertyMutator}.<br/><br/>
+ * Tests the {@link UntypedPropertyMutator}.
  * Created: 20.02.2007 08:52:49
  * @since 0.2
  * @author Volker Bergmann

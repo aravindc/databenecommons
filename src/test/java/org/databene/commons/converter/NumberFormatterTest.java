@@ -21,8 +21,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link NumberParser}.<br/>
- * <br/>
+ * Tests the {@link NumberParser}.
  * Created at 22.03.2009 08:02:42
  * @since 0.4.9
  * @author Volker Bergmann

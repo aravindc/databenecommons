@@ -20,8 +20,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link ClassCache}.<br/>
- * <br/>
+ * Tests the {@link ClassCache}.
  * Created at 15.11.2008 17:16:09
  * @since 0.4.6
  * @author Volker Bergmann

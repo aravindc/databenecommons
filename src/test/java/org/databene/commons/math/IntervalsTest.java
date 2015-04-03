@@ -20,7 +20,7 @@ import org.databene.commons.ComparableComparator;
 import org.junit.Test;
 
 /**
- * Tests the {@link Intervals} class.<br/><br/>
+ * Tests the {@link Intervals} class.
  * Created: 10.03.2011 17:36:21
  * @since 0.5.8
  * @author Volker Bergmann

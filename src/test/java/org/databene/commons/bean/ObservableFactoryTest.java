@@ -21,8 +21,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link ObservableFactory}.<br/>
- * <br/>
+ * Tests the {@link ObservableFactory}.
  * Created at 17.07.2008 20:33:51
  * @since 0.4.5
  * @author Volker Bergmann

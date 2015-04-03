@@ -27,8 +27,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link Date2DurationConverter}.<br/>
- * <br/>
+ * Tests the {@link Date2DurationConverter}.
  * Created at 11.01.2009 06:44:42
  * @since 0.5.7
  * @author Volker Bergmann

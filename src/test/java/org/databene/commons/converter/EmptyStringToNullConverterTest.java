@@ -20,7 +20,7 @@ import org.databene.commons.iterator.EmptyStringToNullConverter;
 import org.junit.Test;
 
 /**
- * Tests the {@link EmptyStringToNullConverter}.<br/><br/>
+ * Tests the {@link EmptyStringToNullConverter}.
  * Created: 08.03.2011 14:55:56
  * @since 0.5.8
  * @author Volker Bergmann

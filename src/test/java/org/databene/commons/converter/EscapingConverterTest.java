@@ -20,7 +20,7 @@ import org.databene.commons.Converter;
 import org.junit.Test;
 
 /**
- * Tests the {@link EscapingConverter}.<br/><br/>
+ * Tests the {@link EscapingConverter}.
  * Created: 19.01.2011 22:11:58
  * @since 0.5.5
  * @author Volker Bergmann

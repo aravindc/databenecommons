@@ -26,7 +26,7 @@ import org.databene.commons.TimeUtil;
 import org.databene.commons.converter.ParseFormatConverter;
 
 /**
- * Tests the {@link ParseFormatConverter}.<br/><br/>
+ * Tests the {@link ParseFormatConverter}.
  * Created: 29.09.2006 15:55:35
  * @since 0.1
  * @author Volker Bergmann

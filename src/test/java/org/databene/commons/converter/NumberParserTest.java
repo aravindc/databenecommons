@@ -22,7 +22,7 @@ import org.databene.commons.LocaleUtil;
 import org.junit.Test;
 
 /**
- * Tests the {@link NumberParser}.<br/><br/>
+ * Tests the {@link NumberParser}.
  * Created: 26.02.2010 08:52:12
  * @since 0.5.0
  * @author Volker Bergmann

@@ -21,7 +21,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link NumberComparator}.<br/><br/>
+ * Tests the {@link NumberComparator}.
  * Created at 29.04.2008 18:30:06
  * @since 0.4.2
  * @author Volker Bergmann

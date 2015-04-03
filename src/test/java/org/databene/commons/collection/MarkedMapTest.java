@@ -22,7 +22,7 @@ import org.databene.commons.CollectionUtil;
 import org.junit.Test;
 
 /**
- * Tests the {@link MarkedMap}.<br/><br/>
+ * Tests the {@link MarkedMap}.
  * Created: 03.02.2012 16:57:31
  * @since 0.5.14
  * @author Volker Bergmann

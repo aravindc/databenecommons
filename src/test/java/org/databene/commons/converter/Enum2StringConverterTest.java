@@ -22,7 +22,7 @@ import org.databene.commons.ConversionException;
 import org.junit.Test;
 
 /**
- * Tests the {@link Enum2StringConverter}.<br/><br/>
+ * Tests the {@link Enum2StringConverter}.
  * Created: 25.02.2010 23:55:44
  * @since 0.5.0
  * @author Volker Bergmann

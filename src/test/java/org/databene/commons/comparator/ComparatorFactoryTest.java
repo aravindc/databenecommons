@@ -22,7 +22,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link ComparatorFactory}.<br/><br/>
+ * Tests the {@link ComparatorFactory}.
  * Created: 16.03.2008 15:13:56
  * @author Volker Bergmann
  */

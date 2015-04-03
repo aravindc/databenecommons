@@ -28,7 +28,7 @@ import org.databene.commons.collection.TreeBuilder;
 import org.junit.Test;
 
 /**
- * Tests the {@link PropertiesFileMerger}.<br/><br/>
+ * Tests the {@link PropertiesFileMerger}.
  * Created: 01.08.2013 10:38:32
  * @since 0.5.24
  * @author Volker Bergmann

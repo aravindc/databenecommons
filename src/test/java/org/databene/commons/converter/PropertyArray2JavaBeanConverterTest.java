@@ -24,7 +24,7 @@ import org.databene.commons.converter.util.ReferenceResolver;
 import org.junit.Test;
 
 /**
- * Tests the {@link PropertyArray2JavaBeanConverter}.<br/><br/>
+ * Tests the {@link PropertyArray2JavaBeanConverter}.
  * Created: 28.11.2014 19:18:27
  * @since 1.0.1
  * @author Volker Bergmann

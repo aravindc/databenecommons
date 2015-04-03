@@ -26,7 +26,7 @@ import org.databene.commons.iterator.BidirectionalListIterator;
 import org.databene.commons.iterator.FilteringIterator;
 
 /**
- * Tests the {@link FilteringIterator}.<br/><br/>
+ * Tests the {@link FilteringIterator}.
  * Created: 08.05.2007 19:03:28
  * @author Volker Bergmann
  */

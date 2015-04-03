@@ -24,8 +24,7 @@ import org.databene.commons.converter.String2LocaleConverter;
 import java.util.Locale;
 
 /**
- * Tests the {@link String2LocaleConverter}.<br/>
- * <br/>
+ * Tests the {@link String2LocaleConverter}.
  * Created: 05.08.2007 06:32:38
  * @author Volker Bergmann
  */

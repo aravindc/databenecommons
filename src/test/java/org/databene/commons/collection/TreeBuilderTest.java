@@ -26,7 +26,7 @@ import java.util.Map;
 import org.junit.Test;
 
 /**
- * Tests the {@link TreeBuilder}.<br/><br/>
+ * Tests the {@link TreeBuilder}.
  * Created: 17.02.2014 12:54:36
  * @since 0.5.26
  * @author Volker Bergmann

@@ -25,7 +25,7 @@ import org.databene.commons.CollectionUtil;
 import org.junit.Test;
 
 /**
- * Combines several {@link List} into one, providing a common access interface.<br/><br/>
+ * Combines several {@link List} into one, providing a common access interface.
  * Created: 10.09.2012 20:09:13
  * @since 0.5.18
  * @author Volker Bergmann

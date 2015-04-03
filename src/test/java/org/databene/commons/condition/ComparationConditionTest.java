@@ -20,7 +20,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link ComparationCondition}.<br/><br/>
+ * Tests the {@link ComparationCondition}.
  * Created at 29.04.2008 18:18:45
  * @since 0.4.2
  * @author Volker Bergmann

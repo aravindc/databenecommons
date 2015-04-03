@@ -20,7 +20,7 @@ import org.databene.commons.TimeUtil;
 import org.junit.Test;
 
 /**
- * Tests the {@link Long2DateConverter}.<br/><br/>
+ * Tests the {@link Long2DateConverter}.
  * Created: 26.02.2010 08:30:14
  * @since 0.5.0
  * @author Volker Bergmann

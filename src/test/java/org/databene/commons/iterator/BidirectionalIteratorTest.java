@@ -17,7 +17,7 @@ package org.databene.commons.iterator;
 import static org.junit.Assert.*;
 
 /**
- * Provides functionality for testing classes that implement the {@link BidirectionalIterator} interface.<br/><br/>
+ * Provides functionality for testing classes that implement the {@link BidirectionalIterator} interface.
  * Created at 04.05.2008 09:37:07
  * @since 0.4.3
  * @author Volker Bergmann

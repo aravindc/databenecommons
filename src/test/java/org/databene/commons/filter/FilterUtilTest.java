@@ -23,7 +23,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link FilterUtil} class.<br/><br/>
+ * Tests the {@link FilterUtil} class.
  * Created at 04.05.2008 10:08:18
  * @since 0.5.3
  * @author Volker Bergmann

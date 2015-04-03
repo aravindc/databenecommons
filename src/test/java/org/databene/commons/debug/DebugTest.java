@@ -20,7 +20,7 @@ import org.databene.commons.SysUtil;
 import org.junit.Test;
 
 /**
- * Tests the {@link Debug} class.<br/><br/>
+ * Tests the {@link Debug} class.
  * Created: 06.06.2011 11:00:28
  * @since 0.5.8
  * @author Volker Bergmann

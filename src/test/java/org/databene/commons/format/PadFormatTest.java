@@ -30,7 +30,7 @@ import org.databene.commons.format.Alignment;
 import org.databene.commons.format.PadFormat;
 
 /**
- * Tests the PadFormat.<br/><br/>
+ * Tests the PadFormat.
  * Created: 29.06.2007 19:44:11
  * @since 0.1
  * @author Volker Bergmann

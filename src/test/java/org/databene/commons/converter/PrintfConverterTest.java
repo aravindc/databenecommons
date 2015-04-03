@@ -18,8 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link PrintfConverter}.<br/>
- * <br/>
+ * Tests the {@link PrintfConverter}.
  * Created at 20.07.2009 07:30:34
  * @since 0.5.0
  * @author Volker Bergmann

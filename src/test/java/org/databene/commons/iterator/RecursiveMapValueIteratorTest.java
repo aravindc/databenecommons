@@ -21,7 +21,7 @@ import org.databene.commons.OrderedMap;
 import org.junit.Test;
 
 /**
- * Tests the {@link RecursiveMapValueIterator}.<br/><br/>
+ * Tests the {@link RecursiveMapValueIterator}.
  * Created: 04.08.2013 08:26:19
  * @since 0.5.24
  * @author Volker Bergmann

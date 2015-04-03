@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Tests the {@link OrFilter}.<br/><br/>
+ * Tests the {@link OrFilter}.
  * Created: 08.06.2012 20:37:39
  * @since 0.5.16
  * @author Volker Bergmann

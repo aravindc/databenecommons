@@ -22,7 +22,7 @@ import org.databene.commons.iterator.IteratorTestCase;
 import org.junit.Test;
 
 /**
- * Tests the {@link CompressedLongSet}.<br/><br/>
+ * Tests the {@link CompressedLongSet}.
  * Created: 18.10.2010 08:35:59
  * @since 0.5.4
  * @author Volker Bergmann

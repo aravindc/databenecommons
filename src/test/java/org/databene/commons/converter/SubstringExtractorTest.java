@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Tests the {@link SubstringExtractor}.<br/><br/>
+ * Tests the {@link SubstringExtractor}.
  * Created: 26.02.2010 11:05:31
  * @since 0.5.0
  * @author Volker Bergmann

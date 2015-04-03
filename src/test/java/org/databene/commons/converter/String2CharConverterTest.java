@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Tests the {@link String2CharConverter}.<br/><br/>
+ * Tests the {@link String2CharConverter}.
  * Created: 29.07.2010 17:24:32
  * @since 0.6.3
  * @author Volker Bergmann

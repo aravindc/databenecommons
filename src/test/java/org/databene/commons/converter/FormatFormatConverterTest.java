@@ -26,8 +26,7 @@ import org.databene.commons.TimeUtil;
 import org.databene.commons.converter.FormatFormatConverter;
 
 /**
- * Tests the {@link FormatFormatConverter}.<br/>
- * <br/>
+ * Tests the {@link FormatFormatConverter}.
  * Created: 29.09.2006 15:55:35
  * @since 0.1
  * @author Volker Bergmann

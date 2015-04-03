@@ -22,7 +22,7 @@ import java.math.BigInteger;
 import org.junit.Test;
 
 /**
- * Tests the {@link NumberToNumberConverter}.<br/><br/>
+ * Tests the {@link NumberToNumberConverter}.
  * Created: 15.11.2012 10:34:24
  * @since 0.5.20
  * @author Volker Bergmann

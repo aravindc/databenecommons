@@ -24,7 +24,7 @@ import org.databene.commons.bean.UntypedPropertyMutator;
 import org.junit.Test;
 
 /**
- * Tests the {@link PropertyMutatorFactory}.<br/><br/>
+ * Tests the {@link PropertyMutatorFactory}.
  * Created: 20.02.2007 08:52:49
  * @author Volker Bergmann
  */

@@ -22,7 +22,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the String2TimeConverter.<br/><br/>
+ * Tests the String2TimeConverter.
  * Created: 14.03.2008 22:23:51
  * @author Volker Bergmann
  */

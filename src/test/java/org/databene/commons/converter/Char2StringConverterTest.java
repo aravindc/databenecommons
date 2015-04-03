@@ -20,7 +20,7 @@ import org.databene.commons.Converter;
 import org.junit.Test;
 
 /**
- * Tests the {@link Char2StringConverter}.<br/><br/>
+ * Tests the {@link Char2StringConverter}.
  * Created: 19.01.2011 22:08:07
  * @since 0.5.5
  * @author Volker Bergmann

@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Tests the {@link RegexReplacer}.<br/><br/>
+ * Tests the {@link RegexReplacer}.
  * Created: 22.02.2010 07:18:56
  * @since 0.5.0
  * @author Volker Bergmann

@@ -18,7 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link ArrayComparator}.<br/><br/>
+ * Tests the {@link ArrayComparator}.
  * Created at 04.05.2008 09:04:36
  * @since 0.4.3
  * @author Volker Bergmann

@@ -26,8 +26,8 @@ import org.databene.commons.converter.AnyConverter;
 import org.databene.commons.converter.JavaType;
 
 /**
- * Tests the {@link AnyConverter}.<br/><br/>
- * Created: 29.09.2006 12:12:22<br/>
+ * Tests the {@link AnyConverter}.
+ * Created: 29.09.2006 12:12:22
  * @author Volker Bergmann
  */
 public class AnyConverterTest extends AbstractConverterTest {

@@ -20,7 +20,7 @@ import org.databene.commons.debug.ResourceMonitor;
 import org.junit.Test;
 
 /**
- * Tests the {@link ResourceMonitor}.<br/><br/>
+ * Tests the {@link ResourceMonitor}.
  * Created: 14.04.2011 17:25:03
  * @since 0.5.8
  * @author Volker Bergmann

@@ -18,7 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link BooleanComparator}.<br/><br/>
+ * Tests the {@link BooleanComparator}.
  * Created at 02.05.2008 15:54:40
  * @since 0.4.3
  * @author Volker Bergmann

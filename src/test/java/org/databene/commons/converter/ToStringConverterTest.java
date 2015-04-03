@@ -21,8 +21,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link ToStringConverter}.<br/>
- * <br/>
+ * Tests the {@link ToStringConverter}.
  * Created at 15.03.2009 20:32:19
  * @since 0.5.8
  * @author Volker Bergmann

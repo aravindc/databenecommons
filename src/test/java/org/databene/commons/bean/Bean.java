@@ -15,7 +15,7 @@
 package org.databene.commons.bean;
 
 /**
- * Teat bean.<br/><br/>
+ * Teat bean.
  * Created: 21.07.2007 16:30:35
  * @author Volker Bergmann
  */

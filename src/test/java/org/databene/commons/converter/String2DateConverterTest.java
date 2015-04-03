@@ -24,8 +24,7 @@ import org.databene.commons.TimeUtil;
 import org.databene.commons.converter.String2DateConverter;
 
 /**
- * Tests the {@link String2DateConverter}.<br/>
- * <br/>
+ * Tests the {@link String2DateConverter}.
  * Created: 07.09.2007 18:00:32
  * @author Volker Bergmann
  */

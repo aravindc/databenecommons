@@ -21,7 +21,7 @@ import org.databene.commons.ConversionException;
 import org.databene.commons.bean.PropertyAccessConverter;
 
 /**
- * Tests the PropertyAccessConverter.<br/><br/>
+ * Tests the PropertyAccessConverter.
  * Created: 21.07.2007 16:35:28
  * @author Volker Bergmann
  */

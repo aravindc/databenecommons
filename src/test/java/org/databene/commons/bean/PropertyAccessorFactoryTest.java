@@ -20,7 +20,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link PropertyAccessorFactory}.<br/><br/>
+ * Tests the {@link PropertyAccessorFactory}.
  * Created: 21.07.2007 15:03:40
  * @author Volker Bergmann
  */

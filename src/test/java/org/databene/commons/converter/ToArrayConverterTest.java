@@ -23,7 +23,7 @@ import org.databene.commons.CollectionUtil;
 import org.junit.Test;
 
 /**
- * Tests the {@link ToArrayConverter}.<br/><br/>
+ * Tests the {@link ToArrayConverter}.
  * Created at 04.05.2008 08:00:15
  * @since 0.5.3
  * @author Volker Bergmann

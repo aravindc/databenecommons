@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Tests the {@link NullToEmptyStringConverter}.<br/><br/>
+ * Tests the {@link NullToEmptyStringConverter}.
  * Created: 08.03.2011 15:01:54
  * @since 0.5.8
  * @author Volker Bergmann

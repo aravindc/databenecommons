@@ -18,7 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link NamedValueList}.<br/><br/>
+ * Tests the {@link NamedValueList}.
  * Created at 09.05.2008 21:19:22
  * @since 0.5.4
  * @author Volker Bergmann

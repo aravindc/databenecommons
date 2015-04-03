@@ -22,7 +22,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link LiteralParser}.<br/><br/>
+ * Tests the {@link LiteralParser}.
  * Created: 20.03.2008 07:18:30
  * @author Volker Bergmann
  */

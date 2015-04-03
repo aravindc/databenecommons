@@ -23,7 +23,7 @@ import org.databene.commons.IOUtil;
 import org.junit.Test;
 
 /**
- * Tests the {@link PatternFileFilter}.<br/><br/>
+ * Tests the {@link PatternFileFilter}.
  * Created: 26.02.2010 10:05:08
  * @since 0.5.0
  * @author Volker Bergmann

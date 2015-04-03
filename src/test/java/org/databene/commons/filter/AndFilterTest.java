@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Tests the {@link AndFilter}.<br/><br/>
+ * Tests the {@link AndFilter}.
  * Created: 08.06.2012 21:00:24
  * @since 0.5.16
  * @author Volker Bergmann

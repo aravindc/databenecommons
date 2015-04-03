@@ -21,7 +21,7 @@ import org.databene.commons.bean.TypedPropertyMutator;
 import org.junit.Test;
 
 /**
- * Tests the {@link TypedPropertyMutator}.<br/><br/>
+ * Tests the {@link TypedPropertyMutator}.
  * Created: 20.02.2007 08:52:49
  * @author Volker Bergmann
  */

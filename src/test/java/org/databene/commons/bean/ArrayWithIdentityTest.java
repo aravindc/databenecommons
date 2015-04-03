@@ -21,7 +21,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 /**
- * Tests the {@link ArrayWithIdentity}.<br/><br/>
+ * Tests the {@link ArrayWithIdentity}.
  * Created: 05.02.2012 09:40:15
  * @since 0.5.14
  * @author Volker Bergmann

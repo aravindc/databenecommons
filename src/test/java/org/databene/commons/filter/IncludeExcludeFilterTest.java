@@ -25,7 +25,7 @@ import org.databene.commons.Filter;
 import org.junit.Test;
 
 /**
- * Tests the {@link IncludeExcludeFilter}.<br/><br/>
+ * Tests the {@link IncludeExcludeFilter}.
  * Created: 08.06.2012 19:55:15
  * @since 0.5.16
  * @author Volker Bergmann

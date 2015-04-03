@@ -43,8 +43,7 @@ import org.databene.commons.TimeUtil;
 import org.databene.commons.converter.String2LocaleConverter;
 
 /**
- * Tests the ConverterManager.<br/>
- * <br/>
+ * Tests the ConverterManager.
  * Created: 05.08.2007 07:07:26
  * @author Volker Bergmann
  */

@@ -18,8 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link LoggingProxyFactory}.<br/>
- * <br/>
+ * Tests the {@link LoggingProxyFactory}.
  * Created at 17.09.2009 18:47:09
  * @since 0.5.0
  * @author Volker Bergmann

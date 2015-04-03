@@ -18,7 +18,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link OrderedNameMap}.<br/><br/>
+ * Tests the {@link OrderedNameMap}.
  * Created at 02.05.2008 14:02:41
  * @since 0.5.3
  * @author Volker Bergmann

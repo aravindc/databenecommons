@@ -22,7 +22,7 @@ import org.databene.commons.ConversionException;
 import org.junit.Test;
 
 /**
- * Tests the {@link Locale2StringConverter}.<br/><br/>
+ * Tests the {@link Locale2StringConverter}.
  * Created: 25.02.2010 23:43:52
  * @since 0.5.0
  * @author Volker Bergmann

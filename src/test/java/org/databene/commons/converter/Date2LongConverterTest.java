@@ -20,8 +20,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link Date2LongConverter}.<br/>
- * <br/>
+ * Tests the {@link Date2LongConverter}.
  * Created at 05.01.2009 18:22:11
  * @since 0.4.7
  * @author Volker Bergmann

@@ -22,7 +22,7 @@ import org.databene.commons.TimeUtil;
 import org.junit.Test;
 
 /**
- * Tests the {@link TimestampFormatter}.<br/><br/>
+ * Tests the {@link TimestampFormatter}.
  * Created: 18.02.2010 17:54:24
  * @since 0.5.0
  * @author Volker Bergmann

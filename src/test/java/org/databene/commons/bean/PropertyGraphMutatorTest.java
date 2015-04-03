@@ -21,7 +21,7 @@ import org.databene.commons.bean.ABean;
 import org.databene.commons.bean.PropertyGraphMutator;
 
 /**
- * Tests the {@link PropertyGraphMutator}.<br/><br/>
+ * Tests the {@link PropertyGraphMutator}.
  * Created: 20.02.2007 08:52:49
  * @author Volker Bergmann
  */

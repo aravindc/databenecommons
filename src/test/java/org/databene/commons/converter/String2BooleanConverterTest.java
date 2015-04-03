@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Tests the {@link String2BooleanConverter}.<br/><br/>
+ * Tests the {@link String2BooleanConverter}.
  * Created: 15.12.2012 13:15:34
  * @since 0.5.21
  * @author Volker Bergmann

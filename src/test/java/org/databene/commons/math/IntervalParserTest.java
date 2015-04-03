@@ -23,7 +23,7 @@ import org.databene.commons.comparator.IntComparator;
 import org.junit.Test;
 
 /**
- * Tests the {@link IntervalParser}.<br/><br/>
+ * Tests the {@link IntervalParser}.
  * Created: 10.03.2011 16:04:54
  * @since 0.5.8
  * @author Volker Bergmann

@@ -15,7 +15,7 @@
 package org.databene.commons.bean;
 
 /**
- * Test Bean.<br/><br/>
+ * Test Bean.
  * Created: 21.07.2007 09:13:38
  * @author Volker Bergmann
  */

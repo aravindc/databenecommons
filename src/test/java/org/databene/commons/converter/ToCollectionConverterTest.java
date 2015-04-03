@@ -26,8 +26,7 @@ import org.databene.commons.Converter;
 import org.databene.commons.converter.ToCollectionConverter;
 
 /**
- * Tests the ToCollectionConverter.<br/>
- * <br/>
+ * Tests the ToCollectionConverter.
  * Created: 28.08.2007 17:35:50
  * @author Volker Bergmann
  */

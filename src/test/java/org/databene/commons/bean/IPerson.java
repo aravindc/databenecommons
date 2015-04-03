@@ -15,7 +15,7 @@
 package org.databene.commons.bean;
 
 /**
- * Interface for testing the {@link ObservableFactory}.<br/><br/>
+ * Interface for testing the {@link ObservableFactory}.
  * Created at 17.07.2008 20:35:45
  * @since 0.4.5
  * @author Volker Bergmann

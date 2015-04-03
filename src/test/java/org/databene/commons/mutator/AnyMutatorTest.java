@@ -25,7 +25,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link AnyMutator}.<br/><br/>
+ * Tests the {@link AnyMutator}.
  * Created: 01.02.2008 08:06:11
  * @author Volker Bergmann
  */

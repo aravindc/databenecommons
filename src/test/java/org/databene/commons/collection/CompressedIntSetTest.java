@@ -20,7 +20,7 @@ import org.databene.commons.iterator.IteratorTestCase;
 import org.junit.Test;
 
 /**
- * Tests the {@link CompressedIntSet}.<br/><br/>
+ * Tests the {@link CompressedIntSet}.
  * Created: 05.10.2010 19:53:23
  * @since 0.5.4
  * @author Volker Bergmann

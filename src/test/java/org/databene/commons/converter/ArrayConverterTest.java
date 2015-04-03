@@ -23,7 +23,7 @@ import org.databene.commons.ConversionException;
 import org.junit.Test;
 
 /**
- * Tests the ArrayConverter.<br/><br/>
+ * Tests the ArrayConverter.
  * Created: 20.07.2011 07:14:40
  * @since 0.5.9
  * @author Volker Bergmann

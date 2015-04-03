@@ -20,7 +20,7 @@ import org.databene.commons.ConversionException;
 import org.junit.Test;
 
 /**
- * Tests the {@link ConverterChain} class.<br/><br/>
+ * Tests the {@link ConverterChain} class.
  * Created: 10.01.2011 12:08:00
  * @since 0.5.4
  * @author Volker Bergmann
