@@ -23,7 +23,7 @@ import org.databene.commons.Validator;
 import org.junit.Test;
 
 /**
- * Tests the {@link DefaultValidationDomainDescriptor}.<br/><br/>
+ * Tests the {@link DefaultValidationDomainDescriptor}.
  * Created: 20.12.2011 17:07:08
  * @since 0.5.14
  * @author Volker Bergmann

@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Tests the {@link DownloadCache}.<br/><br/>
+ * Tests the {@link DownloadCache}.
  * Created: 15.08.2010 10:34:15
  * @since 0.5.4
  * @author Volker Bergmann

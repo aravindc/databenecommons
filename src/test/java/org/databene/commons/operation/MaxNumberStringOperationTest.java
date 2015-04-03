@@ -20,7 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests the {@link MaxNumberStringOperation}.<br/><br/>
+ * Tests the {@link MaxNumberStringOperation}.
  * Created: 26.02.2010 09:53:34
  * @since 0.5.0
  * @author Volker Bergmann

@@ -24,7 +24,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link WrapperElement} class.<br/><br/>
+ * Tests the {@link WrapperElement} class.
  * Created at 02.05.2008 12:29:30
  * @since 0.4.3
  * @author Volker Bergmann

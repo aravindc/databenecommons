@@ -21,7 +21,7 @@ import java.util.Locale;
 import org.junit.Test;
 
 /**
- * Tests the {@link ElapsedTimeFormatter}.<br/><br/>
+ * Tests the {@link ElapsedTimeFormatter}.
  * Created: 14.12.2010 13:50:35
  * @since 0.5.5
  * @author Volker Bergmann

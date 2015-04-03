@@ -21,7 +21,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the MinOperation.<br/><br/>
+ * Tests the MinOperation.
  * Created: 25.01.2008 18:12:12
  * @author Volker Bergmann
  */

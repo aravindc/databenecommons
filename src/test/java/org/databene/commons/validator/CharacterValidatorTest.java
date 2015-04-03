@@ -20,7 +20,7 @@ import org.databene.commons.CharSet;
 import org.junit.Test;
 
 /**
- * Tests the {@link CharacterValidator}.<br/><br/>
+ * Tests the {@link CharacterValidator}.
  * Created: 17.12.2009 19:03:03
  * @since 0.5.0
  * @author Volker Bergmann

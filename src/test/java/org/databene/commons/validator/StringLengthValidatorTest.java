@@ -20,7 +20,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the StringLengthValidator.<br/><br/>
+ * Tests the StringLengthValidator.
  * Created: 29.09.2006 16:32:44
  * @since 0.1
  * @author Volker Bergmann

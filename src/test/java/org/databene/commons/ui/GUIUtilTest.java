@@ -20,7 +20,7 @@ import org.databene.commons.ui.GUIUtil;
 import org.junit.Test;
 
 /**
- * Tests the {@link GUIUtil}.<br/><br/>
+ * Tests the {@link GUIUtil}.
  * Created: 06.02.2014 13:35:19
  * @since 0.5.26
  * @author Volker Bergmann

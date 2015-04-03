@@ -19,7 +19,7 @@ import org.databene.commons.iterator.BidirectionalIteratorTest;
 import org.junit.Test;
 
 /**
- * Tests the {@link TreeIterator}.<br/><br/>
+ * Tests the {@link TreeIterator}.
  * Created at 04.05.2008 09:17:07
  * @since 0.4.3
  * @author Volker Bergmann

@@ -20,7 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests the {@link MinNumberStringOperation}.<br/><br/>
+ * Tests the {@link MinNumberStringOperation}.
  * Created: 26.02.2010 09:49:46
  * @since 0.5.0
  * @author Volker Bergmann

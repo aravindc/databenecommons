@@ -17,7 +17,7 @@ package org.databene.commons.validator.domain;
 import org.databene.commons.validator.AbstractValidator;
 
 /**
- * Simple validator class for testing.<br/><br/>
+ * Simple validator class for testing.
  * Created: 20.12.2011 17:07:47
  * @since 0.5.14
  * @author Volker Bergmann

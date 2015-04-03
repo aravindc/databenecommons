@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Tests the TagUtil class.<br/><br/>
+ * Tests the TagUtil class.
  * Created: 16.11.2013 07:16:00
  * @since 0.5.25
  * @author Volker Bergmann

@@ -21,8 +21,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link MaxOperation}.<br/>
- * <br/>
+ * Tests the {@link MaxOperation}.
  * Created: 25.01.2008 18:03:12
  * @author Volker Bergmann
  */

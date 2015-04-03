@@ -19,7 +19,7 @@ import org.databene.commons.tree.DefaultTreeModel;
 import org.databene.commons.tree.DefaultTreeNode;
 
 /**
- * Creates trees for testing.<br/><br/>
+ * Creates trees for testing.
  * Created: 08.05.2007 19:47:45
  * @author Volker Bergmann
  */

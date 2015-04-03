@@ -22,8 +22,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the class {@link VersionNumber}.<br/>
- * <br/>
+ * Tests the class {@link VersionNumber}.
  * Created at 22.12.2008 16:51:22
  * @since 0.4.7
  * @author Volker Bergmann

@@ -20,8 +20,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 /**
- * Tests the {@link RegexValidator}.<br/>
- * <br/>
+ * Tests the {@link RegexValidator}.
  * Created at 15.07.2009 15:51:36
  * @since 0.5.0
  * @author Volker Bergmann
