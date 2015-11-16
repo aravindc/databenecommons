@@ -89,6 +89,19 @@ public class XMLUtil {
 	
     private XMLUtil() {}
 
+    public static String format(Document document) {
+    	ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+		String encoding = Encodings.UTF_8;
+		SimpleXMLWriter out = new SimpleXMLWriter(buffer, encoding, true);
+		format(document.getDocumentElement(), out);
+		out.close();
+		try {
+			return new String(buffer.toByteArray(), encoding);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
+    }
+    
     public static String format(Element element) {
     	ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 		String encoding = Encodings.UTF_8;
@@ -320,10 +333,16 @@ public class XMLUtil {
     }
 
     /**
+     * Parses a stream's output into an XML document.
+     * @param in the {@link InputStream} to read
      * @param resolver an {@link EntityResolver} implementation or null, in the latter case, no validation is applied
+     * @param schemaUri 
+     * @param errorHandler 
+     * @return the resulting XML {@link Document}
+     * @throws IOException 
      */
-    public static Document parse(InputStream stream, EntityResolver resolver, String schemaUri, ErrorHandler errorHandler) throws IOException {
-        return parse(stream, true, resolver, schemaUri, null, errorHandler);
+    public static Document parse(InputStream in, EntityResolver resolver, String schemaUri, ErrorHandler errorHandler) throws IOException {
+        return parse(in, true, resolver, schemaUri, null, errorHandler);
     }
 
 	public static Document parse(InputStream stream, boolean namespaceAware, EntityResolver resolver,
