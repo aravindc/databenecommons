@@ -25,7 +25,6 @@ import org.databene.commons.Assert;
 import org.databene.commons.ConfigurationError;
 import org.databene.commons.DeploymentError;
 import org.databene.commons.IOUtil;
-import org.databene.commons.ProgrammerError;
 import org.databene.commons.xml.XMLUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -154,7 +153,7 @@ public class VersionInfo {
     			String dependencyVersion = childElement.getTextContent();
     			if ("build_number".equals(dependencyName))
     				versionInfo.buildNumber = dependencyVersion;
-    			else
+    			else if (dependencyName.endsWith(VERSION_SUFFIX))
     				addDependency(dependencyName, dependencyVersion, versionInfo);
     		}
 	}
@@ -181,9 +180,6 @@ public class VersionInfo {
 	
 	private static void addDependency(String dependencyName,
 			String dependencyVersion, VersionInfo versionInfo) {
-		if (!dependencyName.endsWith(VERSION_SUFFIX))
-			throw new ProgrammerError("Dependency configuration '" + dependencyName + 
-					" does not end with '" + VERSION_SUFFIX + "'.");
 		dependencyName = dependencyName.substring(0, dependencyName.length() - VERSION_SUFFIX.length());
 		if (!dependencyName.equals(versionInfo.name))
 			versionInfo.dependencies.put(dependencyName, dependencyVersion);
