@@ -75,6 +75,8 @@ public class ShellUtil {
 		}
 	}
 	
+	// private helpers ---------------------------------------------------------
+
 	private static int execute(Process process, String description, Writer outputWriter, ErrorHandler errorHandler)
             throws IOException, InterruptedException {
         String lf = SystemInfo.getLineSeparator();
@@ -104,8 +106,6 @@ public class ShellUtil {
 	    	errorHandler.handleError("Process (" + description + ") did not terminate normally: Return code " + exitValue);
 	    return exitValue;
     }
-
-	// private helpers ---------------------------------------------------------
 
 	private static String renderCmdArray(String[] cmdArray) {
 	    return ArrayFormat.format(" ", cmdArray);
