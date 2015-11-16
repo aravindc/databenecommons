@@ -36,6 +36,11 @@ import org.databene.commons.converter.PercentageFormatter;
 
 public class Formatter {
 	
+	public static final String DEFAULT_NUMBER_PATTERN = "#,##0.00";
+	public static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd";
+	public static final String DEFAULT_TIME_PATTERN = "HH:mm:ss";
+	public static final String DEFAULT_DATE_TIME_PATTERN = DEFAULT_DATE_PATTERN + " " + DEFAULT_TIME_PATTERN;
+
 	public static String formatPercentage(double fraction) {
 		return PercentageFormatter.format(fraction, 1, false);
 	}
@@ -53,7 +58,19 @@ public class Formatter {
 	}
 
 	public static String format(Date date) {
-		return format(date, "yyyy-MM-dd");
+		return format(date, DEFAULT_DATE_PATTERN);
+	}
+
+	public static String formatDate(Date date) {
+		return format(date, DEFAULT_DATE_PATTERN);
+	}
+
+	public static String formatDateTime(Date date) {
+		return format(date, DEFAULT_DATE_TIME_PATTERN);
+	}
+
+	public static String formatTime(Date date) {
+		return format(date, DEFAULT_TIME_PATTERN);
 	}
 
 	public static String format(Date date, String pattern) {
@@ -65,7 +82,7 @@ public class Formatter {
 	}
 
 	public static String format(double value) {
-		return new DecimalFormat("#,##0.00", DecimalFormatSymbols.getInstance()).format(value);
+		return new DecimalFormat(DEFAULT_NUMBER_PATTERN, DecimalFormatSymbols.getInstance()).format(value);
 	}
 
 	public static String formatDaysFromNow(Date date) {
