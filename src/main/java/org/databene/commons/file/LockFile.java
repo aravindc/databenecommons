@@ -19,7 +19,7 @@ import java.io.IOException;
 
 /**
  * <p>Utility for preventing the start of more than one process of a given application.
- * The lock is acquired calling {@link #acquireLock(String)} with a file name. 
+ * The lock is acquired calling {@link #acquireLock(File)} with a File instance. 
  * The method creates the file and registers a shutdown hook that deletes the file 
  * when the process finishes. When a second acquireLock is tried while the file exists 
  * (no matter if by this or another process), a {@link LockAlreadyAcquiredException} 
@@ -41,10 +41,9 @@ import java.io.IOException;
 
 public class LockFile {
 
-	public static void acquireLock(String fileName) throws LockAlreadyAcquiredException {
-		final File lockFile = new File(fileName);
+	public static void acquireLock(final File lockFile) throws LockAlreadyAcquiredException {
 		if (lockFile.exists()) {
-			throw new LockAlreadyAcquiredException(fileName);
+			throw new LockAlreadyAcquiredException(lockFile.getPath());
 		} else {
 			try {
 				File parent = lockFile.getParentFile();
