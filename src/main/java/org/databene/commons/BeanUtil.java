@@ -915,6 +915,17 @@ public final class BeanUtil {
         return result;
     }
 
+    public static Map<String, ?> getRWPropertyValues(Object bean, boolean includeClass) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	PropertyDescriptor[] descriptors = getPropertyDescriptors(bean.getClass());
+    	for (PropertyDescriptor descriptor : descriptors) {
+    		String propertyName = descriptor.getName();
+			if (descriptor.getWriteMethod() != null && descriptor.getReadMethod() != null && (includeClass || !"class".equals(propertyName)))
+				result.put(propertyName, getPropertyValue(bean, descriptor));
+    	}
+        return result;
+    }
+
     /**
      * Queries a property value on a JavaBean instance
      * @param bean
