@@ -128,7 +128,7 @@ public final class StringUtil {
     }
 
 	public static String[] splitAndTrim(String list, char separator) {
-		return StringUtil.trimAll(list.toUpperCase().split(String.valueOf(separator)));
+		return StringUtil.trimAll(list.split(String.valueOf(separator)));
 	}
 	
     public static String normalize(String s) {
@@ -182,12 +182,16 @@ public final class StringUtil {
         return chars;
     }
 
-    /** interprets an nbsp as space character */
+    /** interprets an nbsp as space character 
+     * @param c 
+     * @return true if the character is a whitespace, otherwise false. */
     public static boolean isWhitespace(char c) {
         return Character.isWhitespace(c) || c == 160;
     }
 
-    /** Trims a String by removing white spaces (including nbsp) from left and right. */
+    /** Trims a String by removing white spaces (including nbsp) from left and right. 
+     * @param s the String to trim
+     * @return the trimmed string */
     public static String trim(String s) {
         if (s == null || s.length() == 0)
             return s;
@@ -205,6 +209,7 @@ public final class StringUtil {
     /**
      * Trims all String in the array.
      * @param array an array of the Strings to trim
+     * @return the same array but with its elements trimmed
      * @since 0.2.05
      */
     public static String[] trimAll(String[] array) {
@@ -213,7 +218,8 @@ public final class StringUtil {
         return array;
     }
 
-    /** Returns the platform dependent line separator */
+    /** Returns the platform dependent line separator 
+     * @return the system's line separator */
     public static String lineSeparator() {
         return System.getProperty("line.separator");
     }
@@ -605,6 +611,11 @@ public final class StringUtil {
 	}
 
 	/**
+	 * Escapes a string in C/C++/Java style.
+	 * @param text the text to escape
+	 * @param escapeSingleQuotes true if single quotes shall be escaped, otherwise false
+	 * @param escapeDoubleQuotes true if double quotes shall be escaped, otherwise false
+	 * @return the escaped string
 	 * @see "http://en.wikipedia.org/wiki/ASCII"
 	 */
 	public static String escape(String text, boolean escapeSingleQuotes, boolean escapeDoubleQuotes) {
@@ -626,6 +637,9 @@ public final class StringUtil {
 	}
 
 	/**
+	 * Unescapes a string in C/C++/Java style.
+	 * @param text the text to unescape
+	 * @return the unescaped text
 	 * @see "http://en.wikipedia.org/wiki/ASCII"
 	 */
 	public static String unescape(String text) {
@@ -730,9 +744,10 @@ public final class StringUtil {
 	    int beginIndex = (beginMark != null ? text.indexOf(beginMark) + beginMark.length() : 0);
 	    if (endMark != null) {
 		    int endIndex = text.indexOf(endMark, beginIndex + 1);
-		    return text.substring(beginIndex, endIndex);
-	    } else
-	    	return text.substring(beginIndex);
+		    return (beginIndex >= 0 && endIndex >= 0 && endIndex > beginIndex ? text.substring(beginIndex, endIndex) : null);
+	    } else {
+	    	return (beginIndex >= 0 ? text.substring(beginIndex) : null);
+	    }	    	
     }
 
 	public static String buildPhrase(String... parts) {
@@ -865,6 +880,12 @@ public final class StringUtil {
 			return text.substring(0, text.length() - suffix.length()) + replacement;
 		else
 			return text;
+	}
+
+	public static String removeSuffixIfPresent(String suffix, String name) {
+		if (name != null && name.endsWith(suffix))
+			return name.substring(0, name.length() - suffix.length());
+		return name;
 	}
 
 }
