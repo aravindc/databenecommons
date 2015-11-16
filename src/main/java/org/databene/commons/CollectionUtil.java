@@ -85,6 +85,7 @@ public final class CollectionUtil {
      * Adds the content of an array to a collection
      * @param target the collection to be extended
      * @param values the values to add
+     * @return the collection, extended by the contents of the array
      */
     public static <T, U extends T, C extends Collection<? super T>> C add(C target, U ... values) {
         for (T item : values)
@@ -156,7 +157,9 @@ public final class CollectionUtil {
         return map;
     }
 
-    /** Creates a new instance of a Collection. Abstract interfaces are mapped to a default implementation class. */ 
+    /** Creates a new instance of a Collection. Abstract interfaces are mapped to a default implementation class. 
+     * @param collectionType the type of the collection to be created
+     * @return an empty instance of the requested collection type */ 
     @SuppressWarnings("unchecked")
     public static <T extends Collection<U>, U> T newInstance(Class<T> collectionType) {
         if ((collectionType.getModifiers() & Modifier.ABSTRACT) == 0)
@@ -171,7 +174,10 @@ public final class CollectionUtil {
             throw new UnsupportedOperationException("Not a supported collection type: " + collectionType.getName());
     }
 
-    /** Compares two lists for identical content, accepting different order. */
+    /** Compares two lists for identical content, accepting different order. 
+     * @param a1 the first list
+     * @param a2 the second list
+     * @return true if both lists have the same content elements, else false */
     public static <T> boolean equalsIgnoreOrder(List<T> a1, List<T> a2) {
         if (a1 == a2)
             return true;
@@ -252,16 +258,19 @@ public final class CollectionUtil {
 		return result;
 	}
 
-	public static String formatCommaSeparatedList(List<?> list, Character quoteCharacter) {
+	public static String formatCommaSeparatedList(Collection<?> collection, Character quoteCharacter) {
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < list.size(); i++) {
+		int i = 0;
+		Iterator<?> iterator = collection.iterator();
+		while (iterator.hasNext()) {
 			if (i > 0)
 				builder.append(", ");
 			if (quoteCharacter != null)
 				builder.append(quoteCharacter);
-			builder.append(list.get(i));
+			builder.append(iterator.next());
 			if (quoteCharacter != null)
 				builder.append(quoteCharacter);
+			i++;
 		}
 		return builder.toString();
 	}
