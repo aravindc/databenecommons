@@ -77,5 +77,12 @@ public class NameUtil {
 				result.add(object);
 		return result;
 	}
+
+	public static <T extends Named> T findByName(String name, T[] array) {
+		for (T item : array)
+			if (NullSafeComparator.equals(item.getName(), name))
+				return item;
+		return null;
+	}
 	
 }
