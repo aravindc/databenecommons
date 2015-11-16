@@ -86,6 +86,19 @@ public class Timespan {
         }
         return new Timespan(startDate, endDate);
     }
+    
+    public static Timespan recentDays(int count) {
+    	Date end = TimeUtil.today();
+    	Date start = TimeUtil.addDays(end, - count);
+    	return new Timespan(start, end);
+    }
+
+	public static Timespan futureDays(int count) {
+    	Date start = TimeUtil.today();
+    	Date end = TimeUtil.addDays(start, count);
+    	return new Timespan(start, end);
+	}
+
 
 	public Iterator<Date> dayIterator() {
 		List<Date> dates = new ArrayList<Date>();
