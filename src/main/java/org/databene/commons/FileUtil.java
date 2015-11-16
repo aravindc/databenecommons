@@ -50,12 +50,16 @@ public final class FileUtil {
             return file.getName().toLowerCase().endsWith(suffix.toLowerCase());
     }
 
-    /** extracts the filename part after the last dot */
+    /** extracts the filename part after the last dot 
+     * @param file the file to examine
+     * @return the file suffix without dot */
     public static String suffix(File file) {
         return suffix(file.getName());
     }
 
-    /** extracts the filename part after the last dot */
+    /** extracts the filename part after the last dot 
+     * @param filename the file name to examine
+     * @return the file suffix without dot */
     public static String suffix(String filename) {
         int dotIndex = filename.lastIndexOf('.');
         if (dotIndex < 0 || dotIndex == filename.length() - 1)
@@ -270,7 +274,9 @@ public final class FileUtil {
 		}
 	}
 	
-	/** Creates a {@link File} object from a path string, resolving Unix-style user home folder references. */
+	/** Creates a {@link File} object from a path string, resolving Unix-style user home folder references. 
+	 * @param path the path of the file to create
+	 * @return the new file */
 	public static File newFile(String path) {
 		if (!SystemInfo.isWindows()) {
 			if (path.startsWith("~/"))
@@ -291,6 +297,22 @@ public final class FileUtil {
 		return path.substring(0, sep + 1) + fileName;
 	}
 	
+	public static String readTextFileContent(File file) throws FileNotFoundException, IOException {
+		return IOUtil.readAndClose(new FileReader(file));
+	}
+
+	public static String readTextFileContent(File file, String encoding) throws FileNotFoundException, IOException {
+		return IOUtil.readAndClose(new InputStreamReader(new FileInputStream(file), encoding));
+	}
+
+	public static void writeTextFileContent(String content, File file) throws IOException {
+		writeTextFileContent(content, file, SystemInfo.getFileEncoding());
+	}
+
+	public static void writeTextFileContent(String content, File file, String encoding) throws IOException {
+		IOUtil.transferAndClose(new StringReader(content), new OutputStreamWriter(new FileOutputStream(file), encoding));
+	}
+
 	// private helpers -------------------------------------------------------------------------------------------------
 
 	private static void copyFile(File srcFile, File targetFile)
