@@ -300,6 +300,25 @@ public class TimeUtilTest {
 		assertEquals(TimeUtil.julianDay(2000, 2, 28) + 2, TimeUtil.julianDay(2000, 3,  1));
 	}
 	
+	@Test
+	public void testIndexOf() {
+		Date date0 = TimeUtil.date(2015, 3, 5);
+		Date date1 = TimeUtil.date(2015, 3, 7);
+		Date date2 = TimeUtil.date(2015, 3, 9);
+		Date[] array = new Date[] { date0, date1, date2 };
+		// test existing dates
+		assertEquals(0, TimeUtil.indexOfDate(date0, array));
+		assertEquals(1, TimeUtil.indexOfDate(date1, array));
+		assertEquals(2, TimeUtil.indexOfDate(date2, array));
+		// test earlier dates
+		assertEquals(0, TimeUtil.indexOfDate(TimeUtil.date(2015, 3, 4), array));
+		// test later dates
+		assertEquals(2, TimeUtil.indexOfDate(TimeUtil.date(2015, 3, 10), array));
+		// test date gaps
+		assertEquals(1, TimeUtil.indexOfDate(TimeUtil.date(2015, 3, 6), array));
+		assertEquals(2, TimeUtil.indexOfDate(TimeUtil.date(2015, 3, 8), array));
+	}
+	
 	// helpers ---------------------------------------------------------------------------------------------------------
 	
 	private static Calendar calendar(int year, int month, int day) {

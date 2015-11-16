@@ -14,6 +14,7 @@
  */
 package org.databene.commons;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
@@ -55,6 +56,14 @@ public final class TimeUtil {
 		while (!isBusinessDay(day, locale))
 			day.add(Calendar.DATE, -1);
 		return day.getTime();
+	}
+	
+	public static Calendar nextBusinessDay(Calendar after, Locale locale) {
+		Calendar day = (Calendar) after.clone();
+		do {
+			day.add(Calendar.DATE, 1);
+		} while (!isBusinessDay(day, locale));
+		return day;
 	}
 	
 	public static boolean isBusinessDay(Calendar day, Locale locale) {
@@ -398,13 +407,17 @@ public final class TimeUtil {
 	}
 
 	/** Calculates the julian day of a {@link Date}. 
-     *  See http://en.wikipedia.org/wiki/Julian_day */
+     *  See http://en.wikipedia.org/wiki/Julian_day 
+	 * @param date 
+	 * @return the number of the day in the year */
 	public static int julianDay(Date date) {
 		return julianDay(calendar(date));
 	}
     
 	/** Calculates the julian day of a {@link Calendar}. 
-     *  See http://en.wikipedia.org/wiki/Julian_day */
+     *  See http://en.wikipedia.org/wiki/Julian_day 
+	 * @param calendar 
+	 * @return the number of the day in the year */
 	public static int julianDay(Calendar calendar) {
 		int year = calendar.get(Calendar.YEAR);
 		int month = calendar.get(Calendar.MONTH);
@@ -413,7 +426,11 @@ public final class TimeUtil {
 	}
     
 	/** Calculates the julian day of a date. 
-     *  See http://en.wikipedia.org/wiki/Julian_day */
+     *  See http://en.wikipedia.org/wiki/Julian_day 
+	 * @param year 
+	 * @param month 
+	 * @param day 
+	 * @return the number of the day in the year */
 	public static int julianDay(int year, int month, int day) {
 		int a = (14 - month) / 12;
 		int y = year + 4800 - a;
@@ -632,4 +649,14 @@ public final class TimeUtil {
 		builder.append(millis);
 	}
 
+	public static int indexOfDate(Date searchedDate, Date[] sortedArray) {
+		Assert.notNull(searchedDate, "searchedDate");
+		Assert.notNull(sortedArray, "sortedArray");
+		int index = Arrays.binarySearch(sortedArray, searchedDate);
+		if (index < 0)
+			index = - index - 1;
+		index = Math.min(index, sortedArray.length - 1);
+		return index;
+	}
+	
 }
