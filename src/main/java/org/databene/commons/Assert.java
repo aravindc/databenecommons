@@ -25,6 +25,8 @@ import java.util.Collection;
  */
 public class Assert {
 	
+	private static final double TOLERANCE = 0.00001;
+	
 	private Assert() {}
 	
 	public  void end(String text, String end) {
@@ -50,9 +52,10 @@ public class Assert {
 		return object;
 	}
 	
-	public static void notEmpty(String text, String message) {
+	public static String notEmpty(String text, String message) {
 		if (text == null || text.length() == 0)
 			throw new AssertionError(message);
+		return text;
 	}
 
 	public static void notEmpty(Collection<?> collection, String message) {
@@ -146,8 +149,18 @@ public class Assert {
 			 throw new AssertionError(role + " is not positive: " + value);
 	}
 
+	public static void negative(Number value, String role) {
+		if (value.doubleValue() >= 0)
+			 throw new AssertionError(role + " is not negative: " + value);
+	}
+
 	public static void that(boolean flag, String message) {
 		if (!flag)
+			throw new AssertionError(message);
+	}
+
+	public static void notEquals(double d1, double d2, String message) {
+		if (Math.abs(d1 - d2) < TOLERANCE)
 			throw new AssertionError(message);
 	}
 
