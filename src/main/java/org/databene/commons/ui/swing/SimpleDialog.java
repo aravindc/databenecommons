@@ -32,6 +32,7 @@ import javax.swing.border.EmptyBorder;
  * Created: 22.08.2012 07:31:08
  * @since 0.5.18
  * @author Volker Bergmann
+ * @param <E> 
  */
 @SuppressWarnings("serial")
 public class SimpleDialog<E extends Component> extends JDialog {
@@ -87,8 +88,11 @@ public class SimpleDialog<E extends Component> extends JDialog {
 	
 	@Override
 	public void setVisible(boolean visible) {
-		if (visible && !completed)
-			completeButtonBar();
+		if (visible) {
+			this.cancelled = false;
+			if (!completed)
+				completeButtonBar();
+		}
 		super.setVisible(visible);
 	}
 
