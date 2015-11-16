@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.databene.commons;
 
 import org.databene.commons.collection.MapEntry;
@@ -26,6 +27,7 @@ import java.net.URL;
 import java.net.MalformedURLException;
 import java.net.URLConnection;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -153,10 +155,23 @@ public final class IOUtil {
 
     public static String getContentOfURI(String uri, String encoding) throws IOException {
         Reader reader = getReaderForURI(uri, encoding);
-        StringWriter writer = new StringWriter();
-        transfer(reader, writer);
-        return writer.toString();
+        return readAndClose(reader);
     }
+
+	public static String readAndClose(Reader reader) throws IOException {
+		StringWriter writer = new StringWriter();
+        transferAndClose(reader, writer);
+        return writer.toString();
+	}
+
+	public static void transferAndClose(Reader reader, Writer writer) throws IOException {
+		try {
+        	transfer(reader, writer);
+        } finally {
+	        close(writer);
+	        close(reader);
+        }
+	}
 
     public static String[] readTextLines(String uri, boolean includeEmptyLines) throws IOException {
         ArrayBuilder<String> builder = new ArrayBuilder<String>(String.class, 100);
@@ -189,6 +204,7 @@ public final class IOUtil {
     /**
      * Creates an InputStream from a url in String representation.
      * @param uri the source url
+     * @param required causes the method to throw an exception if the resource is not found
      * @return an InputStream that reads the url.
      * @throws IOException if the url cannot be read.
      */
@@ -257,6 +273,7 @@ public final class IOUtil {
     /**
      * Returns an InputStream to a file resource on the class path.
      * @param name the file's name
+     * @param required causes the method to throw an exception if the resource is not found
      * @return an InputStream to the resource
      */
     public static InputStream getResourceAsStream(String name, boolean required) {
@@ -560,7 +577,8 @@ public final class IOUtil {
      * Returns an InputStream that reads a file. The file is first searched on the disk directories
      * then in the class path.
      * @param filename the name of the file to be searched.
-     * @return an InputStream that accesses the file.
+     * @param required when set to 'true' this causes an exception to be thrown if the file is not found
+     * @return an InputStream that accesses the file. If the file is not found and 'required' set to false, null is returned.
      * @throws FileNotFoundException if the file cannot be found.
      */
     private static InputStream getFileOrResourceAsStream(String filename, boolean required) throws FileNotFoundException {
@@ -712,6 +730,18 @@ public final class IOUtil {
 	    }
     }
 	
+	public static String encodeUrl(String text) {
+		return encodeUrl(text, Encodings.UTF_8);
+	}
+
+	public static String encodeUrl(String text, String encoding) {
+		try {
+			return URLEncoder.encode(text, encoding);
+		} catch (UnsupportedEncodingException e) {
+			throw new IllegalArgumentException("Not a supported encoding: " + encoding, e);
+		}
+	}
+
 	public static ImageIcon readImageIcon(String resourceName) {
 		try {
 			InputStream in = getInputStreamForURI(resourceName);
