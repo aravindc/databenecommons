@@ -35,10 +35,6 @@ import org.w3c.dom.NodeList;
 
 public class XPathUtil {
 
-	public static String queryString(Document document, String expression) throws XPathExpressionException {
-		return (String) query(document, expression, XPathConstants.STRING);
-	}
-
 	public static List<Element> queryElements(Document document, String expression) throws XPathExpressionException {
 		return XMLUtil.toElementList(queryNodes(document, expression));
 	}
@@ -51,8 +47,39 @@ public class XPathUtil {
 		return (Element) query(document, expression, XPathConstants.NODE);
 	}
 
+	public static String queryElementText(Document document, String elementExpression) throws XPathExpressionException {
+		// a direct string query for the content of a missing element would return an empty string, 
+		// not allowing to differ an empty element from a missing one, so I need to take a two-step approach:
+        Element element = queryElement(document, elementExpression);
+        if (element == null)
+        	return null;
+		return element.getTextContent();
+	}
+
+	public static String queryAttribute(Document document, String elementExpression, String attributeName) throws XPathExpressionException {
+		// since the result of a string query does not differentiate between empty ("") and not found (null), I need to apply a workaround
+		// see http://stackoverflow.com/questions/17390684/jaxp-xpath-1-0-or-2-0-how-to-distinguish-empty-strings-from-non-existent-value
+        Element element = queryElement(document, elementExpression);
+        if (element == null)
+        	return null;
+        NodeList nodes = queryNodes(element, "@" + attributeName);
+		return (nodes.getLength() == 0 ? null : nodes.item(0).getTextContent());
+	}
+	
+	public static String queryString(Document document, String expression) throws XPathExpressionException {
+		return (String) query(document, expression, XPathConstants.STRING);
+	}
+
+	public static String queryString(Element element, String expression) throws XPathExpressionException {
+		return (String) query(element, expression, XPathConstants.STRING);
+	}
+
 	public static NodeList queryNodes(Document document, String expression) throws XPathExpressionException {
 		return (NodeList) query(document, expression, XPathConstants.NODESET);
+	}
+
+	public static NodeList queryNodes(Element element, String expression) throws XPathExpressionException {
+		return (NodeList) query(element, expression, XPathConstants.NODESET);
 	}
 
 	public static Object query(Document document, String expression, QName returnType) throws XPathExpressionException {
@@ -60,13 +87,9 @@ public class XPathUtil {
 		return xpath.evaluate(expression, document, returnType);
 	}
 	
-	public static String queryString(Element element, String expression) throws XPathExpressionException {
-		return (String) query(element, expression, XPathConstants.STRING);
-	}
-
 	public static Object query(Element element, String expression, QName returnType) throws XPathExpressionException {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		return xpath.evaluate(expression, element, returnType);
 	}
-	
+
 }
