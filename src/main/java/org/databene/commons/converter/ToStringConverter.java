@@ -24,6 +24,7 @@ import java.util.Date;
 import org.databene.commons.Capitalization;
 import org.databene.commons.ConversionException;
 import org.databene.commons.Converter;
+import org.w3c.dom.Node;
 
 /**
  * Converts an object to a String by using its toString() method.
@@ -132,6 +133,8 @@ public class ToStringConverter extends FormatHolder implements Converter<Object,
         	else
         		result = new SimpleDateFormat().format(((Calendar) source).getTime());
         	return applyCapitalization(dateCapitalization, result);
+        } else if (source instanceof Node) {
+        	return XMLNode2StringConverter.format(source);
         } else {
 	        ConverterManager manager = ConverterManager.getInstance();
 			Converter converter = manager.createConverter(sourceType, String.class);
