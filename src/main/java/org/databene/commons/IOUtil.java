@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2014 Volker Bergmann (volker.bergmann@bergmann-it.de).
+ * Copyright (C) 2004-2015 Volker Bergmann (volker.bergmann@bergmann-it.de).
  * All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.databene.commons;
 
 import org.databene.commons.collection.MapEntry;
