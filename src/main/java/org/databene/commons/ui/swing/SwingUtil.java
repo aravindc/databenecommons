@@ -140,6 +140,14 @@ public class SwingUtil {
 		return new Color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
 	}
 
+	public static Color semiTransparentColor(Color color) {
+		return applyAlpha(color, 128);
+	}
+	
+	public static Color applyAlpha(Color color, int alpha) {
+		return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
+	}
+	
 	public static void bindKeyToAction(int keyCode, int modifiers, Action action, JComponent component) {
 		bindKeyToAction(keyCode, modifiers, action, component, JComponent.WHEN_FOCUSED);
 	}
