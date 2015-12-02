@@ -19,6 +19,7 @@ Enhancements
 - new method NameUtil.findByName()
 - new Timespan factory methods: Timespan.recentDays(int) & Timespan.futureDays(int)
 - SwingUtil: new methods semiTransparentColor(Color) and applyAlpha(Color, int)
+- Created XMLNode2StringConverter and using it in ToStringConverter
 
 Changes
 -------
