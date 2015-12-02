@@ -22,6 +22,7 @@ import java.util.List;
  * Represents a collection of intervals and provides a {@link #contains(Object)} 
  * method for checking if one of them contains a certain value.
  * Created: 10.03.2011 17:28:50
+ * @param <E> the type of the bounds that define the interval
  * @since 0.5.8
  * @author Volker Bergmann
  */

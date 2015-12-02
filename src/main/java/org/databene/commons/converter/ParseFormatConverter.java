@@ -22,6 +22,7 @@ import java.text.ParseException;
 /**
  * Converts a String to an object by using a java.lang.Format object's format() method.
  * Created: 30.08.2006 19:48:09
+ * @param <T> the object type to convert to
  * @since 0.1
  * @author Volker Bergmann
  */

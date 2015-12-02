@@ -23,6 +23,7 @@ import java.beans.PropertyDescriptor;
 /**
  * Retrieves the value of a JavaBean property with knowledge of the bean type.
  * Created: 21.07.2007 10:18:00
+ * @param <E> the object type to access
  * @author Volker Bergmann
  */
 class TypedPropertyAccessor<E> implements PropertyAccessor<E, Object> {

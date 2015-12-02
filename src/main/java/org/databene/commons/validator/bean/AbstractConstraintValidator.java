@@ -24,6 +24,8 @@ import org.databene.commons.Validator;
 /**
  * Abstract implementation of the {@link ConstraintValidator} interface. 
  * Created at 08.11.2008 07:52:34
+ * @param <A> the corresponding annotation
+ * @param <T> the type of object to validate
  * @since 0.5.0
  * @author Volker Bergmann
  */

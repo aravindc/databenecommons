@@ -22,6 +22,8 @@ import org.databene.commons.ConversionException;
  * The object to be converted is used as the provider for the Accessor
  * Created: 26.08.2007 07:25:26
  * @author Volker Bergmann
+ * @param <C> the object type to access
+ * @param <V> the type of the value to get from the object
  */
 public class AccessingConverter<C, V> extends ThreadSafeConverter<C, V> {
 

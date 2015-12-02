@@ -20,6 +20,7 @@ import java.util.Comparator;
 /**
  * Implementation of Comparator&lt;Comparable&gt;.
  * Created: 06.01.2005 20:12:40
+ * @param <E> the type of objects to compare
  * @author Volker Bergmann
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })

@@ -19,6 +19,8 @@ import org.databene.commons.Converter;
 /**
  * Parent class for {@link Converter} implementations which support all modes of threaded usage.
  * Created: 26.02.2010 12:47:56
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

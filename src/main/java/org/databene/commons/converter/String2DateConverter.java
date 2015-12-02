@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 /**
  * Converts Strings of standard date(time) format (yyyy-MM-dd[Thh:mm[:ss[.SSS]]]) to dates.
  * Created: 07.09.2007 09:07:12
+ * @param <E> the {@link Date} type to convert to
  * @author Volker Bergmann
  */
 public class String2DateConverter<E extends Date> extends ThreadSafeConverter<String, E> implements Patterns {

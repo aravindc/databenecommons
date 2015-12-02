@@ -17,9 +17,9 @@ package org.databene.commons;
 /**
  * A basic validator interface.
  * Created: 29.08.2006 08:31:19
+ * @param <E> the object type to be validated
  * @since 0.1
  * @author Volker Bergmann
- * @param <E> the type that is checked by this validator
  */
 public interface Validator<E> {
 

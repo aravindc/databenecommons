@@ -68,7 +68,10 @@ public class JavaType {
 
     // private constructor ---------------------------------------------------------------------------------------------
 
-    /** Initializes a JavaType instance and puts it into all lookup maps */
+    /** Initializes a JavaType instance and puts it into all lookup maps 
+     * @param name 
+     * @param primitiveClass 
+     * @param objectClass */
     @SuppressWarnings("unchecked")
     private JavaType(String name, Class<?> primitiveClass, Class<?> objectClass) {
         this.name = name;
@@ -85,17 +88,17 @@ public class JavaType {
 
     // property getters ------------------------------------------------------------------------------------------------
 
-    /** returns the name */
+    /** @return the name */
     public String getName() {
         return name;
     }
 
-    /** returns the primitive class */
+    /** @return the primitive class */
     public Class<?> getPrimitiveClass() {
         return primitiveClass;
     }
 
-    /** returns the wrapper class */
+    /** @return the wrapper class */
     public Class<?> getWrapperClass() {
         return wrapperClass;
     }
@@ -106,12 +109,16 @@ public class JavaType {
         return instancesByName.values();
     }
 
-    /** returns an instance by name */
+    /** Returns a class instance by name.
+     * @param name the class name
+     * @return the corresponding class */
     public static JavaType getInstance(String name) {
         return instancesByName.get(name);
     }
 
-    /** finds the wrapper class for primitive number types */
+    /** finds the wrapper class for primitive number types 
+     * @param numberType the number type
+     * @return the corresponding class */
     public static Class<?> getWrapperClass(Class<?> numberType) {
         JavaType resultType = instancesByPrimitive.get(numberType);
         if (resultType == null)
@@ -119,7 +126,9 @@ public class JavaType {
         return (resultType != null ? resultType.getWrapperClass() : null);
     }
 
-    /** finds the primitive class for primitive number types */
+    /** Finds the primitive class for primitive number types. 
+     * @param numberType the number type
+     * @return the corresponding class */
     public static Class<?> getPrimitiveClass(Class<?> numberType) {
         JavaType resultType = instancesByWrapper.get(numberType);
         if (resultType == null)
@@ -127,7 +136,8 @@ public class JavaType {
         return (resultType != null ? resultType.getPrimitiveClass() : null);
     }
 
-    /** provides all Java number types */
+    /** Provides all Java number types. 
+     * @return the number types */
     public static Set<Class<? extends Number>> getNumberTypes() {
         return numberTypes;
     }

@@ -24,6 +24,8 @@ import org.databene.commons.OrderedMap;
 /**
  * {@link Map} proxy which allow to attach a mark to each entry.
  * Created: 03.02.2012 16:40:07
+ * @param <K> the maps's key type
+ * @param <V> the map's value type
  * @since 0.5.14
  * @author Volker Bergmann
  */

@@ -20,9 +20,10 @@ import org.databene.commons.ThreadAware;
 /**
  * Parent class for {@link Converter}s that hold a reference to another converter instance.
  * Created: 26.02.2010 17:55:21
+ * @param <S> the type to convert from
+ * @param <T> the type to convert to
  * @since 0.5.0
- * @param <S>
- * @param <T>
+ * @author Volker Bergmann
  */
 public abstract class ConverterWrapper<S, T> implements ThreadAware, Cloneable {
 

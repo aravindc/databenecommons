@@ -23,6 +23,7 @@ import java.util.Comparator;
  * Returns the minimum of two values. If a Comparaotr is provided, that one is used,
  * else it is assumed that E implements Comparable.
  * Created: 03.08.2007 07:40:14
+ * @param <E> the argument and result type of the operation
  * @author Volker Bergmann
  */
 public class MinOperation<E> implements Operation<E, E> {

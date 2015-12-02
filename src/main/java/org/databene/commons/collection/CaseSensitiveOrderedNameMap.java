@@ -21,6 +21,7 @@ import org.databene.commons.OrderedMap;
 /**
  * {@link OrderedMap} implementation which assigns names to objects.
  * Created: 12.12.2012 11:04:02
+ * @param <E> the type of the collection's elements
  * @since 0.5.21
  * @author Volker Bergmann
  */

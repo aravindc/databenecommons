@@ -19,6 +19,7 @@ import org.databene.commons.ConversionException;
 /**
  * Returns the argument to be converted.
  * Created: 27.09.2006 23:26:25
+ * @param <E> the object type to convert from and to
  * @since 0.1
  * @author Volker Bergmann
  */

@@ -33,6 +33,7 @@ public final class CollectionUtil {
     /**
      * Converts an array into a list.
      * @param array the array to convert into a list.
+     * @param <T> the element type
      * @return a list containing all elements of the given array.
      */
     public static <T> List<T> toList(T ... array) {
@@ -52,6 +53,7 @@ public final class CollectionUtil {
     /**
      * Creates a HashSet filled with the specified elements
      * @param elements the content of the Set
+     * @param <T> the element type
      * @return a HashSet with the elements
      */
     public static <T> Set<T> toSet(T ... elements) {
@@ -85,6 +87,9 @@ public final class CollectionUtil {
      * Adds the content of an array to a collection
      * @param target the collection to be extended
      * @param values the values to add
+     * @param <C> the collection type
+     * @param <T> the element type
+     * @param <U> the common supertype of the values
      * @return the collection, extended by the contents of the array
      */
     public static <T, U extends T, C extends Collection<? super T>> C add(C target, U ... values) {
@@ -159,6 +164,8 @@ public final class CollectionUtil {
 
     /** Creates a new instance of a Collection. Abstract interfaces are mapped to a default implementation class. 
      * @param collectionType the type of the collection to be created
+     * @param <T> the type of the requested collection
+     * @param <U> the collection element type 
      * @return an empty instance of the requested collection type */ 
     @SuppressWarnings("unchecked")
     public static <T extends Collection<U>, U> T newInstance(Class<T> collectionType) {
@@ -177,6 +184,7 @@ public final class CollectionUtil {
     /** Compares two lists for identical content, accepting different order. 
      * @param a1 the first list
      * @param a2 the second list
+     * @param <T> the generic list type
      * @return true if both lists have the same content elements, else false */
     public static <T> boolean equalsIgnoreOrder(List<T> a1, List<T> a2) {
         if (a1 == a2)

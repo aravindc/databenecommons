@@ -19,6 +19,7 @@ import org.databene.commons.ConversionException;
 /**
  * Converts an enum value to its {@link String} representation.
  * Created: 25.02.2010 23:50:06
+ * @param <E> the enumeration type to convert from
  * @since 0.5.0
  * @author Volker Bergmann
  */

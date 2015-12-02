@@ -23,6 +23,7 @@ import java.util.List;
 /**
  * Converts arrays and collections to collections of same content, everything else is converted to a collection of size 1.
  * Created: 26.08.2007 16:16:15
+ * @param <C> the collection type to convert to
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class ToCollectionConverter<C extends Collection> extends ThreadSafeConverter<Object, C> {

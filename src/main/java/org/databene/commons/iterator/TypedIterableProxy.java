@@ -22,6 +22,7 @@ import org.databene.commons.HeavyweightTypedIterable;
 /**
  * {@link Iterable} proxy that wraps an untyped Iterable and adds type information.
  * Created: 02.09.2007 23:29:10
+ * @param <E> the type to wrap
  * @author Volker Bergmann
  */
 public class TypedIterableProxy<E> implements HeavyweightTypedIterable<E> {

@@ -40,6 +40,7 @@ import org.databene.commons.Parser;
  * </pre>
  * 
  * Created: 10.03.2011 17:37:08
+ * @param <E> the type of the bounds that define the interval
  * @since 0.5.8
  * @author Volker Bergmann
  */

@@ -17,6 +17,7 @@ package org.databene.commons.converter.util;
 /**
  * Provides appropriate Java classes for variable data sets.
  * Created: 18.09.2014 18:14:29
+ * @param <E> the context type for which to provide classes
  * @since 1.0.0
  * @author Volker Bergmann
  */

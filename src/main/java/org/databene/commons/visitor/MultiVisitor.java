@@ -22,6 +22,7 @@ import org.databene.commons.Visitor;
 /**
  * Groups multiple visitors into the interface of a single one.
  * Created: 06.03.2011 14:39:23
+ * @param <E> the type of the visited elements
  * @since 0.5.8
  * @author Volker Bergmann
  */

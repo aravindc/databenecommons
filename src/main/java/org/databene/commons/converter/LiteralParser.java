@@ -50,7 +50,7 @@ public class LiteralParser extends ThreadSafeConverter<String, Object> {
      *   date := digit{4} '-' digit{2} '-' digit{2} ['T' digit{2} ':' digit{2} [':' digit{2} ['.' digit{1,3}]]]
      *   number := [-] digit* ['.' digit*]
      * </code> 
-     * @param text
+     * @param text the text to parse
      * @return a date, number, boolean or String that is the object representation of the specified text
      */
     public static Object parse(String text) {

@@ -19,6 +19,7 @@ import org.databene.commons.Validator;
 /**
  * Validator implementation that checks if a value is not null.
  * Created: 01.09.2007 08:53:07
+ * @param <E> the object type to be validated
  * @author Volker Bergmann
  */
 public class NotNullValidator<E> implements Validator<E> {

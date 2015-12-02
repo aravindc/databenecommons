@@ -17,6 +17,7 @@ package org.databene.commons.converter.util;
 /**
  * {@link ClassProvider} implementation which provides the same bean class on any call.
  * Created: 18.09.2014 18:15:27
+ * @param <E> the class to provide
  * @since 1.0.0
  * @author Volker Bergmann
  */

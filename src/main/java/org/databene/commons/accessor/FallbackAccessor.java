@@ -19,6 +19,8 @@ import org.databene.commons.Accessor;
 /**
  * Accessor that consecutively queries a chain of accessors 
  * until one provides the requested value.
+ * @param <C> the object type to access
+ * @param <V> the type of the value to get from the object
  * @since 0.3.0
  * @author Volker Bergmann
  */

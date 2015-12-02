@@ -25,6 +25,7 @@ import org.databene.commons.Validator;
  * Created at 08.11.2008 07:52:34
  * @since 0.4.6
  * @author Volker Bergmann
+ * @param <E> the type of object to be validated
  */
 public abstract class AbstractValidator<E> implements Validator<E> {
 

@@ -18,6 +18,8 @@ package org.databene.commons.tree;
  * The default implementation of the ChildModel interface
  * which expects its elements to implement the Child interface.
  * Created: 31.07.2007 06:55:23
+ * @param <I> the id type
+ * @param <V> the element type
  * @author Volker Bergmann
  */
 public class DefaultChildModel<I, V extends Child<I>> implements ChildModel<I, V> {

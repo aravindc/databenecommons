@@ -19,6 +19,7 @@ import org.databene.commons.TreeModel;
 /**
  * Default implementation of a {@link TreeModel}. It uses DefaultTreeNodes.
  * Created: 08.05.2007 19:05:14
+ * @param <E> the type of the wrapped objects
  * @author Volker Bergmann
  */
 public class DefaultTreeModel<E> implements TreeModel<DefaultTreeNode<E>> {

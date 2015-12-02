@@ -22,6 +22,8 @@ import java.math.BigDecimal;
 /**
  * Converts Number objects of one type to another Number type.
  * Created: 16.06.2007 11:51:14
+ * @param <S> the number type to convert from
+ * @param <T> the number type to convert to
  * @author Volker Bergmann
  */
 public class NumberToNumberConverter<S extends Number, T extends Number> extends ConverterProxy<S, T> {
@@ -61,6 +63,7 @@ public class NumberToNumberConverter<S extends Number, T extends Number> extends
      * Converts a number of one number type to another number type.
      * @param src the number to convert
      * @param targetType the target number type of the conversion
+     * @param <TT> the type to convert the number to
      * @return an object of the target number type
      */
     @SuppressWarnings("unchecked")

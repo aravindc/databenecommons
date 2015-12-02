@@ -19,6 +19,8 @@ import org.databene.commons.Converter;
 /**
  * Parent class for {@link Converter}s that are neither parallelizable nor thead-safe.
  * Created: 26.02.2010 16:19:44
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

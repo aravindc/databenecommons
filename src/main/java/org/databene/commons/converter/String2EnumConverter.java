@@ -19,6 +19,7 @@ import org.databene.commons.ConversionException;
 /**
  * Instantiates enum instances by their name.
  * Created: 20.08.2007 07:11:16
+ * @param <E> the enumeration type to convert to
  * @author Volker Bergmann
  */
 @SuppressWarnings("rawtypes")

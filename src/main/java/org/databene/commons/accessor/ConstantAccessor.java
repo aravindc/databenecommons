@@ -19,6 +19,7 @@ import org.databene.commons.Accessor;
 /**
  * Accessor that always returns the same value, independent of the object it is applied to.
  * Created: 06.03.2006 08:59:02
+ * @param <V> the type of the value to get from the object
  * @author Volker Bergmann
  */
 public class ConstantAccessor<V> implements Accessor<Object, V> {

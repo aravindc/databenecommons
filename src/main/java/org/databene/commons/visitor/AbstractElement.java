@@ -23,6 +23,7 @@ import java.util.Collection;
  * Implementation of the Element interface that supports navigating through sub elements.
  * Created: 04.02.2007 07:53:23
  * @author Volker Bergmann
+ * @param <E> the type of object to be validated
  */
 public abstract class AbstractElement<E> implements Element<E> {
 

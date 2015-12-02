@@ -21,6 +21,7 @@ import org.databene.commons.iterator.BidirectionalIterator;
 /**
  * Iterates a tree forward and backward.
  * Created: 08.05.2007 18:05:24
+ * @param <E> the type of object to iterate
  * @author Volker Bergmann
  */
 public class TreeIterator<E> implements BidirectionalIterator<E> {

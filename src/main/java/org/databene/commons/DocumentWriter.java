@@ -20,6 +20,7 @@ import java.io.IOException;
 /**
  * Abstraction of a document writer.
  * Created: 06.06.2007 19:25:43
+ * @param <E> the type of objects to persist
  * @author Volker Bergmann
  */
 public interface DocumentWriter<E> extends Closeable {

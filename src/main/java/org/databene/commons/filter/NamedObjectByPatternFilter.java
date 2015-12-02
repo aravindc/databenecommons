@@ -20,6 +20,7 @@ import org.databene.commons.Named;
 /**
  * {@link Filter} implementation which filters implementors of the {@link Named} interface by their name.
  * Created: 11.06.2011 15:44:44
+ * @param <E> the type of objects to filter
  * @since 0.5.8
  * @author Volker Bergmann
  */

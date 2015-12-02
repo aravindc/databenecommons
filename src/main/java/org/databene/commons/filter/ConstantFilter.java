@@ -19,6 +19,7 @@ import org.databene.commons.Filter;
 /**
  * Yields the same result for any argument.
  * Created: 08.06.2012 20:56:15
+ * @param <E> the type of objects to filter
  * @since 0.5.16
  * @author Volker Bergmann
  */

@@ -17,6 +17,8 @@ package org.databene.commons.tree;
 /**
  * Defines a contract of mapping arbitrary objects to a parent/child structure.
  * Created: 31.07.2007 06:32:11
+ * @param <I> the id type
+ * @param <V> the element type
  * @author Volker Bergmann
  */
 public interface ChildModel<I, V> {

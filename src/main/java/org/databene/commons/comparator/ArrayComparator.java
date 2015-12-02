@@ -21,6 +21,7 @@ import java.util.Comparator;
 /**
  * Compares two arrays by the first 'min-length' array elements with a Comparator.
  * Created: 22.05.2007 07:07:17
+ * @param <E> the component type of the arrays to be compared
  * @since 0.1
  * @author Volker Bergmann
  */

@@ -22,6 +22,7 @@ import org.databene.commons.HeavyweightIterator;
  * On calls to <code>iterator()</code>, Iterators of the wrapped 
  * Iterable will be wrapped to be {@link HeavyweightIterator}s.
  * Created at 17.10.2008 01:29:37
+ * @param <E> the type to iterate
  * @since 0.4.6
  * @author Volker Bergmann
  */

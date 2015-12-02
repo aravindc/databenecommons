@@ -21,6 +21,7 @@ import java.util.List;
 /**
  * A {@link BidirectionalIterator} for {@link List}s.
  * Created: 08.05.2007 19:50:20
+ * @param <E> the type to iterate
  * @author Volker Bergmann
  */
 public class BidirectionalListIterator<E> implements BidirectionalIterator<E> {

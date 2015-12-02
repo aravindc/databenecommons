@@ -17,6 +17,7 @@ package org.databene.commons;
 /**
  * Models a Visitor as defined in the Visitor Design Patterns.
  * Created: 04.02.2007 07:52:37
+ * @param <E> the type of objects to be visited
  * @author Volker Bergmann
  */
 public interface Visitor<E> {

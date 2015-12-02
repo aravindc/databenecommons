@@ -20,6 +20,7 @@ import org.databene.commons.Validator;
  * Composite validator that requires at least one component to return true. 
  * If no components exists, false is returned.
  * Created: 20.11.2007 09:50:13
+ * @param <E> the object type to be validated
  * @author Volker Bergmann
  */
 public class OrValidator<E> extends CompositeValidator<E> {

@@ -21,18 +21,14 @@ package org.databene.commons;
  */
 public final class VMInfo {
 
-    /**
-     * Java Runtime Environment version
-     * @deprecated Use {@link #getJavaVersion()}
-     */
+    /** @return Java Runtime Environment version 
+     * @deprecated Use {@link #getJavaVersion()} */
 	@Deprecated
     public static String javaVersion() {
         return System.getProperty("java.version");
     }
 
-    /**
-     * Java Runtime Environment version
-     */
+    /** @return the Java Runtime Environment version */
     public static String getJavaVersion() {
         return System.getProperty("java.version");
     }

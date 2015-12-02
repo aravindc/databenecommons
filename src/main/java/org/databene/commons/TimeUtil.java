@@ -408,7 +408,7 @@ public final class TimeUtil {
 
 	/** Calculates the julian day of a {@link Date}. 
      *  See http://en.wikipedia.org/wiki/Julian_day 
-	 * @param date 
+	 * @param date the date 
 	 * @return the number of the day in the year */
 	public static int julianDay(Date date) {
 		return julianDay(calendar(date));
@@ -416,7 +416,7 @@ public final class TimeUtil {
     
 	/** Calculates the julian day of a {@link Calendar}. 
      *  See http://en.wikipedia.org/wiki/Julian_day 
-	 * @param calendar 
+	 * @param calendar the date
 	 * @return the number of the day in the year */
 	public static int julianDay(Calendar calendar) {
 		int year = calendar.get(Calendar.YEAR);
@@ -427,9 +427,9 @@ public final class TimeUtil {
     
 	/** Calculates the julian day of a date. 
      *  See http://en.wikipedia.org/wiki/Julian_day 
-	 * @param year 
-	 * @param month 
-	 * @param day 
+	 * @param year the year
+	 * @param month the month
+	 * @param day the day
 	 * @return the number of the day in the year */
 	public static int julianDay(int year, int month, int day) {
 		int a = (14 - month) / 12;

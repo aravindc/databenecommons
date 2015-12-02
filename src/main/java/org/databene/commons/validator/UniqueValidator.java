@@ -24,6 +24,7 @@ import java.util.HashSet;
  * Validator implementation that requires each argument 
  * of consecutive calls to the valid() method to be unique.
  * Created: 20.11.2007 09:55:16
+ * @param <E> the object type to be validated
  * @author Volker Bergmann
  */
 public class UniqueValidator<E> implements Validator<E>, Resettable {

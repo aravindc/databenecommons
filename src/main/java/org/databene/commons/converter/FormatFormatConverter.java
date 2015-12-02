@@ -21,6 +21,7 @@ import org.databene.commons.ConversionException;
 /**
  * Converts an object to a String by using a java.lang.Format object's format() method.
  * Created: 30.08.2006 19:43:09
+ * @param <S> the object type to convert from
  * @since 0.1
  * @author Volker Bergmann
  */
@@ -28,7 +29,9 @@ public class FormatFormatConverter<S> extends FormatBasedConverter<S, String> {
 
     /**
      * Constructor that initializes the format object.
+     * @param sourceType the type to convert from 
      * @param format the format object to use.
+     * @param threadSafe tells if the instance is thread safe
      */
     public FormatFormatConverter(Class<S> sourceType, Format format, boolean threadSafe) {
         super(sourceType, String.class, format, threadSafe);

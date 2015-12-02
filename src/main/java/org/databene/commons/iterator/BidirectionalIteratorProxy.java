@@ -17,6 +17,7 @@ package org.databene.commons.iterator;
 /**
  * Proxy for a {@link BidirectionalIterator}.
  * Created: 12.05.2007 23:18:31
+ * @param <E> the type to iterate
  * @author Volker Bergmann
  */
 public abstract class BidirectionalIteratorProxy<E> implements BidirectionalIterator<E> {

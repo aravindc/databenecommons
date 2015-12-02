@@ -21,6 +21,7 @@ import org.databene.commons.Validator;
 /**
  * Abstract {@link Validator} implementation that combines the evaluation results of other Validators.
  * Created: 20.11.2007 09:50:13
+ * @param <E> the object type to be validated
  * @author Volker Bergmann
  */
 public abstract class CompositeValidator<E> implements Validator<E> {

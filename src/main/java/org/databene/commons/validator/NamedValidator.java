@@ -20,6 +20,7 @@ import org.databene.commons.Validator;
 /**
  * Combination of {@link Named} and {@link Validator} interfaces.
  * Created: 21.12.2011 07:32:40
+ * @param <E> the object type to be validated
  * @since 0.5.14
  * @author Volker Bergmann
  */

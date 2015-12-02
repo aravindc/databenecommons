@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Converts any source type to any target type. It also makes use of the ConverterManager.
  * Created: 16.06.2007 11:34:42
+ * @param <E> the type to by checked by this validator
  * @author Volker Bergmann
  */
 public class AnyConverter<E> extends FormatHolder implements Converter<Object, E> {
@@ -73,7 +74,12 @@ public class AnyConverter<E> extends FormatHolder implements Converter<Object, E
      * Converts an object of a given type to an object of the target type.
      * @param source the object to convert
      * @param targetType the target type of the conversion
+     * @param datePattern the date pattern to apply
+     * @param timePattern the time pattern to apply
+     * @param timestampPattern the timestamp pattern to apply
+     * @param <TT> the target type
      * @return an object of the target type
+     * @throws ConversionException if conversion fails 
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static <TT> TT convert(Object source, Class<TT> targetType, String datePattern, 

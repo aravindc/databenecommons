@@ -30,7 +30,10 @@ public class ExceptionUtil {
 		return result;
 	}
 	
-	/** Scans recursively through an Exception and its 'cause' chain and tells if a given Exception type is contained. */
+	/** Scans recursively through an Exception and its 'cause' chain and tells if a given Exception type is contained. 
+	 * @param exceptionType the requested exception type
+	 * @param exception the actual exception to examine
+	 * @return true if the given Exception type was found */
 	public static boolean containsException(Class<? extends Throwable> exceptionType, Throwable exception) {
 		do {
 			if (exceptionType.isAssignableFrom(exception.getClass()))

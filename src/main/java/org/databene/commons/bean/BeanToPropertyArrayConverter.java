@@ -20,6 +20,7 @@ import org.databene.commons.converter.ThreadSafeConverter;
 /**
  * Converter implementation that extracts all property values of a JavaBean to a Properties object.
  * Created: 07.06.2007 14:11:58
+ * @param <E> the bean type to access
  * @author Volker Bergmann
  */
 public class BeanToPropertyArrayConverter<E> extends ThreadSafeConverter<E, Object[]> {

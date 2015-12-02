@@ -16,6 +16,8 @@ package org.databene.commons.accessor;
 
 /**
  * Typed Accessor that returns a default value if invoked on argument null.
+ * @param <C> the object type to access
+ * @param <V> the type of the value to get from the object
  * Created: 22.02.2006 20:08:36
  * @author Volker Bergmann
  */

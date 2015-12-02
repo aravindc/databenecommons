@@ -24,6 +24,8 @@ import org.databene.commons.bean.PropertyAccessorFactory;
  * Created at 15.07.2009 23:19:18
  * @since 0.5.0
  * @author Volker Bergmann
+ * @param <B> the bean type to read the property from
+ * @param <P> the property type to proved
  */
 
 public class PropertyExtractor<B, P> extends ThreadSafeConverter<B, P> {

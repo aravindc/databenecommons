@@ -20,6 +20,7 @@ import org.databene.commons.HeavyweightTypedIterable;
 /**
  * {@link Iterable} proxy which skips the first data row.
  * Created: 19.07.2011 09:04:03
+ * @param <T> the type to iterate
  * @since 0.5.9
  * @author Volker Bergmann
  */

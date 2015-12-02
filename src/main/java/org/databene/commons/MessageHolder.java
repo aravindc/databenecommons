@@ -21,6 +21,6 @@ package org.databene.commons;
  * @author Volker Bergmann
  */
 public interface MessageHolder {
-	/** a message string if a message is available, otherwise null */
+	/** @return a message string if a message is available, otherwise null */
 	String getMessage();
 }

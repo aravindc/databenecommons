@@ -24,6 +24,8 @@ import org.databene.commons.Converter;
  * {@link Converter} implementation which invokes a constructor of the target class 
  * with the source object as argument.
  * Created: 27.02.2010 06:57:40
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

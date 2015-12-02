@@ -18,6 +18,7 @@ package org.databene.commons;
  * Models an Element as defined in the Visitor Design Patterns.
  * Created: 04.02.2007 07:53:52
  * @author Volker Bergmann
+ * @param <E> the type of object to be visited
  */
 public interface Element<E> {
     public void accept(Visitor<E> visitor);

@@ -19,6 +19,8 @@ import org.databene.commons.Converter;
 /**
  * Abstract implementation of the {@link Converter} interface, providing management of source and target type.
  * @author Volker Bergmann
+ * @param <S> the type to convert from
+ * @param <T> the type to convert to
  */
 public abstract class AbstractConverter<S, T> implements Converter<S, T> {
 

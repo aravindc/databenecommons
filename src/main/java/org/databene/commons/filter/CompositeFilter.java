@@ -21,6 +21,7 @@ import org.databene.commons.Filter;
 /**
  * Abstract parent filter which combines several filter components.
  * Created: 08.06.2012 20:29:58
+ * @param <E> the type of objects to be filtered
  * @since 0.5.16
  * @author Volker Bergmann
  */

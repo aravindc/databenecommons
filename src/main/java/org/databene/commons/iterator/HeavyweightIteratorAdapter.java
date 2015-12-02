@@ -25,6 +25,8 @@ import org.databene.commons.IOUtil;
  * If the wrapped iterator implements {@link Closeable}, calls to 
  * <code>close()</code> are forwarded, otherwise ignored.
  * Created at 17.10.2008 01:27:08
+ * @param <S> the type to iterate
+ * @param <P> the type to provide
  * @since 0.4.6
  * @author Volker Bergmann
  */

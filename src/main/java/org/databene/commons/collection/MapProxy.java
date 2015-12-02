@@ -21,6 +21,9 @@ import java.util.Set;
 /**
  * Proxy class for a {@link Map}.
  * Created: 12.12.2012 11:49:35
+ * @param <M> The type of map to wrap
+ * @param <K> the key type
+ * @param <V> the value type
  * @since 0.5.21
  * @author Volker Bergmann
  */

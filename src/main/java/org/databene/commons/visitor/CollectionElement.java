@@ -22,6 +22,7 @@ import java.util.Collection;
 /**
  * Element implementation that wraps a Java collection.
  * Created: 04.02.2007 09:27:19
+ * @param <E> the collection element type
  * @author Volker Bergmann
  */
 public class CollectionElement<E> implements Element<E> {

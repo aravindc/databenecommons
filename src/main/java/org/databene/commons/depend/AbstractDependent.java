@@ -17,12 +17,11 @@ package org.databene.commons.depend;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Abstract class that provides partial featur implementation of the Dependent interface.
+ * @param <E> the type of the objects to process
  * @author Volker Bergmann
  * @since 0.3.04
- * @param <E>
  */
 public abstract class AbstractDependent<E extends Dependent<E>> implements Dependent<E> {
 

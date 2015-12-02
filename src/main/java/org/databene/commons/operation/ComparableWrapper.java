@@ -19,6 +19,7 @@ import org.databene.commons.Converter;
 /**
  * Wraps a data object with a helper object that can be compared independently of the data object.
  * Created: 26.02.2010 09:17:05
+ * @param <E> the type to wrap
  * @since 0.5.0
  * @author Volker Bergmann
  */

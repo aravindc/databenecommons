@@ -20,6 +20,7 @@ import java.util.Iterator;
  * {@link Iterator} implementation which allows to preview the {@link #next()} value 
  * without actually consuming it using the {@link #peek()} method.
  * Created: 25.01.2012 14:11:17
+ * @param <E> the type to iterate
  * @since 0.5.14
  * @author Volker Bergmann
  */

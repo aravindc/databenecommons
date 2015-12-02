@@ -427,6 +427,7 @@ public final class BeanUtil {
      * Creates an object of the specified type.
      * @param type the class to instantiate
      * @param parameters the constructor parameters
+     * @param <T> the class of the object to instantiate
      * @return an object of the specified class
      */
     public static <T> T newInstance(Class<T> type, Object[] parameters) {
@@ -492,9 +493,10 @@ public final class BeanUtil {
     }
 
     /**
-     * Creates a new instance of a Class.
-     * @param constructor
-     * @param params
+     * Creates a new instance of a class.
+     * @param constructor the constructor to invoke
+     * @param params the parameters to provide to the constructor
+     * @param <T> the class of the object to instantiate
      * @return a new instance of the class
      */
     public static <T> T newInstance(Constructor<T> constructor, Object ... params) {
@@ -547,9 +549,9 @@ public final class BeanUtil {
      * Finds a method by reflection. This iterates all methods of the class, comparing names and parameter types.
      * Unlike the method Class.getMethod(String, Class ...), this method is able to match primitive and wrapper types.
      * If no appropriate method is found, a ConfigurationError is raised.
-     * @param type
-     * @param methodName
-     * @param paramTypes
+     * @param type the class that holds the method
+     * @param methodName the name of the method
+     * @param paramTypes the parameter types of the method
      * @return a method with matching names and parameters
      */
     public static Method getMethod(Class<?> type, String methodName, Class<?> ... paramTypes) {
@@ -564,9 +566,9 @@ public final class BeanUtil {
      * Finds a method by reflection. This iterates all methods of the class, comparing names and parameter types.
      * Unlike the method Class.getMethod(String, Class ...), this method is able to match primitive and wrapper types.
      * If no appropriate method is found, 'null' is returned
-     * @param type
-     * @param methodName
-     * @param paramTypes
+     * @param type the class that holds the method
+     * @param methodName the name of the method
+     * @param paramTypes the parameter types of the method
      * @return a method with matching names and parameters
      */
     public static Method findMethod(Class<?> type, String methodName, Class<?> ... paramTypes) {
@@ -606,9 +608,9 @@ public final class BeanUtil {
 
     /**
      * Invokes a method on a bean.
-     * @param target
-     * @param methodName
-     * @param args
+     * @param target the object on which to invoke the mthod
+     * @param methodName the name of the method
+     * @param args the arguments to provide to the method
      * @return the invoked method's return value.
      */
     public static Object invoke(Object target, String methodName, Object ... args) {
@@ -643,10 +645,10 @@ public final class BeanUtil {
     }
 
     /**
-     * Invokes a method on a bean
-     * @param target
-     * @param method
-     * @param args
+     * Invokes a method on a bean.
+     * @param target the object on which to invoke the mthod
+     * @param method the method to invoke
+     * @param args the arguments to provide to the method
      * @return the invoked method's return value.
      */
     public static Object invoke(Object target, Method method, Object[] args) {
@@ -859,8 +861,8 @@ public final class BeanUtil {
     /**
      * Copies a Map's values to the properties of a JavaBean,
      * using the Map entries' key values as bean property names.
-     * @param sourceBean 
-     * @param targetBean 
+     * @param sourceBean the bean from which to read the properties
+     * @param targetBean the bean on which to set the properties
      */
     public static void copyPropertyValues(Object sourceBean, Object targetBean) {
         PropertyDescriptor[] propertyDescriptors = getPropertyDescriptors(sourceBean.getClass());
@@ -928,8 +930,8 @@ public final class BeanUtil {
 
     /**
      * Queries a property value on a JavaBean instance
-     * @param bean
-     * @param propertyName
+     * @param bean the bean to read
+     * @param propertyName the name of the property to read
      * @return the property value
      */
     public static Object getPropertyValue(Object bean, String propertyName) {
@@ -1036,8 +1038,8 @@ public final class BeanUtil {
 
     /**
      * Prints information about a class' parents and methods to a PrintWriter
-     * @param object
-     * @param printer
+     * @param object the object to examine
+     * @param printer the {@link PrintWriter} used to write the text representation
      */
     public static void printClassInfo(Object object, PrintWriter printer) {
         if (object == null) {
@@ -1158,7 +1160,7 @@ public final class BeanUtil {
 
     /**
      * Creates an instance of the class using the default constructor.
-     * @param type 
+     * @param type the type to instantiate
      * @return a new instance of the type
      * @since 0.2.06
      */

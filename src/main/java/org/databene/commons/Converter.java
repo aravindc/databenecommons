@@ -20,6 +20,8 @@ package org.databene.commons;
  * Created: 30.08.2006 19:41:08
  * @since 0.1
  * @author Volker Bergmann
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  */
 public interface Converter<S, T> extends ThreadAware {
 

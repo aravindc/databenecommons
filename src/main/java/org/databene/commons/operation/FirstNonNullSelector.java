@@ -19,6 +19,7 @@ import org.databene.commons.Operation;
 /**
  * Returns the first non-null argument as the operation result.
  * Created: 03.08.2007 07:17:31
+ * @param <E> the argument and result type of the operation
  * @author Volker Bergmann
  */
 public class FirstNonNullSelector<E> implements Operation<E, E> {

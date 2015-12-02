@@ -22,6 +22,8 @@ import java.util.HashMap;
 /**
  * Adapts a ChildModel to a TreeModel.
  * Created: 31.07.2007 06:32:41
+ * @param <I> the id type
+ * @param <V> the element type
  * @author Volker Bergmann
  */
 public class ChildTreeModel<I, V> implements TreeModel<V> {

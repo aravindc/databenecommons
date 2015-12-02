@@ -22,6 +22,7 @@ import org.databene.commons.converter.ThreadSafeConverter;
 /**
  * Maps a bean's feature (attributes, properties, Map contents) values to an array of values.
  * Created: 14.07.2014 15:24:31
+ * @param <E> the object type to access
  * @since 0.5.33
  * @author Volker Bergmann
  */

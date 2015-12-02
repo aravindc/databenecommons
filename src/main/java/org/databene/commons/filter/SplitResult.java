@@ -21,6 +21,7 @@ import java.util.List;
  * <code>matches</code> contains the List items that matched the filter, 
  * <code>mismatches</code> contains the other ones.
  * Created: 10.04.2007 08:09:06
+ * @param <E> The type of elements processed
  * @author Volker Bergmann
  */
 public class SplitResult<E> {

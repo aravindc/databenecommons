@@ -20,6 +20,7 @@ import org.databene.commons.Filter;
  * {@link Filter} implementation which accepts objects that implement a certain class ({@link #acceptedClass})
  * or (if {@link #acceptingSubClasses} is true) a sub class.
  * Created: 07.06.2011 14:01:42
+ * @param <E> the type of objects to filter
  * @since 0.5.8
  * @author Volker Bergmann
  */

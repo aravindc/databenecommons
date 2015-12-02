@@ -23,6 +23,7 @@ import org.databene.commons.OrderedMap;
  * A map that assigns names to Objects and keeps entries 
  * in the order in which they were inserted.
  * Created at 14.04.2008 09:49:34
+ * @param <E> the type of the collection's elements
  * @since 0.5.2
  * @author Volker Bergmann
  */

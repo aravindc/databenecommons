@@ -19,6 +19,7 @@ import org.databene.commons.Visitor;
 /**
  * Element implementation that serves as proxy for another Element.
  * Created: 04.02.2007 08:17:20
+ * @param <E> The type of the wrapped element
  * @author Volker Bergmann
  */
 public abstract class WrapperElement<E> extends AbstractElement<E> {

@@ -20,6 +20,7 @@ import org.databene.commons.Condition;
  * Composite condition that requires each sub condition to be true. 
  * If no sub conditions exist, true is returned by default.
  * Created: 04.02.2007 00:42:31
+ * @param <E> the type of argument to evaluate
  * @author Volker Bergmann
  */
 public class AndCondition<E> extends CompositeCondition<E> {

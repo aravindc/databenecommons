@@ -78,7 +78,7 @@ public final class StringUtil {
      * If the string does not contain the separator, the string itself
      * is the token. If the string ends with a separator, the token is
      * null.
-     * @param name
+     * @param name the name to parse
      * @param separator the character that separates the tokens
      * @return the last token
      */
@@ -183,7 +183,7 @@ public final class StringUtil {
     }
 
     /** interprets an nbsp as space character 
-     * @param c 
+     * @param c the character to check 
      * @return true if the character is a whitespace, otherwise false. */
     public static boolean isWhitespace(char c) {
         return Character.isWhitespace(c) || c == 160;

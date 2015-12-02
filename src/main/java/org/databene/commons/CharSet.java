@@ -22,7 +22,6 @@ import java.util.Locale;
 /**
  * Represents a Set of characters and provides locale-dependent character sets
  * as well as set manipulation methods.
- *
  * Created: 18.08.2006 19:49:17
  * @author Volker Bergmann
  */
@@ -38,18 +37,20 @@ public class CharSet implements Named {
 
     // constructors ----------------------------------------------------------------------------------------------------
 
-    /** Default constructor that initializes to an isEmpty Set of characters with the fallback locale */
+    /** Default constructor that initializes to an isEmpty Set of characters with the fallback locale. */
     public CharSet() {
         this(LocaleUtil.getFallbackLocale());
     }
 
-    /** Constructor that initializes to an isEmpty Set of characters with the specified locale */
+    /** Constructor that initializes to an isEmpty Set of characters with the specified locale.
+     * @param locale the locale for which to create te set */
     public CharSet(Locale locale) {
         set = new HashSet<Character>();
         this.locale = locale;
     }
 
-    /** Constructor that initializes to a Set with one character with the fallback locale */
+    /** Constructor that initializes to a Set with one character with the fallback locale.
+     * @param c the character to include */
     public CharSet(char c) {
         set = new HashSet<Character>();
         set.add(Character.valueOf(c));
@@ -60,7 +61,10 @@ public class CharSet implements Named {
     	this(null, from, to);
     }
     
-    /** Constructor that initializes to a continuous range of characters with the fallback locale */
+    /** Constructor that initializes to a continuous range of characters with the fallback locale.
+     * @param name the name of the set
+     * @param from the first character to include
+     * @param to the last character to include */
     public CharSet(String name, char from, char to) {
     	this.name = name;
         set = new HashSet<Character>();
@@ -69,12 +73,14 @@ public class CharSet implements Named {
         this.locale = LocaleUtil.getFallbackLocale();
     }
 
-    /** Constructor that initializes to a predefined Set of characters with the fallback locale */
+    /** Constructor that initializes to a predefined Set of characters with the fallback locale.
+     * @param charSet the set of characters to include */
     public CharSet(CharSet charSet) {
         this(charSet.set);
     }
 
-    /** Constructor that initializes to a predefined Set of characters with the fallback locale */
+    /** Constructor that initializes to a predefined Set of characters with the fallback locale.
+     * @param set the set of characters to include */
     public CharSet(Set<Character> set) {
         this(null, set);
     }
@@ -136,27 +142,35 @@ public class CharSet implements Named {
 
     // word related interface ------------------------------------------------------------------------------------------
 
-    /** Adds all letters of the internal locale to the Set */
+    /** Adds all letters of the internal locale to the Set.
+     * @return this */
     public CharSet addWordChars() {
         return addWordChars(locale);
     }
 
-    /** Adds all letters of the specified locale to the Set */
+    /** Adds all letters of the specified locale to the Set.
+     * @param locale the locale for which to get the cahracters
+     * @return this */
     public CharSet addWordChars(Locale locale) {
         return addAll(getWordChars(locale));
     }
 
-    /** Removes all letters of the internal locale from the Set */
+    /** Removes all letters of the internal locale from the Set.
+     * @return this */
     public CharSet removeWordChars() {
         return removeWordChars(locale);
     }
 
-    /** Removes all letters of the specified locale from the Set */
+    /** Removes all letters of the specified locale from the Set.
+     * @param locale the locale for which to get the characters 
+     * @return this */
     public CharSet removeWordChars(Locale locale) {
         return removeAll(getWordChars(locale));
     }
 
-    /** Returns all letters of the specified locale */
+    /** Returns all letters of the specified locale.
+     * @param locale the locale for which to get the characters 
+     * @return a set with all letters of the specified locale */
     public static Set<Character> getWordChars(Locale locale) {
         Set<Character> wordChars = LocaleUtil.letters(locale);
         wordChars.add('_');
@@ -164,17 +178,20 @@ public class CharSet implements Named {
         return wordChars;
     }
 
-    /** Adds all characters that are not letters of any locale */
+    /** Adds all characters that are not letters of any locale.
+     * @return this */
     public CharSet addNonWordChars() {
         return addAll(getNonWordChars());
     }
 
-    /** Removes all characters that are not letters of any locale */
+    /** Removes all characters that are not letters of any locale.
+     * @return this */
     public CharSet removeNonWordChars() {
         return removeAll(getNonWordChars());
     }
 
-    /** Returns all characters that are not letters of any locale */
+    /** Returns all characters that are not letters of any locale.
+     * @return a set with all characters that are not letters of any locale */
     public static Set<Character> getNonWordChars() {
         return new CharSet(' ', '@').addRange('[', '`').addRange('{', '~').getSet();
     }
@@ -182,7 +199,7 @@ public class CharSet implements Named {
     // whitespace related interface ------------------------------------------------------------------------------------
 
     /**
-     * Adds all whitespace characters
+     * Adds all whitespace characters.
      * @return this
      */
     public CharSet addWhitespaces() {
@@ -190,7 +207,7 @@ public class CharSet implements Named {
     }
 
     /**
-     * Removes all whitespace characters
+     * Removes all whitespace characters.
      * @return this
      */
     public CharSet removeWhitespaces() {
@@ -198,7 +215,7 @@ public class CharSet implements Named {
     }
 
     /**
-     * Returns all whitespace characters
+     * Returns all whitespace characters.
      * @return a Set of all whitespace charaters
      */
     public static Set<Character> getWhitespaces() {
@@ -206,7 +223,7 @@ public class CharSet implements Named {
     }
 
     /**
-     * Adds all characters that are not white spaces
+     * Adds all characters that are not white spaces.
      * @return this
      */
     public CharSet addNonWhitespaces() {
@@ -214,7 +231,7 @@ public class CharSet implements Named {
     }
 
     /**
-     * Removes all characters that are not white spaces
+     * Removes all characters that are not white spaces.
      * @return this
      */
     public CharSet removeNonWhitespaces() {
@@ -222,7 +239,7 @@ public class CharSet implements Named {
     }
 
     /**
-     * Returns a set of all characters that are not white spaces
+     * Returns a set of all characters that are not white spaces.
      * @return a set of all characters that are not white spaces
      */
     public static Set<Character> getNonWhitespaces() {
@@ -231,13 +248,14 @@ public class CharSet implements Named {
 
     // low level interface ---------------------------------------------------------------------------------------------
 
-    /** Adds any character */
+    /** Adds any character.
+     * @return this */
     public CharSet addAnyCharacters() {
         return addAll(getAnyCharacters());
     }
 
     /**
-     * Returns any characters
+     * Returns any characters.
      * @return a set of any characters
      */
     public static Set<Character> getAnyCharacters() {
@@ -248,7 +266,7 @@ public class CharSet implements Named {
     }
 
     /**
-     * clears the set
+     * Clears the set.
      * @return this
      */
     public CharSet removeAll() {
@@ -257,7 +275,9 @@ public class CharSet implements Named {
     }
 
     /**
-     * Adds a range of characters
+     * Adds a range of characters.
+     * @param from the first character to add
+     * @param to the last character to add
      * @return this
      */
     public CharSet addRange(char from, char to) {
@@ -267,7 +287,8 @@ public class CharSet implements Named {
     }
 
     /**
-     * Adds a single character
+     * Adds a single character.
+     * @param c the character to add
      * @return this
      */
     public CharSet add(char c) {
@@ -276,7 +297,8 @@ public class CharSet implements Named {
     }
 
     /**
-     * Adds a set of characters
+     * Adds a set of characters.
+     * @param chars the characters to include
      * @return this
      */
     public CharSet addAll(Set<Character> chars) {
@@ -285,8 +307,8 @@ public class CharSet implements Named {
     }
 
     /**
-     * Removes all characters of the specified set
-     * @param chars
+     * Removes all characters of the specified set.
+     * @param chars the characters to remove
      * @return this
      */
     public CharSet removeAll(Set<Character> chars) {
@@ -295,9 +317,9 @@ public class CharSet implements Named {
     }
 
     /**
-     * Removes a range of characters
-     * @param min
-     * @param max
+     * Removes a range of characters.
+     * @param min the first character to remove
+     * @param max the last character to remove
      * @return this
      */
     public CharSet removeRange(char min, char max) {
@@ -307,8 +329,8 @@ public class CharSet implements Named {
     }
 
     /**
-     * removes one character
-     * @param c
+     * Removes one character.
+     * @param c the character to remove
      * @return this
      */
     public CharSet remove(char c) {
@@ -318,7 +340,7 @@ public class CharSet implements Named {
     }
 
     /**
-     * Returns a copy of the wrapped Set as HashSet
+     * Returns a copy of the wrapped Set as HashSet.
      * @return a copy of the wrapped Set as HashSet
      */
     public Set<Character> getSet() {

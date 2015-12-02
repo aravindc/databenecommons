@@ -24,6 +24,8 @@ import java.util.Iterator;
 /**
  * Iterator proxy that converts iterated objects before providing them to the caller.
  * Created: 16.08.2007 06:34:59
+ * @param <S> the type to iterate
+ * @param <T> the type to provide
  * @author Volker Bergmann
  */
 public class ConvertingIterator<S, T> implements HeavyweightIterator<T> {

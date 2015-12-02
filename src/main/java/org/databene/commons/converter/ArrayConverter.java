@@ -25,6 +25,8 @@ import org.databene.commons.Converter;
  * If there are several converters, the number of converters and array elements are 
  * assumed to be equal and each element is converted with the converter of the same index.
  * Created: 07.06.2007 14:35:18
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @author Volker Bergmann
  */
 public class ArrayConverter<S, T> extends MultiConverterWrapper<S, T> implements Converter<S[], T[]> {
@@ -75,7 +77,14 @@ public class ArrayConverter<S, T> extends MultiConverterWrapper<S, T> implements
         }
     }
 
-    /** Converts all array elements with the same {@link Converter}. */
+    /** Converts all array elements with the same {@link Converter}. 
+     * @param converter the converter to apply
+     * @param componentType the component type of the result array
+     * @param sourceValues the source values to convert
+     * @return an array with the mapped values
+	 * @param <S> the object type to convert from
+	 * @param <T> the object type to convert to
+     * @throws ConversionException if conversion fails */
     public static <S, T> T[] convertWith(Converter<S, T> converter, Class<T> componentType, S[] sourceValues) throws ConversionException {
         T[] result = ArrayUtil.newInstance(componentType, sourceValues.length);
         for (int i = 0; i < sourceValues.length; i++) {

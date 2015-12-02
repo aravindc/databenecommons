@@ -19,6 +19,7 @@ import java.util.*;
 /**
  * Implements a Set based on a List. This provides for ensuring element uniqueness
  * while maintaining the order in which elements were inserted.
+ * @param <E> the type of the collection's elements
  * Created: 03.08.2007 18:47:13
  */
 public class ListBasedSet<E> implements Set<E> {

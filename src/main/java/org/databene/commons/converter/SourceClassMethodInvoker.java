@@ -23,6 +23,8 @@ import org.databene.commons.Converter;
 /**
  * {@link Converter} implementation which invokes a no-arg method on the source object.
  * Created: 27.02.2010 06:53:27
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

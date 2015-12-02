@@ -38,12 +38,15 @@ public class StringLengthValidator implements Validator<String> {
         this(0, null);
     }
 
-    /** Creates a validator of a maximum length */
+    /** Creates a validator of a maximum length 
+     * @param maxLength maximum tolerated length */
     public StringLengthValidator(int maxLength) {
         this(0, maxLength);
     }
 
-    /** Creates a validator of a minimum and maximum length */
+    /** Creates a validator of a minimum and maximum length 
+     * @param minLength minimum tolerated length
+     * @param maxLength maximum tolerated length */
     public StringLengthValidator(int minLength, Integer maxLength) {
         setMinLength(minLength);
         setMaxLength(maxLength);

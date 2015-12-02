@@ -37,12 +37,15 @@ public class StringCharacterIterator implements CharacterIterator {
     
     // constructors ----------------------------------------------------------------------------------------------------
 
-    /** Creates an iterator that starts at the String's beginning */
+    /** Creates an iterator that starts at the String's beginning 
+     * @param source the text to iterate */
     public StringCharacterIterator(String source) {
         this(source, 0);
     }
 
-    /** Creates an iterator that starts at a specified position */
+    /** Creates an iterator that starts at a specified position 
+     * @param source the text to iterate
+     * @param offset the offset at witch to begin iteration */
     public StringCharacterIterator(String source, int offset) {
         if (source == null)
             throw new IllegalArgumentException("source string must not be null");

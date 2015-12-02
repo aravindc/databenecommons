@@ -20,6 +20,7 @@ import java.util.Set;
 /**
  * Validates objects against a set of blacklisted instances.
  * Created: 01.08.2010 15:44:59
+ * @param <E> the type to by checked by this validator
  * @since 0.5.3
  * @author Volker Bergmann
  */

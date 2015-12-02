@@ -22,6 +22,7 @@ import org.databene.commons.Converter;
 /**
  * Converts a {@link String} with a comma-separated list to an array.
  * Created: 27.02.2010 12:13:49
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

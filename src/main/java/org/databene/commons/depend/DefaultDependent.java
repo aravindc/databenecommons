@@ -14,11 +14,10 @@
  */
 package org.databene.commons.depend;
 
-
 /**
  * Default implementation of the Dependent interface.
- * @param <S>
- * @param <E>
+ * @param <S> the type of the objects to process
+ * @param <E> the provider type
  * @author Volker Bergmann
  * @since 0.3.04
  */

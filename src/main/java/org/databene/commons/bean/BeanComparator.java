@@ -24,6 +24,7 @@ import java.util.Comparator;
  * If a beanComparator is provided, this one is used for property comparison,
  * else the ComparatorFactory is queried for a Comparator.
  * Created: 06.01.2005 20:04:36
+ * @param <E> the type of objects to be compared
  * @author Volker Bergmann
  * @see ComparatorFactory
  */

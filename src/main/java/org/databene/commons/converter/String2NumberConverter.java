@@ -21,6 +21,7 @@ import org.databene.commons.StringUtil;
 /**
  * Converts {@link String}s to {@link Number}s.
  * Created: 27.02.2010 11:22:10
+ * @param <T> the {@link Number} type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

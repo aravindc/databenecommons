@@ -16,7 +16,7 @@ package org.databene.commons.depend;
 
 /**
  * Abstraction of an object that depends on other objects.
- * @param <E>
+ * @param <E> the type to process
  * @author Volker Bergmann
  * @since 0.3.04
  */

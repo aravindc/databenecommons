@@ -26,6 +26,7 @@ import org.databene.commons.NullSafeComparator;
  * individual marking of each list element and retrieval of the 
  * marked or unmarked element sub lists.
  * Created: 25.01.2012 17:03:05
+ * @param <E> the type of the collection's elements
  * @since 0.5.14
  * @author Volker Bergmann
  */

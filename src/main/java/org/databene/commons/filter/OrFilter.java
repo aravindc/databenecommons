@@ -20,6 +20,7 @@ import org.databene.commons.Filter;
  * Combines {@link Filter} components in an OR manner: A candidate value is accepted if any of the 
  * components accepts it.
  * Created: 08.06.2012 20:28:54
+ * @param <E> the type of objects to be filtered
  * @since 0.5.16
  * @author Volker Bergmann
  */

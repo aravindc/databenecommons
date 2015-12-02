@@ -36,6 +36,7 @@ public class PropertyAccessorFactory {
     }
 
     /**
+     * @param propertyName the name of the property to access
      * @return a property accessor without knowledge about the bean type
      * (the slowest PropertyAccessor type) in strict mode.
      */
@@ -45,6 +46,8 @@ public class PropertyAccessorFactory {
     }
 
     /**
+     * @param propertyName the name of the property to access
+     * @param strict set to true if the property must exist
      * @return a property accessor of the specified strictness.
      */
     @SuppressWarnings("rawtypes")
@@ -62,6 +65,8 @@ public class PropertyAccessorFactory {
     }
 */
     /**
+     * @param beanClass the bean type to access
+     * @param propertyName the name of the property to access
      * @return a property accessor in strict mode.
      */
     @SuppressWarnings("rawtypes")
@@ -70,6 +75,9 @@ public class PropertyAccessorFactory {
     }
 
     /**
+     * @param beanClass the bean type to access 
+     * @param propertyName the name of the property to access
+     * @param strict set to true if the property must exist
      * @return a property accessor of the specified strictness.
      */
     @SuppressWarnings("rawtypes")

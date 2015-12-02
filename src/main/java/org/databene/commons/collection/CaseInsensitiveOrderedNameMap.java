@@ -23,6 +23,7 @@ import org.databene.commons.OrderedMap;
  * {@link OrderedMap} implementation which assigns name strings to objects preserving the capitalization 
  * of stored names but allowing retrieval in a different capitalization.
  * Created: 12.12.2012 11:12:16
+ * @param <E> the type of the collection's elements
  * @since 0.5.21
  * @author Volker Bergmann
  */

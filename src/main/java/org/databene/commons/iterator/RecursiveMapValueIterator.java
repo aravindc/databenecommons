@@ -22,6 +22,7 @@ import java.util.Stack;
 /**
  * Allows linear iteration over nested {@link Set}s using a plain {@link Iterator}.
  * Created: 04.08.2013 07:58:05
+ * @param <E> the type to iterate
  * @since 0.5.24
  * @author Volker Bergmann
  */

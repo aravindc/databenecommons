@@ -20,6 +20,7 @@ import org.databene.commons.Filter;
 /**
  * Filter that evaluates a Condition on each candidate.
  * Created: 16.06.2007 12:30:26
+ * @param <E> the type of objects to filter
  * @author Volker Bergmann
  */
 public class ConditionalFilter<E> implements Filter<E> {

@@ -27,6 +27,8 @@ import org.databene.commons.collection.MapProxy;
  * This is useful for all cases in which elements will be queried by a key
  * and processed but need to be stored in the original order.
  * Created: 06.01.2007 09:04:17
+ * @param <K> the key type
+ * @param <V> the value type
  * @author Volker Bergmann
  */
 public class OrderedMap<K,V> implements Map<K,V>, Serializable {
@@ -194,6 +196,7 @@ public class OrderedMap<K,V> implements Map<K,V>, Serializable {
      * the runtime type of the returned array is that of the specified array.
      * Obeys the general contract of the Collection.toArray(Object[]) method.
      * @param a the array into which the elements of this list are to be stored, if it is big enough; otherwise, a new array of the same runtime type is allocated for this purpose.
+     * @param <T> the component type of the result array
      * @return an array containing the values of this map.
      * @throws ArrayStoreException if the runtime type of the specified array is not a supertype of the runtime type of every element in this list.
      * @throws NullPointerException - if the specified array is null.

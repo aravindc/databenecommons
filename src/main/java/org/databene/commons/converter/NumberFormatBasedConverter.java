@@ -25,6 +25,8 @@ import org.databene.commons.NullSafeComparator;
 /**
  * Holds a {@link NumberFormat} and exhibits properties for its configuration.
  * Created: 26.02.2010 08:37:23
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

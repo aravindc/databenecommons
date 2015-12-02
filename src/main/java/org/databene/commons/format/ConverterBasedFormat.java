@@ -21,7 +21,7 @@ import java.text.ParsePosition;
 import org.databene.commons.Converter;
 
 /**
- * Format implementation that uses a to-String-Converter for formatting objects.<br/><br/>
+ * Format implementation that uses a to-String-Converter for formatting objects.
  * Created: 25.04.2015 06:58:54
  * @since 1.0.6
  * @author Volker Bergmann

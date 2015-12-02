@@ -22,9 +22,10 @@ import org.databene.commons.Converter;
  * Parent class for {@link Converter}s that use a {@link java.text.Format} instance for 
  * parsing Strings or formatting other objects.
  * Created: 26.02.2010 14:52:25
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
- * @param <S>
  */
 public abstract class FormatBasedConverter<S, T> extends AbstractConverter<S, T> implements Cloneable {
 

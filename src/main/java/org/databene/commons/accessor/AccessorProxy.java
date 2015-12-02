@@ -23,6 +23,8 @@ import org.databene.commons.Accessor;
  * Proxy of an accessor.
  * Created: 08.03.2006 15:44:51
  * @author Volker Bergmann
+ * @param <C> the object type to access
+ * @param <V> the type of the value to get from the object
  */
 public abstract class AccessorProxy<C, V> implements DependentAccessor<C, V> {
 

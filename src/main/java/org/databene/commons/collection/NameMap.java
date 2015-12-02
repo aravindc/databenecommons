@@ -24,6 +24,7 @@ import org.databene.commons.Named;
  * A {@link Map} which offers convenience methods for managing {@link Named} objects
  * in a Map semantics by their <code>name</code> property.
  * Created: 06.06.2012 20:15:36
+ * @param <E> the type of the collection's elements
  * @since 0.5.16
  * @author Volker Bergmann
  */

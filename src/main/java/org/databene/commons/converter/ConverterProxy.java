@@ -20,6 +20,8 @@ import org.databene.commons.Converter;
 /**
  * Parent class for {@link Converter}s that act as a proxy to another converter instance.
  * Created: 26.02.2010 17:30:25
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

@@ -17,6 +17,7 @@ package org.databene.commons;
 /**
  * Models a generic Filter of similar logic as, yet abstracting, the java.io.FileFilter.
  * Created: 04.02.2007 00:38:42
+ * @param <E> the type of objects to filter
  * @author Volker Bergmann
  */
 public interface Filter<E> {

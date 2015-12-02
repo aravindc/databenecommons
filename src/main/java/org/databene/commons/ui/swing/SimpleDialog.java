@@ -30,9 +30,9 @@ import javax.swing.border.EmptyBorder;
 /**
  * {@link JDialog} which applies useful standard behaviour.
  * Created: 22.08.2012 07:31:08
+ * @param <E> the component type to display in the dialog window
  * @since 0.5.18
  * @author Volker Bergmann
- * @param <E> 
  */
 @SuppressWarnings("serial")
 public class SimpleDialog<E extends Component> extends JDialog {

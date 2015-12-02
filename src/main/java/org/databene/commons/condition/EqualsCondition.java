@@ -20,6 +20,7 @@ import org.databene.commons.NullSafeComparator;
 /**
  * Condition that requires to be the checked argument to be equal to a prototype.
  * Created: 16.06.2007 12:46:03
+ * @param <E> the type of argument to evaluate
  * @author Volker Bergmann
  */
 public class EqualsCondition<E> implements Condition<E> {

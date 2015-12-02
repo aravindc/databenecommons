@@ -17,6 +17,7 @@ package org.databene.commons.tree;
 /**
  * Represents an identifiable Object that knows the identifier of its parent.
  * Created: 31.07.2007 06:54:28
+ * @param <I> the id type
  * @author Volker Bergmann
  */
 public interface Child<I> {

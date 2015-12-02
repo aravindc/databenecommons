@@ -24,6 +24,7 @@ import java.util.Set;
  * This is useful for all cases in which elements need to be unique
  * but processed in the original order.
  * Created at 28.02.2009 12:26:35
+ * @param <E> the type of the collection's elements
  * @since 0.4.8
  * @author Volker Bergmann
  */

@@ -336,10 +336,10 @@ public class XMLUtil {
      * Parses a stream's output into an XML document.
      * @param in the {@link InputStream} to read
      * @param resolver an {@link EntityResolver} implementation or null, in the latter case, no validation is applied
-     * @param schemaUri 
-     * @param errorHandler 
+     * @param schemaUri the URI of the XML document
+     * @param errorHandler the error handler
      * @return the resulting XML {@link Document}
-     * @throws IOException 
+     * @throws IOException if stream access fails
      */
     public static Document parse(InputStream in, EntityResolver resolver, String schemaUri, ErrorHandler errorHandler) throws IOException {
         return parse(in, true, resolver, schemaUri, null, errorHandler);

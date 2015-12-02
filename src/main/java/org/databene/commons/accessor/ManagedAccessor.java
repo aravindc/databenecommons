@@ -23,6 +23,8 @@ import java.util.Arrays;
 /**
  * DependentAccessor implementation that manages the dependencies in a List.
  * Created: 11.03.2006 14:32:52
+ * @param <C> the object type to access
+ * @param <V> the type of the value to get from the object
  * @author Volker Bergmann
  */
 public abstract class ManagedAccessor<C, V> implements DependentAccessor<C, V> {

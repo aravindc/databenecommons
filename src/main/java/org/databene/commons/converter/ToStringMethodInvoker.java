@@ -20,6 +20,7 @@ import org.databene.commons.Converter;
 /**
  * {@link Converter} implementation which invokes the toString() method on the source object.
  * Created: 27.02.2010 09:44:10
+ * @param <E> the object type to convert
  * @since 0.5.0
  * @author Volker Bergmann
  */

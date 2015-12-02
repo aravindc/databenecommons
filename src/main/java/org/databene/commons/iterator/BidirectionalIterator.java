@@ -19,6 +19,7 @@ import java.util.Iterator;
 /**
  * Iterator that may iterate forward and backward.
  * Created: 08.05.2007 18:03:52
+ * @param <E> the type to iterate
  * @author Volker Bergmann
  */
 public interface BidirectionalIterator<E> extends Iterator<E> {

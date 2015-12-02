@@ -19,6 +19,7 @@ import org.databene.commons.Named;
 /**
  * Wraps a {@link Named} object.
  * Created: 20.06.2013 06:48:24
+ * @param <E> the object type to wrap
  * @since 0.5.24
  * @author Volker Bergmann
  */

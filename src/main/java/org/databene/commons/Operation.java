@@ -17,6 +17,9 @@ package org.databene.commons;
 /**
  * Abstraction for operations on an arbitrary number of objects of type I which yield a result of type O.
  * Created: 03.08.2007 06:58:26
+ * @param <I> the argument type
+ * @param <O> the result type
+ * @author Volker Bergmann
  */
 public interface Operation<I, O> {
     O perform(I ... args);

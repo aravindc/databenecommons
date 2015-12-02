@@ -21,6 +21,8 @@ import org.databene.commons.Converter;
  * Aggregates other (sub) converters and implements conversion by subsequent invocation of the sub converters,
  * each converting the result of the preceding converter.
  * Created: 13.05.2005 17:43:04
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.1
  * @author Volker Bergmann
  */

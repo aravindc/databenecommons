@@ -22,6 +22,7 @@ import java.util.Iterator;
  * Filters elements of another {@link Iterator} or {@link BidirectionalIterator} 
  * by a {@link Filter} element.
  * Created: 08.05.2007 19:37:33
+ * @param <E> the type to iterate
  * @author Volker Bergmann
  */
 public class FilteringIterator<E> extends BidirectionalIteratorProxy<E> {

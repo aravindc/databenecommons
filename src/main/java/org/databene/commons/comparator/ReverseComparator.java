@@ -22,6 +22,7 @@ import org.databene.commons.ComparableComparator;
  * Reverts the result of another Comparator.
  * Use this for sorting in descending order.
  * Created: 19.06.2005 18:26:47
+ * @param <E> the type of objects to be compared
  * @author Volker Bergmann
  */
 public class ReverseComparator<E> implements Comparator<E> {

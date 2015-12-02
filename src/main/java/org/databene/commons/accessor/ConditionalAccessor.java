@@ -19,6 +19,8 @@ import org.databene.commons.Accessor;
 /**
  * Evaluates a boolean 'condition' accessor and, depending on the result, calls one of two other accessors.
  * Created: 28.02.2013 16:17:04
+ * @param <C> the object type to access
+ * @param <V> the type of the value to get from the object
  * @since 0.5.21
  * @author Volker Bergmann
  */

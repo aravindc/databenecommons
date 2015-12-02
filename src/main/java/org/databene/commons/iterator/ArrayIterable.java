@@ -22,6 +22,7 @@ import org.databene.commons.TypedIterable;
 /**
  * Implementation of the {@link Iterable} interface which creates {@link Iterator} that iterate over an array.
  * Created at 30.06.2009 09:30:02
+ * @param <E> the type to iterate
  * @since 0.5.0
  * @author Volker Bergmann
  */

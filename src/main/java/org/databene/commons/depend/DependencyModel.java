@@ -27,9 +27,9 @@ import static org.databene.commons.depend.NodeState.*;
 
 /**
  * Orders objects by dependency.
+ * @param <E> the type of the objects to process
  * @author Volker Bergmann
  * @since 0.3.04
- * @param <E>
  */
 @SuppressWarnings("static-method")
 public class DependencyModel<E extends Dependent<E>> {

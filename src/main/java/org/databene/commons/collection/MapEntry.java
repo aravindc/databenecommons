@@ -20,6 +20,8 @@ import org.databene.commons.NullSafeComparator;
 
 /**
  * Simple implementation of the Map.Entry interface.
+ * @param <K> the key type
+ * @param <V> the value type
  * @since 0.3.0
  * @author Volker Bergmann
  */

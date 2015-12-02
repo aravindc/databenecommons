@@ -20,6 +20,7 @@ import java.util.ArrayList;
 /**
  * Default implementation of a tree node.
  * Created: 08.05.2007 19:06:49
+ * @param <E> the type of the wrapped object
  * @author Volker Bergmann
  */
 public class DefaultTreeNode<E> {

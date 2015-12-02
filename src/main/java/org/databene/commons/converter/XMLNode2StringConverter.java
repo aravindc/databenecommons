@@ -25,7 +25,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
 /**
- * Converts content elements of org.w3c.Document to strings.<br/><br/>
+ * Converts content elements of org.w3c.Document to strings.
  * Created: 20.11.2015 18:00:16
  * @since 1.0.6
  * @author Volker Bergmann

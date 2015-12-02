@@ -32,6 +32,8 @@ import java.util.Map;
 /**
  * Get values from Maps, Contexts, Composites and JavaBeans.
  * Created: 12.06.2007 18:36:11
+ * @param <C> the object type to access
+ * @param <V> the type of the value to get from the object
  * @author Volker Bergmann
  */
 public class FeatureAccessor<C, V> implements Accessor<C, V> {

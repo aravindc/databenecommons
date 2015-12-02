@@ -19,6 +19,7 @@ import org.databene.commons.Filter;
 /**
  * Inverts the result of another {@link Filter}.
  * Created at 04.05.2008 10:10:09
+ * @param <E> the type of objects to filter
  * @since 0.4.3
  * @author Volker Bergmann
  */

@@ -20,6 +20,7 @@ import org.databene.commons.ConversionException;
 /**
  * Retrieves the value at a given array index from an array.
  * Created at 30.06.2009 18:02:10
+ * @param <E> the component type of the arrays to process
  * @since 0.5.0
  * @author Volker Bergmann
  */

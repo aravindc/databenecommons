@@ -20,6 +20,8 @@ import org.databene.commons.Converter;
 /**
  * Wraps another Converter and adds the feature of converting null values to a predefined value.
  * Created: 26.07.2007 06:59:35
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @author Volker Bergmann
  */
 public class NullSafeConverterProxy<S, T> extends ConverterProxy<S, T> {

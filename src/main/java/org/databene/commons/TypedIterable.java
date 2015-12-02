@@ -17,6 +17,7 @@ package org.databene.commons;
 /**
  * Iterable that provides the type it returns.
  * Created: 02.09.2007 23:20:03
+ * @param <E> the type of elements to iterate
  * @author Volker Bergmann
  */
 public interface TypedIterable<E> extends Iterable<E> {

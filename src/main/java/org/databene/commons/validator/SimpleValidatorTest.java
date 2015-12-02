@@ -19,6 +19,7 @@ import org.databene.commons.Validator;
 /**
  * Simple helper class that provides methods for testing validators.
  * Created at 24.07.2009 17:52:21
+ * @param <E> the object type to be validated
  * @since 0.5.0
  * @author Volker Bergmann
  */

@@ -24,6 +24,8 @@ import java.util.ArrayList;
  * until it is manually invalidated.
  * Created: 11.03.2006 17:02:27
  * @author Volker Bergmann
+ * @param <C> the object type to access
+ * @param <V> the type of the value to get from the object
  */
 public class AccessorCache<C, V> implements DependentAccessor<C, V> {
 

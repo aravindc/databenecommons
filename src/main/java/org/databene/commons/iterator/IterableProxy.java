@@ -19,6 +19,7 @@ import java.util.Iterator;
 /**
  * Proxy implementation for an {@link Iterable}.
  * Created: 08.03.2011 11:48:21
+ * @param <E> the type to iterate
  * @since 0.5.8
  * @author Volker Bergmann
  */

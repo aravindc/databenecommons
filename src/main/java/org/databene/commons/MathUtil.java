@@ -23,7 +23,7 @@ public class MathUtil {
     
     /**
      * Returns the number of digits needed for displaying the postfix values of a number, but at most 7.
-     * @param number
+     * @param number the number to examine
      * @return the number of digits needed for displaying the postfix values of a number, but at most 7
      */
     public static int fractionDigits(double number) {

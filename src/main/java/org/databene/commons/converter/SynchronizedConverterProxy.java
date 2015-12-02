@@ -21,6 +21,8 @@ import org.databene.commons.Converter;
  * Proxy class for (unsafe) {@link Converter}s 
  * that synchronizes calls to the wrapped converter instance.
  * Created: 26.02.2010 18:22:36
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @since 0.5.0
  * @author Volker Bergmann
  */

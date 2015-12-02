@@ -23,6 +23,7 @@ import org.databene.commons.Filter;
  * Multi-step inclusion/exclusion filter. Note that a sequence of inclusions forms an intersection, not a union.
  * For including a union of filter result sets, include an OrFilter with the respective single filters.
  * Created: 08.06.2012 19:40:57
+ * @param <E> the type of objects to filter
  * @since 0.5.16
  * @author Volker Bergmann
  */

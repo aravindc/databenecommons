@@ -19,6 +19,7 @@ import org.databene.commons.Condition;
 /**
  * Condition that is composed of Condition components.
  * Created: 04.02.2007 00:41:28
+ * @param <E> the type of argument to evaluate
  * @author Volker Bergmann
  */
 public abstract class CompositeCondition<E> implements Condition<E> {

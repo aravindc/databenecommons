@@ -19,6 +19,7 @@ import org.databene.commons.Operation;
 
 /**
  * Determines the elements common to all array arguments.
+ * @param <E> the argument and result type of the operation
  * @since 0.4.0
  * @author Volker Bergmann
  */

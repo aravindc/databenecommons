@@ -22,6 +22,8 @@ import java.util.Comparator;
  * Compares to objects by the values returned from an Accessor that is applied to them.
  * Created: 23.02.2006 18:57:09
  * @author Volker Bergmann
+ * @param <C> type of the objects to compare
+ * @param <V> type of the value to get from the compared objects and to use for comparison 
  */
 public class AccessingComparator<C, V> implements Comparator<C> {
 

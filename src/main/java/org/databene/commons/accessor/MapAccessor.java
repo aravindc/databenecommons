@@ -22,6 +22,9 @@ import java.util.Map;
 /**
  * Accesses Values from a Map.
  * Created: 11.03.2006 12:39:07
+ * @param <C> the object type to access
+ * @param <V> the key type
+ * @param <K> the the value type
  * @author Volker Bergmann
  */
 public class MapAccessor<C extends Map<K, V>, K, V> implements Accessor<C, V> {

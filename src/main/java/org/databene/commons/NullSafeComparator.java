@@ -20,6 +20,8 @@ import java.util.Comparator;
  * Comparator Decorator that adds support for null-Value comparison.
  * null may be defined to have a value either greater or less than any non-null value.
  * Created: 11.04.2005 08:34:02
+ * @param <E> the type of the objects to compare
+ * @author Volker Bergmann
  */
 public class NullSafeComparator<E> implements Comparator<E> {
 

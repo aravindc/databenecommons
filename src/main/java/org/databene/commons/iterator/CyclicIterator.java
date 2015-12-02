@@ -18,6 +18,7 @@ package org.databene.commons.iterator;
  * Iterates through another BidirectionalIterator repeatedly. 
  * This is supported forward as well as backward.
  * Created: 12.05.2007 23:21:48
+ * @param <E> the type to iterate
  * @author Volker Bergmann
  */
 public class CyclicIterator<E> extends BidirectionalIteratorProxy<E> {

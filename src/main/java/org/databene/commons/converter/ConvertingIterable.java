@@ -25,6 +25,8 @@ import org.databene.commons.iterator.ConvertingIterator;
 /**
  * Iterable that provides {@link ConvertingIterator}s.
  * Created: 28.08.2007 08:57:16
+ * @param <S> the object type to convert from
+ * @param <T> the object type to convert to
  * @author Volker Bergmann
  */
 public class ConvertingIterable<S, T> implements HeavyweightTypedIterable<T> {
