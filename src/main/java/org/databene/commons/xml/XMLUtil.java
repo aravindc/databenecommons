@@ -83,11 +83,13 @@ import org.xml.sax.SAXParseException;
  */
 public class XMLUtil {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(XMLUtil.class);
 	private static final String DOCUMENT_BUILDER_FACTORY_IMPL = "org.apache.xerces.jaxp.DocumentBuilderFactoryImpl";
 	private static final ErrorHandler DEFAULT_ERROR_HANDLER = new ErrorHandler(XMLUtil.class.getSimpleName(), Level.error);
-	private static final Logger LOGGER = LoggerFactory.getLogger(XMLUtil.class);
 	
-    private XMLUtil() {}
+	private static String defaultDocumentBuilderClassName = DOCUMENT_BUILDER_FACTORY_IMPL;
+	
+	private XMLUtil() {}
 
     public static String format(Document document) {
     	ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -369,10 +371,22 @@ public class XMLUtil {
         }
 	}
 
+    public static String getDefaultDocumentBuilderClassName() {
+		return defaultDocumentBuilderClassName;
+	}
+
+	public static void setDefaultDocumentBuilderClassName(String defaultDocumentBuilderClassName) {
+		XMLUtil.defaultDocumentBuilderClassName = defaultDocumentBuilderClassName;
+	}
+
 	public static DocumentBuilderFactory createDocumentBuilderFactory(ClassLoader classLoader) {
-		if (classLoader == null)
-			classLoader = Thread.currentThread().getContextClassLoader();
-		return DocumentBuilderFactory.newInstance(DOCUMENT_BUILDER_FACTORY_IMPL, classLoader);
+		if (defaultDocumentBuilderClassName != null) {
+			if (classLoader == null)
+				classLoader = Thread.currentThread().getContextClassLoader();
+			return DocumentBuilderFactory.newInstance(defaultDocumentBuilderClassName, classLoader);
+		} else {
+			return DocumentBuilderFactory.newInstance();
+		}
 	}
 
     public static NamespaceAlias namespaceAlias(Document document, String namespaceUri) {
