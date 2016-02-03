@@ -45,7 +45,7 @@ public class PropertyGraphAccessor extends TypedAccessorChain implements Propert
     public static Object getPropertyGraph(String path, Object bean) {
     	String[] tokens = StringUtil.splitOnFirstSeparator(path, '.');
     	Object tmp = BeanUtil.getPropertyValue(bean, tokens[0]);
-    	if (tokens[1] != null)
+    	if (tokens[1] != null && tmp != null)
     		return getPropertyGraph(tokens[1], tmp);
     	else
     		return tmp;
