@@ -34,7 +34,7 @@ public class UntypedPropertyAccessor implements PropertyAccessor {
 
     public UntypedPropertyAccessor(String propertyName, boolean strict) {
         this.propertyName = propertyName;
-        this.propertyType = Object.class;
+        this.propertyType = null;
         this.strict = strict;
     }
 
