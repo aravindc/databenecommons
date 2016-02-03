@@ -45,7 +45,7 @@ public class NullSafeFormat extends Format {
 
 	@Override
 	public Object parseObject(String source, ParsePosition pos) {
-		if (nullString.equals(source.substring(pos.getIndex())))
+		if (source == null || nullString.equals(source.substring(pos.getIndex())))
 			return null;
 		return realFormat.parseObject(source, pos);
 	}
