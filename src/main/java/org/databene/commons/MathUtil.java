@@ -132,4 +132,56 @@ public class MathUtil {
         return result;
     }
     
+    public static Double nullableProduct(Double... factors) {
+    	if (factors.length == 0 || factors[0] == null)
+    		return null;
+    	Double result = factors[0];
+    	for (int i = 1; i < factors.length; i++) {
+    		Double factor = factors[i];
+    		if (factor == null)
+    			return null;
+    		result *= factor;
+    	}
+    	return result;
+    }
+    
+    public static Double nullableDivision(Double dividend, Double... divisors) {
+    	if (dividend == null || divisors.length == 0 || divisors[0] == null)
+    		return null;
+    	Double result = dividend;
+    	for (int i = 0; i < divisors.length; i++) {
+    		Double divisor = divisors[i];
+    		if (divisor == null)
+    			return null;
+    		result /= divisor;
+    	}
+    	return result;
+    }
+    
+    public static Double nullableSum(Double... summands) {
+    	if (summands.length == 0 || summands[0] == null)
+    		return null;
+    	Double result = summands[0];
+    	for (int i = 1; i < summands.length; i++) {
+    		Double factor = summands[i];
+    		if (factor == null)
+    			return null;
+    		result += factor;
+    	}
+    	return result;
+    }
+    
+    public static Double nullableSubtraction(Double minuend, Double... subtrahends) {
+    	if (minuend == null || subtrahends.length == 0 || subtrahends[0] == null)
+    		return null;
+    	Double result = minuend;
+    	for (int i = 0; i < subtrahends.length; i++) {
+    		Double divisor = subtrahends[i];
+    		if (divisor == null)
+    			return null;
+    		result -= divisor;
+    	}
+    	return result;
+    }
+    
 }
