@@ -41,8 +41,11 @@ public class TypedAccessorChain implements TypedAccessor {
     @Override
 	public Object getValue(Object target) {
         Object result = target;
-        for (TypedAccessor accessor : subAccessors)
+        for (TypedAccessor accessor : subAccessors) {
             result = accessor.getValue(result);
+            if (result == null)
+            	return null;
+        }
         return result;
     }
     
