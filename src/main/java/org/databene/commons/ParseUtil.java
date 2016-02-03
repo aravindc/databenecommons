@@ -237,15 +237,23 @@ public final class ParseUtil {
         if (testName == null || testName.length() == 0)
             return false;
         char c = testName.charAt(0);
-        if (!Character.isLetter(c) && c != '_' && c != ':')
-            return false;
+        if (!isNMStartChar(c))
+        	return false;
         for (int i = 1; i < testName.length(); i++) {
             c = testName.charAt(i);
-            if (!Character.isLetter(c) && c != '.' && c != '-' && c != '_' && c != ':') 
-                return false;
+            if (!isNMAfterStartChar(c))
+            	return false;
         }
         return true;
     }
+
+    public static boolean isNMStartChar(char c) {
+		return (Character.isLetter(c) || c == '_' || c == ':');
+	}
+
+    public static boolean isNMAfterStartChar(char c) {
+		return (Character.isLetterOrDigit(c) || c == '.' || c == '-' || c == '_' || c == ':');
+	}
 
 	public static void skipWhiteSpace(String text, ParsePosition pos) {
 		int i;
