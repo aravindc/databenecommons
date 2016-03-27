@@ -252,7 +252,7 @@ public class XMLUtil {
     public static Integer getIntegerAttribute(Element element, String name, Integer defaultValue) {
         if (LOGGER.isDebugEnabled())
             LOGGER.debug("getIntegerAttribute(" + element.getNodeName() + ", " + name + ')');
-        String stringValue = element.getAttribute(name);
+        String stringValue = getAttribute(element, name, false);
         if (StringUtil.isEmpty(stringValue))
             return defaultValue;
         return Integer.parseInt(stringValue);
@@ -261,10 +261,18 @@ public class XMLUtil {
     public static Long getLongAttribute(Element element, String name, long defaultValue) {
         if (LOGGER.isDebugEnabled())
             LOGGER.debug("getLongAttribute(" + element.getNodeName() + ", " + name + ')');
-        String stringValue = element.getAttribute(name);
+        String stringValue = getAttribute(element, name, false);
         if (StringUtil.isEmpty(stringValue))
             return defaultValue;
         return Long.parseLong(stringValue);
+    }
+
+	public static String getAttribute(Element element, String attributeName, boolean required) {
+		String value = StringUtil.emptyToNull(element.getAttribute(attributeName));
+		if (value == null && required)
+			throw new IllegalArgumentException("Element '" + element.getNodeName() + "'" +
+					" is missing the required attribute '" + attributeName + "'");
+	    return value;
     }
 
     public static Map<String, String> getAttributes(Element element) {
@@ -489,14 +497,6 @@ public class XMLUtil {
 
 	public static List<Element> findElementsByName(String name, boolean caseSensitive, Element root) {
 	    return findElementsByName(name, caseSensitive, root, new ArrayList<Element>());
-    }
-
-	public static String getAttribute(Element element, String attributeName, boolean required) {
-		String value = StringUtil.emptyToNull(element.getAttribute(attributeName));
-		if (value == null && required)
-			throw new IllegalArgumentException("Element '" + element.getNodeName() + "'" +
-					" is missing the required attribute '" + attributeName + "'");
-	    return value;
     }
 
 	public static String getWholeText(Element element) {
