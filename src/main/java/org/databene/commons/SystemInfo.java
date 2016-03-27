@@ -14,6 +14,7 @@
  */
 package org.databene.commons;
 
+import java.io.File;
 import java.nio.charset.Charset;
 
 /**
@@ -146,7 +147,14 @@ public final class SystemInfo {
     }
 
     /**
-     * @return the user's current directory
+     * @return the user's current directory as File object
+     */
+    public static File getCurrentDirFile() {
+        return new File(getCurrentDir());
+    }
+
+    /**
+     * @return the user's current directory path
      */
     public static String getCurrentDir() {
         return System.getProperty(USER_DIR_KEY);
