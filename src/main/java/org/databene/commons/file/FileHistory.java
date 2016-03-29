@@ -25,9 +25,9 @@ import java.util.prefs.Preferences;
 import org.databene.commons.CollectionUtil;
 
 /**
- * Provides a file history using the Preferences API.<br/><br/>
+ * Provides a file history using the Preferences API.<br><br>
  * Created: 27.03.2016 09:02:58
- * @since 1.0.7
+ * @since 1.0.8
  * @author Volker Bergmann
  */
 
