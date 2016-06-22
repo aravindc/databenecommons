@@ -186,4 +186,12 @@ public class SwingUtil {
 		table.scrollRectToVisible(rect);
 	}
 	
+	public static Icon getDirectoryIcon() {
+		return UIManager.getIcon("FileView.directoryIcon");
+	}
+
+	public static Icon getHardDriveIcon() {
+		return UIManager.getIcon("FileView.hardDriveIcon");
+	}
+
 }
