@@ -65,12 +65,14 @@ import org.databene.commons.converter.NoOpConverter;
 import org.databene.commons.converter.String2DateConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Attr;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.ProcessingInstruction;
 import org.w3c.dom.Text;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.SAXException;
@@ -126,6 +128,18 @@ public class XMLUtil {
             builder.append(' ').append(attribute.getName()).append("=\"").append(attribute.getValue()).append('"');
         }
         builder.append("...");
+        return builder.toString();
+    }
+
+	public static String formatStartTag(Element element) {
+        StringBuilder builder = new StringBuilder();
+        builder.append('<').append(element.getNodeName());
+        NamedNodeMap attributes = element.getAttributes();
+        for (int i = 0; i < attributes.getLength(); i++) {
+            Attr attribute = (Attr) attributes.item(i);
+            builder.append(' ').append(attribute.getName()).append("=\"").append(attribute.getValue()).append('"');
+        }
+        builder.append(">");
         return builder.toString();
     }
 
@@ -300,6 +314,23 @@ public class XMLUtil {
         return value;
     }
 
+	public static Comment[] getChildComments(Node parent) {
+		NodeList children;
+		if (parent instanceof Document)
+			children = ((Document) parent).getChildNodes();
+		else if (parent instanceof Element)
+			children = ((Element) parent).getChildNodes();
+		else
+			throw new UnsupportedOperationException("Not a supported type: " + parent.getClass());
+		ArrayBuilder<Comment> builder = new ArrayBuilder<Comment>(Comment.class);
+		for (int i = 0; i < children.getLength(); i++) {
+			Node child = children.item(i);
+			if (child instanceof Comment)
+				builder.add((Comment) child);
+		}
+		return builder.toArray();
+	}
+
     // XML operations --------------------------------------------------------------------------------------------------
 
     public static Document parse(String uri) throws IOException {
@@ -331,12 +362,30 @@ public class XMLUtil {
         if (LOGGER.isDebugEnabled())
             LOGGER.debug(text);
         try {
-        	String encoding = getEncoding(text);
+        	String encoding = getEncoding(text, SystemInfo.getFileEncoding());
 	        return parse(new ByteArrayInputStream(text.getBytes(encoding)), true, resolver, null, classLoader, DEFAULT_ERROR_HANDLER);
         } catch (IOException e) {
         	throw new RuntimeException("Unexpected error", e);
         }
     }
+
+    public static String getEncoding(String text, String defaultEncoding) {
+		if (text.startsWith("<?xml")) {
+			int qm2i = text.indexOf('?', 5);
+			int ei = text.indexOf("encoding");
+			if (ei > 0 && ei < qm2i) {
+				int dq = text.indexOf('"', ei);
+				int sq = text.indexOf('\'', ei);
+				int q1 = (dq > 0 ? (sq > 0 ? dq : Math.min(sq, dq)) : sq);
+				dq = text.indexOf('"', q1 + 1);
+				sq = text.indexOf('\'', q1 + 1);
+				int q2 = (dq > 0 ? (sq > 0 ? dq : Math.min(sq, dq)) : sq);
+				if (q1 > 0 && q2 > 0)
+					return text.substring(q1 + 1, q2);
+			}
+		}
+		return defaultEncoding;
+	}
 
 	public static Document parse(InputStream stream) throws IOException {
         return parse(stream, null, null, DEFAULT_ERROR_HANDLER);
@@ -562,24 +611,6 @@ public class XMLUtil {
 		}
 	}
 
-    private static String getEncoding(String text) {
-		if (text.startsWith("<?xml")) {
-			int qm2i = text.indexOf('?', 5);
-			int ei = text.indexOf("encoding");
-			if (ei > 0 && ei < qm2i) {
-				int dq = text.indexOf('"', ei);
-				int sq = text.indexOf('\'', ei);
-				int q1 = (dq > 0 ? (sq > 0 ? dq : Math.min(sq, dq)) : sq);
-				dq = text.indexOf('"', q1 + 1);
-				sq = text.indexOf('\'', q1 + 1);
-				int q2 = (dq > 0 ? (sq > 0 ? dq : Math.min(sq, dq)) : sq);
-				if (q1 > 0 && q2 > 0)
-					return text.substring(q1 + 1, q2);
-			}
-		}
-		return SystemInfo.getFileEncoding();
-	}
-
 	private static org.xml.sax.ErrorHandler createSaxErrorHandler(
 			final ErrorHandler errorHandler) {
 		return new org.xml.sax.ErrorHandler() {
@@ -695,9 +726,80 @@ public class XMLUtil {
 		return xmlText;
 	}
 	
+	public static Node getParentNode(Node node) {
+		if (node instanceof Attr)
+			return ((Attr) node).getOwnerElement();
+		else
+			return node.getParentNode();
+	}
 
+	public static String xpathTo(Node node) {
+		Node[] nodePath = nodePathTo(node);
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < nodePath.length; i++) {
+			Node component = nodePath[i];
+			if (component instanceof Document)
+				continue;
+			builder.append("/");
+			builder.append(formatXPathComponent(component));
+		}
+		return builder.toString();
+	}
+
+	public static Node[] nodePathTo(Node node) {
+		ArrayBuilder<Node> builder = new ArrayBuilder<Node>(Node.class);
+		buildPath(node, builder);
+		return builder.toArray();
+	}
+	
 	
 	// private helpers -------------------------------------------------------------------------------------------------
+	
+	private static Object formatXPathComponent(Node node) {
+		if (node instanceof Attr)
+			return "@" + node.getNodeName();
+		else if (node instanceof ProcessingInstruction)
+			return "/?" + ((ProcessingInstruction) node).getTarget();
+		else if (node instanceof Element)
+			return formatXPathComponentForElement((Element) node);
+		else if (node instanceof Comment)
+			return formatXPathComponentForComment((Comment) node);
+		else
+			return node.getNodeName();
+	}
+
+	private static String formatXPathComponentForElement(Element child) {
+		String childName = child.getNodeName();
+		Node parentNode = getParentNode(child);
+		if (parentNode instanceof Document)
+			return childName;
+		Element parent = (Element) parentNode; 
+		NodeList siblings = parent.getElementsByTagName(childName);
+		if (siblings.getLength() == 1)
+			return childName;
+		for (int i = 0; i < siblings.getLength(); i++)
+			if (siblings.item(i) == child)
+				return childName + "[" + (i + 1) + "]";
+		throw new IllegalArgumentException("Child element not found under parent");
+	}
+
+	private static String formatXPathComponentForComment(Comment child) {
+		Node parentNode = getParentNode(child);
+		Comment[] siblings = getChildComments(parentNode);
+		if (siblings.length == 1)
+			return "comment()";
+		for (int i = 0; i < siblings.length; i++)
+			if (siblings[i] == child)
+				return "comment()[" + (i + 1) + "]";
+		throw new IllegalArgumentException("Comment not found under parent");
+	}
+
+	private static void buildPath(Node node, ArrayBuilder<Node> list) {
+		final Node parent = node.getParentNode();
+		if (parent != null)
+			buildPath(parent, list);
+		list.add(node);
+	}
 
 	private static Transformer createTransformer(String encoding) {
 		try {
