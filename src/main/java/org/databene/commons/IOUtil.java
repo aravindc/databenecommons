@@ -186,13 +186,13 @@ public final class IOUtil {
         return getReaderForURI(uri, SystemInfo.getFileEncoding());
     }
 
-    public static BufferedReader getReaderForURI(String uri, String defaultEncoding) throws IOException {
+    public static BufferedReader getReaderForURI(String uri, String encoding) throws IOException {
         if (uri.startsWith("string://"))
             return new BufferedReader(new StringReader(uri.substring("string://".length())));
         else if (uri.startsWith("http://"))
-            return getHttpReader(new URL(uri), defaultEncoding);
+            return getHttpReader(new URL(uri), encoding);
         else
-            return getFileReader(uri, defaultEncoding);
+            return getFileReader(uri, encoding);
     }
 
     public static InputStream getInputStreamForURI(String uri) throws IOException {
