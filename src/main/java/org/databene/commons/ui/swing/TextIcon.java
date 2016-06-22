@@ -107,7 +107,7 @@ public class TextIcon implements Icon {
 		g.setColor(foreground);
 		Font origFont = g.getFont();
 		g.setFont(font);
-		g.drawString(text, x + (iconWidth - textWidth) / 2, y + ascent - 1);
+		g.drawString(text, x + (iconWidth - textWidth) / 2, y + (iconHeight - font.getSize()) / 2  + ascent - 1);
 		g.setFont(origFont);
 	}
 
@@ -120,6 +120,11 @@ public class TextIcon implements Icon {
 			return new Font(tableFont.getFamily(), (bold ? Font.BOLD : Font.PLAIN), tableFont.getSize());
 		else
 			return tableFont;
+	}
+
+	public Icon withSize(int size) {
+		this.iconWidth = this.iconHeight = size;
+		return this;
 	}
 
 }
