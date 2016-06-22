@@ -78,5 +78,15 @@ public class XPathUtil {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		return xpath.evaluate(expression, base, returnType);
 	}
+	
+	public static boolean isValidXPath(String expression) {
+		try {
+			XPath xpath = XPathFactory.newInstance().newXPath();
+			xpath.compile(expression);
+			return true;
+		} catch (XPathExpressionException e) {
+			return false;
+		}
+	}
 
 }
