@@ -16,13 +16,12 @@ package org.databene.commons.converter;
 
 import org.databene.commons.ConversionException;
 import org.databene.commons.SystemInfo;
-import org.databene.commons.converter.ToStringConverter;
-import org.databene.commons.converter.UnsafeConverter;
 import org.databene.commons.xml.XMLUtil;
 import org.w3c.dom.CDATASection;
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Text;
 
 /**
  * Converts content elements of org.w3c.Document to strings.
@@ -44,10 +43,12 @@ public class XMLNode2StringConverter extends UnsafeConverter<Object, String> {
 	public String convert(Object node) throws ConversionException {
 		if (node instanceof CDATASection)
 			return "<![CDATA[" + ((CDATASection) node).getTextContent() + "]]>";
-		else if (node instanceof Text) 
-			return "'" + ((Text) node).getTextContent() + "'";
+		else if (node instanceof CharacterData) 
+			return "'" + ((CharacterData) node).getTextContent() + "'";
 		else if (node instanceof Element)
 			return LF + XMLUtil.format((Element) node).trim() + LF;
+		else if (node instanceof Comment)
+			return LF + ((Comment) node).getData() + LF;
 		else if (node instanceof Document)
 			return XMLUtil.format((Document) node);
 		else if (node instanceof String)
