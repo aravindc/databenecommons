@@ -57,6 +57,11 @@ public class FileHistory {
 			return files.getLast().getParentFile();
 	}
 	
+	public void addFileAndSave(File file) {
+		addFile(file);
+		save();
+	}
+	
 	public void addFile(File file) {
 		try {
 			// normalize file
@@ -75,7 +80,7 @@ public class FileHistory {
 				throw new RuntimeException("Failed to update file history", e);
 		}
 	}
-
+	
 	public void load() {
 		Preferences node = Preferences.userNodeForPackage(clazz);
 		for (int i = 0; i < 9; i++) {
