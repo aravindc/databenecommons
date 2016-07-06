@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
  * @author Volker Bergmann
  */
 
-public class PasteToTextFieldAction extends AbstractAction { // TODO move to commons
+public class PasteToTextFieldAction extends AbstractAction {
 	
 	private static final long serialVersionUID = 1L;
 
