@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+import org.databene.commons.Assert;
 import org.databene.commons.CollectionUtil;
 
 /**
@@ -33,15 +34,18 @@ import org.databene.commons.CollectionUtil;
 
 public class FileHistory {
 	
+	public static final int HISTORY_LENGTH_LIMIT = 50;
+	
 	private static final String RECENT_FILE_PREFIX = "recent_file_";
 	
 	private Class<?> clazz;
 	private ArrayDeque<File> files;
 	private boolean toleratingFailure;
 	
-	public FileHistory(Class<?> clazz, int maxLength, boolean toleratingFailure) {
+	public FileHistory(Class<?> clazz, int length, boolean toleratingFailure) {
 		this.clazz = clazz;
-		this.files = new ArrayDeque<File>(maxLength);
+		Assert.lessOrEqual(length, HISTORY_LENGTH_LIMIT, "length");
+		this.files = new ArrayDeque<File>(length);
 		this.toleratingFailure = toleratingFailure;
 		load();
 	}
@@ -64,30 +68,22 @@ public class FileHistory {
 	
 	public void addFile(File file) {
 		try {
-			// normalize file
-			file = file.getCanonicalFile();
-			
-			// if the file is already is contained, the delete it from list 
-			Iterator<File> iterator = files.iterator();
-			while (iterator.hasNext())
-				if (file.equals(iterator.next()))
-					iterator.remove();
-			
-			// append the file to the end of the list
-			files.add(file);
+			file = normalize(file);
+			remove(file);
+			files.addFirst(file);
 		} catch (IOException e) {
 			if (!toleratingFailure)
 				throw new RuntimeException("Failed to update file history", e);
 		}
 	}
-	
+
 	public void load() {
 		Preferences node = Preferences.userNodeForPackage(clazz);
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < HISTORY_LENGTH_LIMIT; i++) {
 			String path = node.get(RECENT_FILE_PREFIX + i, null);
 			if (path != null) {
 				File file = new File(path);
-				addFile(file);
+				appendFile(file);
 			}
 		}
 	}
@@ -102,6 +98,31 @@ public class FileHistory {
 		} catch (BackingStoreException e) {
 			if (!toleratingFailure)
 				throw new RuntimeException("Failed to save file history", e);
+		}
+	}
+	
+	
+	// private helpers -------------------------------------------------------------------------------------------------
+	
+	private static File normalize(File file) throws IOException {
+		return file.getCanonicalFile();
+	}
+
+	private void remove(File file) {
+		Iterator<File> iterator = files.iterator();
+		while (iterator.hasNext())
+			if (file.equals(iterator.next()))
+				iterator.remove();
+	}
+	
+	private void appendFile(File file) {
+		try {
+			file = normalize(file);
+			remove(file);
+			files.addLast(file);
+		} catch (IOException e) {
+			if (!toleratingFailure)
+				throw new RuntimeException("Failed to update file history", e);
 		}
 	}
 
