@@ -14,14 +14,37 @@
  */
 package org.databene.commons.ui.swing;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dialog;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.geom.Rectangle2D;
+
+import javax.swing.Action;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JToolBar;
+import javax.swing.JViewport;
+import javax.swing.KeyStroke;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
 
 import org.databene.commons.BeanUtil;
-
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
 
 /**
  * Provides Swing utilities.
@@ -115,8 +138,26 @@ public class SwingUtil {
 		}
 	}
 	
-	public static JButton createTransparentButton(Action action, boolean withText) {
-		JButton button = new JButton(action);
+	public static JButton insertTransparentIconButton(Action action, JToolBar toolBar) {
+		return insertTransparentButton(action, false, toolBar);
+	}
+
+	public static JButton insertTransparentButton(Action action, boolean withText, JToolBar toolBar) {
+		JButton button = toolBar.add(action);
+		configureTransparentButton(button, withText);
+		return button;
+	}
+
+	public static void insertTransparentIconButton(JButton button, JToolBar toolBar) {
+		insertTransparentButton(button, false, toolBar);
+	}
+
+	public static void insertTransparentButton(JButton button, boolean withText, JToolBar toolBar) {
+		configureTransparentButton(button, withText);
+		toolBar.add(button);
+	}
+
+	private static JButton configureTransparentButton(JButton button, boolean withText) {
 		if (withText) {
 			button.setVerticalTextPosition(SwingConstants.BOTTOM);
 			button.setHorizontalTextPosition(SwingConstants.CENTER);
