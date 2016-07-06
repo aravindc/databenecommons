@@ -154,6 +154,11 @@ public class Assert {
 			 throw new AssertionError(role + " is not negative: " + value);
 	}
 
+	public static <T extends Comparable<T>> void lessOrEqual(T value, T threshold, String role) {
+		if (value.compareTo(threshold) > 0)
+			 throw new AssertionError(role + " is expected to be less than or equal to " + threshold + ", but is " + value);
+	}
+
 	public static void that(boolean flag, String message) {
 		if (!flag)
 			throw new AssertionError(message);

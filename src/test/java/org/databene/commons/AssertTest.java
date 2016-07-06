@@ -14,8 +14,9 @@
  */
 package org.databene.commons;
 
+import static junit.framework.Assert.fail;
+
 import org.junit.Test;
-import static junit.framework.Assert.*;
 
 /**
  * Tests the {@link Assert} class.
@@ -45,6 +46,18 @@ public class AssertTest {
 		byte[] a2 = new byte[] { 1 };
 		expectNotEquals(a1, a2);
 		expectNotEquals(a2, a1);
+	}
+	
+	@Test
+	public void testLessOrEqual() {
+		Assert.lessOrEqual(0, 1, "number");
+		Assert.lessOrEqual(1, 1, "number");
+		try {
+			Assert.lessOrEqual(2, 1, "number");
+			fail("AssertionError expected");
+		} catch (AssertionError e) {
+			// expected
+		}
 	}
 	
 	// private helpers -------------------------------------------------------------------------------------------------
