@@ -34,7 +34,7 @@ public class Long2DateConverterTest extends AbstractConverterTest {
 	@Test
 	public void testRevert() {
 		assertEquals(null, new Long2DateConverter().convert(null));
-		assertEquals(TimeUtil.date(1970, 0, 1, 0, 0, 0, 0), new Long2DateConverter().convert(0L));
+		assertEquals(TimeUtil.date(1970, 0, 1, 1, 0, 0, 0), new Long2DateConverter().convert(0L));
 	}
 	
 }
