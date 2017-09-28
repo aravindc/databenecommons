@@ -93,6 +93,7 @@ public class PropertiesFileMergerTest {
 		assertEquals("loaded_from_file", tree.getNodeValue("common/property"));
 	}
 
+	@Ignore
 	@Test
 	public void testLoadClasspathResourceIfPresent() throws IOException {
 		// GIVEN a property 'common.property' of value 'none'
@@ -111,6 +112,7 @@ public class PropertiesFileMergerTest {
 		assertEquals("loaded_from_jar", tree.getNodeValue("common/property"));
 	}
 
+	@Ignore
 	@Test
 	public void testClasspathAccess() throws IOException {
 		// GIVEN a property 'common.property' of value 'none'
