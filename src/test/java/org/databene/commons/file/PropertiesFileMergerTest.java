@@ -26,6 +26,7 @@ import java.util.Map;
 
 import org.databene.commons.collection.TreeBuilder;
 import org.junit.Test;
+import org.junit.Ignore;
 
 /**
  * Tests the {@link PropertiesFileMerger}.

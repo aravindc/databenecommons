@@ -18,6 +18,7 @@ import java.io.File;
 
 import org.databene.commons.ui.GUIUtil;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 

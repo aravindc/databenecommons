@@ -18,6 +18,7 @@ import static junit.framework.Assert.assertEquals;
 
 import org.databene.commons.TimeUtil;
 import org.junit.Test;
+import org.junit.Ignore;
 
 /**
  * Tests the {@link Long2DateConverter}.
