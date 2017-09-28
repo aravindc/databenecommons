@@ -19,6 +19,8 @@ import java.io.File;
 import org.databene.commons.ui.GUIUtil;
 import org.junit.Test;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 /**
  * Tests the {@link GUIUtil}.
  * Created: 06.02.2014 13:35:19
@@ -28,6 +30,7 @@ import org.junit.Test;
 
 public class GUIUtilTest {
 	
+	@Ignore
 	@Test
 	public void testTakeScreenshot() throws Exception {
 		File file = File.createTempFile("screenshot.png", ".png");
