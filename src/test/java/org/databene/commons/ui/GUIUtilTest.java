@@ -20,8 +20,6 @@ import org.databene.commons.ui.GUIUtil;
 import org.junit.Test;
 import org.junit.Ignore;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-
 /**
  * Tests the {@link GUIUtil}.
  * Created: 06.02.2014 13:35:19

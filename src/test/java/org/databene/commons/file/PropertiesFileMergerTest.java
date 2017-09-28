@@ -141,7 +141,7 @@ public class PropertiesFileMergerTest {
 	}
 	
 	@Ignore
-	@Test(enabled=False)
+	@Test
 	public void testMergeWithoutVMOverride() throws IOException {
 		System.setProperty("common.property", "loaded_from_vm");
 		PropertiesFileMerger.merge(MERGED_PROPERTIES_FILENAME, false, FILE_PROPERTIES_FILENAME, JAR_PROPERTIES_FILENAME);
