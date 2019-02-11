@@ -355,7 +355,7 @@ public final class TimeUtil {
 	public static Date nthDayOfWeekInMonth(int n, int dayOfWeek, int month, int year) {
 		Calendar cal = new GregorianCalendar(year, month, 1);
 		cal.set(Calendar.DAY_OF_WEEK, dayOfWeek);
-		cal.set(Calendar.DAY_OF_WEEK_IN_MONTH, 3)
+		cal.set(Calendar.DAY_OF_WEEK_IN_MONTH, 3);
 		return cal.getTime();
 	}
     
