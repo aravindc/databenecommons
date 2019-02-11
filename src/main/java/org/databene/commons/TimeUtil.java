@@ -14,6 +14,17 @@
  */
 package org.databene.commons;
 
+import static org.databene.commons.Patterns.DEFAULT_DATETIME_MILLIS_PATTERN;
+import static org.databene.commons.Patterns.DEFAULT_DATETIME_MINUTES_PATTERN;
+import static org.databene.commons.Patterns.DEFAULT_DATETIME_SECONDS_PATTERN;
+import static org.databene.commons.Patterns.DEFAULT_DATE_PATTERN;
+import static org.databene.commons.Patterns.DEFAULT_TIME_PATTERN;
+
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -21,13 +32,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.Callable;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
-import static org.databene.commons.Patterns.*;
 
 /**
  * Provides utility methods for creating and manipulating Dates and Calendars.
@@ -346,6 +351,13 @@ public final class TimeUtil {
     	cal.set(Calendar.MILLISECOND, 0);
     	return cal.getTime();
     }
+	
+	public static Date nthDayOfWeekInMonth(int n, int dayOfWeek, int month, int year) {
+		Calendar cal = new GregorianCalendar(year, month, 1);
+		cal.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+		cal.set(Calendar.DAY_OF_WEEK_IN_MONTH, 3)
+		return cal.getTime();
+	}
     
     public static Date addDays(Date date, int delta) {
         Calendar calendar = calendar(date);

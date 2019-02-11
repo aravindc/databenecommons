@@ -14,8 +14,9 @@
  */
 package org.databene.commons;
 
-import org.junit.Test;
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -23,6 +24,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
+
+import org.junit.Test;
 
 /**
  * Tests the {@link TimeUtil} class.
@@ -318,6 +321,24 @@ public class TimeUtilTest {
 		assertEquals(1, TimeUtil.indexOfDate(TimeUtil.date(2015, 3, 6), array));
 		assertEquals(2, TimeUtil.indexOfDate(TimeUtil.date(2015, 3, 8), array));
 	}
+	
+
+	@Test
+	public void testNthDayOfWeekInMonth() {
+      assertEquals(TimeUtil.date(2017, 11, 15), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY, 11, 2017));
+      assertEquals(TimeUtil.date(2018,  0, 19), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  0, 2018));
+      assertEquals(TimeUtil.date(2018,  1, 16), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  1, 2018));
+      assertEquals(TimeUtil.date(2018,  2, 16), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  2, 2018));
+      assertEquals(TimeUtil.date(2018,  3, 20), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  3, 2018));
+      assertEquals(TimeUtil.date(2018,  4, 18), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  4, 2018));
+      assertEquals(TimeUtil.date(2018,  5, 15), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  5, 2018));
+      assertEquals(TimeUtil.date(2018,  6, 20), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  6, 2018));
+      assertEquals(TimeUtil.date(2018,  7, 17), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  7, 2018));
+      assertEquals(TimeUtil.date(2018,  8, 21), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  8, 2018));
+      assertEquals(TimeUtil.date(2018,  9, 19), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY,  9, 2018));
+      assertEquals(TimeUtil.date(2018, 10, 16), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY, 10, 2018));
+      assertEquals(TimeUtil.date(2018, 11, 21), TimeUtil.nthDayOfWeekInMonth(3, Calendar.FRIDAY, 11, 2018));
+  }
 	
 	// helpers ---------------------------------------------------------------------------------------------------------
 	

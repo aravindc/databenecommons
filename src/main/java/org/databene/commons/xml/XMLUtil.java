@@ -250,6 +250,15 @@ public class XMLUtil {
             throw new IllegalArgumentException("More that one element found in search: " + searchTerm);
         return (elements.length > 0 ? elements[0] : null);
     }
+	
+	public static String[] getTexts(Element[] nodes) {
+		if (nodes == null)
+			return null;
+		String[] texts = new String[nodes.length];
+		for (int i = 0; i < nodes.length; i++)
+			texts[i] = getText(nodes[i]);
+		return texts;
+	}
 
     public static String getText(Node node) {
         if (node == null)

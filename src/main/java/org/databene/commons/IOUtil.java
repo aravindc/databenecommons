@@ -14,16 +14,32 @@
  */
 package org.databene.commons;
 
-import org.databene.commons.collection.MapEntry;
-import org.databene.commons.converter.ToStringConverter;
-import org.databene.commons.file.FileByNameFilter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.Flushable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.PushbackInputStream;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+import java.net.MalformedURLException;
+
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.MalformedURLException;
 import java.net.URLConnection;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -37,6 +53,12 @@ import java.util.jar.JarFile;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+
+import org.databene.commons.collection.MapEntry;
+import org.databene.commons.converter.ToStringConverter;
+import org.databene.commons.file.FileByNameFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Provides stream operations.
@@ -161,15 +183,6 @@ public final class IOUtil {
 		StringWriter writer = new StringWriter();
         transferAndClose(reader, writer);
         return writer.toString();
-	}
-
-	public static void transferAndClose(Reader reader, Writer writer) throws IOException {
-		try {
-        	transfer(reader, writer);
-        } finally {
-	        close(writer);
-	        close(reader);
-        }
 	}
 
     public static String[] readTextLines(String uri, boolean includeEmptyLines) throws IOException {
@@ -395,6 +408,15 @@ public final class IOUtil {
 	}
 
 	// piping streams --------------------------------------------------------------------------------------------------
+	
+	public static void transferAndClose(Reader reader, Writer writer) throws IOException {
+		try {
+        	transfer(reader, writer);
+        } finally {
+	        close(writer);
+	        close(reader);
+        }
+	}
 
     public static int transfer(Reader reader, Writer writer) throws IOException {
         int totalChars = 0;
@@ -407,6 +429,15 @@ public final class IOUtil {
         }
         return totalChars;
     }
+	
+	public static void transferAndClose(InputStream in, OutputStream out) throws IOException{
+		try{
+			transfer(in, out);
+		} finally {
+			close(in);
+			close(out);
+		}
+	}
 
     public static int transfer(InputStream in, OutputStream out) throws IOException {
         int totalChars = 0;

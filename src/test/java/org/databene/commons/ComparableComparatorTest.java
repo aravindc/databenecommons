@@ -14,10 +14,12 @@
  */
 package org.databene.commons;
 
-import org.junit.Test;
-import static junit.framework.Assert.*;
+
+import static junit.framework.Assert.assertEquals;
 
 import java.util.Comparator;
+
+import org.junit.Test;
 
 /**
  * Tests the {@link ComparableComparator}.
@@ -27,7 +29,7 @@ import java.util.Comparator;
 public class ComparableComparatorTest {
 
 	@Test
-    public void test() {
+    public void testCompare() {
         Comparator<String> comparator = new ComparableComparator<String>();
         assertEquals( 0, comparator.compare("1", "1"));
         assertEquals( 1, comparator.compare("1", "0"));

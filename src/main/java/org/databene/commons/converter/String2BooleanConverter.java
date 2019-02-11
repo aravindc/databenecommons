@@ -24,9 +24,24 @@ import org.databene.commons.StringUtil;
  * @author Volker Bergmann
  */
 public class String2BooleanConverter extends ThreadSafeConverter<String, Boolean> {
+	
+	private static final String DEFAULT_FALSE_STRING = "false";
+	private static final String DEFAULT_TRUE_STRING = "true";
+	private static final boolean DEFAULT_CASE_SENSITIVE = false;
+	
+	private String trueString;
+	private String falseString;
+	private boolean caseSensitive;
 
 	public String2BooleanConverter() {
+		this(DEFAULT_TRUE_STRING, DEFAULT_FALSE_STRING, DEFAULT_CASE_SENSITIVE);
+	}
+	
+	public String2BooleanConverter(String trueString, String falseString, String caseSensitive) {
 	    super(String.class, Boolean.class);
+		this.falseString = falseString;
+		this.trueString = trueString;
+		this.caseSensitive = caseSensitive;
     }
 
 	@Override
@@ -34,11 +49,16 @@ public class String2BooleanConverter extends ThreadSafeConverter<String, Boolean
 	    if (StringUtil.isEmpty(sourceValue))
 	    	return null;
 	    sourceValue = sourceValue.trim();
-	    if ("true".equalsIgnoreCase(sourceValue))
+	    if (trueString.equalsIgnoreCase(sourceValue))
 	    	return true;
-	    else if ("false".equalsIgnoreCase(sourceValue))
+	    else if (falseString.equalsIgnoreCase(sourceValue))
 	    	return false;
-	    else
+	    else {
+			if(trueString.equalsIgnoreCase(sourceValue))
+				return true;
+			else if (falseString.equalsIgnoreCase(sourceValue))
+				return false;
+		}
 	    	throw new IllegalArgumentException("Not a boolean value: " + sourceValue);
 	}
 	

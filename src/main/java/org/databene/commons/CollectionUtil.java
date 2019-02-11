@@ -106,7 +106,7 @@ public final class CollectionUtil {
     }
 
     @SuppressWarnings("unchecked")
-	public static <T, U> T[] toArray(Collection<? extends T> source) {
+	public static <T> T[] toArray(Collection<? extends T> source) {
         if (source.size() == 0)
             throw new IllegalArgumentException("For empty collections, a componentType needs to be specified.");
         Class<T> componentType = (Class<T>) source.iterator().next().getClass();
