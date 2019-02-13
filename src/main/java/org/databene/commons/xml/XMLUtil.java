@@ -449,7 +449,8 @@ public class XMLUtil {
 		if (defaultDocumentBuilderClassName != null) {
 			if (classLoader == null)
 				classLoader = Thread.currentThread().getContextClassLoader();
-			return DocumentBuilderFactory.newInstance(defaultDocumentBuilderClassName, classLoader);
+			//return DocumentBuilderFactory.newInstance(defaultDocumentBuilderClassName, classLoader);
+			return DocumentBuilderFactory.newInstance();
 		} else {
 			return DocumentBuilderFactory.newInstance();
 		}
