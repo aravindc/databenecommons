@@ -36,6 +36,7 @@ public final class CollectionUtil {
      * @param <T> the element type
      * @return a list containing all elements of the given array.
      */
+    @SafeVarargs
     public static <T> List<T> toList(T ... array) {
         List<T> result = new ArrayList<T>(array.length);
         for (T item : array)
@@ -43,6 +44,7 @@ public final class CollectionUtil {
         return result;
     }
 
+    @SafeVarargs
     public static <P, C extends P> List<P> toListOfType(Class<P> type, C ... array) {
         List<P> result = new ArrayList<P>(array.length);
         for (C item : array)
@@ -56,6 +58,7 @@ public final class CollectionUtil {
      * @param <T> the element type
      * @return a HashSet with the elements
      */
+    @SafeVarargs
     public static <T> Set<T> toSet(T ... elements) {
         HashSet<T> set = new HashSet<T>();
         if (elements != null)
@@ -64,6 +67,7 @@ public final class CollectionUtil {
         return set;
     }
 
+    @SafeVarargs
     public static <T, U extends T> SortedSet<T> toSortedSet(U ... elements) {
         TreeSet<T> set = new TreeSet<T>();
         for (T element : elements)
@@ -71,6 +75,7 @@ public final class CollectionUtil {
         return set;
     }
     
+    @SafeVarargs
     public static <T extends Comparable<T>, U extends T> SortedList<T> toSortedList(U ... elements) {
     	return new SortedList<T>(CollectionUtil.<T>toList(elements), new ComparableComparator<T>());
     }
@@ -92,6 +97,7 @@ public final class CollectionUtil {
      * @param <U> the common supertype of the values
      * @return the collection, extended by the contents of the array
      */
+	@SafeVarargs
     public static <T, U extends T, C extends Collection<? super T>> C add(C target, U ... values) {
         for (T item : values)
             target.add(item);

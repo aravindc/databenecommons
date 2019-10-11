@@ -67,6 +67,7 @@ public class NumberUtil {
 				BigInteger.class, BigInteger.valueOf(Long.MAX_VALUE) 
 		);
 	
+	@SuppressWarnings("null")
 	public static <T extends Number> byte toByte(T value) {
 		return (value != null ? value.byteValue() : null);
     }

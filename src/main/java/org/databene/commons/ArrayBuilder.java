@@ -65,6 +65,7 @@ public class ArrayBuilder<E> {
         return this;
     }
     
+	@SuppressWarnings("unchecked")
 	public void addAllIfNotContained(E... elements) {
 		for (E element : elements)
 			addIfNotContained(element);

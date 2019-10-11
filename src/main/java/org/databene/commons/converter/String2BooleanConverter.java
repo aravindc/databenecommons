@@ -31,6 +31,7 @@ public class String2BooleanConverter extends ThreadSafeConverter<String, Boolean
 	
 	private String trueString;
 	private String falseString;
+	@SuppressWarnings("unused")
 	private boolean caseSensitive;
 
 	public String2BooleanConverter() {

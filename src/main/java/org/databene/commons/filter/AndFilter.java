@@ -26,6 +26,7 @@ import org.databene.commons.Filter;
  */
 public class AndFilter<E> extends CompositeFilter<E> {
 
+	@SafeVarargs
 	public AndFilter(Filter<E>... components) {
 		super(components);
 	}

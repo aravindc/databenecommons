@@ -77,28 +77,34 @@ public class ArrayFormat extends Format {
 
     // publicly available utility methods ------------------------------------------------------------------------------
 
-    public static <T> String format(T ... items) {
+    @SafeVarargs
+	public static <T> String format(T ... items) {
         return format(", ", items);
     }
 
+    @SafeVarargs
     public static <T> String format(String separator, T ... items) {
         if (items == null)
             return "";
         return formatPart(null, separator, 0, items.length, items);
     }
 
+    @SafeVarargs
     public static <T> String format(Converter<Object,String> formatter, String separator, T ... items) {
         return formatPart(formatter, separator, 0, items.length, items);
     }
 
+    @SafeVarargs
     public static <T> String formatPart(int offset, int length, T ... items) {
         return formatPart(null, DEFAULT_SEPARATOR, offset, length, items);
     }
 
+    @SafeVarargs
     public static <T> String formatPart(String separator, int offset, int length, T ... items) {
         return formatPart(null, separator, offset, length, items);
     }
 
+    @SafeVarargs
     public static <T> String formatPart(Converter<Object,String> formatter, String separator, int offset, int length, T ... items) {
         if (items.length == 0)
             return "";

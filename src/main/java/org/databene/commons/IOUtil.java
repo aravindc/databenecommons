@@ -90,6 +90,7 @@ public final class IOUtil {
         }
     }
 
+    @SafeVarargs
     public static <T extends Closeable> void closeAll(T... closeables) {
         if (closeables != null) {
         	Throwable t = null;
@@ -392,7 +393,6 @@ public final class IOUtil {
     	return getPrinterForURI(uri, encoding, false, SystemInfo.getLineSeparator(), false);
     }
 
-    @SuppressWarnings("resource")
 	public static PrintWriter getPrinterForURI(String uri, String encoding, boolean append, 
     			final String lineSeparator, boolean autoCreateFolder)
 	    	throws FileNotFoundException, UnsupportedEncodingException {
@@ -704,6 +704,7 @@ public final class IOUtil {
 				}
 			}
 		}
+		jar.close();
     }
 
 	public static String[] listResources(URL url) throws IOException {
@@ -738,6 +739,7 @@ public final class IOUtil {
 				}
 			}
 			LOGGER.debug("found jar resources: {}", result);
+			jar.close();
 			return result.toArray(new String[result.size()]);
         } else          
         	throw new UnsupportedOperationException("Protocol not supported: "+ protocol + 

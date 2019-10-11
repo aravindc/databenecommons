@@ -38,6 +38,7 @@ public class ListBasedSet<E> implements Set<E> {
         this.list = new ArrayList<E>(collection);
     }
 
+    @SafeVarargs
     public ListBasedSet(E... elements) {
         this.list = new ArrayList<E>(elements.length);
         for (E element : elements)

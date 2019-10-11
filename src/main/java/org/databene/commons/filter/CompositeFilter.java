@@ -29,6 +29,7 @@ public abstract class CompositeFilter<E> {
 	
 	protected ArrayList<Filter<E>> components;
 	
+	@SafeVarargs
 	protected CompositeFilter(Filter<E>... components) {
 		this.components = new ArrayList<Filter<E>>();
 		for (Filter<E> component : components)

@@ -76,6 +76,7 @@ public class FilterUtil {
         return new SplitResult<T>(matches, mismatches);
     }
 
+    @SafeVarargs
     public static <T> List<List<T>> filter(T[] items, Filter<T> ... filters) {
         List<List<T>> results = new ArrayList<List<T>>(filters.length);
         for (int i = 0; i < filters.length; i++)

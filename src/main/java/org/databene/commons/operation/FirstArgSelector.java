@@ -24,7 +24,8 @@ import org.databene.commons.Operation;
  */
 public class FirstArgSelector<E> implements Operation<E, E> {
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
 	public E perform(E ... args) {
         return (args.length > 0 ? args[0] : null);
     }
