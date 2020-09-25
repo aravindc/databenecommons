@@ -202,9 +202,19 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.4</version>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
 		</plugins>
-
+		<extensions>
+			<extension>
+				<groupId>io.packagecloud.maven.wagon</groupId>
+				<artifactId>maven-packagecloud-wagon</artifactId>
+				<version>0.0.6</version>
+			</extension>
+		</extensions>
 	</build>
 
 	<reporting>
@@ -306,8 +316,30 @@
 			</build>
 		</profile>
 	</profiles>
+	<repositories>
+		<repository>
+			<id>arachockalingam-production</id>
+			<url>https://packagecloud.io/arachockalingam/production/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<distributionManagement>
+		<repository>
+			<id>packagecloud-arachockalingam</id>
+			<url>packagecloud+https://packagecloud.io/arachockalingam/production</url>
+		</repository>
+		<snapshotRepository>
+			<id>packagecloud-arachockalingam</id>
+			<url>packagecloud+https://packagecloud.io/arachockalingam/production</url>
+		</snapshotRepository>
+	</distributionManagement>
+<!--	<distributionManagement>-->
 <!-- 
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -319,25 +351,25 @@
 		</repository>
  -->		
 
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>repo.arapravi.in-snapshots</name>
-        <url>https://repo.arapravi.in/libs-snapshot</url>
-    </snapshotRepository>
+<!--    <snapshotRepository>-->
+<!--        <id>snapshots</id>-->
+<!--        <name>repo.arapravi.in-snapshots</name>-->
+<!--        <url>https://repo.arapravi.in/libs-snapshot</url>-->
+<!--    </snapshotRepository>-->
 
 
-    <repository>
-        <id>central</id>
-        <name>repo.arapravi.in-releases</name>
-        <url>https://repo.arapravi.in/libs-release</url>
-    </repository>
+<!--    <repository>-->
+<!--        <id>central</id>-->
+<!--        <name>repo.arapravi.in-releases</name>-->
+<!--        <url>https://repo.arapravi.in/libs-release</url>-->
+<!--    </repository>-->
 
-	</distributionManagement>
+<!--	</distributionManagement>-->
 
-	<scm>
-		<connection>scm:svn:http://svn.code.sf.net/p/databenecommons/code</connection>
-		<developerConnection>scm:svn:https://svn.code.sf.net/p/databenecommons/code</developerConnection>
-		<url>https://sourceforge.net/p/databenecommons/code/HEAD/tree/</url>
-	</scm>
+<!--	<scm>-->
+<!--		<connection>scm:svn:http://svn.code.sf.net/p/databenecommons/code</connection>-->
+<!--		<developerConnection>scm:svn:https://svn.code.sf.net/p/databenecommons/code</developerConnection>-->
+<!--		<url>https://sourceforge.net/p/databenecommons/code/HEAD/tree/</url>-->
+<!--	</scm>-->
 
 </project>

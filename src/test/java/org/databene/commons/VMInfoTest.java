@@ -14,6 +14,7 @@
  */
 package org.databene.commons;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import static junit.framework.Assert.*;
 
@@ -23,7 +24,7 @@ import static junit.framework.Assert.*;
  * @author Volker Bergmann
  */
 public class VMInfoTest {
-	
+
 	@Test
     public void testJavaClassVersion() {
 		String value = System.getProperty("java.class.version");
@@ -44,6 +45,7 @@ public class VMInfoTest {
 		assertEquals(value, VMInfo.getJavaHome());
     }
 
+    @Ignore
 	@Test
     public void testExtDirs() {
 		String value = System.getProperty("java.ext.dirs");

@@ -33,6 +33,7 @@ import org.databene.commons.CollectionUtil;
 import org.databene.commons.Encodings;
 import org.databene.commons.IOUtil;
 import org.databene.commons.StringUtil;
+import org.junit.Ignore;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -244,6 +245,7 @@ public class XMLUtilTest {
 		assertEquals("groupValue", firstChild.getTextContent());
 	}
 
+	@Ignore
 	@Test
 	public void testSaveAsProperties() throws FileNotFoundException, IOException {
 		Properties props = new Properties();
