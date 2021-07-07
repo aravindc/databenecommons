@@ -37,12 +37,12 @@ public class ConverterChain<S, T> extends MultiConverterWrapper implements Conve
 
 	@Override
 	public Class<S> getSourceType() {
-		return (components.length > 0 ? components[0].getSourceType() : Object.class);
+		return (components.length > 0 ? components[0].getSourceType() : (Class) Object.class);
 	}
 
 	@Override
 	public Class<T> getTargetType() {
-        return (components.length > 0 ? components[components.length - 1].getTargetType() : Object.class);
+        return (components.length > 0 ? components[components.length - 1].getTargetType() : (Class) Object.class);
     }
 
 	@Override

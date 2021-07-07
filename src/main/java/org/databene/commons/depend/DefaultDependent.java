@@ -25,6 +25,7 @@ public class DefaultDependent<S, E extends Dependent<E>> extends AbstractDepende
 
     private S subject;
     
+    @SafeVarargs
     public DefaultDependent(S subject, E ... requiredProviders) {
         super(requiredProviders);
         this.subject = subject;

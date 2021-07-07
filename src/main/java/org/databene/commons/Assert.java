@@ -168,5 +168,10 @@ public class Assert {
 		if (Math.abs(d1 - d2) < TOLERANCE)
 			throw new AssertionError(message);
 	}
+	
+	public static void notZero(double amount, String message) {
+		if (Math.abs(amount) < TOLERANCE)
+			throw new AssertionError(message);
+	}
 
 }

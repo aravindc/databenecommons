@@ -39,7 +39,8 @@ public class MinOperation<E> implements Operation<E, E> {
         this.comparator = comparator;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
 	public E perform(E... args) {
         if (args.length == 0)
             return null;

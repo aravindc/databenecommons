@@ -135,6 +135,7 @@ public final class ArrayUtil {
         return commonElements(componentType, sources);
     }
 
+    @SafeVarargs
     public static <T> T[] commonElements(Class<T> componentType, T[]... sources) {
         ArrayBuilder<T> builder = new ArrayBuilder<T>(componentType);
         T[] firstArray = sources[0];

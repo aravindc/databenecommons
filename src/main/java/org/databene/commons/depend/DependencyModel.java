@@ -31,7 +31,7 @@ import static org.databene.commons.depend.NodeState.*;
  * @author Volker Bergmann
  * @since 0.3.04
  */
-@SuppressWarnings("static-method")
+
 public class DependencyModel<E extends Dependent<E>> {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(DependencyModel.class);

@@ -27,7 +27,7 @@ import org.databene.commons.Accessor;
 public class FallbackAccessor<C, V> implements Accessor<C, V> {
 
     private Accessor<C, V>[] realAccessors;
-    
+    @SafeVarargs
     public FallbackAccessor(Accessor<C, V> ... realAccessors) {
         this.realAccessors = realAccessors;
     }

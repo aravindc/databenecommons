@@ -1153,6 +1153,7 @@ public final class BeanUtil {
 				 classes.add(BeanUtil.forName(className));
 			 }
 		 }
+		 jarFile.close();
 		 return classes;
 	}
 

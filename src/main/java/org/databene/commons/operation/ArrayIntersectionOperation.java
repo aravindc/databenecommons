@@ -31,7 +31,8 @@ public class ArrayIntersectionOperation<E> implements Operation<E[], E[]>{
         this.componentType = componentType;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
 	public E[] perform(E[]... sources) {
         return ArrayUtil.commonElements(componentType, sources);
     }

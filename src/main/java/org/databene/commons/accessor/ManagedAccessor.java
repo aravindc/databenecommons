@@ -37,7 +37,6 @@ public abstract class ManagedAccessor<C, V> implements DependentAccessor<C, V> {
         this(new ArrayList<Accessor<?, ?>>());
     }
 
-    @SuppressWarnings("unchecked")
     protected ManagedAccessor(Accessor<?, ?> dependency) {
         this(Arrays.asList(dependency));
     }

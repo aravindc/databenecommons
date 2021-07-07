@@ -22,5 +22,5 @@ package org.databene.commons;
  * @author Volker Bergmann
  */
 public interface Operation<I, O> {
-    O perform(I ... args);
+    O perform(@SuppressWarnings("unchecked") I ... args);
 }

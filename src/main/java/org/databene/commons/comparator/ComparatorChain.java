@@ -30,6 +30,7 @@ public class ComparatorChain<E> implements Comparator<E> {
 
     private Comparator<E>[] comparators;
 
+    @SafeVarargs
     public ComparatorChain(Comparator<E> ... comparators) {
         this.comparators = comparators;
     }
