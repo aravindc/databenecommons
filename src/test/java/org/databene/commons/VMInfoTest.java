@@ -24,7 +24,7 @@ import static junit.framework.Assert.*;
  * @author Volker Bergmann
  */
 public class VMInfoTest {
-	
+
 	@Test
     public void testJavaClassVersion() {
 		String value = System.getProperty("java.class.version");
